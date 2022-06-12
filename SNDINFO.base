@@ -1,0 +1,340 @@
+//  BASE SNDINFO  //////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+//  Items  /////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+//  FlameTurret  ///////////////////////////////////////////////////////////////
+snd/flameturret/FTRSET  "sounds/flameturret/FTRSET.ogg"
+snd/flameturret/FTRDEST  "sounds/flameturret/FTRDEST.ogg"
+snd/flameturret/TRFLMS  "sounds/flameturret/TRFLMS.ogg"
+snd/flameturret/FTRTGET  "sounds/flameturret/FTRTGET.ogg"
+////////////////////////////////////////////////////////////////////////////////
+
+//  Flares  ////////////////////////////////////////////////////////////////////
+Flare/Light  "sounds/flares/FLARLITE.ogg"
+Flare/Loop  "sounds/flares/FLARLOOP.ogg"
+
+$Volume Flare/Light 0.5
+$Volume Flare/Loop 0.5
+$Limit Flare/Loop 5
+////////////////////////////////////////////////////////////////////////////////
+
+// armor hit sound /////////////////////////////////////////////////////////////
+arhit  "sounds/armor/arhit.ogg"
+$pitchshift arhit 7
+
+sounds/armorhit "sounds/armor/armorhit.ogg"
+//sounds/bulletricochet "sounds/armor/ricochet.wav"
+////////////////////////////////////////////////////////////////////////////////
+
+//  Item use sounds  ///////////////////////////////////////////////////////////
+
+//item pickup
+sounds/itemPickup "sounds/mwsound/item.wav"
+
+//money pickup
+sounds/coinPickup "sounds/mwsound/money.wav"
+
+//food - eat
+//sounds/eat  "sounds/food/CHEWSND.wav"
+sounds/eat  "sounds/mwsound/swallow.wav"
+sounds/drink  "sounds/mwsound/drink.wav"
+
+//medicals use
+sounds/med  "sounds/various/DSMEDPAK.ogg"
+
+//batteries use
+sounds/battery  "sounds/various/BATTRECH.wav"
+
+//ammo use
+sounds/ammouse  "sounds/various/DSAMPKUP.wav"
+
+//lantern oil use
+sounds/lanternOilUse  "sounds/various/OILPICK1.ogg"
+
+//flashlight
+flashlight/click  "sounds/various/click.wav"
+
+//clothes&armor wear sounds
+sounds/armorHeavy  "sounds/armor/MWARHVY.wav"
+sounds/armorMedium  "sounds/armor/MWARMED.wav"
+sounds/armorLight  "sounds/armor/MWARLGT.wav"
+sound/wearClothing "sounds/mwsound/clothes.wav"
+////////////////////////////////////////////////////////////////////////////////
+
+//  armorshard-armor repair kit  ///////////////////////////////////////////////
+//Sounds: id Software
+items/ARKuse  "sounds/armor/AMRSHRD.ogg"
+////////////////////////////////////////////////////////////////////////////////
+
+//door sounds  ///////////////////////////////////////////////////////////////
+sounds/DoorCreak  "sounds/door/drcrk5a.ogg"
+sounds/doorOpenClose  "sounds/door/DOORSND.ogg"
+//locked door
+sounds/lockedDoor  "sounds/door/DOORLCKD.wav"
+sounds/slideOpen "sounds/door/SLIDOOR1.WAV"
+sounds/slideClose "sounds/door/SLIDOOR2.WAV"
+////////////////////////////////////////////////////////////////////////////////
+
+//  DN fire  ///////////////////////////////////////////////////////////////////
+/*sounds/DNfire  "sounds/fire/FIRE09.wav"
+
+$alias DNfire sounds/DNfire
+$ambient 27 DNfire point continuous 0.9*/
+////////////////////////////////////////////////////////////////////////////////
+
+
+//  fly swarm  /////////////////////////////////////////////////////////////////
+SFX/Buzz  "sounds/flyswarm/DSBUZZ.ogg"
+////////////////////////////////////////////////////////////////////////////////
+
+//fodBarrel  ///////////////////////////////////////////////////////////////////
+Bar/Break  "sounds/foodbarrel/FBRBRK.ogg"
+////////////////////////////////////////////////////////////////////////////////
+
+//laser scout  /////////////////////////////////////////////////////////////////
+scout/death "sounds/laserscout/SCOUTDIE.ogg"
+scout/shoot "sounds/laserscout/DSLASER.ogg"
+////////////////////////////////////////////////////////////////////////////////
+
+
+//  toxincloud  ////////////////////////////////////////////////////////////////
+weapons/poof1  "sounds/toxincloud/dspoof1.wav"
+////////////////////////////////////////////////////////////////////////////////
+
+//  deus ex sounds  ////////////////////////////////////////////////////////////
+sounds/spyDroneAct  "sounds/deusex/spyDroneActive.wav"
+$volume sounds/spyDroneAct 1.5
+sounds/clrBotAct  "sounds/deusex/cleanerBotActive.wav"
+$volume sounds/clrBotAct 0.35
+sounds/medicalHiss  "sounds/deusex/medicalHiss.wav"
+////////////////////////////////////////////////////////////////////////////////
+
+$volume world/waterfall 0.45
+//$volume world/river 0.45
+
+sounds/menutick "sounds/menutick/dsradio.wav"
+
+// switches sounds /////////////////////////////////////////////////////////////
+switch/monitor "sounds/switch/monitor.wav"
+$volume switch/monitor 0.5
+
+switch/switch "sounds/switch/switch.wav"
+$volume switch/switch 0.5
+
+switch/lever "sounds/switch/leversw.wav"
+$volume switch/lever 0.5
+
+switch/lamp "sounds/switch/lampsw.wav"
+$volume switch/lamp 0.5
+////////////////////////////////////////////////////////////////////////////////
+
+// deployable shield ///////////////////////////////////////////////////////////
+ForceBarrier/On "sounds/deployableshield/DSFRCON.ogg"
+ForceBarrier/Off "sounds/deployableshield/DSFRCOFF.ogg"
+ForceBarrier/Loop "sounds/deployableshield/DSFRCLOP.ogg"
+
+DSZAPHT1 "sounds/deployableshield/DSZAPHT1.ogg"
+DSZAPHT2 "sounds/deployableshield/DSZAPHT2.ogg"
+DSZAPHT3 "sounds/deployableshield/DSZAPHT3.ogg"
+
+
+$random ForceBarrier/Hit	{ DSZAPHT1 DSZAPHT2 DSZAPHT3 }
+$limit ForceBarrier/Hit	0
+////////////////////////////////////////////////////////////////////////////////
+
+// nw squirrel /////////////////////////////////////////////////////////////////
+SquirrelSpawn/Sight "sounds/squirrel/SQUISPAW.ogg"
+SquirrelHit/Pain "sounds/squirrel/SQUIPAIN.ogg"
+SquirrelAttack/Attack "sounds/squirrel/SQUIATTA.ogg"
+SquirrelDead/Dead "sounds/squirrel/SQUIDEAD.ogg"
+////////////////////////////////////////////////////////////////////////////////
+
+//-----------Eel---------------------------------------//
+Eel/death			DSLAVA1
+
+H2Spider/Act			DSSPDACT
+H2Spider/Melee			DSSPDMEL
+H2Spider/Death			DSSPDDTH
+
+//------------ShadowBeast---------------------------------------//
+shadowbeast/attack	BDMATK1
+shadowbeast/death	BDMDTH1
+shadowbeast/idle1	BDMIDL1
+shadowbeast/idle2	BDMIDL2
+$random shadowbeast/active { shadowbeast/idle2 shadowbeast/idle1 }
+shadowbeast/pain	BDMPAN1
+shadowbeast/sight	BDMSIT1
+shadowbeast/pr1death	BDPD1
+shadowbeast/pr1sight	BDPS1
+shadowbeast/pr2death	BDPD2
+shadowbeast/pr2sight	BDPS2
+shadowbeast/spread	BDPSPR
+shadowbeast/spiritsit	BDSPR2
+shadowbeast/spiritdth	BDSPR1
+
+fierybeast/waveshot	dswavsht
+fierybeast/waveexp	dswavxpl
+fierybeast/fire		bdfire
+
+//--------------Lizard----------------------------------------------------------------//
+monster/lizardsee  	acids1
+monster/lizardidle 	acids2
+monster/lizardhurt 	acidh1
+monster/lizardattack	acida1
+monster/lizarddeath1	acidd1
+monster/lizarddeath2	acidd2
+
+//--------------PitFiends------------------------------------//
+pfiend/sight			DSBSTSIT
+pfiend/attack			DSBSTATK
+pfiend/pain			    DSBSTPAI
+pfiend/death			DSBSTDTH
+pfiend/active			DSBSTACT
+
+// dragon ///////////////////////////////////////////////////////////////////
+dragonfam/see dfsee
+dragonfam/pain dfpain
+dragonfam/death dfdie
+dragonfam/idle dfidle
+dragonfam/attack dfattack
+
+WASPDIE1	WASPDIE1
+WASPDIE2	WASPDIE2
+WASPDIE3	WASPDIE3
+WASPDIE4	WASPDIE4
+
+$random Hornet/Death	{ WASPDIE1 WASPDIE2 WASPDIE3 WASPDIE4 }
+
+Hornet/Fly		"sounds/ascension/WASPFLY.ogg"
+$limit Hornet/Fly 0
+//SatTermination Hornet/Fly 3
+
+$attenuation Hornet/Fly 3
+
+////////////////////////////////////////////////////////////////////////////////
+// Fire Imp ////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+H2Imp/Sight			"sounds/fleshimp/2IMPSIGH.ogg"
+H2Imp/Charge		"sounds/fleshimp/2IMPCHRG.ogg"
+H2Imp/Melee			"sounds/fleshimp/2IMPMELE.ogg"
+H2Imp/Fireball		"sounds/fleshimp/2IMPFBAL.ogg"
+H2Imp/Pain			"sounds/fleshimp/2IMPPAIN.ogg"
+H2Imp/Wings			"sounds/fleshimp/2IMPWING.ogg"
+H2Imp/Death			"sounds/fleshimp/2IMPDEAT.ogg"
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// inquisitor crow /////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+Craw/Splat "sounds/crow/WASPSPLT.wav"
+Craw/Active "sounds/crow/DSCRAW.ogg"
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ascension tramp && rogue ////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//insult
+//getpain
+//getdead
+//swordhit
+//RogueSee1
+//getroguepain
+//getroguedead
+//flecha
+//batfam/crash
+$random swordhit { shit1 shit2 shit3 shit4 shit5 }
+$random insult { i1 i2 i3 i4 i5 i6 i7 }
+$random getdead { d1 d2 d3 d4 d5 d6 d7 d8 d9 }
+$random getpain { p1 p2 p3 p4 p5 p6 p7 }
+d1 "sounds/ascension/die1.ogg"
+d2 "sounds/ascension/die2.ogg"
+d3 "sounds/ascension/die3.ogg"
+d4 "sounds/ascension/die4.ogg"
+d5 "sounds/ascension/die5.ogg"
+d6 "sounds/ascension/die6.ogg"
+d7 "sounds/ascension/die7.ogg"
+d8 "sounds/ascension/die8.ogg"
+d9 "sounds/ascension/die9.ogg"
+
+p1 "sounds/ascension/pain1.ogg"
+p2 "sounds/ascension/pain2.ogg"
+p3 "sounds/ascension/pain3.ogg"
+p4 "sounds/ascension/pain4.ogg"
+p5 "sounds/ascension/pain5.ogg"
+p6 "sounds/ascension/pain6.ogg"
+p7 "sounds/ascension/pain7.ogg"
+
+i1 "sounds/ascension/ins1.ogg"
+i2 "sounds/ascension/ins2.ogg"
+i3 "sounds/ascension/ins3.ogg"
+i4 "sounds/ascension/ins4.ogg"
+i5 "sounds/ascension/ins5.ogg"
+i6 "sounds/ascension/ins6.ogg"
+i7 "sounds/ascension/ins7.ogg"
+
+shit1 "sounds/ascension/shit1.ogg"
+shit2 "sounds/ascension/shit2.ogg"
+shit3 "sounds/ascension/shit3.ogg"
+shit4 "sounds/ascension/shit4.ogg"
+shit5 "sounds/ascension/shit5.ogg"
+
+$random getroguedead { Roguedead1 Roguedead2 }
+$random getroguepain { RoguePain1 RoguePain2 RoguePain3 }
+
+RogueSee1 "sounds/ascension/THFSEE.ogg" 
+
+Roguedead1 "sounds/ascension/THFDED1.ogg"
+Roguedead2 "sounds/ascension/THFDED2.ogg"
+
+RoguePain1 "sounds/ascension/THFOW1.ogg"
+RoguePain2 "sounds/ascension/THFOW2.ogg"
+RoguePain3 "sounds/ascension/THFOW3.ogg"
+
+batfam/crash "sounds/ascension/batcrash.ogg"
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// giant rat ///////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+Rat/Squeek "sounds/giantrat/DSRAT.ogg"
+Rat/Active "sounds/giantrat/DSRATIDL.ogg"
+DSRATDI1 "sounds/giantrat/DSRATDI1.ogg"
+DSRATDI2 "sounds/giantrat/DSRATDI2.ogg"
+$random Rat/Death	{ DSRATDI1 DSRATDI2 }
+
+Rat/Bite "sounds/giantrat/DSRATBIT.ogg"
+Rat/Splat "sounds/giantrat/DSRATPOP.ogg"
+
+rat/sight "sounds/giantrat/dsratact.wav"
+rat/death "sounds/giantrat/dsratact.wav"
+rat/active "sounds/giantrat/dsratact.wav"
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Blacksmith //////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+smith1 "sounds/smith/smith1.ogg"
+
+npc/smith11 "sounds/smith/smith11.ogg"
+npc/smith12 "sounds/smith/smith12.ogg"
+npc/smith13 "sounds/smith/smith13.ogg"
+
+$random npc/smith { npc/smith11 npc/smith12 npc/smith13 }
+$volume npc/smith 0.25
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// hexen swamp monster/stalker /////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+SerpentSight            "sounds/hxnstalker/wtrcrt7.wav"
+SerpentActive           "sounds/hxnstalker/srfc3.wav"
+SerpentPain             "sounds/hxnstalker/serppn1.wav"
+SerpentAttack           "sounds/hxnstalker/wtrswip.wav"
+SerpentMeleeHit         "sounds/hxnstalker/wtrhit.wav"
+SerpentDeath            "sounds/hxnstalker/srpdth1.wav"
+SerpentBirth            "sounds/hxnstalker/srfc1.wav"
+SerpentFXContinuous     "sounds/hxnstalker/glbhiss1.wav"
+SerpentFXHit            "sounds/hxnstalker/glbhit4.wav"
+////////////////////////////////////////////////////////////////////////////////

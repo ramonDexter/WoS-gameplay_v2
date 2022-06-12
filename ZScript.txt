@@ -1,0 +1,152 @@
+////////////////////////////////////////////////////////////////////////////////
+////////////////////  World of Strife ZSCRIPT file  ////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+version "4.6.0"
+
+// statusbar ///////////////////////////////////////////////////////////////////
+#include "zscript/wosSTATUSBAR.zs"
+////////////////////////////////////////////////////////////////////////////////
+
+// game ////////////////////////////////////////////////////////////////////////
+#include "zscript/wosBase.zs"
+#include "zscript/wosWeapons.zs"
+#include "zscript/wosPlayer.zs"
+#include "zscript/wosItems.zs"
+#include "zscript/wosTokens.zs"
+#include "zscript/wosKeys.zs"
+#include "zscript/areaNames.zs"
+#include "zscript/projectile.zs"
+#include "zscript/destructibledeco.zs"
+#include "zscript/mapMarkers.zs"
+#include "zscript/wosHandler.zs"
+#include "zscript/neoworm.zs"
+#include "zscript/wosdebug.zs"
+#include "zscript/zcasing.zs"
+#include "zscript/wosmonsters.zs"
+
+////////////////////////////////////////////////////////////////////////////////
+
+//  mechanics  /////////////////////////////////////////////////////////////////
+#include "zscript/mechanics/tilt_ini.zs"
+#include "zscript/mechanics/ladder.zs"
+#include "zscript/mechanics/smoothfire.zs" //Mikk's smooth fire animation - to nema se zbranema nic spolecnyho :)
+#include "zscript/mechanics/flashlight.zs"
+#include "zscript/mechanics/spriteshadow.zs"
+#include "zscript/mechanics/zipline.zs"
+#include "zscript/mechanics/sway.zs"
+#include "zscript/mechanics/waterfall.zs"
+#include "zscript/mechanics/use2pickup.zs"
+#include "zscript/mechanics/m8f_hellscapeNavigator.zs"
+#include "zscript/mechanics/droplets.zs"
+#include "zscript/mechanics/footsteps.zs"
+#include "zscript/mechanics/lowdetail.zs"
+#include "zscript/mechanics/boids.zs"
+
+#include "zscript/Mechanics/PDA/PDAZForms/Include.zs"
+#include "zscript/Mechanics/PDA/PDAMenuElements.zc"
+#include "zscript/Mechanics/PDA/PDAMenu.zc"
+#include "zscript/Mechanics/PDA/PDAConfig.zc"
+#include "zscript/Mechanics/PDA/PDAMenuHandler.zc"
+#include "zscript/Mechanics/PDA/PDAEventHandler.zc"
+#include "zscript/Mechanics/PDA/PDAReader.zc" //inv item
+#include "zscript/Mechanics/PDA/PDAReaderTutorialMenu.zc"
+#include "zscript/Mechanics/PDA/PDA.zc"
+#include "zscript/Mechanics/PDA/PDADummyPDA.zc"
+// lookcursor by sir robin /////////////////////////////////////////////////////
+#include "zscript/mechanics/mwr_lookcursor/MWR_Cursor3d.zs"
+#include "zscript/mechanics/mwr_lookcursor/MWR_LanguageHandler.zs"
+#include "zscript/mechanics/mwr_lookcursor/MWR_Describer.zs"
+#include "zscript/mechanics/mwr_lookcursor/DefaultDescribers.zs"
+#include "zscript/mechanics/mwr_lookcursor/MWR_Lookcursor.zs"
+// m8f trading license /////////////////////////////////////////////////////////
+/*
+#include "zscript/mechanics/m8f_trading/m8f_tl_trader_info.txt"
+#include "zscript/mechanics/m8f_trading/m8f_tl_price_table.txt"
+#include "zscript/mechanics/m8f_trading/m8f_tl_doom_price_table.txt"
+#include "zscript/mechanics/m8f_trading/m8f_tl_trade_manager.txt"
+#include "zscript/mechanics/m8f_trading/m8f_tl_trader.txt"
+#include "zscript/mechanics/m8f_trading/m8f_tl_trade_view.txt"
+#include "zscript/mechanics/m8f_trading/m8f_tl_event_handler.txt"
+#include "zscript/mechanics/m8f_trading/m8f_tl_doom_trade_setup.txt"
+#include "zscript/mechanics/m8f_trading/m8f_tl_acs_helper.txt"
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+//  monsters  //////////////////////////////////////////////////////////////////
+#include "zscript/monsters/spiders.zs"
+#include "zscript/monsters/monsters.zs"
+#include "zscript/monsters/npc.zs"
+#include "zscript/monsters/laserscout.zs"
+#include "zscript/monsters/nuclearMutant.zs"
+#include "zscript/monsters/piggy.zs"
+#include "zscript/monsters/chicken.zs"
+#include "zscript/monsters/sheep.zs"
+#include "zscript/monsters/critters.zs"
+#include "zscript/monsters/ascens.zs"
+#include "zscript/monsters/wosCultist.zs"
+#include "zscript/monsters/wosLiquidator.zs"
+#include "zscript/monsters/wosrocketturret.zs"
+#include "zscript/monsters/giantrat.zs"
+////////////////////////////////////////////////////////////////////////////////
+
+//  weapons  ///////////////////////////////////////////////////////////////////
+#include "zscript/weapons/staffBlaster.zs"
+#include "zscript/weapons/rlPistol.zs"
+#include "zscript/weapons/crossbow.zs"
+#include "zscript/weapons/assaultgun.zs"
+#include "zscript/weapons/missilelauncher.zs"
+#include "zscript/weapons/flamer.zs"
+#include "zscript/weapons/mauler.zs"
+#include "zscript/weapons/punchdagger.zs"
+#include "zscript/weapons/grenadeLauncher.zs"
+#include "zscript/weapons/laserpistol.zs"
+#include "zscript/weapons/executorRifle.zs"
+//#include "zscript/weapons/staffBlasterUp.zs"
+////////////////////////////////////////////////////////////////////////////////
+
+//  items  /////////////////////////////////////////////////////////////////////
+#include "zscript/Items/ammo.zs"
+#include "zscript/Items/armor.zs"
+#include "zscript/Items/armorShard.zs"
+#include "zscript/Items/automap.zs"
+#include "zscript/Items/blasterTurret.zs"
+#include "zscript/Items/deployableShield.zs"
+#include "zscript/Items/EnvironmentalSuit.zs"
+#include "zscript/Items/flameTurret.zs"
+#include "zscript/Items/flares.zs"
+#include "zscript/Items/food.zs"
+#include "zscript/Items/grenades.zs"
+#include "zscript/Items/healthitems.zs"
+#include "zscript/Items/interceptorDrone.zs"
+#include "zscript/Items/nightEyeModule.zs"
+#include "zscript/Items/rebreather.zs"
+#include "zscript/Items/regenModule.zs"
+#include "zscript/Items/shadowArmor.zs"
+#include "zscript/Items/shoulderGun.zs"
+#include "zscript/Items/springmine.zs"
+#include "zscript/Items/swarmers.zs"
+#include "zscript/Items/targeter.zs"
+#include "zscript/Items/binoculars.zs"
+#include "zscript/Items/wosscanner.zs"
+#include "zscript/Items/stealthboy.zs"
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+//  deprecated unused code  ////////////////////////////////////////////////////
+
+
+//#include "zscript/Items/quicktravel.zs"
+//#include "zscript/Items/jetpack.zs"
+//#include "zscript/Items/camping.zs"
+//#include "zscript/weapons/hookShot.zs"
+//#include "zscript/weapons/executorRifle.zs"
+//#include "zscript/mechanics/nashmove.zs"
+//#include "zscript/pdamessages.zs"
+//#include "zscript/conversation/wosconversationmenu.txt"
+////////////////////////////////////////////////////////////////////////////////
+

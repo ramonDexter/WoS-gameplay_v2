@@ -1,0 +1,16 @@
+//lanterns
+pointlight FloorLanternLight
+{
+    color 1.0 1.0 0.5
+    size 32
+    offset 0 12 0
+	//attenuate 1
+}
+
+pointlight CeilingLanternLight {
+    color 1.0 1.0 0.5
+    size 56
+    offset 0 0 0
+	//attenuate 1
+}
+

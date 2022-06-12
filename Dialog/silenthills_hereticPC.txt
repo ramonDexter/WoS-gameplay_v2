@@ -1,0 +1,36 @@
+//==================================================================================================================
+//heretic computer convID 44
+//==================================================================================================================
+namespace = "GZDoom";
+Conversation {
+    ID = 44;
+    Page {
+        pageName = "SH_hereticPC_opener";
+        Name = "\c[yellow][ STORAGE TERMINAL ]";
+        Dialog = "\c[white]Select your choice:";
+        Goodbye = "\c[red][ EXIT ]";
+        Panel = "M_BLNK";
+        Choice {
+            Text = "Note for Smarty*";
+            Nextpage = "SH_hereticPC_note";
+            Special = 80;
+            arg0 = 1204;
+            Require {
+                item = "twn_bishopQ01_skrysRebelu_skladiste";
+                amount = 1;
+            }
+            Exclude {
+                item = "twn_bishopQ01_skrysRebelu_skrys";
+                amount = 1;
+            }
+        }
+    }
+    Page {
+        pageName = "SH_hereticPC_note";
+        Name = "\c[yellow][ STORAGE TERMINAL ]";
+        Dialog = "\c[white]Smarty, we send the things to mister you-know-who. The shrine on the place is ready, just remember, door next to the flag.";
+        Goodbye = "\c[red][ EXIT ]";
+        Panel = "M_BLNK";
+    }
+}
+//==================================================================================================================

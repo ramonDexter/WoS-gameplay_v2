@@ -1,0 +1,123 @@
+actor FloorLantern 4680
+{
+	//$Category "Light sources"
+  tag "lantern floor"
+	Radius 16
+	Height 20
+	States
+	{
+		Spawn:
+		FRLT A -1 Bright light("FloorLanternLight")
+		Stop
+	}
+}
+
+actor FloorLantern_Animated 4681
+{
+	//$Category "Light sources"
+  tag "lantern floor blinking"
+  Radius 16
+  Height 20
+  States
+  {
+  Spawn:
+    FRLT A 5 Bright light("FloorLanternLight")
+	  FRLF A 10
+	  Loop
+  }
+}
+
+actor FloorLanternTall 4682
+{
+	//$Category "Light sources"
+  tag "lantern floor tall"
+  Radius 16
+  Height 20
+  States
+  {
+  Spawn:
+    FRLT B -1 Bright light("FloorLanternLight")
+	Stop
+  }
+}
+
+actor FloorLanternTall_Animated 4683
+{
+	//$Category "Light sources"
+  tag "lantern floor tall blinking"
+  Radius 16
+  Height 20
+  States
+  {
+  Spawn:
+    FRLT B 5 Bright light("FloorLanternLight")
+	  FRLF B 10
+	Loop
+  }
+}
+
+actor CeilingLantern 4684
+{
+	//$Category "Light sources"
+  tag "ceiling lantern"
+  Radius 16
+  Height 20
+  +SPAWNCEILING
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    FRLT C -1 Bright light("CeilingLanternLight")
+	Stop
+  }
+}
+
+actor CeilingLantern_Animated 4685
+{
+	//$Category "Light sources"
+  tag "ceiling lantern blinking"
+  Radius 16
+  Height 20
+  +SPAWNCEILING
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    FRLT C 5 Bright light("CeilingLanternLight")
+	  FRLF C 10
+	Loop
+  }
+}
+
+actor CeilingLanternTall 4686
+{
+	//$Category "Light sources"
+  tag "ceiling lantern tall"
+  Radius 16
+  Height 20
+  +SPAWNCEILING
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    FRLT D -1 Bright light("CeilingLanternLight")
+	Stop
+  }
+}
+
+actor CeilingLanternTall_Animated 4687
+{
+	//$Category "Light sources"
+  tag "ceiling lantern tall blinking"
+  Radius 16
+  Height 20
+  +SPAWNCEILING
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    FRLT D 5 Bright light("CeilingLanternLight")
+	  FRLF D 10
+	Loop
+  }
+}

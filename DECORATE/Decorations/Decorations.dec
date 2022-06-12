@@ -1,0 +1,9427 @@
+
+actor rangerHelmDummy 21001
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco binder helmet"
+	+USESPECIAL
+	+SOLID
+	+NOGRAVITY
+
+	Tag "Binder Helmet"
+	Height 16
+	Radius 8
+
+	States
+	{
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+
+actor rangerArmor1Dummy 21002
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco Ranger armor 1"
+	+USESPECIAL
+	+SOLID
+	+NOGRAVITY
+	Tag "$T_CYBERARMOR1"
+	Height 16
+	Radius 8
+
+	States
+	{
+		Spawn:
+			RGA1 A -1
+			Stop
+	}
+}
+
+actor rangerArmor2Dummy 21003
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco Ranger armor 2"
+	+USESPECIAL
+	+SOLID
+	+NOGRAVITY
+	Tag "$T_CYBERARMOR2"
+	Height 16
+	Radius 8
+
+	States
+	{
+		Spawn:
+			RGA2 A -1
+			Stop
+	}
+}
+
+actor dummyHyposprej 21004
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco Hyposprej"
+	+USESPECIAL
+	+SOLID
+	+NOGRAVITY
+	Tag "$T_HYPOSPREJ"
+	Height 4
+	Radius 8
+
+	States
+	{
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor dummyKombopak 21005
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco Kombopak"
+	+USESPECIAL
+	+SOLID
+	+NOGRAVITY
+	Tag "$T_KOMBOPACK"
+	Height 4
+	Radius 8
+	States
+	{
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor dummyInstaHeal 21006
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco InstaHeal"
+	+USESPECIAL
+	+SOLID
+	+NOGRAVITY
+	Tag "$T_INSTALEK"
+	Height 4
+	Radius 8
+	States
+	{
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor medicalCrab2 21007
+{
+	//$Category "Decorations/WoS"
+	//$Title "Medical crab ceiling"
+	+SpawnCeiling
+	+nogravity
+	-Solid
+	Tag "Medical Crab"
+	height 40
+	radius 16
+	
+	States
+	{
+		Spawn:
+		CRAB X -1
+		Stop
+	}
+}
+
+actor RelicDummy 21008
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco Relic"
+	+useSpecial
+	+Solid
+	Tag "Holy Relic"
+	height 16
+	radius 8
+	States
+	{
+		Spawn:
+		RELC A -1
+		Stop
+	}
+}
+
+actor CommunicatorDummy 21009
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco Communicator"
+	+useSpecial
+	+Solid
+	+NOGRAVITY
+	Tag "$TAG_COMMUNICATOR"
+	height 8
+	radius 8
+	States
+	{
+		Spawn:
+		COMM A -1
+		Stop
+	}
+}
+
+actor TargetterDummy 21010
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco Targetter"
+	+useSpecial
+	+Solid
+	+NOGRAVITY
+	Tag "$TAG_TARGETER"
+	height 8
+	radius 8
+	States
+	{
+		Spawn:
+		TARG A -1
+		Stop
+	}
+}
+
+actor scannerDummy 21011
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco Scanner"
+	+useSpecial
+	+Solid
+	+NOGRAVITY
+	Tag "$TAG_SCANNER"
+	height 8
+	radius 8
+	States
+	{
+		Spawn:
+		PMUP ABCD 6
+		Loop
+	}
+}
+
+ACTOR bloodKapacka1 21012
+{
+	//$Category "Decorations/WoS"
+	//$Title "BL Drip pole 1"
+	+SOLID
+	Tag "Drip pole"
+	scale .5
+	height 64
+	radius 12
+	States
+	{
+		Spawn:
+		KPK1 A -1
+		Stop
+	}
+}
+
+ACTOR bloodKapacka2 21013
+{
+	//$Category "Decorations/WoS"
+	//$Title "BL Drip pole 2"
+	+SOLID
+	Tag "Drip pole"
+	scale .5
+	height 64
+	radius 12
+	States
+	{
+		Spawn:
+		KPK2 A -1
+		Stop
+	}
+}
+
+ACTOR bloodCandle 
+{
+	
+	+SOLID
+	//scale .6
+	Tag "Candle"
+	radius 10
+	height 28
+	States
+	{
+		Spawn:
+		BCND ABCD 4 Bright Light("candleLight")
+		Loop
+	}
+}
+actor bloodCandleFire {
+	-SOLID
+	+NOGRAVITY
+	+DONTTHRUST
+	+FORCEYBILLBOARD
+	Tag "Candle"
+	scale 0.55
+	radius 4
+	height 4
+	States {
+		Spawn:
+			BCDF ABCD 4 Bright light("candleLight")
+			Loop
+	}
+}
+actor modelBloodCandle : bloodCandle replaces bloodCandle 21014 {
+	//$Category "Decorations/WoS"
+	//$Title "BL candle"
+	+SOLID
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Candle"
+	radius 4
+	height 16
+	
+	States {
+		Spawn:
+			BCND A -1 Bright NODELAY A_SpawnItemEx("bloodCandleFire", 0, 0, 10)
+			Stop
+	}
+}
+
+actor voxTortureRack 21015
+{
+	//$Category "Decorations/WoS"
+	//$Title "Torture Rack"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	Tag "Torture rack"
+	height 48
+	radius 16
+	States
+	{
+		Spawn:
+			RACK V -1
+			Stop
+	}
+}
+
+actor voxPillory 21016
+{
+	//$Category "Decorations/WoS"
+	//$Title "Pillory"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	Tag "Pillory"
+	height 48
+	radius 16
+	States
+	{
+		Spawn:
+			PLRY V -1
+			Stop
+	}
+}
+
+actor voxHeadCrusher 21017
+{
+	//$Category "Decorations/WoS"
+	//$Title "head crusher"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	Tag "Head crusher"
+	height 50
+	radius 16
+	States
+	{
+		Spawn:
+			HDCR V -1
+			Stop
+	}
+}
+
+actor voxGuillotine 21018
+{
+	//$Category "Decorations/WoS"
+	//$Title "Guillotine"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	Tag "Guillotine"
+	radius 10
+	height 64
+	States
+	{
+		Spawn:
+		GLTN V -1
+		Stop
+	}
+}
+
+actor skynetFire1  21019
+{
+	//$Category "Decorations/WoS"
+	//$Title "skynet Fire 1"
+	
+	-SOLID
+	+UseSpecial
+	
+	Tag "Fireplace"
+	scale 1
+	Radius 16
+	Height 18
+	//ActiveSound "sounds/ambient/mwFire"
+	
+	States
+	{
+		Spawn:
+			SKF1 ABCD 4 Light("FireMedium") A_StartSound("world/smallfire", CHAN_BODY, CHANF_LOOPING, 0.55)
+			Loop
+	}
+}
+
+actor skynetFire2  21020
+{
+	//$Category "Decorations/WoS"
+	//$Title "skynet Fire 2"
+	
+	-SOLID
+	+UseSpecial
+	
+	Tag "Fireplace"
+	scale 1
+	Radius 16
+	Height 18
+	//ActiveSound "sounds/ambient/mwFire"
+	
+	States
+	{
+		Spawn:
+			SKF2 ABCD 4 Light("FireMedium") A_StartSound("world/smallfire", CHAN_BODY, CHANF_LOOPING, 0.55)
+			Loop
+	}
+}
+
+actor skynetFire3  21021
+{
+	//$Category "Decorations/WoS"
+	//$Title "skynet Fire 3"
+	
+	-SOLID
+	+UseSpecial
+	
+	Tag "Fireplace"
+	scale 1
+	Radius 16
+	Height 18
+	//ActiveSound "sounds/ambient/mwFire"
+	
+	States
+	{
+		Spawn:
+			SKF3 ABCD 4 Light("FireMedium") A_StartSound("world/smallfire", CHAN_BODY, CHANF_LOOPING, 0.55)
+			Loop
+	}
+}
+
+actor skynetBones1  21022
+{
+  //$Category "Decorations/WoS"
+  //$Title "skynet Bones 1"
+  Tag "Bones"
+  scale 1
+  Radius 16
+  Height 8
+  -SOLID
+  +UseSpecial
+  States
+  {
+  Spawn:
+    SKB1 A -1
+	Stop
+  }
+}
+
+actor skynetBones2  21023
+{
+  //$Category "Decorations/WoS"
+  //$Title "skynet Bones 2"
+  Tag "Bones"
+  scale 1
+  Radius 16
+  Height 18
+  -SOLID
+  +UseSpecial
+  States
+  {
+  Spawn:
+    SKB2 A -1
+	Stop
+  }
+}
+
+actor skynetBones3  21024
+{
+  //$Category "Decorations/WoS"
+  //$Title "skynet Bones 3"
+  Tag "Bones"
+  scale 1
+  Radius 16
+  Height 18
+  -SOLID
+  +UseSpecial
+  States
+  {
+	  Spawn:
+		SKB3 A -1
+		Stop
+  }
+}
+
+//Fireburning
+Actor FirePitSmall 21025
+{
+	//$Category "Decorations/WoS"
+	//$Title "Fire small"
+	Tag "Fireplace"
+	scale 0.5
+	height 16
+	radius 16
+	//ActiveSound "world/smallfire"
+	//SeeSound "sounds/firecrack"
+	+NOCLIP
+	+NOBLOCKMAP
+	-Solid
+	
+	
+	states
+	{
+		Spawn:
+		Active:
+			FIRE ABCDEFGH 2 bright Light("FireLarge") A_StartSound("world/smallfire", CHAN_BODY, CHANF_LOOPING, 0.55) //sounds/ambient/mwFire
+			Loop
+	}
+}
+
+actor voxMicroscrope2 21026
+{
+	//$Category "Decorations/WoS"
+	//$Title "Microscope"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	Tag "Microscope"
+	height 8
+	radius 8
+	States
+	{
+	Spawn:
+		MCRS V -1
+		Stop
+	}
+}
+
+actor voxPillarDrill 21027
+{
+	//$Category "Decorations/WoS"
+	//$Title "Pillar Drill"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	Tag "Pillar drill"
+	height 64
+	radius 16
+
+	States
+	{
+	Spawn:
+		PLDR V -1
+		Stop
+	}
+}
+
+actor voxStojanovaBruska 21028
+{
+	//$Category "Decorations/WoS"
+	//$Title "Bruska"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	Tag "Grinder"
+	height 40
+	radius 16
+	
+	States
+	{
+	Spawn:
+		GRND V -1
+		Stop
+	}
+}
+
+actor voxChicken 21029
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco Chicken"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	Tag "Grilled chicken"
+	height 16
+	radius 12
+	//scale 0.35
+
+	States
+	{
+	Spawn:
+		CHKN V -1
+		Stop
+	}
+}
+
+actor voxSoustruh2 29198
+{
+	//$Category "Decorations/WoS"
+	//$Title "Lathe-Soustruh"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	Tag "Lathe"
+	height 32
+	radius 16
+	States
+	{
+	Spawn:
+		LATH V -1
+		Stop
+	}
+}
+
+ACTOR blueRelicDecoration 21030
+{
+	//$Category "Decorations/WoS"
+	//$Title "Blue Relic Decoration"
+	
+	+Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	-NOBLOCKMAP
+	Tag "Holy Relic"
+	Radius 10
+	Height 16
+	
+	States
+	{
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+
+ACTOR HPipe1 21031
+{
+	//$Category "Decorations/WoS"
+	//$Title Pipe 1
+	
+	+SOLID
+	+useSpecial
+	+FORCEYBILLBOARD
+	Tag "Piping"
+	Radius 16
+	Height 128
+
+	States
+	{
+		Spawn:
+		PIP1 A -1
+		Stop
+	}
+}
+
+ACTOR HPipe2 21032
+{
+	//$Category "Decorations/WoS"
+	//$Title Pipe 2
+	
+	+SOLID
+	+useSpecial
+	+FORCEYBILLBOARD
+	Tag "Piping"
+	Radius 16
+	Height 128
+	
+	States
+	{
+		Spawn:
+		PIP2 A -1
+		Stop
+	}
+}
+
+ACTOR HPipe3 21033
+{
+	//$Category "Decorations/WoS"
+	//$Title Pipe 3
+	
+	+SOLID
+	+useSpecial
+	+FORCEYBILLBOARD
+	Tag "Piping"
+	Radius 16
+	Height 128	
+ 
+	States
+	{
+		Spawn:
+		PIP3 A -1
+		Stop
+	}
+}
+
+ACTOR HPipe4 21034
+{
+	//$Category "Decorations/WoS"
+	//$Title Pipe 4
+	
+	+SOLID
+	+useSpecial
+	+FORCEYBILLBOARD
+	Tag "Piping"
+	Radius 16
+	Height 128
+	
+	States
+	{
+		Spawn:
+		PIP4 A -1
+		Stop
+	}
+}
+
+ACTOR HPipe5 21035
+{
+	//$Category "Decorations/WoS"
+	//$Title Pipe 5
+	
+	+SOLID
+	+useSpecial
+	+FORCEYBILLBOARD
+	Tag "Piping"
+	Radius 16
+	Height 128
+	
+	States
+	{
+		Spawn:
+		PIP5 A -1
+		Stop
+	}
+}
+
+ACTOR falloutCornBase
+{
+	+USESPECIAL
+	-SOLID
+	+DONTTHRUST
+	+FORCEYBILLBOARD
+	
+	radius 8
+	height 48
+	scale 1.0
+}
+
+ACTOR falloutCorn1 : falloutCornBase 21036
+{
+	//$Category "Trees and Rocks/WoS"
+	//$Title "fCorn 1"
+	Tag "Corn plant"
+	
+	States
+	{
+		Spawn:
+			FCRN A -1
+			Stop
+	}
+}
+
+ACTOR falloutCorn2 : falloutCornBase 21037
+{
+	//$Category "Trees and Rocks/WoS"
+	//$Title "fCorn 2"
+	Tag "Corn plant"
+	States
+	{
+		Spawn:
+			FCRN B -1
+			Stop
+	}
+}
+
+ACTOR falloutCorn3 : falloutCornBase 21038
+{
+	//$Category "Trees and Rocks/WoS"
+	//$Title "fCorn 3"
+	Tag "Corn plant"
+	States
+	{
+		Spawn:
+			FCRN C -1
+			Stop
+	}
+}
+ACTOR falloutCorn4 : falloutCornBase 21039
+{
+	//$Category "Trees and Rocks/WoS"
+	//$Title "fCorn 4"
+	Tag "Corn plant"
+	States
+	{
+		Spawn:
+			FCRN D -1
+			Stop
+	}
+}
+ACTOR falloutCorn5 : falloutCornBase 21040
+{
+	//$Category "Trees and Rocks/WoS"
+	//$Title "fCorn 5"
+	Tag "Corn plant"
+	States
+	{
+		Spawn:
+			FCRN E -1
+			Stop
+	}
+}
+ACTOR falloutCorn6 : falloutCornBase 21041
+{
+	//$Category "Trees and Rocks/WoS"
+	//$Title "fCorn 6"
+	Tag "Corn plant"
+	States
+	{
+		Spawn:
+			FCRN F -1
+			Stop
+	}
+}
+ACTOR falloutCorn7 : falloutCornBase 21042
+{
+	//$Category "Trees and Rocks/WoS"
+	//$Title "fCorn 7"
+	Tag "Corn plant"
+	States
+	{
+		Spawn:
+			FCRN G -1
+			Stop
+	}
+}
+
+//MarlboroMike's Sprites
+//------------------------------------------------------------------------------
+actor MMofficeChair 21043
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "office chair"
+	
+	+SOLID
+	Tag "Office chair"
+	height 16
+	radius 12
+	
+	
+	States
+	{
+		Spawn:
+			MCHR A -1
+			Stop
+	}
+}
+
+actor MM_camera_1 21044
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "camera 1"
+	
+	+SPAWNCEILING
+	-SOLID
+	+NOGRAVITY
+	
+	Tag "security camera"
+	radius 10
+	height 20
+	
+	
+	States
+	{
+		Spawn:
+			DUMM ABCDEDCB 40
+			Loop
+	}
+}
+
+Actor MM_camera_2 21045
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "camera 2"
+	
+	+SPAWNCEILING
+	-SOLID
+	+NOGRAVITY
+	
+	Tag "security camera"
+	radius 10
+	height 21
+	
+	States
+	{
+		Spawn:
+			DUMM ABCDEDCB 40
+			Loop
+	}
+}
+
+Actor MM_ammoCrate_01 21046
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "ammo crate 1"
+	
+	+Solid
+	+usespecial
+	+NOGRAVITY
+	
+	Tag "ammo crate"
+	radius 8
+	height 18
+	//scale 0.6
+	
+	
+	States
+	{
+		Spawn:
+			DUMM AAAABBB 6
+			Loop
+	}	
+}
+Actor MM_ammoCrate_02 21047
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "ammo crate 2"
+	
+	+Solid
+	+usespecial
+	
+	Tag "ammo crate"
+	radius 8
+	height 18
+	scale 0.6
+	
+	
+	States
+	{
+		Spawn:
+			MAC2 A -1
+			Stop
+	}	
+}
+Actor MM_bag_01 21048
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "bag 1"
+	
+	-solid
+	+usespecial
+	
+	Tag "cloth bag"
+	radius 8
+	height 8
+	scale 0.6
+	
+	States
+	{
+		Spawn:
+			MBG1 A -1
+			Stop		
+	}
+}
+Actor MM_bag_02 21049
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "bag 2"
+	
+	-solid
+	+usespecial
+	
+	Tag "cloth bag"
+	radius 8
+	height 8
+	scale 0.6
+	
+	States
+	{
+		Spawn:
+			MBG2 A -1
+			Stop		
+	}
+}
+Actor MM_box_01 21050
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "box 1"
+	
+	+solid
+	+usespecial
+	
+	Tag "box"
+	radius 10
+	height 12
+	scale 0.7
+	
+	States
+	{
+		Spawn:
+			MBX1 A -1
+			Stop
+	}
+}
+Actor MM_box_02 21051
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "box 2"
+	
+	+solid
+	+usespecial
+	
+	Tag "box"
+	radius 10
+	height 12
+	scale 0.7
+	
+	States
+	{
+		Spawn:
+			MBX2 A -1
+			Stop
+	}
+}
+Actor MM_cactus 21052
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "cactus in pot"
+	
+	Tag "cactus in pot"
+	radius 16
+	height 36
+	
+	States
+	{
+		Spawn:
+			MCAC A -1
+			Stop
+	}
+}
+Actor MM_food_01 21053
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "food 1 platter1"
+	
+	radius 8
+	height 8
+	
+	States
+	{
+		Spawn:
+			MFD1 A -1
+			Stop
+	}
+}
+Actor MM_food_02 21054
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "food 2 platter2"
+	
+	radius 8
+	height 8
+	
+	States
+	{
+		Spawn:
+			MFD2 A -1
+			Stop
+	}
+}
+Actor MM_food_03 21055
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "food 3 platter3"
+	
+	radius 8
+	height 8
+	
+	States
+	{
+		Spawn:
+			MFD3 A -1
+			Stop
+	}
+}
+Actor MM_food_04 21056
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "food 4 cup1"
+	
+	radius 8
+	height 8
+	
+	States
+	{
+		Spawn:
+			MFD4 A -1
+			Stop
+	}
+}
+Actor MM_food_05 21057
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "food 5 cup2"
+	
+	radius 8
+	height 8
+	
+	States
+	{
+		Spawn:
+			MFD5 A -1
+			Stop
+	}
+}
+Actor MM_food_06 21058
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "food 6 pot small"
+	+NOGRAVITY
+	+DONTTHRUST
+	
+	Tag "pot small"
+	radius 8
+	height 8
+	
+	States
+	{
+		Spawn:
+			MFD6 A -1
+			Stop
+	}
+}
+Actor MM_food_07 21059
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "food 7 pot large"
+	+NOGRAVITY
+	+DONTTHRUST
+	
+	Tag "pot large"
+	radius 8
+	height 8
+	
+	States
+	{
+		Spawn:
+			MFD7 A -1
+			Stop
+	}
+}
+Actor MM_gadget_01 21060
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 1 table lamp"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	
+	Tag "table lamp"
+	radius 4
+	height 18
+	//scale 0.8
+	
+	States
+	{
+		Spawn:
+			MGD1 A -1 Bright Light("gadget1light")
+			Stop
+	}
+}
+Actor MM_gadget_02 21061
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 2 green flask"
+	
+	-Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "green flask"
+	radius 8
+	height 16
+	
+	States
+	{
+		Spawn:
+			MGD2 A -1
+			Stop
+	}
+}
+Actor MM_gadget_03 
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 3"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	
+	radius 12
+	height 29
+	
+	States
+	{
+		Spawn:
+			MGD3 A -1 Bright Light("gadget3light")
+			Stop
+	}
+}
+actor mm_gadget_03_holodisplay {
+	-SOLID
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "holodisplay"
+	States {
+		Spawn:
+			MG3D A -1 Bright Light("gadget3light")
+			Stop
+	}
+}
+actor model_MM_gadget_03 : MM_gadget_03 replaces MM_gadget_03 21062 {
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 3 holodisplay"
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "holodisplay"
+	States {
+		Spawn:
+			MGD3 A -1 Bright NODELAY A_SpawnItemEx("mm_gadget_03_holodisplay", 0, 0, 6)
+			Stop
+	}
+}
+Actor MM_gadget_04 
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 4"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	
+	radius 12
+	height 29
+	
+	States
+	{
+		Spawn:
+			MGD4 A -1 Bright Light("gadget4light")
+			Stop
+	}
+}
+actor mm_gadget_04_holodisplay {
+	-SOLID
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "holodisplay"
+	States {
+		Spawn:
+			MG4D A -1 Bright Light("gadget3light")
+			Stop
+	}
+}
+actor model_MM_gadget_04 : MM_gadget_04 replaces MM_gadget_04 21063 {
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 4 holodisplay"
+	Tag "holodisplay"
+	States {
+		Spawn:
+			MGD4 A -1 Bright NODELAY A_SpawnItemEx("mm_gadget_04_holodisplay", 0, 0, 6)
+			Stop
+	}
+}
+Actor MM_gadget_05 21064
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 5 pocket radio"
+	
+	-Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "pocket radio"
+	radius 8
+	height 16
+	
+	States
+	{
+		Spawn:
+			MGD5 A -1
+			Stop
+	}
+}
+Actor MM_gadget_06 21065
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 6 dual controller"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "dual controller"
+	radius 16
+	height 20
+	scale 0.7
+	
+	States
+	{
+		Spawn:
+			MGD6 A -1
+			Stop
+	}
+}
+Actor MM_gadget_07 21066
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 7 glass dome"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "glass dome"
+	radius 16
+	height 27
+	
+	States
+	{
+		Spawn:
+			MGD7 A -1
+			Stop
+	}
+}
+Actor MM_gadget_08 21067
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 8 holodisplay"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "holodisplay"
+	radius 12
+	height 8
+	
+	States
+	{
+		Spawn:
+			MGD8 A -1
+			Stop
+	}
+}
+Actor MM_gadget_09 21068
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 9 energy storage"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "energy storage"
+	radius 16
+	height 27
+	scale 0.8
+	
+	States
+	{
+		Spawn:
+			MGD9 A -1
+			Stop
+	}
+}
+Actor MM_gadget_10 21069
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gadget 10 road block"
+	//light defined in main.gldefs
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "road block"
+	radius 8
+	height 40
+	
+	States
+	{
+		Spawn:
+			MGDG AAAAABBB 3 Bright
+			Loop
+	}
+}
+Actor MM_gold 21070
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "gold"
+	
+	+Solid
+	+NOGRAVITY
+	
+	Tag "mmgold"
+	radius 4
+	height 8
+	
+	States
+	{
+		Spawn:
+			MGLD A -1
+			Stop
+	}
+}
+Actor MM_radio 21071
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "radio"
+	
+	+Solid
+	tag "pocket radio"
+	radius 4
+	height 12
+	
+	States
+	{
+		Spawn:
+			MRAD A -1
+			Stop
+	}
+}
+Actor MM_relic 21072
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "relic"
+	
+	+Solid
+	+NOGRAVITY
+	
+	Tag "golden relic"
+	radius 6
+	height 20
+	//scale 0.8
+	
+	States
+	{
+		Spawn:
+			MREL A -1
+			Stop
+	}
+}
+Actor MM_roadBlock 21073
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "road block"
+	
+	+Solid
+	tag "road block"
+	radius 8
+	height 36
+	
+	States
+	{
+		Spawn:
+			MMRB A -1
+			Stop
+	}
+}
+Actor MM_shrubbery 21074
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "shrubbery"
+	
+	+Solid
+	tag "shrub in pot"
+	radius 16
+	height 55
+	
+	States
+	{
+		Spawn:
+			MSRB A -1
+			Stop
+	}
+}
+Actor MM_stuff_01 21075
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "device 1"
+	
+	+Solid
+	tag "device"
+	radius 8
+	height 16
+	
+	States
+	{
+		Spawn:
+			MS01 A -1
+			Stop
+	}
+}
+Actor MM_stuff_02 21076
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "device 2"
+	
+	+Solid
+	tag "device"
+	
+	radius 8
+	height 16
+	
+	States
+	{
+		Spawn:
+			MS02 A -1
+			Stop
+	}
+}
+Actor MM_stuff_03 21077
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "device 3"
+	
+	+Solid
+	tag "device"
+	
+	radius 8
+	height 16
+	
+	States
+	{
+		Spawn:
+			MS03 A -1
+			Stop
+	}
+}
+Actor MM_stuff_04 21078
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "bottle 1"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "bottle"
+	radius 4
+	height 16
+	
+	States
+	{
+		Spawn:
+			MS04 A -1
+			Stop
+	}
+}
+Actor MM_stuff_05 21079
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "stuff 1"
+	
+	-Solid
+	tag "medical stuff"
+	radius 8
+	height 8
+	
+	States
+	{
+		Spawn:
+			MS05 A -1
+			Stop
+	}
+}
+Actor MM_stuff_06 21080
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "stuff 2"
+	
+	-Solid
+	tag "medical stuff"
+	
+	radius 8
+	height 8
+	
+	States
+	{
+		Spawn:
+			MS06 A -1
+			Stop
+	}
+}
+Actor MM_stuff_07 21081
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "stuff 3"
+	
+	-Solid
+	tag "medical stuff"
+	
+	radius 8
+	height 8
+	
+	States
+	{
+		Spawn:
+			MS07 A -1
+			Stop
+	}
+}
+Actor MM_stuff_08 21082
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "kitchen hanger"
+	
+	-Solid
+	+spawnceiling
+	+nogravity
+	tag "kitchen hanger"
+	radius 16
+	height 30
+	
+	States
+	{
+		Spawn:
+			MS08 A -1
+			Stop
+	}
+}
+Actor MM_stuff_09 21083
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "bottle 2"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "bottle"
+	radius 4
+	height 16
+	
+	States
+	{
+		Spawn:
+			MS09 A -1
+			Stop
+	}
+}
+Actor MM_stuff_10 21084
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "bottle 3"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "bottle"
+	radius 4
+	height 16
+	
+	States
+	{
+		Spawn:
+			MS10 A -1
+			Stop
+	}
+}
+Actor MM_stuff_11 21085
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "bottle 4"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "bottle"
+	radius 4
+	height 8
+	
+	States
+	{
+		Spawn:
+			MS11 A -1
+			Stop
+	}
+}
+Actor MM_stuff_12 21086
+{
+	//Default	
+	//$Category "Decorations/MM stuff"
+	//$Title "bottle 5"
+	
+	+Solid
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "bottle"
+	radius 4
+	height 16
+	
+	States
+	{
+		Spawn:
+			MS12 A -1
+			Stop
+	}
+}
+
+Actor leather_boots : RebelBoots 21087
+{
+	//Default	
+	//$Category "Decorations/WoS"
+	//$Title "boots leather"
+	+NOGRAVITY
+	-NOBLOCKMAP
+	radius 8
+	height 16
+	tag "leather boots"
+	Translation "16:31=206:220"
+}
+
+Actor green_boots : RebelBoots 21088
+{
+	//Default	
+	//$Category "Decorations/WoS"
+	//$Title "boots green"
+	+NOGRAVITY
+	-NOBLOCKMAP
+	radius 8
+	height 16
+	tag "leather boots" 
+	Translation "16:31=48:63"
+}
+
+Actor bronze_boots : RebelBoots 21089
+{
+	//Default	
+	//$Category "Decorations/WoS"
+	//$Title "boots bronze"
+	+NOGRAVITY
+	-NOBLOCKMAP
+	radius 8
+	height 16
+	tag "leather boots"
+	Translation "16:31=80:95"
+}
+Actor green_shirt : RebelShirt 21090
+{
+	//Default	
+	//$Category "Decorations/WoS"
+	//$Title "shirt green"
+	+NOGRAVITY
+	-NOBLOCKMAP
+	tag "linen shirt"
+	Translation "128:143=96:111"
+}
+Actor blue_shirt : RebelShirt 21091
+{
+	//Default	
+	//$Category "Decorations/WoS"
+	//$Title "shirt blue"
+	+NOGRAVITY
+	-NOBLOCKMAP
+	tag "linen shirt"
+	Translation "128:143=112:127"
+}
+Actor azure_shirt : RebelShirt 21092
+{
+	//Default	
+	//$Category "Decorations/WoS"
+	//$Title "shirt azure"
+	+NOGRAVITY
+	-NOBLOCKMAP
+	tag "linen shirt"
+	Translation "128:143=144:159"
+}
+Actor bronze_shirt : RebelShirt 21093
+{
+	//Default	
+	//$Category "Decorations/WoS"
+	//$Title "shirt bronze"
+	+NOGRAVITY
+	-NOBLOCKMAP
+	tag "linen shirt"
+	Translation "128:143=80:95"
+}
+Actor khaki_shirt : RebelShirt 21094
+{
+	//Default	
+	//$Category "Decorations/WoS"
+	//$Title "shirt khaki"
+	+NOGRAVITY
+	-NOBLOCKMAP
+	tag "linen shirt"
+	Translation "128:143=48:63"
+}
+Actor officeChair 21095
+{  	
+	//$Category "Decorations/WoS"
+	//$Title "office chair"
+	+FloorClip
+	+Solid
+	tag "office chair"
+	Height 30
+	Radius 15
+	
+	States
+	{
+		Spawn:
+			CHAI A -1 
+			Stop
+	}
+}
+//Reikall voxels special definition
+ACTOR RV_PoleLantern : PoleLantern 21096
+{  	
+	//$Category "Light Sources"
+	//$Title "Pole Lantern X"
+	tag "pole lantern"
+	States
+	{
+		Spawn:
+			DUMM A -1 Bright light("poleLanternLight")
+			stop
+	}
+}
+ACTOR RV_LanternBright
+{
+	+NOINTERACTION
+	Renderstyle "translucent"
+	
+	states
+	{
+		Spawn:
+			LANT Z -1 BRIGHT
+			stop
+	}
+}
+Actor voxGateControls : Piston 21097
+{
+	//Default
+	//$Category "Decorations/WoS"
+	//$Title "vox Piston"
+	tag "piston"
+	Speed 0
+	
+	States
+	{
+		Spawn:
+			PSTN KL 8
+			Loop
+	}
+}
+
+//voxel vehicles pack
+actor voxVTOLgreen 21098
+{
+	//$Category "Decorations/Voxel vehicles"
+	//$Title "VTOL - Green"
+	tag "green vtol"
+	Radius 32
+	Height 68
+	+SOLID
+	+NODAMAGE
+	+NOBLOOD
+	+CANPASS
+	States
+	{
+	Spawn:
+		GVTO A -1
+		Stop
+	}
+}
+
+actor FlyingCarRed 21099
+{
+	//$Category "Decorations/Voxel vehicles"
+	//$Title "Flying car - Red"
+	tag "flying car"
+	Radius 32
+	Height 32
+	+SOLID
+	+NODAMAGE
+	+NOBLOOD
+	+CANPASS
+	+NOGRAVITY
+	States
+	{
+	Spawn:
+		RFLY A -1
+		Stop
+	}
+}
+
+actor FlyingCarDarkRed : FlyingCarRed 21100
+{
+	//$Title "Flying car - Dark red"
+	tag "flying car"
+	States
+	{
+	Spawn:
+		DRFL A -1
+		Stop
+	}
+}
+
+actor FlyingCarDarkBlue : FlyingCarRed 21101
+{
+	//$Title "Flying car - Dark blue"
+	tag "flying car"
+	States
+	{
+	Spawn:
+		DBFL A -1
+		Stop
+	}
+}
+
+actor FlyingCarDirtyGreen : FlyingCarRed 21102
+{
+	//$Title "Flying car - Dirty green"
+	tag "flying car"
+	States
+	{
+	Spawn:
+		DGFL A -1
+		Stop
+	}
+}
+
+actor FlyingCarOrange : FlyingCarRed 21103
+{
+	//$Title "Flying car - Orange"
+	tag "flying car"
+	States
+	{
+	Spawn:
+		OFLY A -1
+		Stop
+	}
+}
+
+actor FlyingCarBrown : FlyingCarRed 21104
+{
+	//$Title "Flying car - Brown"
+	tag "flying car"
+	States
+	{
+	Spawn:
+		BRFL A -1
+		Stop
+	}
+}
+
+actor voxCraneCeiling 21105
+{
+	//$Category "Decorations/WoS"
+	//$Title "Crane Ceiling"
+	-Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	+SpawnCeiling
+	tag "ceiling crane"
+	height 80
+	radius 16
+	States
+	{
+	Spawn:
+		CRN2 V -1
+		Stop
+	}
+}
+
+actor voxCraneGround 21106
+{
+	//$Category "Decorations/WoS"
+	//$Title "Crane Ground
+	+Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	height 32
+	radius 16
+	tag "ground crane"
+	States
+	{
+	Spawn:
+		CRN1 V -1
+		Stop
+	}
+}
+
+actor voxQuakeDisplay 21107
+{
+	//$Category "Decorations/WoS"
+	//$Title "Display"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	height 16
+	radius 8
+	tag "display"
+	States
+	{
+	Spawn:
+		QDSP V -1
+		Stop
+	}
+}
+
+actor voxQuakePOwerBox 21108
+{
+	//$Category "Decorations/WoS"
+	//$Title "Power Box"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	height 16
+	radius 8
+	tag "power box"
+	States
+	{
+	Spawn:
+		QPWR V -1
+		Stop
+	}
+}
+
+actor voxQuakePyramid 21109
+{
+	//$Category "Decorations/WoS"
+	//$Title "Pyramid"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	height 16
+	radius 8
+	tag "pyramid device"
+	States
+	{
+	Spawn:
+		QPYR V -1
+		Stop
+	}
+}
+
+//DUMMIES
+//==--------------------------------------------------------------------------==
+
+
+//blasterStaff Dummies
+//==--------------------------------------------------------------------------==
+ACTOR DMYstaffBlaster01 21110
+{
+	//$Category "Weapons/dummy"
+	//$Title "dummy Blaster Staff (ground)"
+    -SOLID
+	+NODAMAGE
+	+NOBLOOD
+	+CANPASS
+	+USESPECIAL
+	+NoGravity
+	tag "binder staff"
+	height 8
+	radius 8
+	//Scale 0.4
+	States
+	{
+	Spawn:
+      DUMM A -1
+      Stop
+	}
+}
+
+ACTOR DMYstaffBlaster02 21111
+{
+	//$Category "Weapons/dummy"
+	//$Title "dummy Blaster Staff (standing)"
+    -SOLID
+	+NODAMAGE
+	+NOBLOOD
+	+CANPASS
+	+USESPECIAL
+	+NoGravity
+	tag "binder staff"
+	height 64
+	radius 8
+	//Scale 0.4
+	States
+	{
+	Spawn:
+      DUMM A -1
+      Stop
+	}
+}
+ACTOR DMYstaffBlaster03 21112
+{
+	//$Category "Weapons/dummy"
+	//$Title "dummy Blaster Staff (side)"
+    -SOLID
+	+NODAMAGE
+	+NOBLOOD
+	+CANPASS
+	+USESPECIAL
+	+NoGravity
+	tag "binder staff"
+	height 8
+	radius 8
+	//Scale 0.4
+	States
+	{
+	Spawn:
+      DUMM A -1
+      Stop
+	}
+}
+
+
+
+//blasterStaff parts
+//==--------------------------------------------------------------------------==
+actor staffPartsBase
+{
+	-SOLID
+	+NODAMAGE
+	+NOBLOOD
+	+CANPASS
+	+USESPECIAL
+	+NoGravity
+	scale 0.5
+	height 8
+	radius 8
+}
+
+
+actor DMY_blasterStaffParts_01 : staffPartsBase 21113
+{
+	//$Category "Decorations/WoS"
+	//$Title "staff - bl.p. complete"
+	tag "staff parts"
+	States
+	{
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+
+}
+
+actor DMY_blasterStaffParts_02 : staffPartsBase 21114
+{
+	//$Category "Decorations/WoS"
+	//$Title "staff - bl.p. party disemboweled"
+	tag "staff parts"
+	States
+	{
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+
+}
+
+actor DMY_blasterStaffParts_03 : staffPartsBase 21115
+{
+	//$Category "Decorations/WoS"
+	//$Title "staff - bl.p. objimka"
+	tag "staff parts"
+	States
+	{
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+
+}
+
+actor DMY_blasterStaffParts_04 : staffPartsBase 21116
+{
+	//$Category "Decorations/WoS"
+	//$Title "staff - bl.p. barrel disemboweled"
+	tag "staff parts"
+	States
+	{
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+
+}
+
+actor DMY_blasterStaffParts_05 : staffPartsBase 21117
+{
+	//$Category "Decorations/WoS"
+	//$Title "staff - bl.p. underthing"
+	tag "staff parts"
+	States
+	{
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+
+}
+
+actor DMY_blasterStaffParts_06 : staffPartsBase 21118
+{
+	//$Category "Decorations/WoS"
+	//$Title "staff - bl.p. wood"
+	tag "staff parts"
+	States
+	{
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+
+}
+
+
+
+//==--------------------------------------------------------------------------==
+//==--------------------------------------------------------------------------==
+
+actor specimenTankXX 21119
+{
+	//$Category "Decorations/WoS"
+	//$Title "Specimen Tank XX"
+	
+	+SOLID
+	radius 16
+	height 74
+	tag "specimen tank"
+	
+	States
+	{
+		Spawn:
+			SPTN ABCDEF 6
+			Loop
+	}
+}
+
+actor binderStatue_left 21120
+{	
+	//$Category "Decorations/WoS"
+	//$Title "Binder statue - left"
+	
+	+SOLID
+	tag "binder statue"
+	radius 16
+	height 59
+	
+	States
+	{
+		Spawn:
+			BNST A -1
+			Stop
+	}
+}
+actor binderStatue_right 21121
+{	
+	//$Category "Decorations/WoS"
+	//$Title "Binder statue - right"
+	
+	+SOLID
+	tag "binder statue"
+	
+	radius 16
+	height 59
+	
+	States
+	{
+		Spawn:
+			BNST B -1
+			Stop
+	}
+}
+actor binderStatue_front 21122
+{	
+	//$Category "Decorations/WoS"
+	//$Title "Binder statue - front"
+	
+	+SOLID
+	tag "binder statue"
+	
+	radius 16
+	height 59
+	
+	States
+	{
+		Spawn:
+			BNST C -1
+			Stop
+	}
+}
+actor binderStatue_rotated 21123
+{	
+	//$Category "Decorations/WoS"
+	//$Title "Binder statue - rotated"
+	
+	+SOLID
+	tag "binder statue"
+	
+	radius 16
+	height 59
+	
+	States
+	{
+		Spawn:
+			BNSS A -1
+			Stop
+	}
+}
+
+actor guardUniform_decoration 21124
+{	
+	//$Category "Decorations/WoS"
+	//$Title "guard uniform decoration"
+	
+	-SOLID
+	Tag "guard uniform"
+	radius 10
+	height 12
+	
+	States
+	{
+		Spawn:
+			UNIF A -1
+			Stop
+	}
+}
+actor officerUniform_decoration 21125
+{
+	//$Category "Decorations/WoS"
+	//$Title "officer uniform decoration"
+	
+	-SOLID
+	radius 10
+	height 12
+	tag "officer uniform"
+	
+	States
+	{
+		Spawn:
+			OFIC A -1
+			Stop
+	}
+}
+
+actor voxStreetLamp 21126
+{
+	//$Category "Decorations/WoS"
+	//$Title "Street Lamp"
+	
+	+solid
+	+nodamage
+	+noblood
+	+canpass
+	+useSpecial
+	Tag "street lamp"
+	scale 1.0
+	height 115
+	radius 12
+	
+	states
+	{
+		spawn:
+			STRL A -1
+			stop
+	}
+}
+
+actor fourLamp 21127
+{
+	//$Category "Decorations/WoS"
+	//$Title "Street 4 Lamp"
+	
+	+SOLID
+	+CANPASS
+	+NOBLOOD
+	+USESPECIAL
+	Tag "street lamp"
+	radius 12
+	height 115
+	
+	States
+	{
+		Spawn:
+			4LMP A -1
+			Stop
+	}
+}
+
+actor DummyRangerStanding 21128
+{
+	//$Category "Other NPCs/Wos"
+	//$Title "Binder - stojici"
+
+	+useSpecial
+	+solid
+	//+nogravity
+	+DontThrust
+
+	Tag "Binder"
+	scale 1.0
+	radius 16
+	height 56
+	
+	States
+	{
+	Spawn:
+		BNDS A -1
+		Stop
+	}
+}
+
+actor DummyRangerLeaderStanding 21129
+{
+	//$Category "Other NPCs/Wos"
+	//$Title "Binder leader - stojici"
+	
+	+useSpecial
+	+solid
+	//+nogravity
+	+DontThrust
+	
+	Tag "Binder leader"
+	scale 1.0
+	radius 16
+	height 56
+	States
+	{
+	Spawn:
+		RNGL A -1
+		Stop
+	}
+}
+
+actor officeChair2 21130
+{
+	//$Category "Decorations/WoS"
+	//$Title "office chair 2"
+	+SOLID
+	tag "office chair"
+	radius 14
+	height 32
+	
+	States
+	{
+		Spawn:
+			OCHR A -1
+			stop
+	}
+}
+actor gizmo01 21131
+{
+	//$Category "Decorations/gizmos"
+	//$Title "gizmo 01 pocket map"
+	-SOLID
+	+NOGRAVITY
+	tag "pocket map"
+	radius 8
+	height 8
+	//scale 0.35
+	
+	States
+	{
+		Spawn:
+			GZ01 A -1
+			Stop
+	}
+}
+actor gizmo02 21132
+{
+	//$Category "Decorations/gizmos"
+	//$Title "gizmo 02 charger"
+	-SOLID
+	+NOGRAVITY
+	tag "charger"
+	radius 8
+	height 8
+	//scale 0.35
+	
+	States
+	{
+		Spawn:
+			GZ02 A -1
+			Stop
+	}
+}
+actor gizmo03 21133
+{
+	//$Category "Decorations/gizmos"
+	//$Title "gizmo 03 ring device"
+	-SOLID
+	+NOGRAVITY
+	tag "ring device"
+	radius 8
+	height 8
+	//scale 1.0
+	
+	States
+	{
+		Spawn:
+			GZ03 A -1
+			Stop
+	}
+}
+actor gizmo04 21134
+{
+	//$Category "Decorations/gizmos"
+	//$Title "gizmo 04 breathing apparatus"
+	-SOLID
+	+NOGRAVITY
+	tag "breathing apparatus"
+	radius 12
+	height 32
+	scale 0.8
+	
+	States
+	{
+		Spawn:
+			GZ04 A -1
+			Stop
+	}
+}
+actor gizmo05 21135
+{
+	//$Category "Decorations/gizmos"
+	//$Title "gizmo 05 energy canister"
+	-SOLID
+	+NOGRAVITY
+	tag "energy canister"
+	radius 8
+	height 8
+	//scale 0.8
+	
+	States
+	{
+		Spawn:
+			GZ05 A -1
+			Stop
+	}
+}
+actor gizmo06 21136
+{
+	//$Category "Decorations/gizmos"
+	//$Title "gizmo 06 toolbox large"
+	-SOLID
+	+NOGRAVITY
+	tag "toolbox large"
+	radius 8
+	height 8
+	//scale 0.5
+	
+	States
+	{
+		Spawn:
+			GZ06 A -1
+			Stop
+	}
+}
+actor gizmo07 21137
+{
+	//$Category "Decorations/gizmos"
+	//$Title "gizmo 07 toolbox small"
+	-SOLID
+	+NOGRAVITY
+	tag "toolbox small"
+	radius 4
+	height 4
+	//scale 0.5
+	
+	States
+	{
+		Spawn:
+			GZ07 A -1
+			Stop
+	}
+}
+actor gizmo08 21138
+{
+	//$Category "Decorations/gizmos"
+	//$Title "gizmo 08"
+	-SOLID
+	+NOGRAVITY
+	tag "first aid kit"
+	radius 4
+	height 4
+	//scale 0.5
+	
+	States
+	{
+		Spawn:
+			GZ08 A -1
+			Stop
+	}
+}
+actor gizmo09 21139
+{
+	//$Category "Decorations/gizmos"
+	//$Title "gizmo 09"
+	-SOLID
+	+NOGRAVITY
+	Tag "Food Rations I"
+	radius 4
+	height 4
+	//scale 0.5
+	
+	States
+	{
+		Spawn:
+			GZ09 A -1
+			Stop
+	}
+}
+actor gizmo10 21140
+{
+	//$Category "Decorations/gizmos"
+	//$Title "gizmo 10"
+	-SOLID
+	+NOGRAVITY
+	Tag "Food Rations II"
+	radius 4
+	height 4
+	//scale 0.5
+	
+	States
+	{
+		Spawn:
+			GZ10 A -1
+			Stop
+	}
+}
+actor gizmo11 21141
+{
+	//$Category "Decorations/gizmos"
+	//$Title "gizmo 11"
+	-SOLID
+	+NOGRAVITY
+	Tag "Food Rations III"
+	radius 4
+	height 4
+	//scale 0.5
+	
+	States
+	{
+		Spawn:
+			GZ11 A -1
+			Stop
+	}
+}
+actor sshockBarrel_01 21142
+{
+	//$Category "Decorations/WoS"
+	//$Title "sshock barrel 01"
+	-SOLID
+	tag "metal barrel"
+	radius 16
+	height 32
+	scale 0.5
+	
+	States
+	{
+		Spawn:
+			SSBR A -1
+			Stop
+	}
+}
+actor sshockBarrel_02 21143
+{
+	//$Category "Decorations/WoS"
+	//$Title "sshock barrel 02"
+	-SOLID
+	tag "metal barrel"
+	radius 16
+	height 32
+	scale 0.5
+	
+	States
+	{
+		Spawn:
+			SSBR B -1
+			Stop
+	}
+}
+actor sshockBarrel_03 21144
+{
+	//$Category "Decorations/WoS"
+	//$Title "sshock barrel 03"
+	-SOLID
+	tag "metal barrel"
+	radius 16
+	height 32
+	scale 0.5
+	
+	States
+	{
+		Spawn:
+			SSBR C -1
+			Stop
+	}
+}
+actor sshockBarrel_04 21145
+{
+	//$Category "Decorations/WoS"
+	//$Title "sshock barrel 04"
+	-SOLID
+	tag "metal barrel"
+	radius 16
+	height 32
+	scale 0.5
+	
+	States
+	{
+		Spawn:
+			SSBR D -1
+			Stop
+	}
+}
+actor plumbingPipe01 21146
+{
+	//$Category "Decorations/WoS"
+	//$Title "plumbing pipe 01"
+	
+	+SOLID
+	tag "plumbing pipe"
+	radius 12
+	height 127
+	
+	States
+	{
+		Spawn:
+			PIP8 A -1
+			Stop
+	}
+	
+}
+actor plumbingPipe02 21147
+{
+	//$Category "Decorations/WoS"
+	//$Title "plumbing pipe 02"
+	
+	+SOLID
+	tag "plumbing pipe"
+	radius 8
+	height 127
+	
+	States
+	{
+		Spawn:
+			PIP9 A -1
+			Stop
+	}
+	
+}
+actor plumbingPipe03 21148
+{
+	//$Category "Decorations/WoS"
+	//$Title "plumbing pipe 03"
+	
+	+SOLID
+	tag "plumbing pipe"
+	radius 12
+	height 127
+	
+	States
+	{
+		Spawn:
+			PIPA A -1
+			Stop
+	}
+	
+}
+
+actor sacrificedGuyX : SacrificedGuy 21149
+{
+	//$Category "Corpses"
+	//$Title "Sacrificed Guy X"
+	+USESPECIAL
+	Tag "sacrificed body"
+	
+}
+
+actor deadRebelX : deadRebel 21150
+{
+	//$Category "Corpses"
+	//$Title "Dead Rebel X"
+
+	+USESPECIAL
+	Tag "dead rebel"
+}
+
+ACTOR TechBarrelGrey : ExplosiveBarrel 21151
+{
+	//$Category "Decorations/WoS"
+	//$Title "TechBarrel Grey"
+	DeathSound "TechBarrel/Explode"
+	Obituary "%o ceased to exist."
+	Tag "tech barrel grey"
+	States
+	{
+		Spawn:
+			BRT1 A -1
+			Stop
+		Death:
+			BARX A 4 bright A_Explode (128, 192)
+			BARX A 0 bright A_Scream
+			BARX B 4 bright
+			BARX C 4 bright
+			BARX DEF 4 bright
+			TNT1 A 1054 A_BarrelDestroy
+			TNT1 A 5 A_Respawn
+			Wait
+	}
+}
+
+ACTOR TechBarrelTan : TechBarrelGrey 21152
+{
+	//$Category "Decorations/WoS"
+	//$Title "TechBarrel Tan"
+	tag "tech barrel tan"
+	States
+	{
+		Spawn:
+			BRT2 A -1
+			Stop
+	}
+}
+
+ACTOR TechBarrelGreen : TechBarrelGrey 21153
+{
+	//$Category "Decorations/WoS"
+	//$Title "TechBarrel Green"
+	tag "tech barrel green"
+	States
+	{
+		Spawn:
+			BRT3 A -1
+			Stop
+	}
+}
+
+////////////Green Holograms
+Actor OrderHolo1 21154
+{
+	//$Category "Decorations/WoS"
+	//$Title "Holo Green - Order"
+	Scale 0.7
+	Renderstyle add
+	+NOGRAVITY
+	Tag "holoscreen"
+	States
+	{
+		Spawn:
+			ORDH A 2 BRIGHT A_SpawnItemEx("PlasmaSpawnerB", random(-16,16), random(-16,16), random(-4,-12), 0, 0, random(6,8),0,SXF_NOCHECKPOSITION)
+			Loop
+	}
+}
+
+Actor FrontHolo1 : OrderHolo1 21155
+{
+	//$Category "Decorations/WoS"
+	//$Title "Holo Green - Front"
+Scale 0.6
+	Tag "holoscreen"
+States
+{
+Spawn:
+	FRNH A 2 BRIGHT A_SpawnItemEx("PlasmaSpawnerB", random(-20,20), random(-20,20), random(-4,-12), 0, 0, random(6,8),0,SXF_NOCHECKPOSITION)
+	Loop
+}
+}
+
+////////////Cyan Holograms
+Actor OrderHolo2 : OrderHolo1 21156
+{
+	//$Category "Decorations/WoS"
+	//$Title "Holo Cyan - Order"
+	Tag "holoscreen"
+States
+{
+Spawn:
+	ORDH B 2 BRIGHT A_SpawnItemEx("PlasmaSpawnerB2", random(-16,16), random(-16,16), random(-4,-12), 0, 0, random(6,8),0,SXF_NOCHECKPOSITION)
+	Loop
+}
+}
+Actor FrontHolo2 : FrontHolo1 21157
+{
+	//$Category "Decorations/WoS"
+	//$Title "Holo Cyan - Front"
+	Tag "holoscreen"
+States
+{
+Spawn:
+	FRNH B 2 BRIGHT A_SpawnItemEx("PlasmaSpawnerB2", random(-20,20), random(-20,20), random(-4,-12), 0, 0, random(6,8),0,SXF_NOCHECKPOSITION)
+	Loop
+}
+}
+
+////////////Orange Holograms
+Actor OrderHolo3 : OrderHolo1 21158
+{
+	//$Category "Decorations/WoS"
+	//$Title "Holo Orange - Order"
+	Tag "holoscreen"
+States
+{
+Spawn:
+	ORDH C 2 BRIGHT A_SpawnItemEx("PlasmaSpawnerB3", random(-16,16), random(-16,16), random(-4,-12), 0, 0, random(6,8),0,SXF_NOCHECKPOSITION)
+	Loop
+}
+}
+Actor FrontHolo3 : FrontHolo1 21159
+{
+	//$Category "Decorations/WoS"
+	//$Title "Holo Orange - Front"
+	Tag "holoscreen"
+States
+{
+Spawn:
+	FRNH C 2 BRIGHT A_SpawnItemEx("PlasmaSpawnerB3", random(-20,20), random(-20,20), random(-4,-12), 0, 0, random(6,8),0,SXF_NOCHECKPOSITION)
+	Loop
+}
+}
+
+////////////Plasma Particle Spawner
+Actor PlasmaSpawnerB
+{
+Alpha 0.75
+RenderStyle Add
++NOGRAVITY
++DONTSPLASH
++NOCLIP
+-SOLID
+Projectile
+States
+{
+Spawn:
+    PLE2 AAAAAAAAAAAAAAAA 1 BRIGHT A_FadeOut(0.09) 
+    stop
+Death:
+    TNT1 A 1
+    stop
+}
+}
+Actor PlasmaSpawnerB2 : PlasmaSpawnerB////Cyan
+{
+States
+{
+Spawn:
+    PLE2 BBBBBBBBBBBBBBBB 1 BRIGHT A_FadeOut(0.09) 
+    stop
+Death:
+    TNT1 A 1
+    stop
+}
+}
+Actor PlasmaSpawnerB3 : PlasmaSpawnerB////Orange
+{
+States
+{
+Spawn:
+    PLE2 CCCCCCCCCCCCCCCC 1 BRIGHT A_FadeOut(0.09) 
+    stop
+Death:
+    TNT1 A 1
+    stop
+}
+}
+
+ACTOR TankCreature 21160
+{
+	//$Category "Decorations/WoS"
+	//$Title "Tank Creature"
+	Radius 16
+	Height 70
+	+SOLID
+	tag "tank with creature"
+	States
+	{
+	Spawn:
+		CIAT ABCDEDCB 7
+		Loop
+	}
+}
+
+ACTOR TankNotCreature : TankCreature 21161
+{
+	//$Category "Decorations/WoS"
+	//$Title "Tank Empty"
+	tag "tank empty"
+	States
+	{
+	Spawn:
+		CIAT F -1
+		Loop
+	}
+}
+
+ACTOR TankBroken : TankCreature 21162
+{
+	//$Category "Decorations/WoS"
+	//$Title "Tank Broken"
+	tag "tank broken"
+	States
+	{
+	Spawn:
+		CIAT G -1
+		Loop
+	}
+}
+
+actor modelBeefSlab 21163
+{
+	//$category "Decorations/WoS"
+	//$Title "BeefSlab (model)"
+	
+	radius 16
+	height 64
+	+Solid
+	+Nogravity
+	tag "beefslab"
+	States
+	{
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+
+}
+
+actor daggHangedOneGround 21164 {
+	//$category "Corpses"
+	//$title "Hanged one(spawnGround)"
+	
+	+NOGRAVITY
+	+NOBLOCKMAP
+	radius 16
+	height 115
+	//scale 0.75
+	tag "hanged one"
+	
+	States {
+		Spawn:
+			DG27 A -1
+			Stop
+	}
+}
+actor daggHangedOneCeiling 21165 {
+	//$category "Corpses"
+	//$title "Hanged one(spawnCeiling)"
+	
+	+NOGRAVITY
+	+SPAWNCEILING
+	+NOBLOCKMAP
+	radius 16
+	height 115
+	scale 0.75
+	tag "hanged one"
+	
+	States {
+		Spawn:
+			DG26 A -1
+			Stop
+	}
+}
+actor daggSkeletonStand 21166 {
+	//$Category "Decorations/WoS"
+	//$Title "skeleton stand"
+	
+	radius 16
+	height 64
+	//scale 0.65
+	+solid
+	tag "skeleton stand"
+	States {
+		Spawn:
+			DG11 A -1
+			Stop
+	}
+}
+
+actor waterFountainOverhaul 21167 {
+	//$category "Decorations/SFX"
+	//$title "water fountain"
+	radius 16
+	height 64
+	+NOBLOCKMAP
+	tag "water fountain"
+	States {
+		Spawn:
+			WTFN ABC 4
+			Loop
+	}
+}
+//strife pots by ??
+actor strifeDecoVaze1 21168 {
+	//$Category "Decorations/WoS"
+	//$Title "deco vase 1"
+	radius 12
+	height 32
+	+SOLID
+	tag "decorative vase"
+	States {
+		Spawn:
+			SPT1 A -1
+			Stop
+	}
+}
+actor strifeDecoPot1 21169 {
+	//$Category "Decorations/WoS"
+	//$Title "deco pot small"
+	radius 12
+	height 23
+	+SOLID
+	tag "small decorative pot"
+	States {
+		Spawn:
+			SPT2 A -1
+			Stop
+	}
+}
+actor strifeDecoPot2 21170 {
+	//$Category "Decorations/WoS"
+	//$Title "deco pot tall"
+	radius 12
+	height 38
+	+SOLID
+	tag "tall decorative pot"
+	States {
+		Spawn:
+			SPT3 A -1
+			Stop
+	}
+}
+actor strifeDecoPot3 21171 {
+	//$Category "Decorations/WoS"
+	//$Title "deco pot medium"
+	radius 12
+	height 24
+	+SOLID
+	tag "medium decorative pot"
+	States {
+		Spawn:
+			SPT4 A -1
+			Stop
+	}
+}
+actor strifeDecoPot4 21172 {
+	//$Category "Decorations/WoS"
+	//$Title "deco pot tall 2"
+	radius 12
+	height 31
+	+SOLID
+	tag "tall decorative pot"
+	States {
+		Spawn:
+			SPT5 A -1
+			Stop
+	}
+}
+actor strifeDecoVaze2 21173 {
+	//$Category "Decorations/WoS"
+	//$Title "deco vase 2"
+	radius 10
+	height 25
+	+SOLID
+	tag "decorative vase"
+	States {
+		Spawn:
+			SPT6 A -1
+			Stop
+	}
+}
+actor strifeDecoVaze3 21174 {
+	//$Category "Decorations/WoS"
+	//$Title "deco vase 3"
+	radius 10
+	height 30
+	+SOLID
+	tag "decorative vase"
+	States {
+		Spawn:
+			SPT7 A -1
+			Stop
+	}
+}
+actor strifeDecoPot5 21175 {
+	//$Category "Decorations/WoS"
+	//$Title "deco pot large"
+	radius 16
+	height 29
+	+SOLID
+	tag "large decorative pot"
+	States {
+		Spawn:
+			SPT8 A -1
+			Stop
+	}
+}
+actor strifeDecoPotHanging1 21176 {
+	//$Category "Decorations/WoS"
+	//$Title "hanging pot 1"
+	radius 10
+	height 89
+	+SPAWNCEILING
+	+NOGRAVITY
+	tag "hanging pot"
+	States {
+		Spawn:
+			SPH1 A -1
+			Stop
+	}
+}
+actor strifeDecoPotHanging2 21177 {
+	//$Category "Decorations/WoS"
+	//$Title "hanging pot 2"
+	radius 12
+	height 81
+	+SPAWNCEILING
+	+NOGRAVITY
+	tag "hanging pot"
+	States {
+		Spawn:
+			SPH2 A -1
+			Stop
+	}
+}
+actor strifeDecoPotHanging3 21178 {
+	//$Category "Decorations/WoS"
+	//$Title "hanging pot 3"
+	radius 13
+	height 82
+	+SPAWNCEILING
+	+NOGRAVITY
+	tag "hanging pot"
+	States {
+		Spawn:
+			SPH3 A -1
+			Stop
+	}
+}
+actor hayVidle 21179 {
+	//$Category "Decorations/WoS"
+	//$Title "hay & forks"
+	radius 16
+	height 56
+	+SOLID
+	tag "hay forks"
+	States {
+		Spawn:
+			HAY1 A -1
+			Stop
+	}
+}
+actor hayBale 21180 {
+	//$Category "Decorations/WoS"
+	//$Title "hay bale"
+	radius 24
+	height 63
+	+SOLID
+	tag "hay bale"
+	States {
+		Spawn:
+			HAY2 A -1
+			Stop
+	}
+}
+actor hayFlat 21181 {
+	//$Category "Decorations/WoS"
+	//$Title "hay flat"
+	radius 32
+	height 4
+	+FLATSPRITE
+	tag "hay flat"
+	States {
+		Spawn:
+			HAY3 A -1
+			Stop
+	}
+}
+actor skynetConversion 21182 {
+	//$Category "Decorations/WoS"
+	//$Title "Skynet conversion"
+	radius 16
+	height 64
+	scale 0.55
+	+SOLID
+	tag "torture frame"
+	States {
+		Spawn:
+			SKTG ABCDEFEDCBCDCDBABCDEDEDEF 6
+			Loop
+	}
+}
+/*
+actor DMYstaffBlasterup01 21183 {
+	//$Category "Decorations/WoS"
+	//$Title "DMY - Blaster Staff Upgr 1 (ground)"
+    -SOLID
+	+SHOOTABLE
+	+NODAMAGE
+	+NOBLOOD
+	+CANPASS
+	+USESPECIAL
+	+NoGravity
+	height 8
+	radius 8
+	Scale 0.4
+	States
+	{
+	Spawn:
+      DUMM A -1
+      Stop
+	}
+}
+actor DMYstaffBlasterup02 21184 {
+	//$Category "Decorations/WoS"
+	//$Title "DMY - Blaster Staff Upgr 2 (standing)"
+    -SOLID
+	+SHOOTABLE
+	+NODAMAGE
+	+NOBLOOD
+	+CANPASS
+	+USESPECIAL
+	+NoGravity
+	height 64
+	radius 8
+	Scale 0.4
+	States
+	{
+	Spawn:
+      DUMM A -1
+      Stop
+	}
+}
+actor DMYstaffBlasterup03 21185 {
+	//$Category "Decorations/WoS"
+	//$Title "DMY - Blaster Staff Upgr 3 (side)"
+    -SOLID
+	+SHOOTABLE
+	+NODAMAGE
+	+NOBLOOD
+	+CANPASS
+	+USESPECIAL
+	+NoGravity
+	height 8
+	radius 8
+	Scale 0.4
+	States
+	{
+	Spawn:
+      DUMM A -1
+      Stop
+	}
+}
+*/
+ACTOR WaterFountainNoSound 21186
+{
+	//$Category "Decorations/sfx"
+	//$Title "water fountain nosound"
+	+NOBLOCKMAP
+  	tag "water fountain"
+	States
+	{
+		Spawn:
+			WTFT ABC 4
+			WTFT D 4 
+			Loop
+	}
+}
+/*
+Submitted: Yuyu3
+Decorate: Yuyu3
+Sprites: Rogue Entertainment, Raven Software
+Sprite Edit: Yuyu3
+Idea Base: Need to Vitalize doom Dry Trees
+*/
+//------------------------------------------------------------------------------
+Actor Gardentree1 21187
+{
+	//$Category "Trees and Rocks"
+	//$Title "Tree 1"
+    +Solid
+    Radius 20
+    Height 90
+	tag "garden tree"
+    States
+    {
+        Spawn:
+            PLAN A -1
+            Stop
+    }
+}
+
+Actor Gardentree2 21188
+{
+	//$Category "Trees and Rocks"
+	//$Title "Tree 2"
+    +Solid
+    Radius 20
+    Height 90
+	tag "garden tree"
+    States
+    {
+        Spawn:
+            PLAN B -1
+            Stop
+    }
+}
+
+Actor Gardenbush1 21189
+{
+	//$Category "Trees and Rocks"
+	//$Title "Bush 1"
+    +Solid
+    Radius 24
+    Height 30
+	tag "garden bush"
+    States
+    {
+        Spawn:
+            PLAN C -1
+            Stop
+    }
+}
+
+Actor Gardenbush2 21190
+{
+	//$Category "Trees and Rocks"
+	//$Title "Bush 2"
+    +Solid
+    Radius 16
+    Height 30
+	tag "garden bush"
+    States
+    {
+        Spawn:
+            PLAN D -1
+            Stop
+    }
+}
+
+Actor Gardenbush3 21191
+{
+	//$Category "Trees and Rocks"
+	//$Title "Bush 3"
+    +Solid
+    Radius 16
+    Height 30
+	tag "garden bush"
+    States
+    {
+        Spawn:
+            PLAN E -1
+            Stop
+    }
+}
+//------------------------------------------------------------------------------
+
+actor hxnBook01 21192 {
+	
+	//$Category "Decorations/books"
+	//$Title "book 1"
+	
+	+solid
+	+useSpecial
+	+NOGRAVITY
+	+DONTTHRUST
+	-NOBLOCKMAP
+	radius 8
+	height 6
+	//scale 0.5
+	tag "book"
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor hxnBook02 21193 {
+	//$Category "Decorations/books"
+	//$Title "book 2"
+	
+	+solid
+	+useSpecial
+	+NOGRAVITY
+	+DONTTHRUST
+	-NOBLOCKMAP
+	radius 8
+	height 6
+	//scale 0.5
+	tag "holy book"
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor hxnBook03 21194 {
+	//$Category "Decorations/books"
+	//$Title "book 3"
+	
+	+solid
+	+useSpecial
+	+NOGRAVITY
+	+DONTTHRUST
+	-NOBLOCKMAP
+	radius 8
+	height 6
+	//scale 0.5
+	tag "book"
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor hxnBook04 21195 {
+	//$Category "Decorations/books"
+	//$Title "book 4"
+	
+	+solid
+	+useSpecial
+	+NOGRAVITY
+	+DONTTHRUST
+	-NOBLOCKMAP
+	radius 8
+	height 6
+	//scale 0.5
+	tag "book"
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor female01_ladyWithBall 21196 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady with ball"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady with ball"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL01 A -1
+			Stop
+	}
+}
+actor female02_girl01 21197 {
+	//$Category "Other NPCs/females"
+	//$Title "Girl 01"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	//scale 0.75
+	tag "black girl"
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL02 A -1
+			Stop
+	}
+}
+actor female02_girl02 21198 {
+	//$Category "Other NPCs/females"
+	//$Title "Girl 02"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	//scale 0.75
+	tag "blonde girl"
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL03 A -1
+			Stop
+	}
+}
+actor female02_girl03 21199 {
+	//$Category "Other NPCs/females"
+	//$Title "Girl 03"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	//scale 0.75
+	tag "red girl"
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL04 A -1
+			Stop
+	}
+}
+actor female03_green 21200 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady green"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady green"
+	scale 0.9
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL05 A -1
+			Stop
+	}
+}
+actor female03_red 21201 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady red"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady red"
+	scale 0.85
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL06 A -1
+			Stop
+	}
+}
+actor female04_greenSkirt 21202  {
+	//$Category "Other NPCs/females"
+	//$Title "Lady green skirt"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady green skirt"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL08 A -1
+			Stop
+	}
+}
+actor female05_blueSkirt 21203 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady blue skirt"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady blue skirt"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL09 A -1
+			Stop
+	}
+}
+actor female06_redDress 21204 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady red dress"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady red dress"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL10 A -1
+			Stop
+	}
+}
+actor female07_blackLady 21205 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady black"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady black"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL11 A -1
+			Stop
+	}
+}
+actor female08_ladyNoSkirt01 21206 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady no skirt 01"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady no skirt"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL12 A -1
+			Stop
+	}
+}
+actor female08_ladyNoSkirt02 21207 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady no skirt 02"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady no skirt"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL13 A -1
+			Stop
+	}
+}
+actor female08_ladyNoSkirt03 21208 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady no skirt 03"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady no skirt"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL15 A -1
+			Stop
+	}
+}
+actor female09_blackWarrior 21209 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady black warrior"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady black warrior"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL16 A -1
+			Stop
+	}
+}
+actor female10_ladyWrod 21210 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady with rod"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady with rod"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL17 A -1
+			Stop
+	}
+}
+actor female11_ladyNaked 21211 {
+	//$Category "Other NPCs/females"
+	//$Title "Lady naked"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Lady naked"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			CL18 A -1
+			Stop
+	}
+}
+actor female12_nobleBlue 21212 {
+	//$Category "Other NPCs/females"
+	//$Title "Noble lady blue"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Noble lady blue"
+	scale 0.75
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			NLBL AAABBBBCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 2
+			Loop
+	}
+}
+actor female13_nobleCyan 21213 {
+	//$Category "Other NPCs/females"
+	//$Title "Noble lady cyan"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Noble lady cyan"
+	scale 0.45
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			NLCY A -1
+			Stop
+	}
+}
+actor female13_nobleWhite 21214 {
+	//$Category "Other NPCs/females"
+	//$Title "Noble lady white"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Noble lady white"
+	scale 0.45
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			NLWH A -1
+			Stop
+	}
+}
+actor female14_nobleFlute 21215 {
+	//$Category "Other NPCs/females"
+	//$Title "Noble lady flute"
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "Noble lady flute"
+	scale 0.45
+	radius 16
+	height 56
+	
+	States {
+		Spawn:
+			NLFL AABBCCAACCAACCAABBCCAACCAABBCCAABBCCBBAACCAACCAACCAA 3
+			Loop
+	}
+}
+actor male01_pubkeeper 21216 {
+	//$Category "Other NPCs/Wos"
+	//$Title "pubkeeper"
+	
+	+solid
+	+useSpecial
+	//+nogravity
+	+DontThrust
+	tag "pubkeeper"
+	scale 0.75
+	height 64
+	radius 16
+
+	States {
+		Spawn:
+			CM01 A -1
+			Stop
+	}
+}
+actor male02_fatNoble 21217 {
+	//$Category "Other NPCs/Wos"
+	//$Title "fat noble"
+	
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	tag "fat noble"
+	scale 0.75
+	height 64
+	radius 16
+	
+	States {
+		Spawn:
+			MN01 A -1
+			Stop
+		Yes:
+			MN01 A 20
+			// Fall through
+		Greetings:
+			MN01 ABCD 5
+			Goto Spawn
+	}
+}
+
+actor voxChicken2 21218
+{
+	//$Category "Decorations/WoS"
+	//$Title "deco Chicken 2"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	+NoGravity
+	height 16
+	radius 12
+	//scale 0.35
+	tag "grilled chicken"
+
+	States
+	{
+	Spawn:
+		CHKN W -1
+		Stop
+	}
+}
+
+actor dummy_binderLeaderTek01 21219
+{
+	//$Category "Other NPCs/Wos"
+	//$Title "Binder leader tek 01"
+	
+	+useSpecial
+	+solid
+	//+nogravity
+	+DontThrust
+	
+	Tag "Binder leader tek 01"
+	scale 1.0
+	radius 16
+	height 56
+	States
+	{
+	Spawn:
+		BLT1 A -1
+		Stop
+	}
+}
+actor dummy_binderLeaderTek02 21220
+{
+	//$Category "Other NPCs/Wos"
+	//$Title "Binder leader tek 02"
+	
+	+useSpecial
+	+solid
+	//+nogravity
+	+DontThrust
+	
+	Tag "Binder leader tek 02"
+	scale 1.0
+	radius 16
+	height 56
+	States
+	{
+	Spawn:
+		BLT2 A -1
+		Stop
+	}
+}
+actor moistureFarm 21221 {
+	//$Category "Decorations/WoS"
+	//$Title "Moisture Farm"
+	+USESPECIAL
+	+SOLID
+	+DONTTHRUST
+	radius 16
+	height 88
+	tag "moisture farm"
+	States {
+		Spawn:
+			EVAP V -1
+			Stop
+	}
+}
+
+
+actor DummyBinderArmedStanding 21222 {
+	//$Category "Other NPCs/Wos"
+	//$Title "Binder - ozbrojeny stojici"
+
+	+useSpecial
+	+solid
+	//+nogravity
+	+DontThrust
+
+	Tag "Binder"
+	scale 1.0
+	radius 16
+	height 56
+	
+	States
+	{
+	Spawn:
+		BNAS A -1
+		Stop
+	}
+}
+
+actor animatedCandle : Candle {
+	+solid
+	States {
+		Spawn:
+			CNDL ABCD 5 Bright
+			Loop
+	}	
+}
+
+actor mediumTorchFlames {
+	-SOLID
+	+NOGRAVITY
+	+DONTTHRUST
+	+FORCEYBILLBOARD
+	tag "medium torch"
+	scale 0.2
+	radius 8
+	height 8
+	
+	States {
+		Spawn:
+			FLBE DEFG 4 Bright
+			Loop
+	}
+}
+actor hugeTorchFlames : mediumTorchFlames {
+	scale 0.21
+	tag "huge torch"
+}
+actor bowlBrazierFlames : mediumTorchFlames {
+	scale 0.45 
+	States {
+		Spawn:
+			FLBX DEFG 4 Bright
+			Loop
+	}
+}
+actor smallTorchFlames : mediumTorchFlames {
+	scale 0.1
+}
+actor modelMediumTorch : MediumTorch replaces MediumTorch {
+	+DONTTHRUST
+	tag "medium torch"
+	States {
+		Spawn:
+			//TNT1 A 0 A_SpawnItemEx("mediumTorchFlames", 0, 0, 16)
+			LTRH A -1 NODELAY A_SpawnItemEx("mediumTorchFlames", 0, 0, 48)
+			Stop
+	}
+}
+actor modelHugeTorch : HugeTorch replaces HugeTorch {
+	+DONTTHRUST
+	tag "huge torch"
+	States {
+		Spawn:
+			LOGS A -1 NODELAY A_SpawnItemEx("hugeTorchFlames", 0, 0, 58)
+			Stop
+	}
+}
+actor modelLargeTorch : LargeTorch replaces LargeTorch {
+	+DONTTHRUST
+	tag "large torch"
+	States {
+		Spawn:
+			LMPC A -1 NODELAY A_SpawnItemEx("hugeTorchFlames", 0, 0, 52)
+			Stop
+	}
+}
+actor modelBurningBowl : BurningBowl replaces BurningBowl {
+	+DONTTHRUST	
+	tag "burning bowl"
+	States {
+		Spawn:
+			BOWL A -1 NODELAY A_SpawnItemEx("bowlBrazierFlames", 0, 0, 5)
+			Stop
+	}
+}
+actor modelBurningBrazier : BurningBrazier replaces BurningBrazier {
+	+DONTTHRUST
+	tag "burning brazier"
+	States {
+		Spawn:
+			BRAZ A -1 NODELAY A_SpawnItemEx("bowlBrazierFlames", 0, 0, 23)
+			Stop
+	}
+}
+actor modelStrifeBurningBarrel : StrifeBurningBarrel replaces StrifeBurningBarrel {
+	tag "burning barrel"
+	States {
+		Spawn:
+			BBAR A -1 NODELAY A_SpawnItemEx("bowlBrazierFlames", 0, 0, 28)
+			Stop
+	}
+}
+
+actor modelSmallTorchLit : SmallTorchLit replaces SmallTorchLit { //smallTorchFlames
+	tag "small torch"
+	-NOBLOCKMAP
+	States {
+		Spawn:
+			TRHL A -1 NODELAY A_SpawnItemEx("smallTorchFlames", 0, 0, 46)
+			Stop
+	}
+}
+actor smallerTray : Tray replaces Tray {
+	radius 16
+	tag "small tray"
+}
+actor dxTablet01 21223 {
+	//$Category "Decorations/WoS"
+	//$Title "Tablet 01"
+	+useSpecial
+	+solid
+	//+nogravity
+	+DontThrust
+	Tag "tablet"
+	height 4
+	radius 4
+	
+	States {
+		Spawn:
+			DUMM A -1 Bright
+			Stop
+	}
+}
+actor dx_woodCart 21224 {
+	//$Category "Decorations/WoS"
+	//$Title "Wooden Cart"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "wooden cart"
+	height 32
+	radius 16
+	
+	States {
+		Spawn:
+			DWCT A -1
+			Stop
+	}
+}
+actor dx_koste 21225 {
+	//$Category "Decorations/WoS"
+	//$Title "Koste"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "broom"
+	height 56
+	radius 4
+	
+	States {
+		Spawn:
+			DKST A -1
+			Stop
+	}
+}
+actor dx_gallows 21226 {
+	//$Category "Decorations/WoS"
+	//$Title "Sibenice"
+	
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "gallows"
+	height 124
+	radius 4
+	
+	States {
+		Spawn:
+			DSBC A -1 NODELAY A_SpawnItemEx("daggHangedOneGround", 0, 0, 24)
+			Stop
+	}
+}
+actor dxTablet02 21227 {
+	//$Category "Decorations/WoS"
+	//$Title "Tablet 02"
+	+useSpecial
+	+solid
+	//+nogravity
+	+DontThrust
+	
+	Tag "tablet"
+	height 4
+	radius 4
+	
+	States {
+		Spawn:
+			DUMM A -1 Bright
+			Stop
+	}
+}
+actor dxGuillotine 21228 {
+	//$Category "Decorations/WoS"
+	//$Title "dx gilotina"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "Guillotine"
+	height 24
+	radius 16
+	
+	States {
+		Spawn:
+			DGLT A -1
+			Stop
+	}
+}
+actor dxPillory 21229 {
+	
+	//$Category "Decorations/WoS"
+	//$Title "dxPillory"
+	+Solid
+	+DontThrust
+	+UseSpecial
+	
+	Tag "Pillory"
+	height 48
+	radius 16
+	
+	States {
+		Spawn:
+			PLRY A -1
+			Stop
+	}
+}
+actor dx3Dprinter 21230 {
+	//$Category "Decorations/WoS"
+	//$Title "3D printer"
+	+SpawnCeiling
+	+nogravity
+	-Solid
+	tag "3d printer"
+	height 40
+	radius 16
+	
+	States {
+		Spawn:
+		3DPT A -1
+		Stop
+	}
+}
+actor PillarHugeTechLightning {
+	+nogravity
+	-Solid
+	+DontThrust
+	Tag "huge tech pillar"
+	RenderStyle "Translucent"
+	Alpha 0.5
+	scale 0.8
+	
+	States {
+		Spawn:
+			PHTL ABCD 4 Bright Light("HugePillarTechLight")
+			Loop
+	}
+}
+actor PillarHugeTechAnimated : PillarHugeTech replaces PillarHugeTech {
+	States {
+		Spawn:
+			HUGE A -1 Bright NODELAY A_SpawnItemEx("PillarHugeTechLightning", 0, 0, 76)
+			Stop
+	}
+}
+actor CavePillar : CavePillarBottom replaces CavePillarBottom {
+	Tag "cave pillar"
+	States {
+		Spawn:
+			STLG D -1
+			Stop
+	}
+}
+actor CavePillar2 : CavePillar replaces CavePillarTop {
+	Tag "cave pillar"
+	States {
+		Spawn:
+			STLG D -1
+			Stop
+	}
+}
+actor dx_penBlock 21231 {
+	//$Category "Decorations/WoS"
+	//$Title "pen&block"
+	
+	+DontThrust
+	+UseSpecial
+	-Solid
+	Tag "pen and paper block"
+	height 8
+	radius 8
+	
+	States {
+		Spawn:
+			PNBL A -1
+			Stop
+	}
+}
+actor strifeChair01 21232 {
+	//$Category "Decorations/WoS"
+	//$Title "dx chair 01"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "wooden chair"
+	height 24
+	radius 16
+	
+	States {
+		Spawn:
+			SCH1 A -1
+			Stop
+	}
+}
+actor strifeChair02 21233 {
+	//$Category "Decorations/WoS"
+	//$Title "dx chair 02"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "wooden chair"
+	height 32
+	radius 16
+	
+	States {
+		Spawn:
+			SCH2 A -1
+			Stop
+	}
+}
+actor strifeBed01 21234 {
+	//$Category "Decorations/WoS"
+	//$Title "dx bed 01"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "wooden bed"
+	height 20
+	radius 28
+	
+	States {
+		Spawn:
+			DBED A -1
+			Stop
+	}
+}
+actor strifeBed02 21235 {
+	//$Category "Decorations/WoS"
+	//$Title "dx bed 02"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "wooden bed"
+	height 20
+	radius 28
+	
+	States {
+		Spawn:
+			DBED B -1
+			Stop
+	}
+}
+actor strifeBed03 21236 {
+	//$Category "Decorations/WoS"
+	//$Title "dx bed 03"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "wooden bed"
+	height 16
+	radius 16
+	
+	States {
+		Spawn:
+			DBED C -1
+			Stop
+	}
+}
+actor strifeBed04 21237 {
+	//$Category "Decorations/WoS"
+	//$Title "dx bed 04"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "wooden bed"
+	height 16
+	radius 16
+	
+	States {
+		Spawn:
+			DBED D -1
+			Stop
+	}
+}
+actor strifeBed05 21238 {
+	//$Category "Decorations/WoS"
+	//$Title "dx bed 05"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "wooden bed"
+	height 16
+	radius 16
+	
+	States {
+		Spawn:
+			DBED E -1
+			Stop
+	}
+}
+actor strifeBed06 21239 {
+	//$Category "Decorations/WoS"
+	//$Title "dx bed 06"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "wooden bed"
+	height 16
+	radius 16
+	
+	States {
+		Spawn:
+			DBED F -1
+			Stop
+	}
+}
+actor strifeNightStand01 21240 {
+	//$Category "Decorations/WoS"
+	//$Title "dx nightstand"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	+ACTLIKEBRIDGE
+	Tag "night stand"
+	height 24
+	radius 12
+	States {
+		Spawn:
+			SNHT A -1
+			Stop
+	}
+}
+actor strifeChair03 21241 {
+	//$Category "Decorations/WoS"
+	//$Title "dx chair 03"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "wooden armchair"
+	height 16
+	radius 12
+	
+	States {
+		Spawn:
+			SCH3 A -1
+			Stop
+	}
+}
+actor strifeCouch01 21242 {
+	//$Category "Decorations/WoS"
+	//$Title "dx couch 01"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "wooden couch"
+	height 16
+	radius 16
+	
+	States {
+		Spawn:
+			SCH4 A -1
+			Stop
+	}
+}
+actor strifeCoffeeTable01 21243 {
+	//$Category "Decorations/WoS"
+	//$Title "dx coffee table 01"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "coffee table"
+	height 14
+	radius 12
+	
+	States {
+		Spawn:
+			SCT1 A -1
+			Stop
+	}
+}
+actor strifeCoffeeTable02 21244 {
+	//$Category "Decorations/WoS"
+	//$Title "dx coffee table 02"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "coffee table"
+	height 14
+	radius 12
+	
+	States {
+		Spawn:
+			SCT2 A -1
+			Stop
+	}	
+}
+actor strifeTable01 21245 {
+	//$Category "Decorations/WoS"
+	//$Title "dx table 01"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	+ACTLIKEBRIDGE
+	Tag "wooden table"
+	height 24
+	radius 24
+	
+	States {
+		Spawn:
+			STB1 A -1
+			Stop
+	}
+}
+actor strifeNightStand02 21246 {
+	//$Category "Decorations/WoS"
+	//$Title "dx night stand 02"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	+ACTLIKEBRIDGE
+	Tag "night stand"
+	height 20
+	radius 12
+	
+	States {
+		Spawn:
+			SNH2 A -1
+			Stop
+	}
+}
+actor strifeNightStand03 21247 {
+	//$Category "Decorations/WoS"
+	//$Title "dx night stand 03"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	+ACTLIKEBRIDGE
+	tag "wooden cabinet"
+	height 46
+	radius 12
+	
+	States {
+		Spawn:
+			SNH3 A -1
+			Stop
+	}
+}
+actor strifeNightStand04 21248 {
+	//$Category "Decorations/WoS"
+	//$Title "dx night stand 04"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	+ACTLIKEBRIDGE
+	tag "small wooden cabinet"
+	height 36
+	radius 12
+	
+	States {
+		Spawn:
+			SNH4 A -1
+			Stop
+	}
+}
+actor strifeTreeBonsai01 21249 {
+	//$Category "Trees and Rocks"
+	//$Title "dx tree bonsai 01"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "bonsai tree"
+	height 64
+	radius 16
+	
+	States {
+		Spawn:
+			SBNS A -1
+			Stop
+	}
+}
+actor strifeCoinDummy 21250 {
+	//$Category "Decorations/WoS"
+	//$Title "coin dummy"
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "coin"
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			COIN A -1
+			Stop
+	}
+}
+actor modelCadaver1 21251 {
+	//$Category "Decorations/WoS"
+	//$Title "corpse 01"
+	Tag "cadaver"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor modelCadaver2 21252 {
+	//$Category "Decorations/WoS"
+	//$Title "corpse 02"
+	Tag "cadaver"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor modelCadaver3 21253 {
+	//$Category "Decorations/WoS"
+	//$Title "corpse 03"
+	Tag "cadaver"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor modelCadaver4 21254 {
+	//$Category "Decorations/WoS"
+	//$Title "corpse 04"
+	Tag "cadaver"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor modelCadaver5 21255 {
+	//$Category "Decorations/WoS"
+	//$Title "corpse 05"
+	Tag "cadaver"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor modelCadaver6 21256 {
+	//$Category "Decorations/WoS"
+	//$Title "corpse 06"
+	Tag "cadaver"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor severedHead1 21257 {
+	//$Category "Decorations/WoS"
+	//$Title "severed head 1"
+	Tag "severed head"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor severedHead2 21258 {
+	//$Category "Decorations/WoS"
+	//$Title "severed head 2"
+	Tag "severed head"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor severedHead3 21259 {
+	//$Category "Decorations/WoS"
+	//$Title "severed head 3"
+	Tag "severed head"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor severedHead4 21260 {
+	//$Category "Decorations/WoS"
+	//$Title "severed head 4"
+	Tag "severed head"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor severedHead5 21261 {
+	//$Category "Decorations/WoS"
+	//$Title "severed head 5"
+	Tag "severed head"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor bodyWOhead1 21262 {
+	//$Category "Decorations/WoS"
+	//$Title "body w/o head 1"
+	Tag "headless body"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor bodyWOhead2 21263 {
+	//$Category "Decorations/WoS"
+	//$Title "body w/o head 2"
+	Tag "headless body"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor bodyWOhead3 21264 {
+	//$Category "Decorations/WoS"
+	//$Title "body w/o head 3"
+	Tag "headless body"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor bodyWOhead4 21265 {
+	//$Category "Decorations/WoS"
+	//$Title "body w/o head 4"
+	Tag "headless body"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor bodyWOhead5 21266 {
+	//$Category "Decorations/WoS"
+	//$Title "body w/o head 5"
+	Tag "headless body"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	States {
+		Spawn:
+		DUMM A -1
+		Stop
+	}
+}
+actor dummy_metalArmor 21267 {
+	//$Category "Decorations/WoS"
+	//$Title "deco metal armor"
+	Tag "metal armor"
+	radius 16
+	height 24
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+/*actor dummy_executorRifle_ground01 21268 {
+	//$Category "Decorations/WoS"
+	//$Title "deco Executor Rifle (ground1)"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	tag "long rifle"
+	
+	States {
+		Spawn:
+			ERMP A -1
+			Stop
+	}
+}
+actor dummy_executorRifle_ground02 21269 {
+	//$Category "Decorations/WoS"
+	//$Title "deco Executor Rifle (ground2)"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	tag "long rifle"
+	
+	States {
+		Spawn:
+			ERMP B -1
+			Stop
+	}
+}
+actor dummy_executorRifle_standing 21270 {
+	//$Category "Decorations/WoS"
+	//$Title "deco Executor Rifle (standing)"
+	radius 16
+	height 16
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	tag "long rifle"
+	
+	States {
+		Spawn:
+			ERMP C -1
+			Stop
+	}
+}*/
+actor dummy_hamburger 21271 {
+	//$Category "Decorations/WoS"
+	//$Title "deco hamburger"
+	Tag "hamburger"
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			BRGR A -1
+			Stop
+	}
+}
+actor dummy_bigburger 21272 {
+	//$Category "Decorations/WoS"
+	//$Title "deco bigburger"
+	Tag "bigburger"
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			BRGR C -1
+			Stop
+	}
+}
+actor dummy_cheeseburger 21273 {
+	//$Category "Decorations/WoS"
+	//$Title "deco cheeseburger"
+	Tag "cheeseburger"
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			BRGR B -1
+			Stop
+	}
+}
+actor dummy_cheeseburgerDouble 21274 {
+	//$Category "Decorations/WoS"
+	//$Title "deco cheeseburger double"
+	Tag "double cheeseburger"
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			BRGR C -1
+			Stop
+	}
+}
+actor dummy_hotdog01 21275 {
+	//$Category "Decorations/WoS"
+	//$Title "deco hotdog 1"
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	Tag "hotdog"
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			HTD1 A -1
+			Stop
+	}
+}
+actor dummy_hotdog02 21276 {
+	//$Category "Decorations/WoS"
+	//$Title "deco hotdog 2"
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	Tag "hotdog"
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			HTD2 A -1
+			Stop
+	}
+}
+actor d_foodPlatter01 21278 {
+	//$Category "Decorations/WoS"
+	//$Title "d_food platter 01"
+	-Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	tag "food platter"
+	radius 6
+	height 4
+	
+	States {
+		Spawn:
+			MFD2 A -1
+			Stop
+	}
+}
+actor d_foodPlatter02 21279 {
+	//$Category "Decorations/WoS"
+	//$Title "d_food platter 02"
+	-Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	tag "food platter"
+	radius 6
+	height 4
+	
+	States {
+		Spawn:
+			MFD2 A -1
+			Stop
+	}
+}
+actor d_foodPlatter03 21280 {
+	//$Category "Decorations/WoS"
+	//$Title "d_food platter 03"
+	-Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	tag "food platter"
+	radius 6
+	height 4
+	
+	States {
+		Spawn:
+			MFD2 A -1
+			Stop
+	}
+}
+actor d_foodPlatter04 21281 {
+	//$Category "Decorations/WoS"
+	//$Title "d_food platter 04"
+	-Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	tag "food platter"
+	radius 6
+	height 4
+	
+	States {
+		Spawn:
+			MFD2 A -1
+			Stop
+	}
+}
+actor dummy_leatherArmor 21282 {
+	//$Category "Decorations/WoS"
+	//$Title "deco leather armor"
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	tag "leather armor"
+	radius 16
+	height 24
+	
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}	
+}
+actor dummy_kineticArmor 21283 {
+	//$Category "Decorations/WoS"
+	//$Title "deco kinetic armor"
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	Tag "kinetic armor"
+	radius 16
+	height 24
+	
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_VodovodniBaterie01 21284 {
+	//$Category "Decorations/WoS"
+	//$Title "vod.baterie 01"
+	
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	tag "water tap"
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_VodovodniBaterie02 21285 {
+	//$Category "Decorations/WoS"
+	//$Title "vod.baterie 02"
+	
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	tag "water tap"
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_VodovodniBaterie03 21286 {
+	//$Category "Decorations/WoS"
+	//$Title "vod.baterie 03"
+	
+	+Solid
+	+Nogravity
+	+useSpecial
+	+DONTTHRUST
+	tag "water tap"
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_umyvadlo01 21287 {
+	//$Category "Decorations/WoS"
+	//$Title "umyvadlo 01"
+	
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "sink"
+	radius 16
+	height 24
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_umyvadlo02 21288 {
+	//$Category "Decorations/WoS"
+	//$Title "umyvadlo 02"
+	
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "sink"
+	radius 16
+	height 24
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_klavesnice 21289 {
+	//$Category "Decorations/WoS"
+	//$Title "klavesnice"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Small Keyboard"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_mikrovlnka 21290 {
+	//$Category "Decorations/WoS"
+	//$Title "mikrovlnka"
+	
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "microwave oven"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_grass01 21291 {
+	//$Category "Trees and Rocks"
+	//$Title "trava01 zelena"
+	
+	-SOLID
+	+USESPECIAL
+	-NOGRAVITY
+	+DONTTHRUST
+	Tag "grass"
+	radius 8
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_grass02 21292 {
+	//$Category "Trees and Rocks"
+	//$Title "trava02 zelena"
+	
+	-SOLID
+	+USESPECIAL
+	-NOGRAVITY
+	+DONTTHRUST
+	Tag "grass"
+	radius 8
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_grass03 21293 {
+	//$Category "Trees and Rocks"
+	//$Title "trava03 zelena"
+	
+	-SOLID
+	+USESPECIAL
+	-NOGRAVITY
+	+DONTTHRUST
+	Tag "grass"
+	radius 8
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_grass04 21294 {
+	//$Category "Trees and Rocks"
+	//$Title "trava01 washed"
+	
+	-SOLID
+	+USESPECIAL
+	-NOGRAVITY
+	+DONTTHRUST
+	Tag "grass"
+	radius 8
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_grass05 21295 {
+	//$Category "Trees and Rocks"
+	//$Title "trava02 washed"
+	
+	-SOLID
+	+USESPECIAL
+	-NOGRAVITY
+	+DONTTHRUST
+	Tag "grass"
+	radius 8
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_grass06 21296 {
+	//$Category "Trees and Rocks"
+	//$Title "trava03 washed"
+	
+	-SOLID
+	+USESPECIAL
+	-NOGRAVITY
+	+DONTTHRUST
+	Tag "grass"
+	radius 8
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_grassPatch01 21297 {
+	//$Category "Trees and Rocks"
+	//$Title "travaPatch 01 zelena"
+	
+	-SOLID
+	+USESPECIAL
+	-NOGRAVITY
+	+DONTTHRUST
+	Tag "grass"
+	radius 16
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_grassPatch02 21298 {
+	//$Category "Trees and Rocks"
+	//$Title "travaPatch 02 zelena"
+	
+	-SOLID
+	+USESPECIAL
+	-NOGRAVITY
+	+DONTTHRUST
+	Tag "grass"
+	radius 16
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_grassPatch03 21299 {
+	//$Category "Trees and Rocks"
+	//$Title "travaPatch 01 washed"
+	
+	-SOLID
+	+USESPECIAL
+	-NOGRAVITY
+	+DONTTHRUST
+	Tag "grass"
+	radius 16
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_grassPatch04 21300 {
+	//$Category "Trees and Rocks"
+	//$Title "travaPatch 02 washed"
+	
+	-SOLID
+	+USESPECIAL
+	-NOGRAVITY
+	+DONTTHRUST
+	Tag "grass"
+	radius 16
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_klavesnice02 21301 {
+	//$Category "Decorations/WoS"
+	//$Title "klavesnice 02"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Keyboard"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_comp01 21302 {
+	//$Category "Decorations/WoS"
+	//$Title "comp 01"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Computer body"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_comp02 21303 {
+	//$Category "Decorations/WoS"
+	//$Title "comp 02"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Computer body"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_compBase 21304 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp base"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer"
+	radius 6
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_compKybd 21305 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp kybd"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer"
+	radius 6
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_compB3 21306 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp base03"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer"
+	radius 6
+	height 16
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compB4 21307 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp base04"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer"
+	radius 6
+	height 16
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compB5 21308 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp base05"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer"
+	radius 6
+	height 16
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compK3 21309 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp kybd03"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer"
+	radius 6
+	height 16
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compK4 21310 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp kybd04"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer"
+	radius 6
+	height 16
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compK5 21311 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp kybd05"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer"
+	radius 6
+	height 16
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compXB1 21312 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Xbase01"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with large screen"
+	radius 6
+	height 20
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compXB2 21313 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Xbase02"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with large screen"
+	radius 6
+	height 20
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compXK1 21314 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Xkybd01"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with large screen"
+	radius 6
+	height 20
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compXK2 21315 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Xkybd02"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with large screen"
+	radius 6
+	height 20
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compBase_mmHolo03 21316 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Base h03"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with holo screen"
+	radius 6
+	height 4
+	States {
+		Spawn:
+			DUMM A -1 Bright NODELAY A_SpawnItemEx("mm_gadget_03_holodisplay", 0, 0, 6)
+			Stop
+	}
+}
+actor dx_compBase_mmHolo04 21317 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Base h04"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with holo screen"
+	radius 6
+	height 4
+	States {
+		Spawn:
+			DUMM A -1 Bright NODELAY A_SpawnItemEx("mm_gadget_04_holodisplay", 0, 0, 6)
+			Stop
+	}
+}
+actor dx_compKybd_mmHolo03 21318 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Kybd h03"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with holo screen"
+	radius 6
+	height 4
+	States {
+		Spawn:
+			DUMM A -1 Bright NODELAY A_SpawnItemEx("mm_gadget_03_holodisplay", 0, 0, 6)
+			Stop
+	}
+}
+actor dx_compKybd_mmHolo04 21319 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Kybd h04"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with holo screen"
+	radius 6
+	height 4
+	States {
+		Spawn:
+			DUMM A -1 Bright NODELAY A_SpawnItemEx("mm_gadget_03_holodisplay", 0, 0, 6)
+			Stop
+	}
+}
+actor daggPlant01 21320 {
+	//$Category "Trees and Rocks"
+	//$Title "dagg plant 01"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "plant"
+	radius 4
+	height 16
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor daggPlant02 21321 {
+	//$Category "Trees and Rocks"
+	//$Title "dagg plant 02"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "plant"
+	radius 4
+	height 16
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_talir 21322 {
+	
+	//$Category "Decorations/WoS"
+	//$Title "talir"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "ceramic plate"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dummy_stormPistol_0 21323 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy Storm Pistol 0"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "storm pistol"
+	radius 4
+	height 4
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dummy_stormPistol_1 21324 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy Storm Pistol 1"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "storm pistol"
+	radius 4
+	height 4
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dummy_stormPistol_2 21325 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy Storm Pistol 2"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "storm pistol"
+	radius 4
+	height 4
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dummy_laserPistol00 21326 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy laser pistol 0"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "Omega Beam Pistol"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM ABCDEF 3
+			Loop
+	}
+}
+actor dummy_laserPistol01 21327 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy laser pistol 1"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "Omega Beam Pistol"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM ABCDEF 3
+			Loop
+	}
+}
+actor dummy_laserPistol02 21328 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy laser pistol 2"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "Omega Beam Pistol"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM ABCDEF 3
+			Loop
+	}
+}
+actor dummy_laserPistol03 21329 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy laser pistol 3"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "Omega Beam Pistol"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM ABCDEF 3
+			Loop
+	}
+}
+actor candle2 : candle replaces candle 21330 {
+	//$Category "Decorations/WoS"
+	//$Title "candle 2"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "candle"
+	radius 4
+	height 8
+	States {
+		Spawn:
+			DUMM A -1 Bright NODELAY A_SpawnItemEx("bloodCandleFire", 0, 0, 12)
+			Stop
+	}
+}
+
+actor bannerBinder 21331 {
+	//$Category "Decorations/WoS"
+	//$Title "banner binder"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "binder banner"
+	radius 8
+	height 96
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor bannerBinderSigil 21332 {
+	//$Category "Decorations/WoS"
+	//$Title "banner binder sigil"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "binder banner"
+	radius 8
+	height 96
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor bannerSigil : SigilBanner replaces SigilBanner 21333 {
+	//$Category "Decorations/WoS"
+	//$Title "banner sigil"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "sigil banner"
+	radius 8
+	height 96
+	
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dummy_binderBadge1 21334 {
+	//$Category "Decorations/WoS"
+	//$Title "dummy binder badge 1"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "binder badge"
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dummy_binderBadge2 21335 {
+	//$Category "Decorations/WoS"
+	//$Title "dummy binder badge 1"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "binder badge"
+	radius 4
+	height 4
+	
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_Skull 21336 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx skull"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "human skull"
+	radius 4
+	height 6
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_plant2 21337 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx plant 2"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "decorative plant"
+	radius 8
+	height 52
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_plant3 21338 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx plant 3"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "decorative plant"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_basket 21339 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx basket"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "wicker basket"
+	radius 12
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_bookOpen 21340 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx book Open"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "open book"
+	radius 8
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_cactus1 21341 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx cactus 1"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "big cactus"
+	radius 8
+	height 96
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_cactus2 21342 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx cactus 2"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "small cactus"
+	radius 8
+	height 32
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_cart 21343 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx cart"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "metal cart"
+	radius 12
+	height 25
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_compSecurity 21344 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx comp security"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "security terminal"
+	radius 4
+	height 12
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_fireExtinguisher 21345 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx hasicak"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "fire extinguisher"
+	radius 4
+	height 14
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_hangingChicken 21346 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx hanging chicken"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	+SPAWNCEILING
+	Tag "hanging chicken"
+	radius 8
+	height 32
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_hangingPig 21347 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx hanging pig"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	+SPAWNCEILING
+	Tag "hanging pig"
+	radius 8
+	height 48
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_lamp1 21348 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx lamp 1"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "bed lamp"
+	radius 6
+	height 16
+	States {
+		Spawn:
+			DUMM A -1 Bright light("lightlamp1")
+			Stop
+	}
+}
+actor wosD_dex_lamp3 21349 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx lamp 3"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "table lamp"
+	radius 4
+	height 12
+	States {
+		Spawn:
+			DUMM A -1 Bright light("lightlamp3")
+			Stop
+	}
+}
+actor wosD_dex_microscope 21350 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx microscope"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "microscope"
+	radius 4
+	height 12
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_shopLight 21351 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx shop light"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	+SPAWNCEILING
+	Tag "shop light"
+	radius 4
+	height 16
+	States {
+		Spawn:
+			DUMM A -1 Bright
+			Stop
+	}
+}
+actor wosD_dex_showerFaucet 21352 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx shower faucet"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "shower faucet"
+	radius 4
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_showerHead 21353 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx shower head"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "shower head"
+	radius 4
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_statueLion 21354 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx statue lion"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Lion statue"
+	radius 28
+	height 96
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_tad 21355 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx TAD"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "TAD"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_toilet1 21356 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx toilet"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "toilet"
+	radius 8
+	height 24
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_toilet2 21357 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx pissoir"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "pissoir"
+	radius 4
+	height 40
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_trashcan2 21358 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx trashcan 2"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "trash can"
+	radius 8
+	height 24
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_trashcan3 21359 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx trashcan 3"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "trash can"
+	radius 12
+	height 28
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_waterCooler 21360 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx water cooler"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "water cooler"
+	radius 6
+	height 38
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_wineBottle 21361 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx wine bottle"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "wine bottle"
+	radius 4
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_smallBoat 21362 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx small boat"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "small boat"
+	radius 16
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_nwFemale_01 21363 {
+	//$Category "Other NPCs/females"
+	//$Title "nw female 01"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "blonde girl in white"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NF01 A -1
+			Stop
+	}
+}
+actor wosD_nwFemale_02 21364 {
+	//$Category "Other NPCs/females"
+	//$Title "nw female 02"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "noble lady"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NF02 A -1
+			Stop
+	}
+}
+actor wosD_nwFemale_03 21365 {
+	//$Category "Other NPCs/females"
+	//$Title "nw female 03"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "brunette green pants"
+	radius 16
+	height 62
+	scale 0.8
+	States {
+		Spawn:
+			NF03 A -1
+			Stop
+	}
+}
+actor wosD_nwMale_01 21366 {
+	//$Category "Other NPCs/males"
+	//$Title "nw male 01 merry pubkeeper"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "merry pubkeeper"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NM01 A -1
+			Stop
+	}
+}
+actor wosD_nwMale_02 21367 {
+	//$Category "Other NPCs/males"
+	//$Title "nw male 02 bearded monk"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "bearded monk"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NM02 A -1
+			Stop
+	}
+}
+actor wosD_assaultGunGround 21368 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy assaultGun"
+	radius 8
+	height 8
+	Tag "$TAG_ASSAULTGUN"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_assaultGunStanding 21369 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy assaultGun(standing)"
+	radius 8
+	height 8
+	Tag "$TAG_ASSAULTGUN"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	States {
+		Spawn:
+			DUMM B -1
+			Stop
+	}
+}
+actor wosD_wosFlamethrower 21370 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy flamer"
+	radius 8
+	height 8
+	Tag "$T_FLAMER"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_wosGrenadeLauncher 21371 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy grenade launcher"
+	radius 8
+	height 8
+	Tag "$TAG_GLAUNCHER1"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_xbow 21372 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy xbow"
+	radius 8
+	height 8
+	Tag "$TAG_STRIFECROSSBOW1"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_wosMinimissileLauncher 21373 {
+	//$Category "Weapons/dummy"
+	//$Title "dummy missile launcher"
+	radius 8
+	height 8
+	Tag "$TAG_MMLAUNCHER"
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor dx_compB6 21374 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp base06"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer"
+	radius 6
+	height 16
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compK6 21375 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp kybd06"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer"
+	radius 6
+	height 20
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compXB3 21376 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Xbase03"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with large screen"
+	radius 6
+	height 20
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compXB4 21377 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Xbase04"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with large screen"
+	radius 6
+	height 20
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compXK3 21378 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Xkybd03"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with large screen"
+	radius 6
+	height 20
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor dx_compXK4 21379 {
+	//$Category "Decorations/WoS"
+	//$Title "D3comp Xkybd04"
+	
+	-SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with large screen"
+	radius 6
+	height 20
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor wosD_dxPicnicTable 21380 {
+	//$Category "Decorations/WoS"
+	//$Title "picnic table"
+	
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "picnic table"
+	radius 32
+	height 28
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dxBeerTap 21381 {
+	//$Category "Decorations/WoS"
+	//$Title "beer tap - pipa"
+	
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "beer tap"
+	radius 8
+	height 24
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_zscMedPatch 21382 {
+	//$Category "Decorations/WoS"
+	//$Title "deco med patch"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "$TAG_MEDPATCH"
+	radius 8
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_zscMedicalKit 21383 {
+	//$Category "Decorations/WoS"
+	//$Title "deco medical kit"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "$TAG_MEDICALKIT"
+	radius 8
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_zscSurgeryKit 21384 {
+	//$Category "Decorations/WoS"
+	//$Title "deco surgery kit"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "$TAG_SURGERYKIT"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM AB 35
+			Loop
+	}
+}
+actor wosD_energyKit 21385 {
+	//$Category "Decorations/WoS"
+	//$Title "deco energykit"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "energy kit"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM AAAA 6
+			DUMM BB 6 Bright
+			Loop
+	}
+}
+actor wosD_energyPack 21386 {
+	//$Category "Decorations/WoS"
+	//$Title "deco energypack"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "energy pack"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM AAAA 6
+			DUMM BB 6 Bright
+			Loop
+	}
+}
+actor wosD_desuExComputerPersonal 21387 {
+	//$Category "Decorations/deusex"
+	//$Title "dex computerPersonal"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Personal computer with large screen"
+	radius 12
+	height 24
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexAIprototype 21388 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex teleportBase"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "teleport base"
+	radius 16
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexATM 21389 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex ATM"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "ATM"
+	radius 8
+	height 52
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexBarrel1 21390 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex barrel"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "metal barrel"
+	radius 14
+	height 36
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexCigaretteMachine 21391 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex cigaretteMachine"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "cigarette machine"
+	radius 8
+	height 36
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexCoffeeTable 21392 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex coffeeTable"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	+ACTLIKEBRIDGE
+	Tag "coffee table"
+	radius 16
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexCouchLeather 21393 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex couchLeather"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "leather couch"
+	radius 16
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexBookClosed 21394 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex bookClosed"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "book"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexBookOpen 21395 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex bookOpen"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "open book"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexOfficeChair 21396 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex officeChair"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "office chair"
+	radius 12
+	height 32
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexRetinalScanner 21397 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex retinalScanner"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "retinal scanner"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexTree1 21398 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex tree1"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "green tree"
+	radius 8
+	height 64
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexTree2 21399 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex tree2"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "green tree"
+	radius 8
+	height 64
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexTree3 21400 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex tree3"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "green tree"
+	radius 8
+	height 64
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexTree4 21401 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex tree4"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "green tree"
+	radius 12
+	height 64
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexBushes1 21402 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex bushes1"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "bushes"
+	radius 24
+	height 48
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexBushes2 21403 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex bushes2"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "bushes"
+	radius 8
+	height 48
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexBushes3 21404 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex bushes3"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "bushes"
+	radius 8
+	height 48
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexBushes1_1 : wosD_dexBushes1 21405 {
+	//$Title "dex bushes1_1"
+	radius 12
+	height 56
+	Tag "bushes"
+}
+actor wosD_dexBushes1_2 : wosD_dexBushes1 21406 {
+	//$Title "dex bushes1_2"
+	radius 16
+	height 48
+	Tag "bushes"
+}
+actor wosD_dexPot1 21407 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex pot1"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "ceramic pot"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexPot2 21408 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex pot2"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "ceramic pot"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexTrophy 21409 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex trophy"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "brass trophy"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexVase1 21410 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex vase1"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "decorative vase"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexVase2 21411 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex vase2"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "decorative vase"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexBenchlibrary 21412 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex benchLibrary"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "wooden bench"
+	radius 16
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexBookstandLibrary 21413 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex bookStandLibrary"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "wooden bookstand"
+	radius 12
+	height 24
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexCabinet 21414 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex cabinet"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "wooden cabinet"
+	radius 12
+	height 56
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexDeskSmallLibrary 21415 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex deskSmallLibrary"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "small desk"
+	radius 16
+	height 32
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexDeskNobleOffice 21416 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex deskNobleOffice"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "office desk"
+	radius 20
+	height 24
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexChairNobleOffice 21417 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex chairNobleOffice"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "padded chair"
+	radius 16
+	height 32
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_stimDevice1 21418 {
+	//$Category "Decorations/WoS"
+	//$Title "dx stimDevice 1"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "$T_wosStimDevice"
+	radius 4
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_stimDevice2 21419 {
+	//$Category "Decorations/WoS"
+	//$Title "dx stimDevice 2"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "$T_wosStimDevice"
+	radius 4
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_stimDevice3 21420 {
+	//$Category "Decorations/WoS"
+	//$Title "dx stimDevice 3"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "$T_wosStimDevice"
+	radius 4
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexAIprototypeCeiling 21421 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex teleportCeiling"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	+SPAWNCEILING
+	Tag "teleport base"
+	radius 4
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_cyclonesPillar 21422 {
+	//$Category "Decorations/WoS"
+	//$Title "cyclones pillar"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	//+SPAWNCEILING
+	Tag "pillar"
+	radius 16
+	height 64
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+actor wosD_dex_statueLion2 21423 {
+	//$Category "Decorations/deusEx"
+	//$Title "dEx statue lion 2"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Lion statue"
+	radius 28
+	height 96
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dexComputerPublick 21424 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex computer public"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	Tag "Public computer"
+	radius 8
+	height 64
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor dx_gallowsEmpty 21425 {
+	//$Category "Decorations/WoS"
+	//$Title "Sibenice prazdna"
+	
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "empty gallows"
+	height 64
+	radius 4
+	
+	States {
+		Spawn:
+			DSBC A -1
+			Stop
+	}
+}
+actor wosD_roses 21426 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "Roses"
+	
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "roses"
+	height 24
+	radius 8
+
+    States {
+        Spawn:
+            PLNT G -1
+            Stop
+    }
+}
+actor wosD_swampGrass 21427 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "Swamp grass"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	
+	Tag "swamp grass"
+	height 24
+	radius 8
+
+    States {
+        Spawn:
+            SFLY K -1
+            Stop
+    }
+}
+actor wosD_flowerYellow 21428 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "flower yellow"
+	
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "yellow flower"
+	scale 0.8
+	height 24
+	radius 4
+
+    States {
+        Spawn:
+            FLW1 A -1
+            Stop
+    }
+}
+actor wosD_flowerWhite 21429 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "flower white"
+	
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "white flower"
+	scale 0.8
+	height 24
+	radius 4
+
+    States {
+        Spawn:
+            FLW2 A -1
+            Stop
+    }
+}
+actor wosD_roseRed 21430 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "rose red"
+	
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "red rose"
+	scale 0.8
+	height 24
+	radius 8
+
+    States {
+        Spawn:
+            FLW4 A -1
+            Stop
+    }
+}
+actor wosD_roseYellow 21431 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "rose yellow"
+	
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "yellow rose"
+	scale 0.8
+	height 24
+	radius 8
+
+    States {
+        Spawn:
+            FLW5 A -1
+            Stop
+    }
+}
+actor wosD_roseBlue 21432 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "rose blue"
+	
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "blue rose"
+	scale 0.8
+	height 24
+	radius 8
+
+    States {
+        Spawn:
+            FLW6 A -1
+            Stop
+    }
+}
+actor wosD_daggFlower01 21433 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "dagg flower 01"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "flower"
+	scale 0.8
+	height 24
+	radius 8
+
+    States {
+        Spawn:
+            FLW7 A -1
+            Stop
+    }
+}
+actor wosD_daggFlower02 21434 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "dagg flower 02"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "flower"
+	scale 0.8
+	height 24
+	radius 8
+
+    States {
+        Spawn:
+            FLW8 A -1
+            Stop
+    }
+}
+actor wosD_daggFlower03 21435 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "dagg flower 03"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "flower"
+	scale 0.8
+	height 24
+	radius 8
+
+    States {
+        Spawn:
+            FLW9 A -1
+            Stop
+    }
+}
+actor wosD_daggFlower04 21436 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "dagg flower 04"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "flower"
+	scale 0.8
+	height 16
+	radius 8
+
+    States {
+        Spawn:
+            FLWA A -1
+            Stop
+    }
+}
+actor wosD_daggFlower05 21437 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "dagg flower 05"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "flower"
+	scale 0.8
+	height 24
+	radius 8
+
+    States {
+        Spawn:
+            FLWB A -1
+            Stop
+    }
+}
+actor wosD_zeli01 21438 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "cabbage - zeli"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "cabbage"
+	scale 1
+	height 16
+	radius 4
+
+    States {
+        Spawn: 
+            ZEL1 A -1
+            Stop
+    }
+}
+actor wosD_papriky 21439 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "peppers - papriky"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "peppers"
+	scale 1
+	height 24
+	radius 8
+
+    States {
+        Spawn: 
+            PRK1 A -1
+            Stop
+    }
+}
+actor wosD_dyne 21440 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "pumpkin - dyne"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "pumpkin"
+	scale 1
+	height 24
+	radius 8
+
+    States {
+        Spawn: 
+            DYN1 A -1
+            Stop
+    }
+}
+actor wosD_baklazan 21441 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "eggplant - baklazan"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "eggplant"
+	scale 1
+	height 24
+	radius 8
+
+    States {
+        Spawn: 
+            BAK1 A -1
+            Stop
+    }
+}
+actor wosD_okurky01 21442 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "cucumbers - okurky 1"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "cucumbers"
+	scale 1
+	height 62
+	radius 8
+
+    States {
+        Spawn: 
+            OKU1 A -1
+            Stop
+    }
+}
+actor wosD_okurky02 21443 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "cucumbers - okurky 2"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "cucumbers"
+	scale 1
+	height 40
+	radius 8
+
+    States {
+        Spawn: 
+            OKU2 A -1
+            Stop
+    }
+}
+actor wosD_rajcata01 21444 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "tomatoes - rajcata 1"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "tomatoes"
+	scale 1
+	height 52
+	radius 16
+
+    States {
+        Spawn: 
+            RAJ1 A -1
+            Stop
+    }
+}
+actor wosD_rajcata02 21445 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "tomatoes - rajcata 2"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "tomatoes"
+	scale 1
+	height 24
+	radius 8
+
+    States {
+        Spawn: 
+            RAJ2 A -1
+            Stop
+    }
+}
+actor wosD_slunecnice01 21446 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "sunflower - slunecnice 1"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "sunflower"
+	scale 1
+	height 69
+	radius 8
+
+    States {
+        Spawn: 
+            DSL1 A -1
+            Stop
+    }
+}
+actor wosD_alunecnice02 21447 {
+    //$Category "Trees and Rocks/WoS"
+	//$Title "sunflower - slunecnice 2"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "sunflower"
+	scale 1
+	height 71
+	radius 8
+
+    States {
+        Spawn: 
+            DSL2 A -1
+            Stop
+    }
+}
+actor wosD_becomingBinder 21448 {
+	//$Category "Decorations/WoS"
+	//$Title "becoming binder"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "binder"
+	scale 1
+	height 68
+	radius 32
+	
+	States {
+		Spawn:
+			BCMB A -1
+			Stop
+	}
+}
+actor wosD_KLog1 21449 {
+	//$Category "Trees and Rocks/WoS"
+	//$Title "Log 01"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	tag "wooden log"
+	scale 1
+	height 24
+	radius 16
+
+    States {
+        Spawn: 
+            DUMM A -1
+            Stop
+    }
+}
+actor wosD_KLog2 21450 {
+	//$Category "Trees and Rocks/WoS"
+	//$Title "Log 02"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	tag "wooden log"
+	scale 1
+	height 24
+	radius 16
+
+    States {
+        Spawn: 
+            DUMM A -1
+            Stop
+    }
+}
+actor wosD_KLog3 21451 {
+	//$Category "Trees and Rocks/WoS"
+	//$Title "Log 03"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	tag "wooden log"
+	scale 1
+	height 24
+	radius 16
+
+    States {
+        Spawn: 
+            DUMM A -1
+            Stop
+    }
+}
+actor wosD_KLog4 21452 {
+	//$Category "Trees and Rocks/WoS"
+	//$Title "Log 04"
+	
+	-SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	tag "wooden log"
+	scale 1
+	height 24
+	radius 16
+
+    States {
+        Spawn: 
+            DUMM A -1
+            Stop
+    }
+}
+actor wosD_nwMale_03 21453 {
+	//$Category "Other NPCs/males"
+	//$Title "nw male 03 short trader"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "short trader"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NM03 A -1
+			Stop
+	}
+}
+actor wosD_nwMale_04 21454 {
+	//$Category "Other NPCs/males"
+	//$Title "nw male 04 travelling gypsy"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "travelling gypsy"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NM04 A -1
+			Stop
+	}
+}
+actor wosD_nwMale_05 21455 {
+	//$Category "Other NPCs/males"
+	//$Title "nw male 05 bearded oldguy in blue"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "bearded oldguy in blue"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NM05 A -1
+			Stop
+	}
+}
+actor wosD_nwMale_06 21456 {
+	//$Category "Other NPCs/males"
+	//$Title "nw male 06 man in blue"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "man in blue"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NM06 A -1
+			Stop
+	}
+}
+actor wosD_nwMale_07 21457 {
+	//$Category "Other NPCs/males"
+	//$Title "nw male 07 blackbeard guy"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "blackbeard guy"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NM07 A -1
+			Stop
+	}
+}
+actor wosD_nwMale_08 21458 {
+	//$Category "Other NPCs/males"
+	//$Title "nw male 08 bald monk"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "bald monk"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NM08 A -1
+			Stop
+	}
+}
+actor wosD_nwFemale_04 21459 {
+	//$Category "Other NPCs/females"
+	//$Title "nw female 04"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "blonde girl brown dress"
+	radius 16
+	height 62
+	scale 0.8
+	States {
+		Spawn:
+			NF04 A -1
+			Stop
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// daggerfall lanterns ////////////////////////////////////////////////////////////////////////////////////////
+
+actor daggCandleFire : bloodCandleFire {
+	Tag "hanging lantern"
+	scale 1.0
+	States {
+		Spawn:
+			BCDF ABCD 4 Bright light("daggCandleLight")
+			Loop
+	}
+}
+
+actor wosD_daggerfallLanternHanging01 21460 {
+	//$Category "Decorations/WoS"
+	//$Title "dagg hanging lantern 01"
+	+SOLID
+	+NOGRAVITY
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "hanging lantern"
+	height 48
+	radius 8
+	scale 1.0
+
+	States {
+		/*Spawn:
+			DCL1 ABCD 4 Bright light("daggLantLight")
+			Loop*/
+		Spawn:
+			DUMM A -1 Bright NODELAY A_SpawnItemEx("daggCandleFire", 0, 0, 18)
+			Stop
+	}
+}
+actor wosD_daggerfallLanternHanging05 21461 {
+	//$Category "Decorations/WoS"
+	//$Title "dagg hanging lantern 05"
+	+SOLID
+	+NOGRAVITY
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "hanging lantern"
+	height 48
+	radius 8
+	scale 1.0
+
+	States {
+		/*Spawn:
+			DCL5 ABCD 4 Bright light("daggLantLight")
+			Loop*/
+		Spawn:
+			DUMM A -1 Bright NODELAY A_SpawnItemEx("daggCandleFire", 0, 0, 18)
+			Stop
+	}
+}
+actor wosD_daggerfallLanternHanging06 21462 {
+	//$Category "Decorations/WoS"
+	//$Title "dagg hanging lantern 06"
+	+SOLID
+	+NOGRAVITY
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "hanging lantern"
+	height 48
+	radius 8
+	scale 1.0
+
+	States {
+		/*Spawn:
+			DCL6 A -1 Bright light("daggLantLight")
+			stop*/
+		Spawn:
+			DUMM A -1 Bright NODELAY A_SpawnItemEx("daggCandleFire", 0, 0, 18)
+			Stop
+	}
+}
+actor wosD_daggerfallLanternHanging03 21463 {
+	//$Category "Decorations/WoS"
+	//$Title "dagg hanging lantern 03"
+	+SOLID
+	+NOGRAVITY
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "hanging lantern"
+	height 110
+	radius 8
+	scale 1.0
+
+	States {
+		/*Spawn:
+			DCL3 ABCD 4 Bright light("daggLantLight")
+			Loop*/
+		Spawn:
+			DUMM A -1 Bright NODELAY A_SpawnItemEx("daggCandleFire", 0, 0, 18)
+			Stop
+	}
+}
+actor wosD_daggerfallLanternHanging04 21464 {
+	//$Category "Decorations/WoS"
+	//$Title "dagg hanging lantern 04"
+	+SOLID
+	+NOGRAVITY
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "hanging lantern"
+	height 182
+	radius 8
+	scale 1.0
+
+	States {
+		/*Spawn:
+			DCL4 ABCD 4 Bright light("daggLantLight")
+			Loop*/
+		Spawn:
+			DUMM A -1 Bright NODELAY A_SpawnItemEx("daggCandleFire", 0, 0, 18)
+			Stop
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// another hexen stuff ////////////////////////////////////////////////////////////////////////////////////////
+actor wosD_hexenTreeSwampLarge 21465 {
+	//$Category "Trees and Rocks/WoS"
+	//$Title "hexen tree swamp"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "swamp tree"
+	height 182
+	radius 8
+	scale 1.0
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_hexenLogSwamp 21466 {
+	//$Category "Trees and Rocks/WoS"
+	//$Title "hexen log swamp"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	tag "wooden log"
+	height 16
+	radius 8
+	scale 1.0
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_headCrusher 21467 {
+	//$Category "Decorations/WoS"
+	//$Title "head crusher md3"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "head crusher"
+	height 32
+	radius 12
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_judasCradle 21468 {
+	//$Category "Decorations/WoS"
+	//$Title "juda's cradle"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+	Tag "judas cradle"
+	height 32
+	radius 12
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor wosD_woodenBarrel : WoodenBarrel 21469 {
+	//$Category "Decorations/WoS"
+	//$Title "dx wooden barrel"
+	//+SOLID
+	//+SHOOTABLE
+	//+NOBLOOD
+	//+INCOMBAT
+	//+ACTLIKEBRIDGE
+	//+NOGRAVITY
+	//+DONTTHRUST	
+	+PUSHABLE
+	+ACTLIKEBRIDGE
+	Tag "wooden barrel"
+	Health 28
+ 	Radius 10
+	Height 28
+	DeathSound "woodenbarrel/death"
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+		Death:
+			BARW B 2 A_Scream
+    		BARW C 2
+			BARW D 2 A_NoBlocking
+			BARW EFG 2
+			BARW H -1
+			Stop
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// animated smoke /////////////////////////////////////////////////////////////////////////////////////////////
+actor wosD_animatedSmokeBase {
+	//$Category "Decorations/WoS"
+	Tag "smoke column"
+	height 142
+	radius 8
+	renderstyle translucent
+	alpha 0.5
+	-SOLID
+	+NOGRAVITY
+	+DONTTHRUST
+
+	States {
+		Spawn:
+			BSMK ABCD 4
+			Loop
+	}
+}
+actor wosD_animatedSmokeSmall : wosD_animatedSmokeBase 21470 {
+	//$Title "Smoke Small"
+	height 32
+	Scale 0.25
+	Tag "smoke column"
+}
+actor wosD_animatedSmokeMedium : wosD_animatedSmokeBase 21471 {
+	//$Title "Smoke Medium"
+	height 32
+	Scale 0.5
+	Tag "smoke column"
+}
+actor wosD_animatedSmokeBig : wosD_animatedSmokeBase 21472 {
+	//$Title "Smoke Big"
+	height 32
+	Scale 0.75
+	Tag "smoke column"
+}
+actor wosD_animatedSmokeHuge : wosD_animatedSmokeBase 21473 {
+	//$Title "Smoke Huge"
+	height 128
+	scale 1
+	Tag "smoke column"
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// tub direct model display ///////////////////////////////////////////////////////////////////////////////////
+actor wosD_tub 21474 {
+	//$Category "Decorations/WoS"
+	//$Title "dx Tub"
+	Tag "wooden tub"
+	-NOBLOCKMAP
+	radius 12
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+actor wosD_maleHarris 21475 {
+	//$Category "Other NPCs/Wos"
+	//$Title "npc harris"
+	+SOLID
+	+USESPECIAL
+	radius 16
+	height 64
+
+	States {
+		Spawn:
+			HARS AABBCCDD 5
+			Loop 
+	}
+}
+actor wosD_maleGovernor 21476 {
+	//$Category "Other NPCs/Wos"
+	//$Title "npc governor"
+	+SOLID
+	+USESPECIAL
+	radius 16
+	height 64
+
+	States {
+		Spawn:
+			GVNR AAAAAABBCCDDDDDD 5
+			Loop
+	}
+}
+actor wosD_maleGovernor2 21477 {
+	//$Category "Other NPCs/Wos"
+	//$Title "npc governor 2"
+	+SOLID
+	+USESPECIAL
+	radius 16
+	height 64
+
+	States {
+		Spawn:
+			GVN2 AAAAAABBCCDDDDDD 5
+			Loop
+	}
+}
+actor wosD_maleGovernor3 21478 {
+	//$Category "Other NPCs/Wos"
+	//$Title "npc governor 3"
+	+SOLID
+	+USESPECIAL
+	radius 16
+	height 64
+
+	States {
+		Spawn:
+			GVN3 AAAAAABBCCDDDDDD 5
+			Loop
+	}
+}
+actor wosD_maleWorner 21479 {
+	//$Category "Other NPCs/Wos"
+	//$Title "npc worner"
+	+SOLID
+	+USESPECIAL
+	radius 16
+	height 64
+
+	States {
+		Spawn:
+			WRNR AABBCCDD 5
+			Loop
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+actor wosD_bucketHandle 21480 {
+	//$Category "Decorations/WoS"
+	//$Title "dx bucket handle"
+	-NOBLOCKMAP
+	Tag "wooden bucket"
+	radius 8
+	height 12
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor wosD_dxTablet03 21481 {
+	//$Category "Decorations/WoS"
+	//$Title "Tablet 03"
+	Tag "tablet"
+	+useSpecial
+	+solid
+	//+nogravity
+	+DontThrust
+	
+	height 4
+	radius 4
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dxTablet04 21482 {
+	//$Category "Decorations/WoS"
+	//$Title "Tablet 04"
+	+useSpecial
+	+solid
+	//+nogravity
+	+DontThrust
+	
+	Tag "tablet"
+	height 4
+	radius 4
+
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+
+actor wosD_stool 21483 {
+	//$Category "Decorations/WoS"
+	//$Title "dx stool"
+	Tag "wooden stool"
+	Radius 6
+  	Height 24
+  	+SOLID
+  	States {
+  		Spawn:
+			DUMM A -1
+			Stop
+  	}
+}
+
+actor wosD_anvil replaces anvil 21484 {
+	//$Category "Decorations/WoS"
+	//$Title "dx anvil"
+	tag "metal anvil"
+	Radius 16
+  	Height 32
+  	+SOLID
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor wosD_mug replaces mug 21485 {
+	//$Category "Decorations/WoS"
+	//$Title "dx mug"
+	tag "wooden mug"
+	Radius 4
+  	Height 8
+  	+SOLID
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor wosD_pottedTree : pottedTree 21486 {
+	//$Category "Decorations/WoS"
+	//$Title "dx potted tree"
+	tag "potted tree"
+	Radius 15
+  	Height 64
+  	+SOLID
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor wosD_combine_dispenser 21487 {
+	//$Category "Decorations/WoS"
+	//$Title "food dispenser"
+	tag "food dispenser"
+	radius 8
+	height 32
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor wosD_npc_daggerfallMale01 21488 {
+	//$Category "Other NPCs/wos"
+	//$Title "bald black noble"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+
+	tag "bald black noble"
+	radius 16
+	height 60
+
+	States {
+		Spawn:
+			DM01 A -1
+			Stop
+	}
+}
+actor wosD_npc_daggerfallMale02 21489 {
+	//$Category "Other NPCs/wos"
+	//$Title "bald guy writing"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+
+	tag "bald guy writing"
+	radius 16
+	height 43
+
+	States {
+		Spawn:
+			DM02 A -1
+			Stop
+	}
+}
+actor wosD_npc_daggerfallMale03 21490 {
+	//$Category "Other NPCs/wos"
+	//$Title "balding flutist"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+
+	tag "balding flutist"
+	radius 16
+	height 56
+
+	States {
+		Spawn:
+			DM03 A -1
+			Stop
+	}
+}
+actor wosD_npc_daggerfallMale04 21491 {
+	//$Category "Other NPCs/wos"
+	//$Title "brown noble"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+
+	tag "brown noble"
+	radius 16
+	height 60
+
+	States {
+		Spawn:
+			DM04 A -1
+			Stop
+	}
+}
+actor wosD_npc_daggerfallMale05 21492 {
+	//$Category "Other NPCs/wos"
+	//$Title "naked boy"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+
+	tag "naked boy"
+	radius 16
+	height 43
+
+	States {
+		Spawn:
+			DM05 A -1
+			Stop
+	}
+}
+actor wosD_npc_daggerfallMale06 21493 {
+	//$Category "Other NPCs/wos"
+	//$Title "brown guy"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+
+	tag "brown guy"
+	radius 16
+	height 61
+
+	States {
+		Spawn:
+			DM06 A -1
+			Stop
+	}
+}
+actor wosD_npc_daggerfallMale07 21494 {
+	//$Category "Other NPCs/wos"
+	//$Title "white guy"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+
+	tag "white guy"
+	radius 16
+	height 61
+
+	States {
+		Spawn:
+			DM07 A -1
+			Stop
+	}
+}
+actor wosD_npc_daggerfallMale08 21495 {
+	//$Category "Other NPCs/wos"
+	//$Title "tall guy"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+
+	tag "tall guy"
+	radius 16
+	height 64
+
+	States {
+		Spawn:
+			DM08 A -1
+			Stop
+	}
+}
+actor wosD_npc_daggerfallMale09 21496 {
+	//$Category "Other NPCs/wos"
+	//$Title "blonde guy"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+
+	tag "blonde guy"
+	radius 16
+	height 60
+
+	States {
+		Spawn:
+			DM09 A -1
+			Stop
+	}
+}
+actor wosD_npc_daggerfallMale10 21497 {
+	//$Category "Other NPCs/wos"
+	//$Title "naked prisoner"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+
+	tag "naked prisoner"
+	radius 16
+	height 60
+
+	States {
+		Spawn:
+			DM10 A -1
+			Stop
+	}
+}
+actor wosD_npc_daggerfallMale11 21498 {
+	//$Category "Other NPCs/wos"
+	//$Title "horserider"
+	+SOLID
+	+USESPECIAL
+	+DONTTHRUST
+
+	tag "horserider"
+	radius 32
+	height 79
+
+	States {
+		Spawn:
+			DM11 AAAAAAAAAAAAAAAABBCC 4
+			Loop
+	}
+}
+actor wosD_metalPot replaces metalPot 21499 {
+	//$Category "Decorations/WoS"
+	//$Title "dx metal pot"
+	-NOBLOCKMAP
+	tag "metal pot"
+	radius 8
+	height 6
+
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor wosD_powerDeviceStand 21500 {
+	//$Category "Decorations/WoS"
+	//$Title "dx power stand"
+	-NOBLOCKMAP
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "power stand"
+	radius 32
+	height 128
+
+	States {
+		Spawn:
+			DUMM AB 4
+			Loop
+	}
+}
+
+actor wosD_npc_nwMale09 21501 {
+	//$Category "Other NPCs/males"
+	//$Title "nw male 09 traveller 2"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "travelling gypsy"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NM09 A -1
+			Stop
+	}
+}
+
+actor wosD_npc_nwMale10 21502 {
+	//$Category "Other NPCs/males"
+	//$Title "nw male 09 traveller 3"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "travelling gypsy"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NM10 A -1
+			Stop
+	}
+}
+
+actor wosD_npc_nwMale11 21503 {
+	//$Category "Other NPCs/males"
+	//$Title "nw male 09 traveller 4"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "travelling gypsy"
+	radius 16
+	height 62
+	scale 0.9
+	States {
+		Spawn:
+			NM11 A -1
+			Stop
+	}
+}
+
+actor wosD_npc_female15 21504 {
+	//$Category "Other NPCs/females"
+	//$Title "naked hostess 01"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "naked hostess"
+	radius 16
+	height 53
+	scale 0.9
+	States {
+		Spawn:
+			HS01 A -1
+			Stop
+	}
+}
+actor wosD_npc_female16 21505 {
+	//$Category "Other NPCs/females"
+	//$Title "naked hostess 02"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "naked hostess"
+	radius 16
+	height 44
+	scale 0.9
+	States {
+		Spawn:
+			HS02 A -1
+			Stop
+	}
+}
+actor wosD_npc_female17 21506 {
+	//$Category "Other NPCs/females"
+	//$Title "naked hostess 03"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "naked hostess"
+	radius 16
+	height 56
+	scale 0.9
+	States {
+		Spawn:
+			HS03 A -1
+			Stop
+	}
+}
+actor wosD_npc_female18 21507 {
+	//$Category "Other NPCs/females"
+	//$Title "naked hostess 04"
+	+SOLID
+	+USESPECIAL
+	+NOGRAVITY
+	+DONTTHRUST
+	tag "naked hostess"
+	radius 16
+	height 56
+	scale 0.9
+	States {
+		Spawn:
+			HS04 A -1
+			Stop
+	}
+}
+
+actor wosD_RebelBoots : RebelBoots replaces RebelBoots 21508 {
+	//$Category "Decorations/WoS"
+	//$Title "dx rebel boots"
+	-NOBLOCKMAP
+	tag "black boots"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor wosD_energypod 21509 {
+	//$Category "Decorations/WoS"
+	//$Title "deco energypod"
+	-NOBLOCKMAP
+	tag "$T_ENERGYPOD"
+	radius 8
+	height 16
+	States {
+		Spawn:
+			DUMM AAAA 6
+			DUMM BB 6 Bright
+			Loop
+	}
+}
+
+actor wosD_techLampBrass 21510 {
+	//$Category "Light sources/WoS"
+	//$Title "dx Brass Tech Lamp"
+	tag "Brass Tech Lamp"
+	Radius 8
+  	Height 64
+  	+SOLID
+	States {
+		Spawn:
+			DUMM A -1 Bright light("mildLight6448")
+			Stop
+	}
+}
+
+actor wosD_dex_datacube 21511 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex datacube"
+	-NOBLOCKMAP
+	tag "datacube"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor wosD_dex_pan1 21512 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex pan1"
+	-NOBLOCKMAP
+	tag "metal pan"
+	radius 8
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_pan3 21513 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex pan3"
+	-NOBLOCKMAP
+	tag "small metal pot"
+	radius 8
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_pan4 21514 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex pan4"
+	-NOBLOCKMAP
+	tag "metal pot"
+	radius 8
+	height 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_soyFood 21515 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex soy food"
+	-NOBLOCKMAP
+	tag "soy food"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+actor wosD_dex_roadBlock 21516 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex road block"
+	-NOBLOCKMAP
+	tag "road block"
+	radius 16
+	height 40
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_lifeSupportBase 21517 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex life support base"
+	-NOBLOCKMAP
+	tag "life support base"
+	radius 32
+	height 64
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_dex_bioCell 21518 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex biocell"
+	-NOBLOCKMAP
+	tag "Energy Cell"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM AAAAA 6 Bright
+			DUMM BCDEDCB 6 Bright
+			Loop
+	}
+}
+actor wosDialogDummy 21519 {
+	//$Category "Decorations/wos"
+	//$Title "dialog dummy"
+	radius 8
+	height 8
+	States {
+		Spawn:
+			COMM A -1
+			Stop
+	}
+}
+actor wosD_dex_multiTool 21520 {
+	//$Category "Decorations/deusEx"
+	//$Title "dex multitool"
+	-NOBLOCKMAP
+	tag "multitool"
+	radius 4
+	height 4
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+actor wosD_infoSign 21521 {
+	//$Category "Decorations/deusEx"
+	//$Title "info sign"
+	-NOBLOCKMAP
+	+USESPECIAL
+	tag "info sign"
+	radius 8
+	height 62
+	States {
+		Spawn:
+			ISGN A -1
+			Stop
+	}
+}
+actor wos_roadBlockBridge : InvisibleBridge32 21522 {
+	tag "road block"
+	height 40
+	radius 16
+}
+actor test_ar15 21523 {
+	//$Category "Decorations/Wos"
+	//$Title "ar15"
+	-NOBLOCKMAP
+	+NOGRAVITY
+	+USESPECIAL
+	Tag "Assault Rifle"
+	height 16
+	radius 8
+	States {
+		Spawn:
+			DUMM A -1
+			Stop
+	}
+}
+
+// new torches ////////////////////////////////////////////////////////////////////////////////////////////////
+
+// credits osjclatchford torches //////////////////////////////////////////////////////////////////////////////
+actor newFlameEmbersHuge {
+	+NOCLIP
+   	+NOGRAVITY
+   	+NOBLOCKMAP
+   	RenderStyle "ADD"
+   	Alpha 0.8
+  	scale 0.7
+   	States {
+		Spawn:
+			SPGN abcdefghijklmnopqrstuvwxyz 1 bright
+			loop
+   	}
+}
+actor NewFlameHuge {
+   	-NOCLIP
+   	+NOGRAVITY
+   	-NOBLOCKMAP
+	Radius 16
+	Height 68
+	ProjectilePassHeight -16
+  	//RenderStyle "ADD"
+	RenderStyle "translucent"
+  	Alpha 0.85
+	scale 0.9
+   	States {
+		Spawn:
+			FS02 ABCDEFG 3 bright light("newFlameStandingTorchLight")
+			Loop
+	}
+}
+actor newFlameEmbersLarge : newFlameEmbersHuge {
+	scale 0.55
+}
+actor newFlameLarge : NewFlameHuge {
+	scale 0.6
+}
+actor newFlameEmbersMedium : newFlameEmbersHuge {
+	scale 0.35
+}
+actor newFlameMedium : NewFlameHuge {
+	scale 0.45
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+actor hugeTorchEmbers : newFlameEmbersHuge {
+	tag "huge torch"
+}
+actor mediumTorchEmbers : newFlameEmbersMedium {
+	tag "medium torch"
+}
+actor largeTorchEmbers : newFlameEmbersLarge {
+	tag "large torch"
+}
+actor burningBrazierEmbers : newFlameEmbersLarge {
+	tag "burning brazier"
+}
+actor burningBowlEmbers : newFlameEmbersLarge {
+	tag "burning bowl"
+}
+actor strifeBurningBarrelEmbers : newFlameEmbersLarge {
+	tag "burning barrel"
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+actor hugeTorchFlameNew : NewFlameHuge {
+	tag "huge torch"
+}
+actor mediumTorchFlameNew : newFlameMedium {
+	tag "medium torch"
+}
+actor largeTorchFlameNew : newFlameLarge {
+	tag "large torch"
+}
+actor burningBrazierFlameNew : NewFlameHuge {
+	tag "burning brazier"
+}
+actor burningBowlFlameNew : NewFlameHuge {
+	tag "burning bowl"
+}
+actor strifeBurningBarrelFlameNew : NewFlameHuge {
+	tag "burning barrel"
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+actor wosD_hugeTorchNewFlame 21524 {
+	//$Category "Decorations/Wos"
+	//$Title "newFlame huge torch"
+	+DONTTHRUST
+	tag "huge torch"
+	radius 10
+	height 80
+	States {
+		Spawn:
+			DUMM A -1 NODELAY { 
+				A_SpawnItemEx("hugeTorchFlameNew", 0, 0, 57); 
+				A_SpawnItemEx("hugeTorchEmbers", 0, 0, 58);
+			}
+			Stop
+	}
+}
+actor wosD_mediumTorchNewFlame 21525 {
+	//$Category "Decorations/Wos"
+	//$Title "newFlame medium torch"
+	+DONTTHRUST
+	+SOLID
+	tag "medium torch"
+	radius 4
+	height 72
+	States {
+		Spawn:
+			DUMM A -1 NODELAY {
+				A_SpawnItemEx("mediumTorchFlameNew", 0, 0, 48);
+				A_SpawnItemEx("mediumTorchEmbers", 0, 0, 48);
+			}
+			Stop
+	}
+}
+actor wosD_largeTorchNewFlame 21526 {
+	//$Category "Decorations/Wos"
+	//$Title "newFlame large torch"
+	+DONTTHRUST
+	+SOLID
+	tag "large torch"
+	radius 10
+	height 72
+	ActiveSound "world/smallfire"
+	States {
+		Spawn:
+			DUMM A -1 NODELAY {
+				A_SpawnItemEx("largeTorchFlameNew", 0, 0, 52);
+				A_SpawnItemEx("largeTorchEmbers", 0, 0, 52);
+			}
+			Stop
+	}
+}
+actor wosD_burningBrazierNewFlame 21527 {
+	//$Category "Decorations/Wos"
+	//$Title "newFlame burning brazier"
+	+SOLID
+	+DONTTHRUST
+	radius 16
+	height 32
+	tag "burning brazier"
+	States {
+		Spawn:
+			DUMM A -1 NODELAY {
+				A_SpawnItemEx("burningBrazierFlameNew", 0, 0, 23);
+				A_SpawnItemEx("burningBrazierEmbers", 0, 0, 23);
+			}
+			Stop
+	}
+}
+actor wosD_burningBowlNewFlame 21528 {
+	//$Category "Decorations/Wos"
+	//$Title "newFlame burning bowl"
+	+SOLID
+	+DONTTHRUST	
+	radius 16
+	height 16
+	tag "burning bowl"
+	ActiveSound "world/smallfire"
+	States {
+		Spawn:
+			DUMM A -1 NODELAY {
+				A_SpawnItemEx("burningBowlFlameNew", 0, 0, 5);
+				A_SpawnItemEx("burningBowlEmbers", 0, 0, 5);
+			}
+			Stop
+	}
+}
+actor wosD_StrifeBurningBarrelNewFlame 21529 {
+	//$Category "Decorations/Wos"
+	//$Title "newFlame burning barrel"
+	tag "burning barrel"
+	Radius 16
+	Height 48
+	+SOLID
+	+DONTTHRUST
+	States {
+		Spawn:
+			DUMM A -1 NODELAY {
+				A_SpawnItemEx("strifeBurningBarrelFlameNew", 0, 0, 26);
+				A_SpawnItemEx("strifeBurningBarrelEmbers", 0, 0, 28);
+			}
+			Stop
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+actor wosD_bloodKokan 21530 {
+	//$Category "Decorations/Wos"
+	//$Title "cocoon"
+	tag "cocoon"
+	radius 16
+	height 64
+	scale 0.5
+	+SOLID
+	+NOGRAVITY
+	+DONTTHRUST
+	+USESPECIAL
+
+	States {
+		Spawn:
+			KOKN V -1
+			Stop
+	}
+}
+
+actor wosD_dryingFish01 21531 {
+	//$Category "Decorations/Wos"
+	//$Title "drying hanging fish 01"
+	tag "drying fish"
+	radius 8
+	height 40
+	scale 0.5
+	+SOLID
+	+NOGRAVITY
+	+DONTTHRUST
+	+USESPECIAL
+
+	States {
+		Spawn:
+			FIS2 A -1
+			Stop
+	}
+}
+actor wosD_dryingFish02 21532 {
+	//$Category "Decorations/Wos"
+	//$Title "drying hanging fish 02"
+	tag "drying fish"
+	radius 8
+	height 56
+	scale 0.5
+	+SOLID
+	+NOGRAVITY
+	+DONTTHRUST
+	+USESPECIAL
+
+	States {
+		Spawn:
+			FIS5 A -1
+			Stop
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////

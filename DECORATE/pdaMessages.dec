@@ -1,0 +1,125 @@
+////////////////////////////////////////////////////////////////////////////////////////////////
+// PDA messages ////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+// base class //////////////////////////////////////////////////////////////////////////////////
+actor noteBase : PDA {
+	//$category "ZSCRIPT/PDAnotes"
+
+	radius 12
+	height 12
+
+	States {
+		Spawn:
+			DUMM ABCD 6
+			Loop
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+// notes ///////////////////////////////////////////////////////////////////////////////////////
+actor notePrayers : noteBase {
+	//$title "note: prayers"
+	Tag "$PDA_notePrayers_TITLE"
+	PDA.Text "$PDA_notePrayers_TEXT"
+}
+actor noteSHmedical : noteBase {
+	//$title "note: SH medical"
+	Tag "$PDA_noteSHmedical_TITLE"
+	PDA.Text "$PDA_noteSHmedical_TEXT"
+}
+actor noteSHshouldergun : noteBase {
+	//$title "note: SH shouldergun" 
+	Tag "$PDA_noteSHshouldergun_TITLE"
+	PDA.Text "$PDA_noteSHshouldergun_TEXT"
+	PDA.Image "graphics/PDA/images/shouldergun.png"
+}
+actor noteSHbinderStavesTechnical : noteBase {
+	//$title "note: SH binder staves technical" 
+	Tag "$PDA_noteSHbinderStavesTechnical_TITLE"
+	PDA.Text "$PDA_noteSHbinderStavesTechnical_TEXT"
+	PDA.Image "graphics/PDA/images/binderstaff.png"
+}
+actor noteSHbinderNote01 : noteBase {
+	//$title "note: SH binder 01"
+	Tag "$PDA_noteSHbinderNote01_TITLE"
+	PDA.Text "$PDA_noteSHbinderNote01_TEXT"
+}
+actor noteSHsilentHillsTouristGuide : noteBase {
+	//$title "note: SH tourist guide"
+	Tag "$PDA_noteSHsilentHillsTouristGuide_TITLE"
+	PDA.Text "$PDA_noteSHsilentHillsTouristGuide_TEXT"
+}
+actor noteSHminesReport : noteBase {
+	//$title "note: SH mines report"
+	Tag "$PDA_noteSHminesReport_TITLE"
+	PDA.Text "$PDA_noteSHminesReport_TEXT"
+}
+actor noteSHbindersOath : noteBase {
+	//$title "note: SH binder's oath"
+	Tag "$PDA_noteSHbindersOath_TITLE"
+	PDA.Text "$PDA_noteSHbindersOath_TEXT"
+}
+actor noteCommonDogmas : noteBase {
+	//$title "note: Common Dogmas"
+	Tag "$PDA_noteCommonDogmas_Title"
+	PDA.Text "$PDA_noteCommonDogmas_Text"
+}
+actor noteTheGreatHouses : noteBase {
+	//$title "note: The Great Houses"
+	Tag "$PDA_noteTheGreatHouses_Title"
+	PDA.Text "$PDA_noteTheGreatHouses_Text"
+}
+actor noteTekGuildNotes : noteBase {  
+    //$title "note: tekguild notes"
+    Tag "$PDA_noteTekGuildNotes_Title"
+	PDA.Text "$PDA_noteTekGuildNotes_Text"    
+}
+actor noteMillport : noteBase {
+    //$title "note: millport"
+    Tag "$PDA_noteMillport_Title"
+	PDA.Text "$PDA_noteMillport_Text"    
+}
+actor noteEmperorsList : noteBase {
+    //$title "note: emperors list"
+    Tag "$PDA_noteEmperorsList_Title"
+	PDA.Text "$PDA_noteEmperorsList_Text"
+}
+actor noteEastcliff : noteBase {
+	//$Title "note: eastcliff"
+    Tag "$PDA_noteEastcliff_Title"
+	PDA.Text "$PDA_noteEastcliff_Text"
+}
+actor noteTekGuild : noteBase {
+	//$Title "note: eastcliff"
+    Tag "$PDA_noteTekGuild_Title"
+	PDA.Text "$PDA_noteTekGuild_Text"
+}
+actor noteBinderOrder : noteBase {
+	//$Title "note: binder order"
+    Tag "$PDA_noteBinderOrder_Title"
+	PDA.Text "$PDA_noteBinderOrder_Text"
+}
+actor notePlayerPersonal : noteBase {
+	//$Title "note: player personal"
+    Tag "$PDA_notePlayerPersonal_Title"
+	PDA.Text "$PDA_notePlayerPersonal_Text"
+}
+actor noteLustyKolymanMaid1 : noteBase {
+	//$Title "note: lusty kolyman maid 1"
+    Tag "$PDA_noteLustyKolymanMaid1_Title"
+	PDA.Text "$PDA_noteLustyKolymanMaid1_Text"
+}
+actor noteLustyKolymanMaid2 : noteBase {
+	//$Title "note: lusty kolyman maid 2"
+    Tag "$PDA_noteLustyKolymanMaid2_Title"
+	PDA.Text "$PDA_noteLustyKolymanMaid2_Text"
+}
+actor noteLustyKolymanMaid3 : noteBase {
+	//$Title "note: lusty kolyman maid 3"
+    Tag "$PDA_noteLustyKolymanMaid3_Title"
+	PDA.Text "$PDA_noteLustyKolymanMaid3_Text"
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////

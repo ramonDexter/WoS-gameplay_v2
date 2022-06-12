@@ -1,0 +1,250 @@
+//##################################################################################################################
+//medical vendor id 16
+//##################################################################################################################
+namespace = "GZDoom";
+Conversation
+{
+	ID = 16;
+    /*
+    Page {
+        pageName = "";
+        Name = "\c[yellow]Henry, medical specialist";
+        Dialog = "\c[white]";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "";
+            Nextpage = "";
+        }
+    }
+    */
+	Page {
+        pageName = "MP_henryMedic_opener";
+		Name = "\c[yellow]Henry, medical specialist";
+		Dialog = "\c[white]Hello binder, are you in need of medical services? If so, please use on of the autoDocs behind you. If you need some medical supplies, you can buy what I got in stock. And for the last, I can install you cybernetic implants that will raise your health.";
+		Panel = "M_DCTR";
+        Goodbye = "\c[red]Goodbye";
+        Choice {
+            Text = "Here is the ore.";
+            Nextpage = "MP_henryMedic_foundOre";
+			Require {
+				item = "m10q_troubledWaters_foundOre";
+				amount = 1;
+			}
+			Exclude {
+				item = "m10q_troubledWaters_haveSolution";
+				amount = 1;
+			}
+        }
+        Choice {
+            Text = "Could you take a look at this sample of rotten water?";
+            Nextpage = "MP_henryMedic_rottenwater";
+			Require {
+				item = "m10q_troubledWaters_given";
+				amount = 1;
+			}
+			Exclude {
+				item = "m10q_troubledWaters_go4ore";
+				amount = 1;
+			}
+        }
+		Choice {
+			Text = "\c[yellow]Buy Hypospray";
+			NextPage = "MP_henryMedic_opener";
+			GiveItem = "wosHyposprej";
+			YesMessage = "Here is one Hypospray!";
+			NoMessage = "Not enough coins!";
+			DisplayCost = true;
+			Cost {
+				item = "goldCoin";
+				amount = 25;
+			}
+		}
+		Choice {
+			Text = "\c[yellow]Buy Combopack";
+			NextPage = "MP_henryMedic_opener";
+			GiveItem = "wosKombopack";
+			YesMessage = "Here is one Combopack!";
+			NoMessage = "Not enough coins!";
+			DisplayCost = true;
+			Cost {
+				item = "goldCoin";
+				amount = 50;
+			}
+		}
+		Choice {
+			Text = "\c[yellow]Buy Instaheal";
+			NextPage = "MP_henryMedic_opener";
+			GiveItem = "wosInstaLek";
+			YesMessage = "Here is one Instaheal!";
+			NoMessage = "Not enough coins!";
+			DisplayCost = true;
+			Cost {
+				item = "goldCoin";
+				amount = 100;
+			}
+		}
+		Choice {
+			Text = "\c[yellow]Buy MedPatch";
+			NextPage = "MP_henryMedic_opener";
+			GiveItem = "zscMedPatch";
+			YesMessage = "Here is one MedPatch!";
+			NoMessage = "Not enough coins!";
+			DisplayCost = true;
+			Cost {
+				item = "goldCoin";
+				amount = 10;
+			}
+		}
+		Choice {
+			Text = "\c[yellow]Buy Medical Kit";
+			NextPage = "MP_henryMedic_opener";
+			GiveItem = "zscMedPatch";
+			YesMessage = "Here is one Medical Kit!";
+			NoMessage = "Not enough coins!";
+			DisplayCost = true;
+			Cost {
+				item = "goldCoin";
+				amount = 25;
+			}
+		}
+		Choice {
+			Text = "\c[yellow]Buy Surgery Kit";
+			NextPage = "MP_henryMedic_opener";
+			GiveItem = "zscMedPatch";
+			YesMessage = "Here is one Surgery Kit!";
+			NoMessage = "Not enough coins!";
+			DisplayCost = true;
+			Cost {
+				item = "goldCoin";
+				amount = 100;
+			}
+		}
+        Choice {
+            Text = "Cybernetic implants? That sounds good.";
+            NextPage = "MP_henryMedic_implants";
+        }
+        Choice {
+            Text = "I have some questions.";
+            NextPage = "MP_henryMedic_questions";
+        }
+	}
+    Page {
+        pageName = "MP_henryMedic_implants";
+		Name = "\c[yellow]Henry, medical specialist";
+		Dialog = "\c[white]Yes, it does so. These implants will permanently raise you health. But, I need upgrade tokens to install the implant. Say, have you got any upgrade tokens?";
+		Panel = "M_DCTR";
+        Goodbye = "\c[red]Goodbye";
+        Choice {
+            Text = "I've got one right here.";
+            NextPage = "MP_henryMedic_opener";
+            YesMessage = "Good. Now hold still and everything will be right done.";
+            CloseDialog = true;
+            Cost {
+                item = "upgradeToken";
+                amount = 1;
+            }
+            Require {
+                item = "upgradeToken";
+                amount = 1;
+            }
+            Special = 80;
+            arg0 = 1803;
+        }
+        Choice {
+            Text = "\c[yellow]<< BACK";
+            Nextpage = "MP_henryMedic_opener";
+        }
+    }
+    Page {
+        pageName = "MP_henryMedic_questions";
+		Name = "\c[yellow]Henry, medical specialist";
+		Dialog = "\c[white]And what did you wanted to know?";
+		Panel = "M_DCTR";
+        Goodbye = "\c[red]Goodbye";
+        Choice {
+            Text = "Who are you?";
+            NextPage = "MP_henryMedic_aboutyourself";
+        }
+        Choice {
+            Text = "Could you tell me about the city?";
+            NextPage = "MP_henryMedic_aboutcity";
+        }
+        Choice {
+            Text = "\c[yellow]<< BACK";
+            Nextpage = "MP_henryMedic_opener";
+        }
+    }
+    Page {
+        pageName = "MP_henryMedic_aboutyourself";
+		Name = "\c[yellow]Henry, medical specialist";
+		Dialog = "\c[white]I am doctor Henry. I'm in charge of the local clinic, as you see. Usually, I'm pretty busy, but I've got lot of free time lately. Hard to say why is that.";
+		Panel = "M_DCTR";
+        Goodbye = "\c[red]Goodbye";
+        Choice {
+            Text = "\c[yellow]<< BACK";
+            Nextpage = "MP_henryMedic_questions";
+        }
+    }
+    Page {
+        pageName = "MP_henryMedic_aboutcity";
+		Name = "\c[yellow]Henry, medical specialist";
+		Dialog = "\c[white]Well, I don't know much, as most of the time in pinned here on the clinic. But yeah, I was born here, so I know a lot about the city. We've got a port here. It gave the city it's name. Millport's a trading city. But most of the trading is controlled by the Port Authority, which means strong taxation and control over goods. You cannot trade anything here, as some substances are declared illegal. It makes my work hard, sometimes. But besides that, the city is pretty nice. Especially the Commons and the countryside. Also, I cannot forget the City prison. It's next to the clinic, on the northern edge of the city.";
+		Panel = "M_DCTR";
+        Goodbye = "\c[red]Goodbye";
+        Choice {
+            Text = "\c[yellow]<< BACK";
+            Nextpage = "MP_henryMedic_questions";
+        }
+    }
+	// quest zamorena studna //////////////////////////////////////////////////////////
+    Page {
+        pageName = "MP_henryMedic_rottenwater";
+        Name = "\c[yellow]Henry, medical specialist";
+        Dialog = "\c[white]Yes, give it to me. \c[green](drops a sample in his microscope and looks at it)\c[white] Yes, it infected by some viral agent. Cleaning could be simple, if you have the right solution. I think that some copper sulfate would do the job here. Unfortunately, I don't have enough copper sulfate do make the solution. Say, would you pay a visit to an old deserted mine and bring me some copper ore? I can extract copper sulfate out of it and brew the solution for you. Easy task, not even a long walk.";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "Do I have other options?";
+            Nextpage = "MP_henryMedic_otheroptions";
+        }
+    }
+    Page {
+        pageName = "MP_henryMedic_otheroptions";
+        Name = "\c[yellow]Henry, medical specialist";
+        Dialog = "\c[white]Sorry, but the are none. But don't be afraid, the mine's in good shape, as far as I know. It's located in the northern Borderlands. |follow the road north and when you reach the bridge, turn to the left and go throught the cave. Here, I'll mark it on your map.";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "Thank you. Be right back.";
+            Nextpage = "MP_henryMedic_opener";
+			CloseDialog = true;
+			Special = 80;
+			arg0 = 1002;
+        }
+    }
+    Page {
+        pageName = "MP_henryMedic_foundOre";
+        Name = "\c[yellow]Henry, medical specialist";
+        Dialog = "\c[white]Okay, give it to me. This will take just a moment.";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "Here it is.";
+            Nextpage = "MP_henryMedic_solutionready";
+			Special = 80;
+			arg0 = 1003;
+        }
+    }
+    Page {
+        pageName = "MP_henryMedic_solutionready";
+        Name = "\c[yellow]Henry, medical specialist";
+        Dialog = "\c[white]And here is the solution. It was quite easy. Just don't try to drink it.";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "Don't worry. Thank you.";
+            Nextpage = "";
+			Special = 80;
+			arg0 = 1004;
+			CloseDialog = true;
+        }
+    }
+    ///////////////////////////////////////////////////////////////////////////////////
+}
+//##################################################################################################################

@@ -1,0 +1,133 @@
+//==================================================================================================================
+//energy weapons vendor
+//==================================================================================================================
+namespace = "GZDoom";
+Conversation {
+	ID = 12;
+    /*
+    Page {
+        pageName = "";
+        Name = "\c[yellow]Energy Weapons Vendor";
+        Dialog = "\c[white]";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "";
+            Nextpage = "";
+        }
+    }
+    */
+	Page {
+        pageName = "SH_energyWeaponsVendor_opener";
+		Name = "\c[yellow]Energy Weapons Vendor";
+		Dialog = "\c[white]Welcome, how may I serve you?";
+		Goodbye = "\c[red]Goodbye";
+		Choice {
+			Text = "\c[gold]Buy Mauler";
+			YesMessage = "Here you go!";
+			NoMessage = "Not enough gold!";
+			GiveItem = "wosMauler";
+			NextPage = "SH_energyWeaponsVendor_opener";
+			CloseDialog = false;
+			DisplayCost = true;
+			Cost {
+				Item = "goldCoin";
+				Amount = 1750;
+			}
+		}
+		Choice {
+			Text = "Buy EnergyPod";
+			YesMessage = "Here you go!";
+			NoMessage = "Not enough gold!";
+			GiveItem = "wosEnergyPod";
+			NextPage = "SH_energyWeaponsVendor_opener";
+			CloseDialog = false;
+			DisplayCost = true;
+			Cost {
+				Item = "goldCoin";
+				Amount = 25;
+			}
+		}
+		Choice {
+			Text = "Buy Energykit Pack";
+			YesMessage = "Here you go!";
+			NoMessage = "Not enough gold!";
+			GiveItem = "wosEnergyKit";
+			NextPage = "SH_energyWeaponsVendor_opener";
+			CloseDialog = false;
+			DisplayCost = true;
+			Cost {
+				Item = "goldCoin";
+				Amount = 75;
+			}
+		}
+		Choice {
+			Text = "Buy Energy Pack";
+			YesMessage = "Here you go!";
+			NoMessage = "Not enough gold!";
+			GiveItem = "wosEnergyPack";
+			NextPage = "SH_energyWeaponsVendor_opener";
+			CloseDialog = false;
+			DisplayCost = true;
+			Cost {
+				Item = "goldCoin";
+				Amount = 100;
+			}
+		}
+		Choice {
+			Text = "\c[gold]Buy Flamethrower";
+			YesMessage = "Here you go!";
+			NoMessage = "Not enough gold!";
+			GiveItem = "wosFlamethrower";
+			NextPage = "SH_energyWeaponsVendor_opener";
+			CloseDialog = false;
+			DisplayCost = true;
+			Cost {
+				Item = "goldCoin";
+				Amount = 1450;
+			}
+		}
+        Choice {
+            Text = "I've got some questions.";
+            Nextpage = "SH_energyWeaponsVendor_questions";
+        }
+	}
+    Page {
+        pageName = "SH_energyWeaponsVendor_questions";
+        Name = "\c[yellow]Energy Weapons Vendor";
+        Dialog = "\c[white]Yes?";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "\c[yellow]<< BACK";
+            Nextpage = "SH_energyWeaponsVendor_opener";
+        }
+        Choice {
+            Text = "This is your shop?";
+            Nextpage = "SH_energyWeaponsVendor_yourshop";
+        }
+        Choice {
+            Text = "Could you tell me about the city?";
+            Nextpage = "SH_energyWeaponsVendor_aboutsilenthills";
+        }
+    }
+    Page {
+        pageName = "SH_energyWeaponsVendor_yourshop";
+        Name = "\c[yellow]Energy Weapons Vendor";
+        Dialog = "\c[white]Yes, it is. My father built this place, and he passed it to me when he passed away. I'm doing good trade here, I'm supplying the local guard here, and also I supply your order. You're good customers, I say.";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "\c[yellow]<< BACK";
+            Nextpage = "SH_energyWeaponsVendor_questions";
+        }
+    }
+    Page {
+        pageName = "SH_energyWeaponsVendor_aboutsilenthills";
+        Name = "\c[yellow]Energy Weapons Vendor";
+        Dialog = "\c[white]Well, Silent Hills is my home for my whole life. I've never left this palce, except for small trading trips to surrounding towns. We've got everything here, traders, pubs, and even big public bathhouse.";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "\c[yellow]<< BACK";
+            Nextpage = "SH_energyWeaponsVendor_questions";
+        }
+    }
+}
+//==================================================================================================================

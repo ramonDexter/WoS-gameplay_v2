@@ -1,0 +1,146 @@
+//==================================================================================================================
+//explosive weapons vendor
+//==================================================================================================================
+namespace = "GZDoom";
+Conversation {
+	ID = 11;
+    /*
+    Page {
+        pageName = "";
+        Name = "\c[yellow]Explosive Guns Vendor";
+        Dialog = "\c[white]";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "";
+            Nextpage = "";
+        }
+    }
+    */
+	Page {
+        pageName = "SH_explosiveGunsVendor_opener";
+		Name = "\c[yellow]Explosive Guns Vendor";
+		Dialog = "\c[white]Hello, what can I get you?";
+		Goodbye = "\c[red]Goodbye";
+		Choice {
+			Text = "\c[gold]Buy Grenade Launcher";
+			YesMessage = "Here you go!";
+			NoMessage = "Not enough gold!";
+			GiveItem = "wosGrenadeLauncher";
+			NextPage = "SH_explosiveGunsVendor_opener";
+			CloseDialog = false;
+			DisplayCost = true;
+			Cost {
+				Item = "goldCoin";
+				Amount = 750;
+			}
+		}
+		Choice {
+			Text = "Buy HE grenades";
+			YesMessage = "Here you go!";
+			NoMessage = "Not enough gold!";
+			GiveItem = "HEGrenadeRounds";
+			NextPage = "SH_explosiveGunsVendor_opener";
+			CloseDialog = false;
+			DisplayCost = true;
+			Cost {
+				Item = "goldCoin";
+				Amount = 30;
+			}
+		}
+		Choice {
+			Text = "Buy Phosphorous grenades";
+			YesMessage = "Here you go!";
+			NoMessage = "Not enough gold!";
+			GiveItem = "PhosphorusGrenadeRounds";
+			NextPage = "SH_explosiveGunsVendor_opener";
+			CloseDialog = false;
+			DisplayCost = true;
+			Cost {
+				Item = "goldCoin";
+				Amount = 30;
+			}
+		}
+		Choice {
+			Text = "\c[gold]Buy Mini-missile Launcher";
+			YesMessage = "Here you go!";
+			NoMessage = "Not enough gold!";
+			GiveItem = "wosMinimissileLauncher";
+			NextPage = "SH_explosiveGunsVendor_opener";
+			CloseDialog = false;
+			DisplayCost = true;
+			Cost {
+				Item = "goldCoin";
+				Amount = 650;
+			}
+		}
+		Choice {
+			Text = "Buy pack of Mini-missiles";
+			YesMessage = "Here you go!";
+			NoMessage = "Not enough gold!";
+			GiveItem = "MiniMissiles";
+			NextPage = "SH_explosiveGunsVendor_opener";
+			CloseDialog = false;
+			DisplayCost = true;
+			Cost {
+				Item = "goldCoin";
+				Amount = 35;
+			}
+		}
+		Choice {
+			Text = "Buy crate of Mini-missiles";
+			YesMessage = "Here you go!";
+			NoMessage = "Not enough gold!";
+			GiveItem = "CrateOfMissiles";
+			NextPage = "SH_explosiveGunsVendor_opener";
+			CloseDialog = false;
+			DisplayCost = true;
+			Cost {
+				Item = "goldCoin";
+				Amount = 65;
+			}
+		}
+        Choice {
+            Text = "I've got some questions.";
+            Nextpage = "SH_explosiveGunsVendor_questions";
+        }
+	}
+    Page {
+        pageName = "SH_explosiveGunsVendor_questions";
+        Name = "\c[yellow]Explosive Guns Vendor";
+        Dialog = "\c[white]Oh, you wanted a little chat. What did you wanted to know?";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "\c[yellow]<< BACK";
+            Nextpage = "SH_explosiveGunsVendor_opener";
+        }
+        Choice {
+            Text = "You make all these weapons?";
+            Nextpage = "SH_explosiveGunsVendor_weapons";
+        }
+        Choice {
+            Text = "Could you tell me about the town?";
+            Nextpage = "SH_explosiveGunsVendor_aboutsilenthills";
+        }
+    }
+    Page {
+        pageName = "SH_explosiveGunsVendor_weapons";
+        Name = "\c[yellow]Explosive Guns Vendor";
+        Dialog = "\c[white]Yes, I make all these weapons. I'm specialized in explosive weapons since I left the tekguild school.";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "\c[yellow]<< BACK";
+            Nextpage = "SH_explosiveGunsVendor_questions";
+        }
+    }
+    Page {
+        pageName = "SH_explosiveGunsVendor_aboutsilenthills";
+        Name = "\c[yellow]Explosive Guns Vendor";
+        Dialog = "\c[white]Well, our town is quiet nice place. But it wasn't always like that. Back when I was a little brat, it was busy mining town. The miners were low on temper, so the streets wre sometimes dangerous. Especially on teh payday.";
+        Goodbye = "\c[red]Goodbye.";
+        Choice {
+            Text = "\c[yellow]<< BACK";
+            Nextpage = "SH_explosiveGunsVendor_questions";
+        }
+    }
+}
+//==================================================================================================================
