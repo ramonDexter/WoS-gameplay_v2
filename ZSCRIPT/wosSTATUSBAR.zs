@@ -404,7 +404,7 @@ class wosStatusBar : BaseStatusBar {
 				}
 				////////////////////////////////////////////////////////////////
 				
-				let coins = CPlayer.mo.FindInventory("goldCoin");
+				let coins = CPlayer.mo.FindInventory("Coin");
 				if ( coins != null ) {
 					DrawString(mESfont, FormatNumber(coins.Amount, 3, 5, 0, "Coins: "), (280, 156), DI_TEXT_ALIGN_RIGHT, Font.CR_YELLOW);
 				}
@@ -593,7 +593,7 @@ class wosStatusBar : BaseStatusBar {
 				}			
 
 				//  Does the player have coins?  ///////////////////////////////
-				item = CPlayer.mo.FindInventory("goldCoin");
+				item = CPlayer.mo.FindInventory("Coin");
 				if ( item != NULL ) {
 					DrINumber2 (item.Amount, left+216*xscale, top+72 * yscale, 7*xscale, imgSTFON0);
 				}

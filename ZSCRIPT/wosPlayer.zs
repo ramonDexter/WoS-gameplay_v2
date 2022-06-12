@@ -699,6 +699,7 @@ class binderPlayer : StrifePlayer {
 			A_GiveInventory("wosGrenadeLauncher", 1);
 			A_GiveInventory("wosFlamethrower", 1);
 			A_GiveInventory("wosMauler", 1);
+			A_GiveInventory("Sigil", 1);
 		} 
 		else if ( name ~== "items" ) {			
 			if ( !amount ) {
@@ -722,15 +723,15 @@ class binderPlayer : StrifePlayer {
 		}
 		else if ( name ~== "gold" || name ~=="money" || name ~== "coin" || name ~== "coins" ) {
 			if ( !amount ) {
-				A_GiveInventory("goldCoin", 1);
+				A_GiveInventory("Coin", 1);
 			} else {
-				A_GiveInventory("goldCoin", amount);
+				A_GiveInventory("Coin", amount);
 			}
 		}
 		else if ( name ~== "all" || name ~== "everything" ) {
 			A_Log("\c[red][ Cheat blocked. Use other cheats if you are in need of assistance. ]");
 		}
-		else if ( name ~== "keys" ) {
+		/*else if ( name ~== "keys" ) {
 			A_GiveInventory("skeletonKey", 1);
 			A_GiveInventory("BHWasteCatacombKey", 1);
 			A_GiveInventory("BHWasteKey", 1);
@@ -743,7 +744,7 @@ class binderPlayer : StrifePlayer {
 			A_GiveInventory("SHtgPowerplantKey", 1);
 			A_GiveInventory("m08k_BP_pokladnice", 1);
 			//A_GiveInventory("", 1);
-		}
+		}*/
 		else if ( name ~== "implants" ) {
 			A_GiveInventory("implant_health", 1);
 			A_GiveInventory("implant_stamina", 1);
