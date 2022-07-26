@@ -249,7 +249,8 @@ class BlasterTracer : FastProjectile {
 		Height 2;
 		Radius 2;
 		Speed TRACERSPEED;
-        DamageFunction (16 * Random(1, 4));
+        //DamageFunction (14 * Random(1, 4));
+		Damage 12;
         Decal "blueShotScorch";
         SeeSound "weapons/staffprojectile";
 		DeathSound "weapons/shotdeath";
@@ -257,6 +258,8 @@ class BlasterTracer : FastProjectile {
 	}
     States {
 		Spawn:
+			TNT1 A 0 A_StartSound("weapons/staffprojectile");
+		Fly:
 			DUMM ABCDEFGHI 1 Bright W_SpawnParticleTrail();
 			Loop;
 		Death:
@@ -282,6 +285,7 @@ class BlasterTracerTrail : actor {
 		//Scale 0.25;
 		+NOINTERACTION;
 		+NOBLOCKMAP;
+        SeeSound "weapons/staffprojectile";
 	}
 	States {
 		Spawn:			

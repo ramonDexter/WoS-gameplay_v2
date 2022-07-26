@@ -19,7 +19,7 @@ CAMERATEXTURE CAMTX10 64 64 fit 32 32 worldpanning
 flat X_009 range X_011 tics 8
 flat X_005 range X_008 tics 8
 flat X_001 range X_004 tics 8
-//Flat SWATER1 Range SWATERG Tics 2
+Flat F_WATR01 range F_WATR24 tics 2
 flat CWATR01 range CWATR24 tics 3
 ////////////////////////////////////////////////////////////////////////////////
 
