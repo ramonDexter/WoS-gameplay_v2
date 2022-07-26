@@ -19,7 +19,7 @@ CAMERATEXTURE CAMTX10 64 64 fit 32 32 worldpanning
 flat X_009 range X_011 tics 8
 flat X_005 range X_008 tics 8
 flat X_001 range X_004 tics 8
-Flat SWATER1 Range SWATERG Tics 2
+//Flat SWATER1 Range SWATERG Tics 2
 flat CWATR01 range CWATR24 tics 3
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -330,8 +330,8 @@ switch CMSW29
 ////////////////////////////////////////////////////////////////////////////////
 
 //flats
-flat	DPSCR80			range 	DPSCR85		tics 8
-flat 	BLGRAM01		range 	BLGRAM02	tics 8
+//flat	DPSCR80			range 	DPSCR85		tics 8
+/*flat 	BLGRAM01		range 	BLGRAM02	tics 8
 flat	FIREP01			range	FIREP04		tics 8
 
 //textures
@@ -347,14 +347,14 @@ texture	P_MCOM05		range	P_MCOM08	tics 8
 texture P_MCOM09		range 	P_MCOM12	tics 8
 texture P_TMOGR1		range	P_TMOGR3	tics 8
 texture	DPSCR63			range	DPSCR65		tics 8
-texture	DPSCR80			range	DPSCR85		tics 8
+//texture	DPSCR80			range	DPSCR85		tics 8
 texture CIRKCF1			range	CIRKCF3		tics 8
 texture CIRKCB1			range	CIRKCB3		tics 8
 texture CIRKDF1			range	CIRKDF3		tics 8
 texture	CIRKDB1			range	CIRKDB3		tics 8
 texture M1CSTON1		range 	M1CSTON2	tics 8
 texture WFALL1			range 	WFALL4		tics 8
-texture DNXFAN01 range DNXFAN04 tics 2
+texture DNXFAN01 range DNXFAN04 tics 2*/
 
 //switches
 switch P_LEVER1 on sound Switch1 pic P_LEVER2 tics 0
@@ -370,17 +370,17 @@ switch BLSWIOF on sound Switch1 pic BLSWION	tics 0
 cameratexture	DPCAMTEX	64 64	fit	64 64
 
 //blood gramophone
-texture BLGRAM01		range BLGRAM02	tics 8
+//texture BLGRAM01		range BLGRAM02	tics 8
 
 //blood hospital machine
-texture BMACH01			range BMACH04	tics 8
+//texture BMACH01			range BMACH04	tics 8
 
 //daggerfall fireplace
-texture FIRPLAC1		range FIRPLAC4 tics 8
+//texture FIRPLAC1		range FIRPLAC4 tics 8
 
 
 //textures
-texture	SKCP101			range	SKCP106		tics 8
+/*texture	SKCP101			range	SKCP106		tics 8
 texture	SKCP201			range	SKCP206		tics 8
 texture	SKCP301			range	SKCP306		tics 8
 texture	SKD101			range	SKD113		tics 8
@@ -410,7 +410,7 @@ texture SLATGL_1 range SLATGL_7 tics 8 oscillate //glowing grate
 //I seem to have misplaced most of the liquid flats >_> not really a big deal, here's the cool ones
 warp2 texture QLAVA
 warp2 texture PWATER
-warp2 texture SLIPGATE
+warp2 texture SLIPGATE*/
 
 /*
 So here it is! Textures from Quake, it's two mission packs (Scourge of Armagon and Dissolution of Eternity),
@@ -427,7 +427,7 @@ PS: Yes, Q1EX is intentional. It means Quake 1 + Expansions. :P
 */
 
 // blood textures //
-texture WIRE_1 
+/*texture WIRE_1 
 	pic WIRE_1 tics 6
 	pic WIRE_2 tics 3
 	pic WIRE_3 tics 4
@@ -490,7 +490,7 @@ texture DNSCRN31
 	pic DNSCRN31 tics 4
 	pic DNSCRN32 tics 4
 	pic DNSCRN33 tics 4
-
+*/
 
 /*
 texture WCOMP9A range WCOMP9B tics 8
