@@ -5,6 +5,86 @@
 ////////////////////////////////////////////////////////////////////////////////
 //  item weights  //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+// basic max carry capacity: 2200 ... 22 kg
+// 100 .. 1 kg
+// 50 .. 0.5 kg
+// 1 .. 0.01 kg
+////////////////////////////////////////////////////////////////////////////////
+
+// ammo ////////////////////////////////////////////////////////////////////////
+const elBoltsQwWeight = 24;
+const posBoltsQwWeight = 12;
+const elBoltsBndlWeight = 10;
+const posBoltsBndlWeight = 5;
+const energyPodWeight = 3;
+const energyKitWeight = 8;
+const energyPackWeight = 15;
+const boxOfBulletsWeight = 20;
+const bulletCartridgeWeight = 5;
+const miniMissileBndlWeight = 25;
+const heGRboxWeight = 35;
+const fireGRboxWeight = 35;
+const ammoSatchelWeight = 50;
+const ammoBandolierWeight = 50;
+const wosEnergyCellWeight = 5;
+// armor ///////////////////////////////////////////////////////////////////////
+Const LeatherWeight = 125;
+Const MetalWeight = 250;
+Const BinderBasicWeight = 135;
+Const BinderAdvancedWeight = 165;
+Const KineticWeight = 140;
+// powerups ////////////////////////////////////////////////////////////////////
+const armorShardWeight = 5;
+const automapWeight = 3;
+const wosBinocularWeight = 45;
+const blasterTurretWeight = 135;
+const DeployableShieldWeight = 95;
+const envSuitWeight = 120;
+const FlameTurretWeight = 150;
+const FlareWeight = 1;
+const FlareBoxWeight = 15;
+const grenadeExplosiveWeight = 7;
+const grenadeFireWeight = 9;
+const grenadeGasWeight = 8;
+const interceptorDroneWeight = 35;
+const NightEyeDeviceWeight = 35;
+const rebreatherWeight = 50;
+const regenModuleWeight = 45;
+const shadowArmorWeight = 95;
+const StealthBoyWeight = 85;
+const swarmersWeight = 13;
+const targeterWeight = 25;
+// shouldergun /////////////////////////////////////////////////////////////////
+const shoulderGunWeight = 75;
+const shoulderGunMagWeight = 1;
+const shoulderGun_chargerWeight = 35;
+// medicals ////////////////////////////////////////////////////////////////////
+const hyposprejWeight = 1;
+const kombopackWeight = 2;
+const instalekWeight = 3;
+const medpatchWeight = 2;
+const medicalkitWeight = 7;
+const surgerykitWeight = 12;
+const wosStimDeviceWeight = 2;
+// food ////////////////////////////////////////////////////////////////////////
+const BottleWeight = 5;
+const burgerweight = 3;
+const cheeseBurgerWeight = 4;
+const bigBurgerWeight = 5;
+const dblCheeBWeight = 5;
+const hotdogWeight = 4;
+const donutsWeight = 4;
+const foodBoxWeight = 5;
+const foodRationWeight = 10;
+const grilledChickenWeight = 10;
+const wosVegieWeight = 1;
+const wosfbMeat1Weight = 2;
+const wosfbMeat2Weight = 1;
+const wosfbMeat3Weight = 1;
+const wosSoyFoodWeight = 2;
+const wosSodaCanWeight = 3;
+const wosCandyBarWeight = 1;
+// quest items /////////////////////////////////////////////////////////////////
 const leaderSkullWeight = 10;
 const gCoinWeight = 0;
 const gChest50Weight = 25;
@@ -15,6 +95,8 @@ const wosDegninOreWeight = 10;
 const wosq_chemicalOreWeight = 5;
 const wosq_chemicalSolutionWeight = 15;
 const wosq_rottenWaterWeight = 5;
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -301,9 +383,9 @@ class goldCoin : Inventory /*replaces coin*/ {
 		+FLOORCLIP
 		+INVENTORY.INVBAR
 		Inventory.MaxAmount 10000;
-		Tag "$TAG_COIN";
+		Tag "$TAG_goldCOIN";
 		Inventory.Icon "I_COIN";
-		Inventory.PickupMessage "$TXT_COIN";
+		Inventory.PickupMessage "$TXT_goldCOIN";
 		Inventory.pickupSound "sounds/coinPickup";
 		Mass gCoinWeight;
 		radius 8;
@@ -324,8 +406,8 @@ class wosGold10 : wosPickup {
 		//$Title "gold coins (10)"
 		-INVENTORY.INVBAR
 		//Inventory.Amount 10
-		Tag "$TAG_10GOLD"; // "10 gold"
-		Inventory.PickupMessage "$TXT_10GOLD"; // "You picked up 10 gold."
+		Tag "$TAG_10GOLDcoins"; // "10 gold"
+		Inventory.PickupMessage "$TXT_10GOLDcoins"; // "You picked up 10 gold."
 		Inventory.pickupSound "sounds/coinPickup";
 		Mass 0;
 		radius 8;
@@ -344,8 +426,8 @@ class wosGold25 : wosPickup {
         //$Category "Quest things/WoS"
 		//$Title "gold coins (25)"
 		-INVENTORY.INVBAR
-		Tag "$TAG_25GOLD";
-		Inventory.PickupMessage "$TXT_25GOLD";
+		Tag "$TAG_25GOLDcoins";
+		Inventory.PickupMessage "$TXT_25GOLDcoins";
 		Inventory.pickupSound "sounds/coinPickup";
 		Mass 0;
 		radius 8;
@@ -364,8 +446,8 @@ class wosGold50 : wosPickup {
         //$Category "Quest things/WoS"
 		//$Title "gold coins (50)"
 		-INVENTORY.INVBAR
-		Tag "$TAG_50GOLD";
-		Inventory.PickupMessage "$TXT_50GOLD";
+		Tag "$TAG_50GOLDcoins";
+		Inventory.PickupMessage "$TXT_50GOLDcoins";
 		Inventory.pickupSound "sounds/coinPickup";
 		Mass 0;
 		radius 8;
@@ -388,9 +470,9 @@ class goldChest50_item : wosPickup {
 		
 		+INVENTORY.INVBAR
 		
-		Tag "Chest with coins";
+		Tag "$TAG_goldChest_item"; // "Chest with coins"
 		Inventory.Icon "I_GCHT";
-		Inventory.PickupMessage "You picked up the Chest with coins.";
+		Inventory.PickupMessage "$TXT_goldChest_item"; // "You picked up the Chest with coins."
 		Inventory.pickupSound "sounds/coinPickup";
 		Inventory.useSound "sounds/coinPickup";
 		Mass gChest50Weight;
@@ -415,9 +497,9 @@ class goldChest100_item : wosPickup {
 		
 		+INVENTORY.INVBAR
 		
-		Tag "Chest with coins";
+		Tag "$TAG_goldChest_item"; // "Chest with coins"
 		Inventory.Icon "I_GCHT";
-		Inventory.PickupMessage "You picked up the Chest with coins.";
+		Inventory.PickupMessage "$TXT_goldChest_item"; // "You picked up the Chest with coins."
 		Inventory.pickupSound "sounds/coinPickup";
 		Inventory.useSound "sounds/coinPickup";
 		Mass gChest100Weight;
@@ -442,9 +524,9 @@ class goldChest250_item : wosPickup {
 		
 		+INVENTORY.INVBAR
 		
-		Tag "Chest with coins";
+		Tag "$TAG_goldChest_item"; // "Chest with coins"
 		Inventory.Icon "I_GCHT";
-		Inventory.PickupMessage "You picked up the Chest with coins.";
+		Inventory.PickupMessage "$TXT_goldChest_item"; // "You picked up the Chest with coins."
 		Inventory.pickupSound "sounds/coinPickup";
 		Inventory.useSound "sounds/coinPickup";
 		Mass gChest250Weight;
@@ -469,9 +551,9 @@ class goldChest500_item : wosPickup {
 		
 		+INVENTORY.INVBAR
 		
-		Tag "Chest with coins";
+		Tag "$TAG_goldChest_item"; // "Chest with coins"
 		Inventory.Icon "I_GCHT";
-		Inventory.PickupMessage "You picked up the Chest with coins.";
+		Inventory.PickupMessage "$TXT_goldChest_item"; // "You picked up the Chest with coins."
 		Inventory.pickupSound "sounds/coinPickup";
 		Inventory.useSound "sounds/coinPickup";
 		Mass gChest500Weight;
@@ -764,7 +846,7 @@ class q_explosiveDevice_01 : CustomInventory {
 		+INVENTORY.UNDROPPABLE
 		+INVENTORY.UNTOSSABLE
 		Tag "Explosive Device";
-		Inventory.Icon "I_HRLC";
+		//Inventory.Icon "I_QBMB";
 		Inventory.Amount 1;
 		Inventory.MaxAmount 1;
 		Inventory.InterhubAmount 1;
@@ -778,8 +860,30 @@ class q_explosiveDevice_01 : CustomInventory {
 			MS01 A -1;
 			Stop;
 		Use:
-			TNT1 A 0;
+			TNT1 A 0 {
+				let pawn = binderPlayer(self);
+				let iterator = Level.CreateSectorTagIterator(6090);
+				int index;
+				while ( (index = iterator.Next()) > -1 ) {
+					if ( pawn.CurSector && pawn.CurSector.Index() == index ) {
+						return resolveState("UseYes");
+					} else {
+						return resolveState("UseNot");
+					}
+				}
+				return resolveState(null);
+			}
+		UseNot:
+			TNT1 A 0 A_Log("\c[red][ This bomb could be used near the wall to heretic base only! ]");
+			Fail;
+		UseYes:
+			TNT1 A 0 {
+				A_SpawnItemEx("q_bomb_01", 16, 0, 0);
+				A_Log("\c[red][ Bomb planted. RUN AWAY!!! ]");
+			}
 			Stop;
+
+
 	}
 }
 class q_bomb_01 : actor {
@@ -790,14 +894,18 @@ class q_bomb_01 : actor {
 	}
 	States {
 		Spawn:
-			MS01 A 175;
+			MS01 A 35 A_Log("\c[red][ = 5 = ]");
+			MS01 A 35 A_Log("\c[red][ = 4 = ]");
+			MS01 A 35 A_Log("\c[red][ = 3 = ]");
+			MS01 A 35 A_Log("\c[red][ = 2 = ]");
+			MS01 A 35 A_Log("\c[red][ = 1 = ]");
 		Death:
             TNT1 AAAAAAA 0 A_SpawnProjectile ("ExplosionFire", 3, 0, random (0, 360), 2, random (0, 360));	
             TNT1 A 0;
 			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
             TNT1 A 0 A_StartSound("sounds/grenadeExplosion", 1);
 			TNT1 A 1 Radius_Quake (4, 15, 0, 12, 0);
-			TNT1 A 0 ACS_NamedExecute("m06_lowerWall", 6);
+			TNT1 A 0 ACS_NamedExecuteAlways("m06_lowerWall", 0);
 			TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 3, 0, random (0, 360), 2, random (0, 360));
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle1", 3, 0, random (0, 360), 2, random (0, 360));	
 			TNT1 AAAAAAAAAAAAAAA 6 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));

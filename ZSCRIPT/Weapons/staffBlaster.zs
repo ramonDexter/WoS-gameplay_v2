@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //   STAFFBLASTER  /////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-const blasterStaffBaseWeight = 100;
+//const blasterStaffBaseWeight = 100;
 
 //  staffBlaster.reload magazine  //////////////////////////////////////////////  
 class magazine_blasterStaff : ammo {
@@ -27,10 +27,10 @@ class staffBlaster : wosWeapon {
 		Radius 12;
 		Height 64;
 		
-		Tag "$T_STAFFBLASTER";
+		Tag "$TAG_staffBlaster";
 		Inventory.icon "H_ASTF";
-		Inventory.pickupmessage "$F_STAFFBLASTER";
-		Obituary "%o was splattered by %k Blaster Staff";		
+		Inventory.pickupmessage "$FND_staffBlaster";
+		Obituary "$OBI_staffBlaster"; // %o was splattered by %k Mauler Staff
 		AttackSound "weapons/staffShoot";
         Weapon.UpSound "weapons/weaponUP";
 		Weapon.SlotNumber 3;
@@ -42,8 +42,7 @@ class staffBlaster : wosWeapon {
 		Weapon.AmmoUse2 0;
 		Weapon.AmmoGive2 64;
 		//Decal "BulletChip";
-		Mass blasterStaffBaseWeight;
-		
+		Mass blasterStaffBaseWeight;		
 	}
 	
 	States {
@@ -97,7 +96,7 @@ class staffBlaster : wosWeapon {
 			STFM J 1;
 			STFM K 2;
 			STFM L 2;
-			TNT1 A 0 W_StaffSwing("StaffBlasterPuff");
+			TNT1 A 0 W_StaffSwing("staffBlasterMeleePuff");
 			STFM M 2; //IJKLM
 			STFM M 1;
 			STFM LKJI 2;
@@ -148,15 +147,392 @@ class staffBlaster : wosWeapon {
 	}
 }
 //  staffBlaster.mellee puff  //////////////////////////////////////////////////
-class StaffBlasterPuff: BulletPuff {
+class staffBlasterMeleePuff : BulletPuff {
 	Default {
 		seeSound "weapons/staffswing";
 		attacksound "weapons/staffhit";
 		activesound "weapons/staffswing";
 	}
 }
+////////////////////////////////////////////////////////////////////////////////
+
+
 //  staffBlaster.projectile  ///////////////////////////////////////////////////
+// particle based projectile ///////////////////////////////////////////////////
+// code base by denis belmondo /////////////////////////////////////////////////
 class BlasterTracer : FastProjectile {
+    const TRACERDURATION	= 1; // tics
+	const TRACERLENGTH		= 192.0; // float
+	const TRACERSCALE		= 8.0; // float
+	const TRACERSTEP		= 0.005; // float
+	const TRACERACTOR		= "BlasterTracerTrail"; // actor name
+	const TRACERSPEED		= 90;
+
+	float x1, y1, z1;
+	float x2, y2, z2;
+	
+	// intentional briticism to avoid conflicts with "color" keyword.
+	// modified with strife fitting colors
+	static const color colours[] = {
+		
+		// reversed order
+		"6b ab 4b",
+		"6b ab 4b",
+		"4f 8f 37",
+		"37 73 23",
+		"23 57 13",
+		"13 3f 0b"
+		// reversed order
+
+		/*"13 3f 0b",
+		"23 57 13",
+		"37 73 23",
+		"4f 8f 37",
+		"6b ab 4b",
+		"8b c7 67"*/ /* appears twice so a segment of this color is longer
+					than the others. */
+	};
+	
+	// literally just stole this from wikipedia
+	float lerp(float v0, float v1, float t) {
+		return (1 - t) * v0 + t * v1;
+	}
+	
+	override void BeginPlay() {
+		// we don't want to lerp into weird coordinates
+		x1 = pos.x;
+		y1 = pos.y;
+		z1 = pos.z;
+		
+		x2 = pos.x;
+		y2 = pos.y;
+		z2 = pos.z;
+	}
+
+	void W_SpawnParticleTrail() {
+		if (Level.isFrozen()) return;
+		
+		x1 = pos.x;
+		y1 = pos.y;
+		z1 = pos.z;
+		
+		x2 = pos.x + vel.x / GetDefaultSpeed("BlasterTracer") * TRACERLENGTH;
+		y2 = pos.y + vel.y / GetDefaultSpeed("BlasterTracer") * TRACERLENGTH;
+		z2 = pos.z + vel.z / GetDefaultSpeed("BlasterTracer") * TRACERLENGTH;		
+		
+		for(float i = 0; i < 1; i += TRACERSTEP) {
+			A_SpawnParticle (
+				colours[clamp(i * colours.Size(), 0, colours.Size() - 1)],
+				SPF_FULLBRIGHT,
+				TRACERDURATION,
+				TRACERSCALE * (1 - i),
+				0,
+				pos.x - lerp(x1, x2, i),
+				pos.y - lerp(y1, y2, i),
+				pos.z - lerp(z1, z2, i),
+				0, 0, 0,
+				0, 0, 0,
+				1.0
+			);
+			A_SpawnItemEx (
+				TRACERACTOR,
+				pos.x - lerp(x1, x2, i),
+				pos.y - lerp(y1, y2, i),
+				pos.z - lerp(z1, z2, i),
+				0, 0, 0, 0,
+				SXF_ABSOLUTEPOSITION
+			);			
+		}		
+	}
+
+    Default {		
+		Height 2;
+		Radius 2;
+		Speed TRACERSPEED;
+        DamageFunction (16 * Random(1, 4));
+        Decal "blueShotScorch";
+        SeeSound "weapons/staffprojectile";
+		DeathSound "weapons/shotdeath";
+		//+BLOODSPLATTER;
+	}
+    States {
+		Spawn:
+			DUMM ABCDEFGHI 1 Bright W_SpawnParticleTrail();
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItemEx("BulletPuff");
+			TNT1 A 0 A_AlertMonsters();
+            TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("greenShotParticle",0,0,0,frandom(-6,6),frandom(-6,6),frandom(-6,6),0,SXF_NOCHECKPOSITION);
+			TNT1 A 0 {
+				A_SpawnItemEx("staffFlashLong", 0, 0, 0, 0);			
+				A_SpawnItemEx("greenShotExplosion", 0, 0, 0, 0);
+				A_SpawnItemEx("greenShotDeath", 0, 0, 0, 0);
+			}
+            TNT1 A 2 Light("BLASTERSHOT2");
+            TNT1 A 2 Light("BLASTERSHOT3");
+            TNT1 A 2 Light("BLASTERSHOT4");
+            TNT1 A 2 Light("BLASTERSHOT5");
+            Stop;
+	}
+}
+class BlasterTracerTrail : actor {	
+    Default {
+		//Alpha 0.5;
+		//RenderStyle "Add";
+		//Scale 0.25;
+		+NOINTERACTION;
+		+NOBLOCKMAP;
+	}
+	States {
+		Spawn:			
+			TNT1 AA 0 {
+				A_SpawnParticle (
+					"235713", 
+					SPF_FULLBRIGHT|SPF_RELATIVE, 
+					1, 
+					0.55, 
+					0, 
+					frandom(-1.25,1.25), frandom(-1.25,1.25), frandom(-1.25,1.25), 
+					0, 0, 0, 
+					0, 0, 0, 
+					1.0, 
+					-0.1, 
+					0.25
+				);
+			}			
+			TNT1 AAA 0 {
+				A_SpawnParticle (
+					"8fc75f", 
+					SPF_FULLBRIGHT|SPF_RELATIVE, 
+					1, 
+					0.75, 
+					0, 
+					frandom(-0.85,0.85), frandom(-0.85,0.85), frandom(-0.85,0.85), 
+					0, 0, 0, 
+					0, 0, 0, 
+					1.0, 
+					-0.1, 
+					0.05
+				);
+			}
+			TNT1 AA 0 {
+				A_SpawnParticle (
+					"b7e77f", 
+					SPF_FULLBRIGHT|SPF_RELATIVE, 
+					1, 
+					0.45, 
+					0, 
+					frandom(-0.45,0.45), frandom(-0.45,0.45), frandom(-0.45,0.45), 
+					0, 0, 0, 
+					0, 0, 0, 
+					1.0, 
+					-0.1, 
+					0.025
+				);
+			}
+			TNT1 A -1 A_Jump(256, "Null");
+			Stop;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+
+// projectile death sfx ////////////////////////////////////////////////////////
+class greenShotParticle : actor {
+	Default {
+	    +DOOMBOUNCE;
+        +MISSILE;
+        +CLIENTSIDEONLY;
+        +NOTELEPORT;
+        +NOBLOCKMAP;
+        +BLOODLESSIMPACT;
+        +NODAMAGETHRUST;
+        +MOVEWITHSECTOR;
+        +NOBLOCKMONST;
+        -SOLID;
+        +THRUACTORS;
+        +DONTSPLASH;
+        -NOGRAVITY;
+        +DONTBLAST;
+		+FORCEXYBILLBOARD;
+		+NOINTERACTION;
+        Scale 0.8;
+        Gravity 0.02;
+        Radius 0;
+        Height 0;
+        Damage 0;     
+        Speed 0;
+    }
+    States {
+        Spawn:
+            PTCL AAAAAAAAAA 1 Bright;
+            Stop;
+    }
+}
+class greenShotDeath : actor {
+	Default {
+		+CannotPush;
+		+NoDamageThrust;
+		+SpawnSoundsource;
+		+nogravity;
+        +FORCEXYBILLBOARD;
+		RenderStyle "Add";
+		scale 0.6;
+	}
+	States {
+		Spawn:
+			GP_D ABCDE 3 Bright;
+			Stop;
+	}
+
+}
+class greenShotExplosion : actor {
+	Default {
+		+NOBLOCKMAP;
+		+NOGRAVITY;
+		+SHADOW;
+		+NOTELEPORT;
+		+CANNOTPUSH;
+		+NODAMAGETHRUST;
+        +FORCEXYBILLBOARD;		
+		renderStyle "Add";
+		scale 0.6;
+		alpha 0.95;
+	}	
+	States {
+		Spawn:
+			TNT1 A 0;
+			ARLG ABCDEF 2 Bright;
+			Stop;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+
+// light bind actors ///////////////////////////////////////////////////////////
+class staffFlashShort : flashBase {
+	Default {
+		+NOINTERACTION;
+	}
+	States {
+		Spawn:
+			TNT1 A 3 light("greenFlash");
+			Stop;
+	}
+}
+class staffFlashLong : flashBase {
+	Default {
+		+NOINTERACTION;
+	}
+	States {
+		Spawn:
+			TNT1 A 15 light("greenFlash");
+			Stop;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+
+
+//  staffblaster.TESTING MODEL  ////////////////////////////////////////////////
+class staffBlasterModel : actor {
+	Default {
+		//$Category ""
+		//$color 6
+		//$title "blaster staff lvl1 model"
+	}
+	States {
+		Spawn:
+			DUMM A -1;
+			Stop;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+
+// DEPRECATED //////////////////////////////////////////////////////////////////
+/*class BlasterFlare : actor {
+    Default {
+		+NOINTERACTION;
+        +NOGRAVITY;
+        +CLIENTSIDEONLY;
+        +DONTBLAST;
+        +FORCEXYBILLBOARD;	
+        renderstyle "Add";
+        radius 1;
+        height 1;
+        alpha 0.4;
+        scale 0.15;
+    }
+    states {
+        Spawn:
+            TNT1 A 0;
+            TNT1 A 0 A_Jump(128,2);
+            LENB A 1 bright;
+            stop;
+            TNT1 A 0;
+            LENB B 1 bright;
+            stop;
+    }
+}*/
+/*class BlasterParticle : actor {
+    Default {
+        +DOOMBOUNCE;
+        +MISSILE;
+        +CLIENTSIDEONLY;
+        +NOTELEPORT;
+        +NOBLOCKMAP;
+        +CORPSE;
+        +BLOODLESSIMPACT;
+        +FORCEXYBILLBOARD;
+        +NODAMAGETHRUST;
+        +MOVEWITHSECTOR;
+        +NOBLOCKMONST;
+        -SOLID;
+        +THRUACTORS;
+        +DONTSPLASH;
+        -NOGRAVITY;
+        +DONTBLAST;
+        Scale 0.026;
+        Gravity 0.02;
+        Radius 0;
+        Height 0;
+        Damage 0;
+        Renderstyle "Add";
+        Alpha 0.95;        
+        Speed 0;
+    }
+    States {
+		Spawn:
+			SPKB AAAAAAAA 1 Bright A_SetScale(scale.x*0.94);
+			Stop;
+    }
+}
+class BlasterParticle2 : BlasterParticle {
+    Default {
+	    Scale 0.07;
+    }
+    States {
+        Spawn:
+            SPKB AAAAAAAAA 1 Bright A_SetScale(scale.x*0.86);
+            Stop;
+    }
+}*/
+/*class staffShotSmoke2 : actor {
+	Default {
+		+NOINTERACTION;
+		+NOGRAVITY;		
+		RenderStyle "Add";
+		Scale 0.08;
+		Alpha 0.8;
+	}	
+	States {
+		Spawn:
+			TNT1 A 0;
+			ARLG BCDE 2 bright A_FadeOut(0.1);
+		Next:
+			TNT1 A 0 A_SetScale(-0.01);
+			ARLG F 1 bright A_FadeOut(0.08);
+			Loop;
+	}
+}*/
+/*class BlasterTracer : FastProjectile {
     Default {
         +RANDOMIZE
         +FORCEXYBILLBOARD
@@ -172,7 +548,7 @@ class BlasterTracer : FastProjectile {
         Speed 184;
         Damage 24; //old: 16
         Decal "blueShotScorch";
-        Projectile;
+        //Projectile;
         //Renderstyle "Add";
         //Alpha 0.90;
 		Renderstyle "Add";
@@ -189,15 +565,18 @@ class BlasterTracer : FastProjectile {
             //FX98 A 1 Bright A_SpawnItem("BlasterFlare",0,0);
 			DUMM ABCDEFGHI 1 Bright;
 			TNT1 A 0 A_SpawnItem("BlasterFlare",0,0);
+			//TNT1 AA 0 A_SpawnParticle ("235713", SPF_FULLBRIGHT|SPF_RELATIVE, 17, 0.35, 0, frandom(-1.25,1.25), frandom(-1.25,1.25), frandom(-1.25,1.25), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.25);				
+			//TNT1 AAA 0 A_SpawnParticle ("8fc75f", SPF_FULLBRIGHT|SPF_RELATIVE, 17, 0.5, 0, frandom(-0.85,0.85), frandom(-0.85,0.85), frandom(-0.85,0.85), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.05);
+			//TNT1 AA 0 A_SpawnParticle ("b7e77f", SPF_FULLBRIGHT|SPF_RELATIVE, 17, 0.25, 0, frandom(-0.45,0.45), frandom(-0.45,0.45), frandom(-0.45,0.45), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.025);
             Loop;
 			
         Death:
-            TNT1 A 0;
+            TNT1 A 0 A_AlertMonsters();
             TNT1 AAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("BlasterParticle2",0,0,0,frandom(-6,6),frandom(-6,6),frandom(-6,6),0,SXF_NOCHECKPOSITION);
 			TNT1 A 0 A_SpawnItemEx("staffFlashLong", 0, 0, 0, 0);
 			//TNT1 A 0 A_SpawnItemEx("blueExplosion", 0, 0, 0, 0);				
-			TNT1 A 0 A_SpawnItemEx("lightningExplosion", 0, 0, 0, 0);
-			TNT1 A 0 A_SpawnItemEx("blueshotDeath", 0, 0, 0, 0);
+			TNT1 A 0 A_SpawnItemEx("greenShotExplosion", 0, 0, 0, 0);
+			TNT1 A 0 A_SpawnItemEx("greenShotDeath", 0, 0, 0, 0);
             TNT1 A 2 Light("BLASTERSHOT2");
             TNT1 A 2 Light("BLASTERSHOT3");
             TNT1 A 2 Light("BLASTERSHOT4");
@@ -220,181 +599,71 @@ class BlasterParticleTrailSpawner : actor {
 			//TNT1 A 0 A_SpawnItemEx("staffShotSmoke2", 0, 0, 0, 0);
             //TNT1 AA 0 A_SpawnItemEx("BlasterParticle",0,0,0,frandom(-0.4,0.4),frandom(-0.4,0.4),frandom(-0.4,0.4),0,SXF_NOCHECKPOSITION);
             //TNT1 AA 0 A_SpawnItemEx("BlasterParticle",0,0,0,frandom(-0.2,0.2),frandom(-0.2,0.2),frandom(-0.2,0.2),0,SXF_NOCHECKPOSITION);				
-			TNT1 AA 0 A_SpawnParticle ("235713", SPF_FULLBRIGHT|SPF_RELATIVE, 17, 0.35, 0, frandom(-1.25,1.25), frandom(-1.25,1.25), frandom(-1.25,1.25), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.25);		
+			TNT1 AA 0 A_SpawnParticle ("235713", SPF_FULLBRIGHT|SPF_RELATIVE, 17, 0.35, 0, frandom(-1.25,1.25), frandom(-1.25,1.25), frandom(-1.25,1.25), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.25);				
 			TNT1 AAA 0 A_SpawnParticle ("8fc75f", SPF_FULLBRIGHT|SPF_RELATIVE, 17, 0.5, 0, frandom(-0.85,0.85), frandom(-0.85,0.85), frandom(-0.85,0.85), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.05);
-			TNT1 AA 0 A_SpawnParticle ("b7e77f", SPF_FULLBRIGHT|SPF_RELATIVE, 17, 0.25, 0, frandom(-0.45,0.45), frandom(-0.45,0.45), frandom(-0.45,0.45), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.025);
+			TNT1 AA 0 A_SpawnParticle ("b7e77f", SPF_FULLBRIGHT|SPF_RELATIVE, 17, 0.25, 0, frandom(-0.45,0.45), frandom(-0.45,0.45), frandom(-0.45,0.45), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.025);			
         Stopped:
             //TNT1 A 0;
             Stop;
     }
-}
-class BlasterParticle : actor {
-    Default {
-        +DOOMBOUNCE
-        +MISSILE
-        +CLIENTSIDEONLY
-        +NOTELEPORT
-        +NOBLOCKMAP
-        +CORPSE
-        +BLOODLESSIMPACT
-        +FORCEXYBILLBOARD
-        +NODAMAGETHRUST
-        +MOVEWITHSECTOR
-        +NOBLOCKMONST
-        -SOLID
-        +THRUACTORS
-        +DONTSPLASH
-        -NOGRAVITY
-        +DONTBLAST
+}*/
+/*class BlasterTracerTrail : actor {	
 
-        Scale 0.026;
-        Gravity 0.02;
-        Radius 0;
-        Height 0;
-        Damage 0;
-        Renderstyle "Add";
-        Alpha 0.95;        
-        Speed 0;
-    }
-
-    States {
-		Spawn:
-			SPKB AAAAAAAA 1 Bright A_SetScale(scale.x*0.94);
-			Stop;
-    }
-}
-class BlasterParticle2 : BlasterParticle {
-    Default {
-	    Scale 0.07;
-    }
-
-    States {
-        Spawn:
-            SPKB AAAAAAAAA 1 Bright A_SetScale(scale.x*0.86);
-            Stop;
-    }
-}
-class Flare_General : actor {
-    Default {
-        +NOINTERACTION
-        +NOGRAVITY
-        +CLIENTSIDEONLY
-        +DONTBLAST
-        +FORCEXYBILLBOARD
-		
-        renderstyle "Add";
-        radius 1;
-        height 1;
-        alpha 0.4;
-        scale 0.4;
-    }
-}
-class BlasterFlare : Flare_General {
-    Default {
-        scale 0.15;
-    }
-
-    states {
-        Spawn:
-            TNT1 A 0;
-            TNT1 A 0 A_Jump(128,2);
-            LENB A 1 bright;
-            stop;
-            TNT1 A 0;
-            LENB B 1 bright;
-            stop;
-    }
-}
-class blueshotDeath : actor {
-	Default {
-		+CannotPush
-		+NoDamageThrust
-		+SpawnSoundsource
-		+nogravity
-        +FORCEXYBILLBOARD
-		RenderStyle "Add";
-		scale 0.6;
-	}
-	States {
-		Spawn:
-			GP_D ABCDE 3 Bright;
-			Stop;
-	}
-
-}
-class staffFlashShort : flashBase {
-	Default {
-		+NOINTERACTION;
-	}
-	States {
-		Spawn:
-			TNT1 A 3;
-			Stop;
-	}
-}
-class staffFlashLong : flashBase {
-	Default {}
-	States {
-		Spawn:
-			TNT1 A 15;
-			Stop;
-	}
-}
-class lightningExplosion : actor {
-	Default {
-		+NOBLOCKMAP
-		+NOGRAVITY
-		+SHADOW
-		+NOTELEPORT
-		+CANNOTPUSH
-		+NODAMAGETHRUST
-        +FORCEXYBILLBOARD
-		
-		renderStyle "Add";
-		scale 0.6;
-		alpha 0.95;
+	action void W_blasterTrailSpawnParticle(string color, double size, double setRandom) {
+		A_SpawnParticle (color, SPF_FULLBRIGHT|SPF_RELATIVE, 1, size, 0, frandom(-setRandom,setRandom), frandom(-setRandom,setRandom), frandom(-setRandom,setRandom), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.25);
 	}
 	
-	States {
-		Spawn:
-			TNT1 A 0;
-			ARLG ABCDEF 2 Bright;
-			Stop;
-	}
-}
-class staffShotSmoke2 : actor {
-	Default {
+    Default {
+		Alpha 0.5;
+		RenderStyle "Add";
+		//Scale 0.25;
 		+NOINTERACTION
-		+NOGRAVITY
-		
-		RenderStyle "Add";
-		Scale 0.08;
-		Alpha 0.8;
-	}
-	
-	States {
-		Spawn:
-			TNT1 A 0;
-			ARLG BCDE 2 bright A_FadeOut(0.1);
-		Next:
-			TNT1 A 0 A_SetScale(-0.01);
-			ARLG F 1 bright A_FadeOut(0.08);
-			Loop;
-	}
-}
-//  staffblaster.TESTING MODEL  ////////////////////////////////////////////////
-class staffBlasterModel : actor {
-	Default {
-		//$Category ""
-		//$color 6
-		//$title "blaster staff lvl1 model"
+		+NOBLOCKMAP
 	}
 	States {
-		Spawn:
-			DUMM A -1;
+		Spawn:			
+			//TNT1 AA 0 A_SpawnParticle ("235713", SPF_FULLBRIGHT|SPF_RELATIVE, 1, 0.35, 0, frandom(-1.25,1.25), frandom(-1.25,1.25), frandom(-1.25,1.25), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.25);				
+			//TNT1 AAA 0 A_SpawnParticle ("8fc75f", SPF_FULLBRIGHT|SPF_RELATIVE, 1, 0.5, 0, frandom(-0.85,0.85), frandom(-0.85,0.85), frandom(-0.85,0.85), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.05);
+			//TNT1 AA 0 A_SpawnParticle ("b7e77f", SPF_FULLBRIGHT|SPF_RELATIVE, 1, 0.25, 0, frandom(-0.45,0.45), frandom(-0.45,0.45), frandom(-0.45,0.45), 0, 0, 0, 0, 0, 0, 1.0, -0.1, 0.025);
+			TNT1 AA 0 W_blasterTrailSpawnParticle("235713", 0.35, 1.25);				
+			TNT1 AAA 0 W_blasterTrailSpawnParticle("8fc75f", 0.5, 0.85);
+			TNT1 AA 0 W_blasterTrailSpawnParticle("b7e77f", 0.25, 0.45);
+			TNT1 A -1 A_Jump(256, "Null");
 			Stop;
 	}
-}
+}*/
+/*class BlasterTracer : blaster_ZTracer {
+	Default {
+		//Damage 8; //old: 16
+		DamageFunction (16 * Random(1, 4));
+        Decal "blueShotScorch";
+		//Speed 80;        
+		SeeSound "weapons/staffprojectile";
+		DeathSound "weapons/shotdeath";
+	}
+	States {
+		Spawn:
+			DUMM ABCDEFGHI 1 Bright W_SpawnParticleTrail();
+			//TNT1 A 1 W_SpawnParticleTrail();
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItemEx("BulletPuff");
+		//XDeath:
+			TNT1 A 0 A_AlertMonsters();
+            TNT1 AAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("BlasterParticle2",0,0,0,frandom(-6,6),frandom(-6,6),frandom(-6,6),0,SXF_NOCHECKPOSITION);
+			TNT1 A 0 A_SpawnItemEx("staffFlashLong", 0, 0, 0, 0);
+			//TNT1 A 0 A_SpawnItemEx("blueExplosion", 0, 0, 0, 0);				
+			TNT1 A 0 A_SpawnItemEx("greenShotExplosion", 0, 0, 0, 0);
+			TNT1 A 0 A_SpawnItemEx("greenShotDeath", 0, 0, 0, 0);
+            TNT1 A 2 Light("BLASTERSHOT2");
+            TNT1 A 2 Light("BLASTERSHOT3");
+            TNT1 A 2 Light("BLASTERSHOT4");
+            TNT1 A 2 Light("BLASTERSHOT5");
+            Stop;
+	}
+}*/
+////////////////////////////////////////////////////////////////////////////////
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

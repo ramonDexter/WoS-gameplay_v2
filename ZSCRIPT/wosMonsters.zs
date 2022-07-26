@@ -1,3 +1,28 @@
+// base monster //
+class wosMonsterBase : actor {
+
+    /////////////////////////////////////////
+    // usage: W_rewardXP(SpawnHealth());   //
+    /*
+            TNT1 A 0 W_rewardXP(SpawnHealth()); //
+    */
+    /////////////////////////////////////////
+	action void W_rewardXP (int rewardXP) {
+		let pawn = binderPlayer(target);
+		if ( pawn && pawn.player ) {
+			pawn.playerXP+=rewardXP;
+			//A_Log("Added ", rewardXP, " XP!");
+			A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", rewardXP, " XP!"));
+		}
+	}
+
+    Default {
+        +SHOOTABLE
+        +SOLID
+    }
+
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////
 // spawner base definition ////////////////////////////////////////////////////////////
 // by jarewill ////////////////////////////////////////////////////////////////////////
@@ -5,6 +30,9 @@
 Class wosMonsterSpawner : Actor { //This is the base class that deals with respawning
     string montype; Property MonsterType : montype; //This is the monster type property
     int restime; Property RespawnTime : restime; //And this is the respawn time property (respawn is in seconds)
+    Default {        
+        //$arg0 "respawn time (sec)"
+    }
     States {
         Spawn:
             TNT1 A 0 SpawnMonster(); //This respawns the monster

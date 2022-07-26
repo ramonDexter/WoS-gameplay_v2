@@ -1,5 +1,5 @@
 //new flamethrower with projectile powered by flamethrower library by Boondorl
-const flamerBaseWeight = 240;
+//const flamerBaseWeight = 240;
 
 class wosFlamethrower : wosWeapon replaces FlameThrower {
 	Default {
@@ -92,6 +92,7 @@ class FlamethrowerProjectile : FastMissile {
 			Loop;
 			
 		Death:
+			TNT1 A 0 A_AlertMonsters();
             BNG3 D 5 Bright A_AreaOfEffect("FireAoE", 12);
             BNG3 EFGH 5 Bright A_Splash(32, radius*2, XF_NOSPLASH);
             Stop;

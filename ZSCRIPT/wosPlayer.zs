@@ -34,6 +34,10 @@ class binderPlayer : StrifePlayer {
 	// RPG system - new player stats ///////////////////////////////////////////
 	int mindValue;
 	property mind : mindValue;
+	int playerXP;
+	property playerXP : playerXP;
+	int playerLevel;
+	property playerLevel : playerLevel;
 
 	// broken lands ledge climbing /////////////////////////////////////////////	
 	double speedbase; property BaseSpeed : speedbase;
@@ -81,14 +85,17 @@ class binderPlayer : StrifePlayer {
 		Player.StartItem "magazine_pistol", 12;
 		Player.StartItem "magazine_shoulderGun", 32;
 		Player.StartItem "notePlayerPersonal", 1;
-		Player.StartItem "journalitem", 1;
-		Player.StartItem "PDAReader", 1;
+		Player.StartItem "binder_helmet", 1;
+		//Player.StartItem "PDAReader", 1;
 		Player.StartItem "magazine_executorRifle", 32;
 		//Player.StartItem "wosi_scanner", 1;
 		// custom properties ///////////////////////////////////////////////////
 		binderPlayer.BaseSpeed 2.0;
+		// rpg properties //////////////////////////////////////////////////////
 		binderPlayer.mind 0;
-		/////////////////////////////////////
+		binderPlayer.playerXP 0;
+		binderPlayer.playerLevel 1;
+		////////////////////////////////////////////////////////////////////////
 
 		// dodopod ledge climbing //
 		//binderPlayer.MaxLedgeHeight 56;
@@ -97,86 +104,46 @@ class binderPlayer : StrifePlayer {
 	}
 	////////////////////////////////////////////////////////////////////////////
 
-	//  overall override  //////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
+	// overall override ////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
+
+	// Tick() //////////////////////////////////////////////////////////////////
 	override void Tick() {
 		pvel=vel.z;
 		pang=angle;
 		encumbrance=0; //Before ticking, reset the encumbrance
         Super.Tick();
-		// LF code /////////////////////////////////////////////////////////////
 		
 		// custom functions ////////////////////////////////////////////////////
+		// LF code /////////////////////////////////////////////////////////////		
+        HandleStamina();
 		HandleEncumberance();
 		HandleArmorMass();
-		HandleWeight();
-		HandleBleed();
-		HandlePlayerBody();
+		HandlePlayerBody();		
 		HealthShake();
-        HandleStamina();
+		HandleBleed();
 		LedgeClimb();
 		HandleSpeed();
+		HandlePlayerLevel();
 		
-		level.aircontrol=1; //umoznuje ovladani hrace ve vzduchu - hrac se nezasekne ve skoku
-
-
-		// obsolete functions //////////////////////////////////////////////////
-		//CheckSprint();
-		//FallDamage();
-        //HealthSlow();
-		/*weightmax=2500; //Set the default		
-        //If(HandleUpgrade==1){weightmax+=500;} //Add 500 with the specific upgrade at level 1
-        //If(HandleUpgrade==2){weightmax+=1000;} //Add 1000 if it's at 2 instead
-        If(CountInv("AmmoSatchel")){weightmax*=1.5;} //Double with the backpack
-		If(encumbrance>weightmax){overweight=1;}Else{overweight=0;} //If it's over the limit (for example 1500/1000)
-        If(encumbrance>(weightmax*2)){overweight2=1;}Else{overweight2=0;} //If it's twice over the limit (for example 2000/1000)*/
-		// armor&mass //////////////////////////////////////////////////////////
-		/*If (armoramount < 1) {
-			currentarmor=0; 
-            armorpower=0;
-        }		
-		If (currentarmor==1) {
-            encumbrance+=LeatherWeight/5; 
-            mass=300; 
-            bNOBLOOD=0;
-			armorpower = 24;
-        } Else If (currentarmor==2) {
-            encumbrance+=MetalWeight/5; 
-            mass=400; 
-            bNOBLOOD=1;
-			armorpower = 44;
-        } Else If (currentarmor==3) {
-            encumbrance+=BinderBasicWeight/7; 
-            mass=350; 
-            bNOBLOOD=0;
-			armorpower = 33;
-        } Else If (currentarmor==4) {
-            encumbrance+=BinderBasicWeight/7; 
-            mass=350; 
-            bNOBLOOD=1;
-			armorpower = 50;
-        } Else if (currentarmor==5) {
-			encumbrance+=BinderBasicWeight/7; 
-            mass=350; 
-            bNOBLOOD=1;
-			armorpower = 65;
-		} 
-		Else {
-			mass=100; 
-			bNOBLOOD=0; 
-			PainChance=255;
-		}*/
+		level.aircontrol=1; //umoznuje ovladani hrace ve vzduchu - hrac se nezasekne ve skoku	
+		////////////////////////////////////////////////////////////////////////	
     }
+	////////////////////////////////////////////////////////////////////////////
 
+	// postBeginPlay() /////////////////////////////////////////////////////////
 	override void PostBeginPlay() {
         Super.PostBeginPlay();
 		// LF sprinting code //
         stamin = 400;
 		bleedlevel = 0;
 		////////
-    }	
-
+    }
+	////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	
- 	// ACS support - functions to return values to ACS scripts /////////////////
+ 	// ACS support - functions to touch values with ACS scripts ////////////////
 	static int getplayerAccuracy(actor activator) {
 		let pawn = binderplayer(activator);
 		if ( pawn && pawn.player ) {
@@ -198,15 +165,44 @@ class binderPlayer : StrifePlayer {
 		}
 		return 0;
 	}
+	static int getplayerXP(actor activator) {
+		let pawn = binderPlayer(activator);
+		if ( pawn && pawn.player ) {
+			return pawn.playerXP;
+		}
+		return 0;
+	}
+	static int getplayerLevel(actor activator) {
+		let pawn = binderPlayer(activator);
+		if ( pawn && pawn.player ) {
+			return pawn.playerLevel;
+		}
+		return 0;
+	}
+	static void FN_giveXP(actor activator, int amountXP) {
+		let pawn = binderPlayer(activator);
+		if ( pawn && pawn.player ) {
+			pawn.playerXP += amountXP;
+			pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", amountXP, " XP!"));
+		}
+	}
 	////////////////////////////////////////////////////////////////////////////
 
 	// common handlers /////////////////////////////////////////////////////////
 	// encumberance ////////////////////////////////////////////////////////////
+	// weight based on player's stamina ////////////////////////////////////////
 	void HandleEncumberance() {
-		weightmax=2500; //Set the default		
+		weightmax=2200; //Set the default		
         //If(HandleUpgrade==1){weightmax+=500;} //Add 500 with the specific upgrade at level 1
-        //If(HandleUpgrade==2){weightmax+=1000;} //Add 1000 if it's at 2 instead
-        If(CountInv("AmmoSatchel")){weightmax*=1.5;} //Double with the backpack
+		// modify weightmax with stamina upgrades
+		if ( maxstamin == 440 ) { weightmax = 2420; }
+		if ( maxstamin == 520 ) { weightmax = 2860; }
+		if ( maxstamin == 600 ) { weightmax = 3300; }
+		if ( maxstamin == 700 ) { weightmax = 3850; }
+		if ( maxstamin == 800 ) { weightmax = 4400; }
+		// finalize wightmax
+        If( staminaImplant ){ weightmax+=1000; } //Add 1000 if it's at 2 instead
+        If(CountInv("AmmoSatchel")){ weightmax*=1.5; } //Double with the backpack
 		If(encumbrance>weightmax){overweight=1;}Else{overweight=0;} //If it's over the limit (for example 1500/1000)
         If(encumbrance>(weightmax*2)){overweight2=1;}Else{overweight2=0;} //If it's twice over the limit (for example 2000/1000)
 	}
@@ -277,14 +273,7 @@ class binderPlayer : StrifePlayer {
 			}
 		}
 	}
-	// weight based on player's stamina /////////////////////////////////////////
-	void HandleWeight() {
-		if ( maxstamin == 440 ) { weightmax = 2750; }
-		if ( maxstamin == 520 ) { weightmax = 3250; }
-		if ( maxstamin == 600 ) { weightmax = 3750; }
-		if ( maxstamin == 700 ) { weightmax = 4375; }
-		if ( maxstamin == 800 ) { weightmax = 5000; }
-	}
+	
 	////////////////////////////////////////////////////////////////////////////
 
 	// jarewill's adopted code /////////////////////////////////////////////////
@@ -418,6 +407,121 @@ class binderPlayer : StrifePlayer {
 		ViewBob = 0.6*hpeed; //lower the viewBob
 		speed = hpeed;
     }
+	////////////////////////////////////////////////////////////////////////////
+
+	// level handler ///////////////////////////////////////////////////////////
+	void HandlePlayerLevel() {
+		if ( playerXP>=1000 && playerLevel==1 ) {
+			playerLevel=2;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=3000 && playerLevel==2 ) {
+			playerLevel=3;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=6000 && playerLevel==3 ) {
+			playerLevel=4;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=10000 && playerLevel==4 ) {
+			playerLevel=5;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=15000 && playerLevel==5 ) {
+			playerLevel=6;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=21000 && playerLevel==6 ) {
+			playerLevel=7;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=28000 && playerLevel==7 ) {
+			playerLevel=8;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=36000 && playerLevel==8 ) {
+			playerLevel=9;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=45000 && playerLevel==9 ) {
+			playerLevel=10;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=55000 && playerLevel==10 ) {
+			playerLevel=11;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=66000 && playerLevel==11 ) {
+			playerLevel=12;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=78000 && playerLevel==12 ) {
+			playerLevel=13;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=91000 && playerLevel==13 ) {
+			playerLevel=14;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=105000 && playerLevel==14 ) {
+			playerLevel=15;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=120000 && playerLevel==15 ) {
+			playerLevel=16;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=136000 && playerLevel==16 ) {
+			playerLevel=17;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=153000 && playerLevel==17 ) {
+			playerLevel=18;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=171000 && playerLevel==18 ) {
+			playerLevel=19;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=190000 && playerLevel==19 ) {
+			playerLevel=20;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=210000 && playerLevel==20 ) {
+			playerLevel=21;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=231000 && playerLevel==21 ) {
+			playerLevel=22;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+		if ( playerXP>=253000 && playerLevel==22 ) {
+			playerLevel=23;
+			A_GiveInventory("upgradeToken", 1);
+			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+		}
+	}
 	////////////////////////////////////////////////////////////////////////////
 
 	// ledge climb function ////////////////////////////////////////////////////
@@ -699,7 +803,6 @@ class binderPlayer : StrifePlayer {
 			A_GiveInventory("wosGrenadeLauncher", 1);
 			A_GiveInventory("wosFlamethrower", 1);
 			A_GiveInventory("wosMauler", 1);
-			A_GiveInventory("Sigil", 1);
 		} 
 		else if ( name ~== "items" ) {			
 			if ( !amount ) {
@@ -723,15 +826,15 @@ class binderPlayer : StrifePlayer {
 		}
 		else if ( name ~== "gold" || name ~=="money" || name ~== "coin" || name ~== "coins" ) {
 			if ( !amount ) {
-				A_GiveInventory("Coin", 1);
+				A_GiveInventory("coin", 1);
 			} else {
-				A_GiveInventory("Coin", amount);
+				A_GiveInventory("coin", amount);
 			}
 		}
 		else if ( name ~== "all" || name ~== "everything" ) {
-			A_Log("\c[red][ Cheat blocked. Use other cheats if you are in need of assistance. ]");
+			A_Log("\c[red][ Cheat blocked because of dangerously breaking the game. Use other cheats if you are in need of assistance. ]");
 		}
-		/*else if ( name ~== "keys" ) {
+		else if ( name ~== "keys" ) {
 			A_GiveInventory("skeletonKey", 1);
 			A_GiveInventory("BHWasteCatacombKey", 1);
 			A_GiveInventory("BHWasteKey", 1);
@@ -744,7 +847,7 @@ class binderPlayer : StrifePlayer {
 			A_GiveInventory("SHtgPowerplantKey", 1);
 			A_GiveInventory("m08k_BP_pokladnice", 1);
 			//A_GiveInventory("", 1);
-		}*/
+		}
 		else if ( name ~== "implants" ) {
 			A_GiveInventory("implant_health", 1);
 			A_GiveInventory("implant_stamina", 1);
@@ -807,6 +910,13 @@ class binderPlayer : StrifePlayer {
 	////////////////////////////////////////////////////////////////////////////
 	
 	////////////////////////////////////////////////////////////////////////////
+	/*void HandleWeight() {
+		if ( maxstamin == 440 ) { weightmax = 2420; }
+		if ( maxstamin == 520 ) { weightmax = 2860; }
+		if ( maxstamin == 600 ) { weightmax = 3300; }
+		if ( maxstamin == 700 ) { weightmax = 3850; }
+		if ( maxstamin == 800 ) { weightmax = 4400; }
+	}*/
 	/*void FallDamage() {
 		double cvel = vel.z;
 		int damage;

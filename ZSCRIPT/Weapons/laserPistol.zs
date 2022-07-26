@@ -1,4 +1,4 @@
-const laserPistolBaseWeight = 70;
+//const laserPistolBaseWeight = 70;
 
 class magazine_pistolLaser : ammo {
 	Default {
@@ -22,10 +22,10 @@ class laserPistol : wosWeapon {
 		radius 12;
 		height 16;
 		
-		Tag "$T_laserPistol";
+		Tag "$TAG_laserPistol";
 		Inventory.icon "H_LSPS";
-		Inventory.pickupmessage "$F_laserPistol";
-		Obituary "%o was burned to ashes by %k Laser Pistol";		
+		Inventory.pickupmessage "$FND_laserPistol";
+		Obituary "$OBI_laserPistol"; // %o was burned to ashes by %k Laser Pistol
 		AttackSound "weapons/staffShoot";
         Weapon.UpSound "weapons/weaponUP";
 		Weapon.SlotNumber 2;
@@ -171,7 +171,7 @@ class laserTracer : FastProjectile {
             LSTR A 1 Bright A_SpawnItem("laserFlare",0,0);
             Loop;
         Death:
-            TNT1 A 0;
+            TNT1 A 0 A_AlertMonsters();
             TNT1 AAAAAAAAAAAAAAAAAAAAA 0 A_SpawnParticle ("red", SPF_FULLBRIGHT|SPF_RELATIVE, 15, 2.5, 0, frandom(-1,1),  frandom(-1,1), frandom(-1,1), frandom(-4,4), frandom(-4,4), frandom(-4,4), 0, 0, 0, 1.0, -0.1, 0.05);
 			TNT1 AAAAAAAAAAAAAAAAAAAAA 0 A_SpawnParticle ("red", SPF_FULLBRIGHT|SPF_RELATIVE, 15, 1.75, 0, frandom(-0.5,0.5),  frandom(-0.5,0.5), frandom(-0.5,0.5), frandom(-4,4), frandom(-4,4), frandom(-4,4), 0, 0, 0, 1.0, -0.1, 0.025);
 			TNT1 A 0 A_SpawnItemEx("lasPisFlashLong", 0, 0, 0, 0);			
@@ -199,6 +199,20 @@ class laserParticleTrailSpawner : actor {
             Stop;
     }
 }
+class Flare_General : actor {
+    Default {
+        +NOINTERACTION;
+        +NOGRAVITY;
+        +CLIENTSIDEONLY;
+        +DONTBLAST;
+        +FORCEXYBILLBOARD;	
+        renderstyle "Add";
+        radius 1;
+        height 1;
+        alpha 0.4;
+        scale 0.4;
+    }
+}
 class laserFlare : Flare_General {
     Default {
         scale 0.15;
@@ -215,7 +229,7 @@ class laserFlare : Flare_General {
             stop;
     }
 }
-class laserParticle : actor{
+class laserParticle : actor {
     Default {
         +DOOMBOUNCE;
         +MISSILE;
@@ -250,7 +264,7 @@ class laserParticle : actor{
 		    Stop;
     }
 }
-class laserParticle2 : BlasterParticle {
+class laserParticle2 : laserParticle {
     Default {
 	    Scale 0.07;
     }

@@ -6,8 +6,8 @@
 blaster turret
 --------------------------------------------------------------------------------
 credits:
-sprites: Mor'ladim, Raven Software, raon.dexter
-voxels: ramon.dexter
+sprites: Mor'ladim, Raven Software, ramon.dexter
+model: ramon.dexter
 sounds: Mor'ladim, Tormentor667
 zscript: ramon.dexter
 
@@ -15,7 +15,7 @@ zscript: ramon.dexter
 --------------------------------------------------------------------------------
 */
 ////////////////////////////////////////////////////////////////////////////////
-const blasterTurretWeight = 150;
+//const blasterTurretWeight = 135;
 
 class wosBlasterTurret : wosPickup {
     Default {
@@ -63,11 +63,36 @@ class blasterTurretSet : actor {
             Loop;
         Death:
             DUMM A 1;
-            TNT1 A 0 A_SpawnItemEx("Blaster_turret",1,0,0);
+            TNT1 A 0 {
+                A_SpawnItemEx("Blaster_turret",1,0,0);
+                A_SpawnItemEx("blasterTurretStand",1,0,0);
+            }
             Stop;
     }
 }
 //turret actor with aggresive behavior------------------------------------------
+class blasterTurretStand : actor {
+    Default {
+        +INCOMBAT
+        +FRIENDLY
+	    +DontThrust
+	    +LOOKALLAROUND
+	    +NOBLOOD
+	    +NOTARGET
+	    +NOINFIGHTING
+	    +NOFEAR
+	    +DONTMORPH
+	    +NOICEDEATH
+        Radius 10;
+        height 56;
+        Speed 0;
+    }
+    States {
+        Spawn:
+            DUMM A -1;
+            Stop;
+    }
+}
 class Blaster_turret : actor {
 	int turretCount;	
 
@@ -124,7 +149,7 @@ class Blaster_turret : actor {
             Loop;
         Missile:
             DUMM E 4 A_FaceTarget();
-            DUMM F 3 Bright A_SpawnProjectile("blasterTurret_tracer");
+            DUMM F 3 Bright A_SpawnProjectile("blasterTurretTracer");
             DUMM F 2 Bright;
             DUMM E 4 ;
             DUMM E 4 A_MonsterRefire(130, "See");
@@ -141,9 +166,9 @@ class Blaster_turret : actor {
     }
 }
 //turret projectile-------------------------------------------------------------
-class blasterTurret_tracer : BlasterTracer {
+class blasterTurretTracer : BlasterTracer {
 	Default {
-		Damage 8;
+		DamageFunction (12 * Random(1, 4));
 	}
 }
 //------------------------------------------------------------------------------

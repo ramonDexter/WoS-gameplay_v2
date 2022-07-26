@@ -1,4 +1,4 @@
-Class LaserScout : Sentinel
+Class LaserScout : wosMonsterBase
 {
 	Default
 	{
@@ -10,17 +10,17 @@ Class LaserScout : Sentinel
 		Height 56;
 		Mass 450;
 		PainChance 40;
+		Tag "Laser-Scout";
+		DeathSound "scout/death";
+		Obituary "%o was vaporized by a laser-scout.";
+		DropItem "wosEnergyPod";
+		GibHealth 100;
 		-FLOAT
 		-NOGRAVITY
 		-SPAWNCEILING
 		-NOGRAVITY
 		-DROPOFF
 		+SEESDAGGERS
-		Tag "Laser-Scout";
-		DeathSound "scout/death";
-		Obituary "%o was vaporized by a laser-scout.";
-		DropItem "wosEnergyPod";
-		GibHealth 100;
 	}
 	States
 	{
@@ -46,6 +46,7 @@ Class LaserScout : Sentinel
 			MECH K 6;
 			MECH L 12;
 			MECH MNO 5 Bright;
+            TNT1 A 0 W_rewardXP(SpawnHealth());
 			MECH L -1;
 			Stop;
 		XDeath:
@@ -54,6 +55,7 @@ Class LaserScout : Sentinel
 			MECH Q 0 A_Fall;
 			MECH RRSSTT 2 Bright A_TossGib;
 			MECH UVW 5 Bright A_TossGib;
+            TNT1 A 0 W_rewardXP(SpawnHealth());
 			MECH X -1;
 			Stop;
 	}

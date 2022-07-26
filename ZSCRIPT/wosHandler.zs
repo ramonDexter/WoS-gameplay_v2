@@ -125,10 +125,12 @@ class wosEventHandler : EventHandler {
     override void WorldThingDamaged(WorldEvent e) {
         if (e.thing && e.Thing is "binderPlayer") {
             let pawn = binderPlayer(e.Thing);
-			If(e.Damage>9/*&&(e.DamageType=="Bullet"||e.DamageType=="Melee")*/) {
+			If(e.Damage>9&&(e.DamageType=="Bullet"||e.DamageType=="Melee")) {
 				//console.printf(string.format("%i", pawn.bleedlevel));
 				pawn.bleedlevel++;				
-				If(pawn.bleedlevel>5){pawn.bleedlevel=5;}
+				If(pawn.bleedlevel>5){
+					pawn.bleedlevel=5;
+				}
 			}
             pawn.stamin -= e.Damage*7;
             if (pawn.stamin<0) {
@@ -200,8 +202,8 @@ class wosEventHandler : EventHandler {
 			pawn.A_GiveInventory("wosDeployableShield", 1);
 			//Swarmers_item
 			pawn.A_GiveInventory("wosSwarmers", 5);
-			// goldCoin x2500
-			pawn.A_GiveInventory("Coin", 2500);
+			// coin x2500
+			pawn.A_GiveInventory("coin", 2500);
         } else if ( e.Name ~== "give_binderpackLight" ) {
 			pawn.A_GiveInventory("binder_helmet", 1);
 			// weapons
@@ -225,7 +227,7 @@ class wosEventHandler : EventHandler {
 			pawn.A_GiveInventory("wosGrenadeF", 5);
 			pawn.A_GiveInventory("wosInstaLek", 5);
 			// gold
-			pawn.A_GiveInventory("Coin", 2500);
+			pawn.A_GiveInventory("coin", 2500);
 		} else if ( e.Name ~== "give_allarmor" ) {
 			pawn.A_GiveInventory("wosLeatherArmor", 1);
 			pawn.A_GiveInventory("wosMetalArmor", 1);

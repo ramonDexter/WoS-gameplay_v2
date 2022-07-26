@@ -2,6 +2,19 @@
 //  WoS weapons main definition  ///////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+// weapons weights /////////////////////////////////////////////////////////////
+const stormPistolBaseWeight = 50;
+const laserPistolBaseWeight = 55;
+const xBowBaseWeight = 45;
+const assaultGunBaseWeight = 110;
+const blasterStaffBaseWeight = 175;
+const executorRifleWeight = 320;
+const missileLauncherBaseWeight = 420;
+const grenadeLauncherBaseWeight = 570;
+const flamerBaseWeight = 470;
+const maulerBaseWeight = 750;
+////////////////////////////////////////////////////////////////////////////////
+
 //  weapon base class  /////////////////////////////////////////////////////////
 class wosWeapon : StrifeWeapon {
 	//  vars&properties
@@ -29,10 +42,8 @@ class wosWeapon : StrifeWeapon {
 		//SpawnPlayerMissile(projectileType);
 		//ownr.takeInventory("magazine_blasterStaff", 1);
 		A_StartSound("weapons/staffShoot", 0);
-		A_SpawnItemEx(flashType, 8, 0, 16, 0);	
-		if ( alertMonsters ) {
-			A_AlertMonsters();
-		}
+		if ( flashType ) { A_SpawnItemEx(flashType, 8, 0, 16, 0); } else {}
+		if ( alertMonsters ) { A_AlertMonsters(); }
 	}
 	//  staffswing  ////////////////////////////////////////////////////////////
 	action void W_StaffSwing(string puffType) {
@@ -130,6 +141,7 @@ class wosWeapon : StrifeWeapon {
 		}
 		A_StartSound (weapsnd, CHAN_WEAPON); //default "weapons/assaultgun"
 		LineAttack (ang, PLAYERMISSILERANGE, BulletSlope (), damage, 'Hitscan', "zscStrifePuff");
+		A_AlertMonsters();
 	}
 	////////////////////////////////////////////////////////////////////////////
 	
@@ -179,6 +191,7 @@ class wosWeapon : StrifeWeapon {
 			// than this, so let's not handicap it by being too faithful to the
 			// original.
 			LineAttack (ang, PLAYERMISSILERANGE, pitch + Random2[Mauler1]() * (7.097 / 256), damage, 'Hitscan', "MaulerPuff", 0, null, 0, 97, 0);
+			A_AlertMonsters();
 		}
 	}
 	////////////////////////////////////////////////////////////////////////////
@@ -214,6 +227,7 @@ class wosWeapon : StrifeWeapon {
 		SpawnPlayerMissile ("wosMaulerTorpedo");
 		DamageMobj (self, null, 15, 'Disintegrate');
 		Thrust(7.8125, Angle+180.);
+		A_AlertMonsters();
 	}
 	////////////////////////////////////////////////////////////////////////////	
 	
@@ -281,76 +295,7 @@ class wosWeapon : StrifeWeapon {
 	}
 	////////////////////////////////////////////////////////////////////////////
 		
-	////////////////////////////////////////////////////////////////////////////
-	// A_Kicking(string puffType); /////////////////////////////////////////////
-	// credits: gzdoom.pk3 /////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////////
-	action void W_Kicking(string puffType) {
-		FTranslatedLineTarget t;
-		int damage;
 		
-		if(FindInventory("SVETalismanPowerup")) {
-			damage = 1000;
-		}
-		else {
-			int power = MIN(10, stamina / 10);
-			damage = (random[StaffSwing]() % (power + 6)) * (power + 1);
-
-			if(FindInventory("PowerStrength")) {
-				damage *= 10;
-			}
-		}
-		double angle = angle + random2[StaffSwing]() * (6.625 / 256);
-		double pitch = AimLineAttack (angle, 80.);
-		LineAttack (angle, 80., pitch, damage, 'Melee', puffType, true, t);
-		A_RadiusThrust(256, 64, 0, 32);
-		// turn to face target
-		if(t.linetarget) {
-			A_StartSound (t.linetarget.bNoBlood ? sound("weapons/staffswing") : sound("weapons/staffhit"), CHAN_WEAPON);
-			angle = t.angleFromSource;
-			bJustAttacked = true;
-			t.linetarget.DaggerAlert (self);
-		}
-		else {
-			A_StartSound ("weapons/staffswing", CHAN_WEAPON);
-		}
-	}
-	////////////////////////////////////////////////////////////////////////////
-	
-	////////////////////////////////////////////////////////////////////////////	
-	// A_uderPesti(string puffType); ///////////////////////////////////////////
-	// credits: gzdoom.pk3 /////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////////
-	action void W_uderPesti(string puffType) {
-		FTranslatedLineTarget t;
-		int damage;		
-		if(FindInventory("SVETalismanPowerup")) {
-			damage = 1000;
-		}
-		else {
-			int power = MIN(10, stamina / 10);
-			damage = (random[StaffSwing]() % (power + 4)) * (power + 1);
-
-			if(FindInventory("PowerStrength")) {
-				damage *= 10;
-			}
-		}
-		double angle = angle + random2[StaffSwing]() * (6.625 / 256);
-		double pitch = AimLineAttack (angle, 80.);
-		LineAttack (angle, 80., pitch, damage, 'Melee', puffType, true, t);
-		// turn to face target
-		if(t.linetarget) {
-			A_StartSound (t.linetarget.bNoBlood ? sound("weapons/staffswing") : sound("weapons/staffhit"), CHAN_WEAPON);
-			angle = t.angleFromSource;
-			bJustAttacked = true;
-			t.linetarget.DaggerAlert (self);
-		}
-		else {
-			A_StartSound ("weapons/staffswing", CHAN_WEAPON);
-		}
-	}
-	////////////////////////////////////////////////////////////////////////////
-	
 	//  grenade launcher actions  //////////////////////////////////////////////
 	action void W_ShootGrenade (class<Actor> grenadetype, double angleofs, statelabel flash) {
 		if (player == null) {
@@ -380,6 +325,7 @@ class wosWeapon : StrifeWeapon {
 			double an = Angle + angleofs;
 			offset += AngleToVector(an, 15);
 			grenade.SetOrigin(grenade.Vec3Offset(offset.X, offset.Y, 0.), false);
+			A_AlertMonsters();
 		}
 	}
 	////////////////////////////////////////////////////////////////////////////
@@ -467,7 +413,81 @@ class wosWeapon : StrifeWeapon {
 	//##########################################################################
 	//##########################################################################
 	
+	
+	////////////////////////////////////////////////////////////////////////////
 	// old mostly obsolete /////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
+
+	////////////////////////////////////////////////////////////////////////////
+	// A_Kicking(string puffType); /////////////////////////////////////////////
+	// credits: gzdoom.pk3 /////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
+	action void W_Kicking(string puffType) {
+		FTranslatedLineTarget t;
+		int damage;
+		
+		if(FindInventory("SVETalismanPowerup")) {
+			damage = 1000;
+		}
+		else {
+			int power = MIN(10, stamina / 10);
+			damage = (random[StaffSwing]() % (power + 6)) * (power + 1);
+
+			if(FindInventory("PowerStrength")) {
+				damage *= 10;
+			}
+		}
+		double angle = angle + random2[StaffSwing]() * (6.625 / 256);
+		double pitch = AimLineAttack (angle, 80.);
+		LineAttack (angle, 80., pitch, damage, 'Melee', puffType, true, t);
+		A_RadiusThrust(256, 64, 0, 32);
+		// turn to face target
+		if(t.linetarget) {
+			A_StartSound (t.linetarget.bNoBlood ? sound("weapons/staffswing") : sound("weapons/staffhit"), CHAN_WEAPON);
+			angle = t.angleFromSource;
+			bJustAttacked = true;
+			t.linetarget.DaggerAlert (self);
+		}
+		else {
+			A_StartSound ("weapons/staffswing", CHAN_WEAPON);
+		}
+	}
+	////////////////////////////////////////////////////////////////////////////
+	
+	////////////////////////////////////////////////////////////////////////////	
+	// A_uderPesti(string puffType); ///////////////////////////////////////////
+	// credits: gzdoom.pk3 /////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
+	action void W_uderPesti(string puffType) {
+		FTranslatedLineTarget t;
+		int damage;		
+		if(FindInventory("SVETalismanPowerup")) {
+			damage = 1000;
+		}
+		else {
+			int power = MIN(10, stamina / 10);
+			damage = (random[StaffSwing]() % (power + 4)) * (power + 1);
+
+			if(FindInventory("PowerStrength")) {
+				damage *= 10;
+			}
+		}
+		double angle = angle + random2[StaffSwing]() * (6.625 / 256);
+		double pitch = AimLineAttack (angle, 80.);
+		LineAttack (angle, 80., pitch, damage, 'Melee', puffType, true, t);
+		// turn to face target
+		if(t.linetarget) {
+			A_StartSound (t.linetarget.bNoBlood ? sound("weapons/staffswing") : sound("weapons/staffhit"), CHAN_WEAPON);
+			angle = t.angleFromSource;
+			bJustAttacked = true;
+			t.linetarget.DaggerAlert (self);
+		}
+		else {
+			A_StartSound ("weapons/staffswing", CHAN_WEAPON);
+		}
+	}
+	////////////////////////////////////////////////////////////////////////////
+
 	/*
     Ejects a bullet casing to the side.
     Params:
@@ -591,7 +611,7 @@ class wosWeapon : StrifeWeapon {
 			"----" A 1 Offset(0,82);
 			KICK ABCD 2;
 			KICK EFG 1;
-			KICK H 2 W_Kicking("StaffBlasterPuff");//A_KnifeSlash();
+			KICK H 2 W_Kicking("staffBlasterMeleePuff");//A_KnifeSlash();
 			KICK GFED 1;
 			KICK CBA 2;
 			TNT1 A 0 {

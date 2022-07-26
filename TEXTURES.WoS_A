@@ -1511,14 +1511,7 @@ Texture "WSCONC02", 64, 128
 	Patch "P_SUPIRN", 0, 64
 }
 
-Texture "LOCKC", 16, 16
-{
-	Patch "LOCKB", 0, 0
-	Patch "LOCKX", 0, 8
-	{
-		FlipY
-	}
-}
+
 
 Texture "WSWOD01", 64, 128
 {

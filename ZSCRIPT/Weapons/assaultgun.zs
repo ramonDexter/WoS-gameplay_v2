@@ -1,4 +1,4 @@
-const assaultGunBaseWeight = 150;
+//const assaultGunBaseWeight = 150;
 
 class magazine_wosAssaultGun : ammo {
 	Default {
@@ -37,7 +37,7 @@ class wosAssaultGun : wosWeapon replaces AssaultGun {
 		Weapon.AmmoGive2 32;
 		//Decal "SVEbulletScorch";
 		Inventory.PickupMessage "$F_ASSAULTGUN";
-		Obituary "%o was drilled full of holes by %k's assault gun.";
+		Obituary "$OBI_wosAssaultGun"; // %o was drilled full of holes by %k's assault gun.
 		Mass assaultGunBaseWeight;
         Weapon.UpSound "weapons/weaponUP";
 	}
@@ -79,7 +79,8 @@ class wosAssaultGun : wosWeapon replaces AssaultGun {
 			}
 		RealFire:
 			TNT1 A 0 A_JumpIfNoAmmo("Reload");
-			RIFF A 1 W_ShootFirearm(4, "weapons/assaultgun");		
+			RIFF A 1 W_ShootFirearm(4, "weapons/assaultgun");
+			TNT1 A 0 A_AlertMonsters();	
 			TNT1 A 0 A_JumpIfInventory("NoAdvDebris",1,2,AAPTR_PLAYER1);
 			TNT1 A 0 A_SpawnItemEx("Casing9mm",random(3,4),cos(pitch)*-25,sin(-pitch)*25+random(31,32),	random(1,3),0,random(4,6), random(-80,-90),0, SXF_ABSOLUTEMOMENTUM);
 			RIFF C 2;

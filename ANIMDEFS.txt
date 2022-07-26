@@ -206,7 +206,7 @@ animateddoor  SYSDC_1
 		pic SYSDC_6
 
 //  diabolusEX animdefs  ///////////////////////////////////////////////////////
-texture DESKC
+/*texture DESKC
     pic DESKC00 tics 4
     pic DESKC01 tics 4
     pic DESKC02 tics 4
@@ -269,7 +269,7 @@ texture VENDNA00 range VENDNA03 tics 16
 
 texture GCVIAL1 range GCVIAL3 tics 6
 
-flat MGLAVA1 range MGLAVA3 tics 12
+flat MGLAVA1 range MGLAVA3 tics 12*/
 
 ////////////////////////////////////////////////////////////////////////////////
 /*
@@ -485,3 +485,16 @@ texture DEXTF01
 	pic DEXTF02 tics 4
 	pic DEXTF03 tics 4
 	pic DEXTF04 tics 4
+
+texture DNSCRN31
+	pic DNSCRN31 tics 4
+	pic DNSCRN32 tics 4
+	pic DNSCRN33 tics 4
+
+
+/*
+texture WCOMP9A range WCOMP9B tics 8
+texture WCOMPAA range WCOMPAB tics 8
+texture WCOMPBA range WCOMPBB tics 8
+texture WCOMPCA range WCOMPCB tics 8
+texture WCOMPDA range WCOMPDB tics 8*/
