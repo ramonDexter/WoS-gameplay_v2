@@ -73,6 +73,7 @@ class rebelEnemy : Rebel replaces Rebel {
 				searched = 1;
 			} Else {
 				A_ChangeVelocity(frandom(-0.5,0.5),frandom(-0.5,0.5));
+				A_StartSound("sounds/armorMedium");
 				searchtimer++;
 			}
 		}
@@ -1391,6 +1392,7 @@ class wosAcolyte : Acolyte replaces Acolyte {
 				searched = 1;
 			} Else {
 				A_ChangeVelocity(frandom(-0.5,0.5),frandom(-0.5,0.5));
+				A_StartSound("sounds/armorMedium");
 				searchtimer++;
 			}
 		}
