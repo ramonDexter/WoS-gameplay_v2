@@ -402,10 +402,6 @@ class wosMonsterSpawner_Ophidiant : wosMonsterSpawner {
 ///////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////////////
-// monster XP replacers ///////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////
-
 // stalker XP replacer ////////////////////////////////////////////////////////////////
 class wosStalker : Stalker replaces Stalker {
 	action void W_rewardXPstalker (int rewardXP) {
@@ -465,11 +461,14 @@ class wosCrusader : Crusader replaces Crusader {
 			ROB2 H 5 A_TossGib;
 			ROB2 I 4 Bright A_TossGib;
 			ROB2 J 4 Bright A_Explode(64, 64, alert:true);
+			TNT1 A 0 A_SpawnItemEx("wosExplosion_high");
 			ROB2 K 4 Bright A_Fall;
 			TNT1 A 0 W_rewardXPCrusader(400);
 			ROB2 L 4 A_Explode(64, 64, alert:true);
+			TNT1 A 0 A_SpawnItemEx("wosExplosion_high");
 			ROB2 MN 4 A_TossGib;
 			ROB2 O 4 A_Explode(64, 64, alert:true);
+			TNT1 A 0 A_SpawnItemEx("wosExplosion_high");
 			ROB2 P -1 A_CrusaderDeath;
 			Stop;
 	}
@@ -491,15 +490,18 @@ class wosInquisitor : Inquisitor replaces Inquisitor {
 			ROB3 M 4 A_Scream;
 			ROB3 N 4 A_TossGib;
 			ROB3 O 4 Bright A_Explode(128, 128, alert:true);
+			TNT1 A 0 A_SpawnItemEx("wosExplosion_high");
 			ROB3 P 4 Bright A_TossGib;
 			ROB3 Q 4 Bright A_NoBlocking;
 			ROB3 RSTUV 4 A_TossGib;
 			ROB3 W 4 Bright A_Explode(128, 128, alert:true);
+			TNT1 A 0 A_SpawnItemEx("wosExplosion_high");
 			ROB3 XY 4 Bright A_TossGib;
 			ROB3 Z 4 A_TossGib;
 			ROB3 [ 4 A_TossGib;
 			ROB3 \ 3 A_TossGib;
 			ROB3 ] 3 Bright A_Explode(128, 128, alert:true);
+			TNT1 A 0 A_SpawnItemEx("wosExplosion_high");
 			TNT1 A 0 W_rewardXPInquisitor(1000);
 			RBB3 A 3 Bright A_TossArm;
 			RBB3 B 3 Bright A_TossGib;
@@ -549,6 +551,7 @@ class wosReaver : Reaver replaces Reaver {
 			ROB1 L 5;
 			ROB1 M 5 A_NoBlocking;
 			ROB1 NOP 5;
+			TNT1 A 0 A_SpawnItemEx("wosExplosion_high");
 			ROB1 Q 6 A_Explode(32, 32, alert:true);
 			TNT1 A 0 W_rewardXPReaver(150);
 			ROB1 R -1;
@@ -572,16 +575,40 @@ class wosSentinel : Sentinel replaces Sentinel {
 			A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", rewardXP, " XP!"));
 		}
 	}
+	Default {
+		//$Category "Monsters/WoS"
+		//$Title "wosSentinel"
+	}
 	States {
 		Death:
 			SEWR D 7 A_Fall;
 			SEWR E 8 Bright A_TossGib;
 			SEWR F 5 Bright A_Scream;
 			SEWR GH 4 Bright A_TossGib;
-			TNT1 A 0 W_rewardXPsentinel(100);
+			TNT1 A 0 {
+				W_rewardXPsentinel(100);
+				A_SpawnItemEx("wosExplosion_low");
+			}
 			SEWR I 4;
 			SEWR J 5;
 			Stop;
+	}
+}
+class hackedSentinel : wosSentinel {
+	Default {
+		//$Category "Monsters/WoS"
+		//$Title "Hacked Sentinel"
+		
+		Tag "$TAG_hackedSentinel";
+	}
+}
+class friendSentinel : wosSentinel {
+	Default {
+		//$Category "Monsters/WoS"
+		//$Title "Friendly Sentinel"
+		
+		+FRIENDLY
+		
 	}
 }
 ///////////////////////////////////////////////////////////////////////////////////////
