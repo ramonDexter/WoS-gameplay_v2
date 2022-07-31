@@ -119,10 +119,10 @@ class shoulderGun : wosPickup {
 			SHCN A 2;
 			SHCN I 2 Bright W_FireShoulderGun(true, true);
 			SHCN J 2 Bright W_FireShoulderGun(false, false);
-			SHCN I 2 Bright W_FireShoulderGun(false, true);
+			SHCN I 2 Bright W_FireShoulderGun(false, false);
 			SHCN J 2 Bright W_FireShoulderGun(false, false);
-			SHCN I 2 Bright W_FireShoulderGun(false, true);
-			SHCN J 2 Bright W_FireShoulderGun(false, false);
+			SHCN I 2 Bright W_FireShoulderGun(false, false);
+			SHCN J 2 Bright W_FireShoulderGun(false, true);
 			SHCN B 3;
 			SHCN C 3;
 			SHCN D 4 A_StartSound("weapons/shoulderGun/stop",6); //zrusit zvuk blesku
