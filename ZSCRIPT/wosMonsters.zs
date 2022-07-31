@@ -401,3 +401,189 @@ class wosMonsterSpawner_Ophidiant : wosMonsterSpawner {
 ///////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////
+// monster XP replacers ///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+
+// stalker XP replacer ////////////////////////////////////////////////////////////////
+class wosStalker : Stalker replaces Stalker {
+	action void W_rewardXPstalker (int rewardXP) {
+		let pawn = binderPlayer(target);
+		if ( pawn && pawn.player ) {
+			pawn.playerXP+=rewardXP;
+			//A_Log("Added ", rewardXP, " XP!");
+			A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", rewardXP, " XP!"));
+		}
+	}
+
+	States {
+		Death:
+			STLK O 4;
+			STLK P 4 A_Scream;
+			STLK QRST 4;
+			TNT1 A 0 W_rewardXPstalker(80);
+			STLK U 4 A_NoBlocking;
+			STLK VW 4;
+			STLK XYZ[ 4 Bright;
+			Stop;
+	}
+}
+// CeilingTurret XP replacer //////////////////////////////////////////////////////////
+class wosCeilingTurret : CeilingTurret replaces CeilingTurret {
+	action void W_rewardXPCeilingTurret (int rewardXP) {
+		let pawn = binderPlayer(target);
+		if ( pawn && pawn.player ) {
+			pawn.playerXP+=rewardXP;
+			//A_Log("Added ", rewardXP, " XP!");
+			A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", rewardXP, " XP!"));
+		}
+	}
+
+	States {
+		Death:
+			BALL A 6 Bright A_Scream;
+			BALL BCDE 6 Bright;
+			TNT1 A 0 W_rewardXPCeilingTurret(125);
+			TURT C -1;
+			Stop;
+	}
+}
+// crusader XP replacer ///////////////////////////////////////////////////////////////
+class wosCrusader : Crusader replaces Crusader {
+	action void W_rewardXPCrusader (int rewardXP) {
+		let pawn = binderPlayer(target);
+		if ( pawn && pawn.player ) {
+			pawn.playerXP+=rewardXP;
+			//A_Log("Added ", rewardXP, " XP!");
+			A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", rewardXP, " XP!"));
+		}
+	}
+	States {
+		Death:
+			ROB2 G 3 A_Scream;
+			ROB2 H 5 A_TossGib;
+			ROB2 I 4 Bright A_TossGib;
+			ROB2 J 4 Bright A_Explode(64, 64, alert:true);
+			ROB2 K 4 Bright A_Fall;
+			TNT1 A 0 W_rewardXPCrusader(400);
+			ROB2 L 4 A_Explode(64, 64, alert:true);
+			ROB2 MN 4 A_TossGib;
+			ROB2 O 4 A_Explode(64, 64, alert:true);
+			ROB2 P -1 A_CrusaderDeath;
+			Stop;
+	}
+}
+// Inquisitor XP replacer /////////////////////////////////////////////////////////////
+class wosInquisitor : Inquisitor replaces Inquisitor {
+	action void W_rewardXPInquisitor (int rewardXP) {
+		let pawn = binderPlayer(target);
+		if ( pawn && pawn.player ) {
+			pawn.playerXP+=rewardXP;
+			//A_Log("Added ", rewardXP, " XP!");
+			A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", rewardXP, " XP!"));
+		}
+	}
+	States {
+		Death:
+			ROB3 L 0 A_StopSound(CHAN_ITEM);
+			ROB3 L 4 A_TossGib;
+			ROB3 M 4 A_Scream;
+			ROB3 N 4 A_TossGib;
+			ROB3 O 4 Bright A_Explode(128, 128, alert:true);
+			ROB3 P 4 Bright A_TossGib;
+			ROB3 Q 4 Bright A_NoBlocking;
+			ROB3 RSTUV 4 A_TossGib;
+			ROB3 W 4 Bright A_Explode(128, 128, alert:true);
+			ROB3 XY 4 Bright A_TossGib;
+			ROB3 Z 4 A_TossGib;
+			ROB3 [ 4 A_TossGib;
+			ROB3 \ 3 A_TossGib;
+			ROB3 ] 3 Bright A_Explode(128, 128, alert:true);
+			TNT1 A 0 W_rewardXPInquisitor(1000);
+			RBB3 A 3 Bright A_TossArm;
+			RBB3 B 3 Bright A_TossGib;
+			RBB3 CD 3 A_TossGib;
+			RBB3 E -1;
+			Stop;
+	}
+}
+// Templar XP replacer ////////////////////////////////////////////////////////////////
+class wosTemplar : Templar replaces Templar {
+	action void W_rewardXPTemplar (int rewardXP) {
+		let pawn = binderPlayer(target);
+		if ( pawn && pawn.player ) {
+			pawn.playerXP+=rewardXP;
+			//A_Log("Added ", rewardXP, " XP!");
+			A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", rewardXP, " XP!"));
+		}
+	}
+	States {
+		Death:
+			PGRD I 4 A_TossGib;
+			PGRD J 4 A_Scream;
+			PGRD K 4 A_TossGib;
+			PGRD L 4 A_NoBlocking;
+			PGRD MN 4;
+			PGRD O 4 A_TossGib;
+			TNT1 A 0 W_rewardXPTemplar(300);
+			PGRD PQRSTUVWXYZ[ 4;
+			PGRD \ -1;
+			Stop;
+	}
+}
+// Reaver XP replacer /////////////////////////////////////////////////////////////////
+class wosReaver : Reaver replaces Reaver {
+	action void W_rewardXPReaver (int rewardXP) {
+		let pawn = binderPlayer(target);
+		if ( pawn && pawn.player ) {
+			pawn.playerXP+=rewardXP;
+			//A_Log("Added ", rewardXP, " XP!");
+			A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", rewardXP, " XP!"));
+		}
+	}
+	States {
+		Death:
+			ROB1 J 6;
+			ROB1 K 6 A_Scream;
+			ROB1 L 5;
+			ROB1 M 5 A_NoBlocking;
+			ROB1 NOP 5;
+			ROB1 Q 6 A_Explode(32, 32, alert:true);
+			TNT1 A 0 W_rewardXPReaver(150);
+			ROB1 R -1;
+			Stop;
+		XDeath:
+			ROB1 L 5 A_TossGib;
+			ROB1 M 5 A_Scream;
+			ROB1 N 5 A_TossGib;
+			ROB1 O 5 A_NoBlocking;
+			ROB1 P 5 A_TossGib;
+			Goto Death+7;
+	}
+}
+// sentinel XP replacer ///////////////////////////////////////////////////////////////
+class wosSentinel : Sentinel replaces Sentinel {
+	action void W_rewardXPsentinel (int rewardXP) {
+		let pawn = binderPlayer(target);
+		if ( pawn && pawn.player ) {
+			pawn.playerXP+=rewardXP;
+			//A_Log("Added ", rewardXP, " XP!");
+			A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", rewardXP, " XP!"));
+		}
+	}
+	States {
+		Death:
+			SEWR D 7 A_Fall;
+			SEWR E 8 Bright A_TossGib;
+			SEWR F 5 Bright A_Scream;
+			SEWR GH 4 Bright A_TossGib;
+			TNT1 A 0 W_rewardXPsentinel(100);
+			SEWR I 4;
+			SEWR J 5;
+			Stop;
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
