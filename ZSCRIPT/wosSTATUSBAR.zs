@@ -735,7 +735,13 @@ class wosStatusBar : BaseStatusBar {
 					screen.DrawTexture (idPOPSTBKLog, true, left, top-50, DTA_CleanNoMove, true, DTA_Alpha, 0.75);
 					screen.DrawText(SmallFont, Font.CR_UNTRANSLATED, left + 22 * xscale, top - 8 * yscale, "LOCATION: "..level.FormatMapName(2), DTA_CleanNoMove, true);
 				}*/
-				
+				if (CPlayer.LogText.Length() > 0) {
+					let text = Stringtable.Localize(CPlayer.LogText);
+					BrokenLines lines = SmallFont2.BreakLines(text, 272);
+					for (i = 0; i < lines.Count(); ++i) {
+						screen.DrawText(SmallFont2, Font.CR_UNTRANSLATED, left + 24 * xscale, top + (18 + i * 12)*yscale, lines.StringAt(i), DTA_CleanNoMove, true);
+					}
+				}
 				
 				/*
 				// Draw the latest log message.
