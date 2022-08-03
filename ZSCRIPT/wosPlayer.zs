@@ -73,7 +73,7 @@ class binderPlayer : StrifePlayer {
 		Player.WeaponSlot 5, "wosGrenadeLauncher";
 		Player.WeaponSlot 6, "wosFlamethrower";
 		Player.WeaponSlot 7, "wosMauler";		
-		//Player.WeaponSlot 8, "Sigil";
+		Player.WeaponSlot 8, "Sigil";
 		//Player.WeaponSlot 9, "hookShotWeapon";		
 		//  start items  ///////////////////////////////////////////////////////
 		//Player.StartItem "zscFist", 1;	
