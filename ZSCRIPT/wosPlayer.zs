@@ -76,31 +76,15 @@ class binderPlayer : StrifePlayer {
 		Player.WeaponSlot 8, "Sigil";
 		//Player.WeaponSlot 9, "hookShotWeapon";		
 		//  start items  ///////////////////////////////////////////////////////
-		//Player.StartItem "zscFist", 1;	
-		Player.StartItem "wosPunchDagger", 1;	
-		Player.StartItem "magazine_wosAssaultGun", 32;
-		Player.StartItem "magazine_pistolLaser", 32;
-		Player.StartItem "magazine_blasterStaff", 48;
-		Player.StartItem "magazine_missileLauncher", 8;
-		Player.StartItem "magazine_pistol", 12;
+		Player.StartItem "wosPunchDagger", 1;
 		Player.StartItem "magazine_shoulderGun", 32;
-		Player.StartItem "notePlayerPersonal", 1;
 		Player.StartItem "binder_helmet", 1;
-		//Player.StartItem "PDAReader", 1;
-		Player.StartItem "magazine_executorRifle", 32;
-		//Player.StartItem "wosi_scanner", 1;
 		// custom properties ///////////////////////////////////////////////////
 		binderPlayer.BaseSpeed 2.0;
-		// rpg properties //////////////////////////////////////////////////////
 		binderPlayer.mind 0;
 		binderPlayer.playerXP 0;
 		binderPlayer.playerLevel 1;
 		////////////////////////////////////////////////////////////////////////
-
-		// dodopod ledge climbing //
-		//binderPlayer.MaxLedgeHeight 56;
-		//binderPlayer.ClimbSpeed 2;
-		////////////////////////////
 	}
 	////////////////////////////////////////////////////////////////////////////
 
@@ -852,6 +836,66 @@ class binderPlayer : StrifePlayer {
 			A_GiveInventory("implant_health", 1);
 			A_GiveInventory("implant_stamina", 1);
 		}
+		else if ( name ~== "binderpack" ) {
+			A_GiveInventory("binder_helmet", 1);
+			// weapons
+			A_GiveInventory("shoulderGun", 1);
+			A_GiveInventory("magazine_shoulderGun", 32);
+			A_GiveInventory("StaffBlaster", 1);
+			A_GiveInventory("laserpistol", 1);
+			//armor
+			A_GiveInventory("wosKineticArmor", 1);
+			//ammo
+			A_GiveInventory("EnergyPod", 400);
+			A_GiveInventory("wosenergykit", 10);
+			A_GiveInventory("shoulderGunCharger", 1);
+			//grenades
+			A_GiveInventory("wosGrenadeE", 15);
+			A_GiveInventory("wosGrenadeF", 15);
+			A_GiveInventory("wosGrenadeG", 15);
+			A_GiveInventory("wosArmorShard", 10);
+			//medical
+			A_GiveInventory("wosHyposprej", 30);
+			A_GiveInventory("wosKombopack", 10);
+			A_GiveInventory("wosInstaLek", 5);
+			A_GiveInventory("wosi_StimDevice", 5);
+			//BlasterTurret_item
+			A_GiveInventory("wosInterceptordrone", 5);	
+			//DeployableShieldItem
+			A_GiveInventory("wosDeployableShield", 1);
+			//Swarmers_item
+			A_GiveInventory("wosSwarmers", 5);
+			// goldCoin x2500
+			A_GiveInventory("coin", 2500);
+		}
+		else if ( name ~== "binderpacklight" ) {
+			A_GiveInventory("binder_helmet", 1);
+			// weapons
+			A_GiveInventory("shoulderGun", 1);
+			A_GiveInventory("magazine_shoulderGun", 32);
+			A_GiveInventory("StaffBlaster", 1);
+			// armor
+			A_GiveInventory("wosKineticArmor", 1);
+			// ammo
+			A_GiveInventory("EnergyPod", 400);
+			A_GiveInventory("wosenergykit", 10);
+			A_GiveInventory("shoulderGunCharger", 1);
+			// medical
+			A_GiveInventory("wosHyposprej", 20);
+			A_GiveInventory("wosKombopack", 5);
+			A_GiveInventory("wosInstaLek", 2);
+			A_GiveInventory("wosKombopack", 5);
+			A_GiveInventory("wosi_StimDevice", 5);
+			// grenades
+			A_GiveInventory("wosGrenadeE", 5);
+			A_GiveInventory("wosGrenadeF", 5);
+			A_GiveInventory("wosInstaLek", 5);
+			// gold
+			A_GiveInventory("coin", 2500);
+		}
+		else if ( name ~== "badge" || name ~== "binderbadge" ) {
+			A_GiveInventory("binderbadge", 1);
+		}
 		else {
 			Super.CheatGive(name,amount);
 		}
@@ -908,6 +952,57 @@ class binderPlayer : StrifePlayer {
 			Stop;
 	}
 	////////////////////////////////////////////////////////////////////////////
+}
+class wos_sprintWeap : wosWeapon {
+    Default {
+        weapon.selectionOrder 4000;
+        Tag "Sprinting";
+		Mass 0;
+    }
+    States {
+        Nope:
+            TNT1 A 1 A_WeaponReady();
+            Loop;
+        Ready:
+            TNT1 A 1 A_WeaponReady(WRF_NOSWITCH);
+            Loop;
+        Select:
+            TNT1 A 0 A_Raise();
+            Loop;
+        Deselect:
+            TNT1 A 0 A_Lower();
+            Loop;
+        Fire:
+            TNT1 A 0;
+            Goto Ready;
+    }
+}
+class binderPlayerBody : Actor {
+	Default {
+		+NOGRAVITY; +NOBLOCKMAP;
+		+FORCEYBILLBOARD; +FLOORCLIP;
+	}
+	Override void Tick() {
+		Super.Tick();
+		If(master==null||master.health<1){Destroy();}
+		If(master.pitch>=55){sprite=master.sprite;}Else{sprite=GetSpriteIndex("TNT1");}
+		frame=master.frame;
+		translation=master.translation;
+		A_Warp(AAPTR_MASTER,-16,0,0,0,WARPF_NOCHECKPOSITION);
+	}
+	States {
+        Spawn:
+            BNDP A 1;
+            Loop;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// DEPRECATED - OBSOLETE ///////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
 	
 	////////////////////////////////////////////////////////////////////////////
 	/*void HandleWeight() {
@@ -1044,50 +1139,23 @@ class binderPlayer : StrifePlayer {
         Super.CheckJump();
     }*/
 	////////////////////////////////////////////////////////////////////////////
-}
-class wos_sprintWeap : wosWeapon {
-    Default {
-        weapon.selectionOrder 4000;
-        Tag "Sprinting";
-		Mass 0;
-    }
-    States {
-        Nope:
-            TNT1 A 1 A_WeaponReady();
-            Loop;
-        Ready:
-            TNT1 A 1 A_WeaponReady(WRF_NOSWITCH);
-            Loop;
-        Select:
-            TNT1 A 0 A_Raise();
-            Loop;
-        Deselect:
-            TNT1 A 0 A_Lower();
-            Loop;
-        Fire:
-            TNT1 A 0;
-            Goto Ready;
-    }
-}
-class binderPlayerBody : Actor {
-	Default {
-		+NOGRAVITY; +NOBLOCKMAP;
-		+FORCEYBILLBOARD; +FLOORCLIP;
-	}
-	Override void Tick() {
-		Super.Tick();
-		If(master==null||master.health<1){Destroy();}
-		If(master.pitch>=55){sprite=master.sprite;}Else{sprite=GetSpriteIndex("TNT1");}
-		frame=master.frame;
-		translation=master.translation;
-		A_Warp(AAPTR_MASTER,-16,0,0,0,WARPF_NOCHECKPOSITION);
-	}
-	States {
-        Spawn:
-            BNDP A 1;
-            Loop;
-	}
-}
+	
+
+		//Player.StartItem "PDAReader", 1;
+		//Player.StartItem "magazine_executorRifle", 32;
+		//Player.StartItem "wosi_scanner", 1;	
+		//Player.StartItem "magazine_wosAssaultGun", 32;
+		//Player.StartItem "magazine_pistolLaser", 32;
+		//Player.StartItem "magazine_blasterStaff", 48;
+		//Player.StartItem "magazine_missileLauncher", 8;
+		//Player.StartItem "magazine_pistol", 12;
+		//Player.StartItem "notePlayerPersonal", 1;
+		//Player.StartItem "zscFist", 1;	
+		// dodopod ledge climbing //
+		//binderPlayer.MaxLedgeHeight 56;
+		//binderPlayer.ClimbSpeed 2;
+		////////////////////////////
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
