@@ -36,13 +36,17 @@ class staffBlaster : wosWeapon {
 		Weapon.SlotNumber 3;
 		Weapon.SlotPriority 3;		
 		Weapon.kickback 40;
-		Weapon.AmmoType1 "magazine_blasterStaff";
-		Weapon.AmmoUse1 1;
-		Weapon.AmmoType2 "EnergyPod";
-		Weapon.AmmoUse2 0;
-		Weapon.AmmoGive2 64;
-		//Decal "BulletChip";
 		Mass blasterStaffBaseWeight;
+		// new magazine&reload system //////////////////////////////////////////
+		wosWeapon.Magazine 48;
+		wosWeapon.magazineMax 48;
+		wosWeapon.magazineType "EnergyPod";
+		//Weapon.AmmoType1 "magazine_blasterStaff";
+		//Weapon.AmmoUse1 1;
+		//Weapon.AmmoType2 "EnergyPod";
+		//Weapon.AmmoUse2 0;
+		//Weapon.AmmoGive2 64;
+		//Decal "BulletChip";
 	}
 	
 	States {
@@ -71,13 +75,16 @@ class staffBlaster : wosWeapon {
 			ASTF J 0 A_Raise();
 			Loop;		
 		Fire:
+			TNT1 A 0 W_CheckAmmo();
+			//DUMM A 0 A_JumpIfNoAmmo("Reload");
 			TNT1 A 0 A_JumpIf(invoker.staffIsFiring == 1, "RealFire");
 			ASTF JIH 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_NOFIRE|WRF_NOSWITCH|WRF_ALLOWUSER1|WRF_ALLOWUSER4);
 			ASTF A 1 { invoker.staffIsFiring = 1; } //takze hul zustane ve stredu obrazu 		
 		RealFire:
-			ASTF A 0 A_JumpIfNoAmmo("Reload");
+			ASTF A 0 W_CheckAmmo();
+			//DUMM A 0 A_JumpIfNoAmmo("Reload");
 			ASTF A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_NOFIRE|WRF_NOSWITCH);
-			ASTF B 3 bright W_FireStaffBlaster("BlasterTracer", "staffFlashShort", true);
+			ASTF B 3 bright W_FireStaffBlaster2("BlasterTracer", "staffFlashShort", true);
 			ASTF C 4;
 			ASTF D 3;				 
 			ASTF E 1; 
@@ -105,7 +112,7 @@ class staffBlaster : wosWeapon {
 			Goto Ready;		
 		
 		Reload:
-			TNT1 A 0 W_reloadCheck();
+			TNT1 A 0 W_reloadCheck2();
 			goto Ready;
 		DoReload:
 			ASTU A 3;
@@ -133,7 +140,7 @@ class staffBlaster : wosWeapon {
 			ASTL PO 5;
 			ASTL N 5; 
 			ASTL M 9 A_StartSound("weapons/mmsl_in", 0);
-			TNT1 A 0 W_Reload();
+			TNT1 A 0 W_Reload2();
 			ASTL L 5;
 			ASTL K 3;
 			ASTL J 4;

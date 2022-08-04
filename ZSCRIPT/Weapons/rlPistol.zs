@@ -1,4 +1,7 @@
-//=--RL PISTOL----------------------------------------------------------------==
+////////////////////////////////////////////////////////////////////////////////
+// storm pistol ////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
 //const stormPistolBaseWeight = 50;
 
 class magazine_pistol : ammo {
@@ -9,10 +12,15 @@ class magazine_pistol : ammo {
 	}
 }
 
-class StormPistol : wosWeapon 
-{
-	Default
-	{
+class StormPistol : wosWeapon {
+
+	/*override void AttachToOwner(actor other) {
+		Super.AttachToOwner(other);
+		let pawn = binderplayer(owner);
+		pawn.GiveInventory("ClipOfBullets", 12);
+	}*/
+
+	Default {
 		//$Category "weapons/WoS"
 		//$Title "Pistol"
 		
@@ -32,17 +40,20 @@ class StormPistol : wosWeapon
 		Weapon.Kickback 40;
 		Weapon.SlotNumber 2;
 		Weapon.SlotPriority 0.1;
-		Weapon.AmmoUse1 1;
-		Weapon.AmmoGive1 0;
-		Weapon.AmmoType1 "magazine_pistol";
-		Weapon.AmmoGive2 0;
-		Weapon.AmmoType2 "ClipOfBullets";
-		//Decal "SVEbulletScorch";
 		Mass stormPistolBaseWeight;
+		// new magazine&reload system //////////////////////////////////////////
+		wosWeapon.Magazine 12;
+		wosWeapon.magazineMax 12;
+		wosWeapon.magazineType "ClipOfBullets";
+		//Weapon.AmmoUse1 1;
+		//Weapon.AmmoGive1 0;
+		//Weapon.AmmoType1 "magazine_pistol";
+		//Weapon.AmmoGive2 0;
+		//Weapon.AmmoType2 "ClipOfBullets";
+		//Decal "SVEbulletScorch";
 	}
 	
-	States
-	{
+	States {
 		Spawn:
 			DUMM R -1;
 			Stop;
@@ -70,11 +81,12 @@ class StormPistol : wosWeapon
 			Loop;
 		
 		Fire:
-			DUMM A 0 A_JumpIfNoAmmo("Reload");
+			TNT1 A 0 W_CheckAmmo();
+			//DUMM A 0 A_JumpIfNoAmmo("Reload");
 			DUMM A 2;
 			DUMM B 1 {
 				A_GunFlash();				
-				W_ShootFirearm(3, "weapons/rlPistolShoot");
+				W_ShootFirearm2(3, "weapons/rlPistolShoot");
 				A_AlertMonsters();
 				A_SpawnItemEx("gunFlash", 8, 0, 16, 0);
 			}				
@@ -128,7 +140,7 @@ class StormPistol : wosWeapon
 			
 			
 		Reload:
-			TNT1 A 0 W_reloadCheck();
+			TNT1 A 0 W_reloadCheck2();
 			goto Ready;
 		DoReload:
 			DUMM G 3;
@@ -138,20 +150,10 @@ class StormPistol : wosWeapon
 			DUMM NOPQ 2;
 			DUMM PON 3;
 			DUMM M 5 A_StartSound("weapons/RLpistolRLin", 1);
-			TNT1 A 0 W_Reload();
+			TNT1 A 0 W_Reload2();
 			DUMM LKJ 2;
 			DUMM IHG 3;
 			Goto Ready;
-		  
-		
-			
-			
-		
 	}
 }
-
-
-
-
-
-//==--------------------------------------------------------------------------==
+////////////////////////////////////////////////////////////////////////////////
