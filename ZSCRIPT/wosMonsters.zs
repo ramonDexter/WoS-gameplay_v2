@@ -450,6 +450,7 @@ class wosCrusader : Crusader replaces Crusader {
 	Default {
 		//$Category "Monsters/WoS"
 		//$Title "wosCrusader"
+        Speed 2;
 	}
   	action void W_rewardXPcrusader (int rewardXP) {
 		let pawn = binderPlayer(target);
