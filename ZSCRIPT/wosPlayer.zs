@@ -891,7 +891,7 @@ class binderPlayer : StrifePlayer {
 			A_GiveInventory("wosGrenadeF", 5);
 			A_GiveInventory("wosInstaLek", 5);
 			// gold
-			A_GiveInventory("coin", 2500);
+			A_GiveInventory("coin", 1500);
 		}
 		else if ( name ~== "badge" || name ~== "binderbadge" ) {
 			A_GiveInventory("binderbadge", 1);

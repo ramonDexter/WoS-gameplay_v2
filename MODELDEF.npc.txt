@@ -34,16 +34,16 @@ Model wosSentinel {
 	
 	Scale 1.0 1.0 1.0
 	
-	FrameIndex SEWR A 0 0  //normal
+	FrameIndex DUMA A 0 0  //normal
 	
-	FrameIndex SEWR B 0 1  //half open for fire
+	FrameIndex DUMA B 0 1  //half open for fire
 	
-	FrameIndex SEWR D 0 3  //pain
-	//FrameIndex SEWR D 0 7  //altpain
+	FrameIndex DUMA D 0 3  //pain
+	FrameIndex DUMA K 0 7  //altpain
 	
-	FrameIndex SEWR E 0 4  //die
-	FrameIndex SEWR F 0 5  //die
-	FrameIndex SEWR G 0 6  //die
+	FrameIndex DUMA E 0 4  //die
+	FrameIndex DUMA F 0 5  //die
+	FrameIndex DUMA G 0 6  //die
 }
 Model wosSentinel {
 	Path "Models/npc/njSentinel/"
@@ -54,10 +54,10 @@ Model wosSentinel {
 	
 	Scale 1.0 1.0 1.0
 	
-	FrameIndex SEWR C 0 2  //full open for fire
+	FrameIndex DUMA C 0 2  //full open for fire
 
 }
-Model wosSentinel {
+Model wosSentinelDeath {
 	Path "Models/npc/njSentinel/"
 	Model 0 "sentinedeath.md3"
 	Skin 0 "SentinelDie2.png"
@@ -65,13 +65,13 @@ Model wosSentinel {
 	
 	Scale 1.0 1.0 1.0
 	
-	FrameIndex SEWR D 0 0
-	FrameIndex SEWR E 0 1
-	FrameIndex SEWR F 0 2
-	FrameIndex SEWR G 0 3
-	FrameIndex SEWR H 0 4
-	FrameIndex SEWR I 0 5
-	FrameIndex SEWR J 0 6
-	//FrameIndex SEWR H 0 7
+	FrameIndex DUMB A 0 0
+	FrameIndex DUMB B 0 1
+	FrameIndex DUMB C 0 2
+	FrameIndex DUMB D 0 3
+	FrameIndex DUMB E 0 4
+	FrameIndex DUMB F 0 5
+	FrameIndex DUMB G 0 6
+	FrameIndex DUMB H 0 7
 }
 ////////////////////////////////////////////////////////////////////////////////

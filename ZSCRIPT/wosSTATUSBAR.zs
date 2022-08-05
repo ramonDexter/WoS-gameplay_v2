@@ -428,6 +428,7 @@ class wosStatusBar : BaseStatusBar {
 				}
 				////////////////////////////////////////////////////////////////
 				
+				// how many coins does player has? /////////////////////////////
 				let coins = CPlayer.mo.FindInventory("coin");
 				if ( coins != null ) {
 					DrawString(mESfont, FormatNumber(coins.Amount, 3, 5, 0, "GOLD: "), (280, 156), DI_TEXT_ALIGN_RIGHT, Font.CR_YELLOW);
@@ -442,7 +443,9 @@ class wosStatusBar : BaseStatusBar {
 					}
 					DrawInventoryIcon (item, (35 + 35*i, 169), flags);
 					// display item weight
-					if (item.Mass > 0) {
+					if ( item.Mass == 100 && item is "coin" ) {
+						//do nothing
+					} else if ( item.Mass > 0 ) {
 						DrawString(mESfont, FormatNumber(item.Mass, 3, 5, 0, "W:"), (65 + 35*i, 168), DI_TEXT_ALIGN_RIGHT, Font.CR_GREEN);
 					}
 					// display item amount
