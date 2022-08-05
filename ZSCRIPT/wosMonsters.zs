@@ -496,26 +496,6 @@ class wosCrusader : Crusader replaces Crusader {
 			DUMC I 0 A_StartSound("crus/walk", CHAN_BODY, CHANF_DEFAULT, 0.5);
 			goto See +2;  //makes animation a little smoother
 
-		Missile:
-			DUMD H 0 A_CheckLOF ("Missile2", CLOFF_JUMP_ON_MISS|CLOFF_MUSTBESOLID, 4096, 0, 0, 0, 24, 0, AAPTR_DEFAULT);
-			goto See;
-		Missile2:    
-			DUMD HH 5 A_FaceTarget();
-			DUMD A 6 A_CrusaderChoose();
-			DUMD B 5 A_CrusaderSweepLeft();
-			DUMD A 5 A_CrusaderSweepLeft();
-			DUMD B 5 A_CrusaderSweepRight();
-			DUMD A 5 A_CrusaderRefire();
-			Loop;
-			//DUMD H 0 A_SpawnItemEx ("MuzzleFlashMedium", 46.0, -29.0, 45.0, 0.0, 0.0, 0.0, 0.0, SXF_NOCHECKPOSITION, 0);
-			//DUMD H 0 A_SpawnItemEx ("MuzzleFlashMedium", 46.0, -29.0, 45.0, 0.0, 0.0, 0.0, 0.0, SXF_NOCHECKPOSITION, 0);
-			//DUMD A 6 A_CustomMissile ("FastFlameMissile", 45, 0, 0, 0);
-			//DUMD H 0 A_SpawnItemEx ("MuzzleFlashMedium", 46.0, -29.0, 45.0, 0.0, 0.0, 0.0, 0.0, SXF_NOCHECKPOSITION, 0)
-			//DUMD A 6 A_CustomMissile ("FastFlameMissile", 45, 0, 0, 0);
-			//DUMD B 5 A_FaceTarget();
-			//DUMD A 5 A_FaceTarget();
-			//goto See;
-
 		Melee:
 			DUMD C 3 A_FaceTarget();
 			DUMD D 3 A_StartSound ("skeleton/swing");
@@ -524,7 +504,15 @@ class wosCrusader : Crusader replaces Crusader {
 			DUMD D 3 A_FaceTarget();
 			DUMD C 3 A_FaceTarget();
 			goto See;
-
+		
+		Missile:    
+			DUMD HH 5 A_FaceTarget();
+			DUMD A 6 A_CrusaderChoose();
+			DUMD B 5 A_CrusaderSweepLeft();
+			DUMD A 5 A_CrusaderSweepLeft();
+			DUMD B 5 A_CrusaderSweepRight();
+			DUMD A 5 A_CrusaderRefire();
+			Goto See;
 
 		Pain:
 			DUMD G 2;
