@@ -39,9 +39,9 @@ class shoulderGun : wosPickup {
 		//A_GunFlash();
 		A_FireProjectile("greenArcLightning", 0.1*random(20,-20), false, -10, 20, 0, 0);
 		A_SpawnItemEx("redFlashShort", 8, 0, 16, 0);
-		if (doAlertMonsters) {
+		/*if (doAlertMonsters) {
 			A_AlertMonsters();
-		}        
+		}  */      
 		A_OverlayOffset(6, random(-2,2), random(-2,2), WOF_INTERPOLATE); //vypnout, protoze trese i hlavni zbrani
 		////////////////////////////////////////////////////////////////////////
 	}	
@@ -172,8 +172,8 @@ class greenArcLightning : FastProjectile {
 			TNT1 A 2 A_ChangeVelocity(frandom(-8,8), frandom(-8,8), frandom(-3, 3), 0);
 			TNT1 A 2 A_ChangeVelocity(frandom(-6,6), frandom(-6,6), frandom(-3, 3), 0);
 			Stop;
-		Ded:
-			TNT1 A 1;
+		Death:
+			TNT1 A 1 A_AlertMonsters();
 			stop;
 	}
 }
