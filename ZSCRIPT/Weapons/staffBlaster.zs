@@ -183,7 +183,7 @@ class BlasterTracer : FastProjectile {
 					than the others. */
 	};
 	
-	// literally just stole this from wikipedia
+	// literally just stole this from wikipedia - linear interpolation
 	float lerp(float v0, float v1, float t) {
 		return (1 - t) * v0 + t * v1;
 	}
@@ -240,7 +240,7 @@ class BlasterTracer : FastProjectile {
 		Radius 2;
 		Speed TRACERSPEED;
         //DamageFunction (16 * Random(1, 4));
-		Damage 12;
+		Damage 16;
         Decal "blueShotScorch";
         SeeSound "weapons/staffprojectile";
 		DeathSound "weapons/shotdeath";
