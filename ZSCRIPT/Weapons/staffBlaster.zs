@@ -268,7 +268,7 @@ class BlasterTracer : FastProjectile {
 	}
 }
 class BlasterTracerTrail : actor {
-	const PTCLDURATION = 2;
+	const PTCLDURATION = 1;
 	
     Default {
 		//Alpha 0.5;
