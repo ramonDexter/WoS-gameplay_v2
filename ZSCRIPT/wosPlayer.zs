@@ -754,27 +754,6 @@ class binderPlayer : StrifePlayer {
 				A_GiveInventory("wosi_StimDevice", amount);
 			}
 		} 
-		else if ( name ~== "notes" ) {
-			A_GiveInventory("notePrayers", 1);
-			A_GiveInventory("noteSHmedical", 1);
-			A_GiveInventory("noteSHshouldergun", 1);
-			A_GiveInventory("noteSHbinderStavesTechnical", 1);
-			A_GiveInventory("noteSHbinderNote01", 1);
-			A_GiveInventory("noteSHsilentHillsTouristGuide", 1);
-			A_GiveInventory("noteSHminesReport", 1);
-			A_GiveInventory("noteSHbindersOath", 1);
-			A_GiveInventory("noteCommonDogmas", 1);
-			A_GiveInventory("noteTheGreatHouses", 1);
-			A_GiveInventory("noteTekGuildNotes", 1);
-			A_GiveInventory("noteMillport", 1);
-			A_GiveInventory("noteEmperorsList", 1);
-			A_GiveInventory("noteEastcliff", 1);
-			A_GiveInventory("noteTekGuild", 1);
-			A_GiveInventory("noteLustyKolymanMaid1", 1);
-			A_GiveInventory("noteLustyKolymanMaid2", 1);
-			A_GiveInventory("noteLustyKolymanMaid3", 1);
-			//A_GiveInventory("", 1);
-		} 
 		else if ( name ~== "weapons" ) {
 			//A_GiveInventory("", 1);
 			A_GiveInventory("StormPistol", 1);
@@ -817,20 +796,6 @@ class binderPlayer : StrifePlayer {
 		}
 		else if ( name ~== "all" || name ~== "everything" ) {
 			A_Log("\c[red][ Cheat blocked because of dangerously breaking the game. Use other cheats if you are in need of assistance. ]");
-		}
-		else if ( name ~== "keys" ) {
-			A_GiveInventory("skeletonKey", 1);
-			A_GiveInventory("BHWasteCatacombKey", 1);
-			A_GiveInventory("BHWasteKey", 1);
-			A_GiveInventory("BHminesKey", 1);
-			A_GiveInventory("BHbathKey", 1);
-			A_GiveInventory("BHpowerPlantKey", 1);
-			A_GiveInventory("BHpowerPlantKey2", 1);
-			A_GiveInventory("BHpowerPlantReactorKey", 1);
-			A_GiveInventory("BHfactoryKey", 1);
-			A_GiveInventory("SHtgPowerplantKey", 1);
-			A_GiveInventory("m08k_BP_pokladnice", 1);
-			//A_GiveInventory("", 1);
 		}
 		else if ( name ~== "implants" ) {
 			A_GiveInventory("implant_health", 1);
@@ -892,9 +857,6 @@ class binderPlayer : StrifePlayer {
 			A_GiveInventory("wosInstaLek", 5);
 			// gold
 			A_GiveInventory("coin", 1500);
-		}
-		else if ( name ~== "badge" || name ~== "binderbadge" ) {
-			A_GiveInventory("binderbadge", 1);
 		}
 		else {
 			Super.CheatGive(name,amount);

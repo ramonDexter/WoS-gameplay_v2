@@ -64,8 +64,8 @@ class medicalApply : weapon {
 		}
 		let pawn = binderPlayer(self);
 		pawn.bleedlevel = 0;
-		int maxHealth = 100 + pawn.stamina;
-		int toHeal = maxHealth - pawn.Health;
+		//int maxHealth = 100 + pawn.stamina;
+		int toHeal = pawn.GetMaxHealth(true) - pawn.Health;
 		pawn.GiveBody(toHeal, 0);		
 	}
 }
@@ -89,8 +89,8 @@ class surgUnitHealing : CustomInventory {
 			TNT1 A 0 {
 				let pawn = binderPlayer(self);
 				pawn.bleedlevel = 0;
-				int maxHealth = 100 + pawn.stamina;
-				int toHeal = maxHealth - pawn.Health;
+				//int maxHealth = 100 + pawn.stamina;
+				int toHeal = pawn.GetMaxHealth(true) - pawn.Health;
 				pawn.GiveBody(toHeal, 0);
 			}
 			Stop;
@@ -351,8 +351,8 @@ class zscSurgeryKit : wosPickup replaces SurgeryKit {
 				let pawn = binderPlayer(self);
 				pawn.bleedlevel=0;
 				pawn.A_StartSound("sounds/med",CHAN_ITEM);
-				int maxHealth = 100 + pawn.stamina;
-				int toHeal = maxHealth - pawn.Health;
+				//int maxHealth = 100 + pawn.stamina;
+				int toHeal = pawn.GetMaxHealth(true) - pawn.Health;
 				pawn.GiveBody(toHeal, 0);
 			}
 			Stop;
