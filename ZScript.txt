@@ -22,7 +22,7 @@ version "4.6.0"
 #include "zscript/neoworm.zs"
 #include "zscript/wosdebug.zs"
 #include "zscript/zcasing.zs"
-#include "zscript/wosmonsters.zs"
+//#include "zscript/wosmonsters.zs"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -73,6 +73,7 @@ version "4.6.0"
 ////////////////////////////////////////////////////////////////////////////////
 
 //  monsters  //////////////////////////////////////////////////////////////////
+/*
 #include "zscript/monsters/monsters.zs"
 #include "zscript/monsters/spiders.zs"
 #include "zscript/monsters/npc.zs"
@@ -87,6 +88,7 @@ version "4.6.0"
 #include "zscript/monsters/wosLiquidator.zs"
 #include "zscript/monsters/wosrocketturret.zs"
 #include "zscript/monsters/giantrat.zs"
+*/
 ////////////////////////////////////////////////////////////////////////////////
 
 //  weapons  ///////////////////////////////////////////////////////////////////
