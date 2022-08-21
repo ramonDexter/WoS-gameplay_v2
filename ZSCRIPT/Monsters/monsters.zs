@@ -1342,6 +1342,10 @@ class wosAcolyte : Acolyte replaces Acolyte {
 	string looteqip; Property Equipment : looteqip; //
 	int looteqip2; //
 
+	Default {
+		Species "wosAcolyte";
+	}
+
 	action void W_rewardXPacolyte (int rewardXP) {
 		let pawn = binderPlayer(target);
 		if ( pawn && pawn.player ) {
