@@ -153,9 +153,19 @@ class wosEventHandler : EventHandler {
 		if (mo.Target != null) {
 			let pawn = binderPlayer(mo.Target);
 			//pawn.A_Log("registered");
-			if ( mo is "Acolyte" && mo.Target is "binderPlayer" ) {
+			if ( (mo is "Acolyte" || mo is "wosAcolyte") && mo.Target is "binderPlayer" ) {
 				pawn.playerXP+=mo.SpawnHealth();
 				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+			if ( ((mo is "AcolyteRed" || mo is "wosAcolyteRed") && level.levelnum==5) && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+				mo.A_SpawnItemEx("IDBadge", 1);
+			}
+			if ( ((mo is "AcolyteDGreen" || mo is "wosAcolyteDGreen") && level.levelnum==2) && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+				mo.A_SpawnItemEx("GuardUniform", 1);
 			}
 			if ( mo is "Sentinel" && mo.Target is "binderPlayer" ) {
 				pawn.playerXP+=mo.SpawnHealth();
@@ -198,7 +208,6 @@ class wosEventHandler : EventHandler {
 				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
 			}
 		}
-
 	}
 	override void PlayerEntered(PlayerEvent e) {
 		let player = PlayerPawn(players[e.PlayerNumber].mo);

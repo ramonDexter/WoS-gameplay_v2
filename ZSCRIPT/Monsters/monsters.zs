@@ -1433,7 +1433,7 @@ class wosAcolyte : Acolyte replaces Acolyte {
 			AGRD K 3 A_NoBlocking();
 			AGRD L 3;
 			AGRD M 3 A_AcolyteDie();
-            TNT1 A 0 W_rewardXPacolyte(SpawnHealth());
+            //TNT1 A 0 W_rewardXPacolyte(SpawnHealth());
 			AGRD N -1;
 			Stop;
 		XDeath:
@@ -1445,7 +1445,7 @@ class wosAcolyte : Acolyte replaces Acolyte {
 			GIBS GH 4;
 			GIBS I 5;
 			GIBS J 5 A_AcolyteDie();
-            TNT1 A 0 W_rewardXPacolyte(SpawnHealth());
+            //TNT1 A 0 W_rewardXPacolyte(SpawnHealth());
 			GIBS K 5;
 			GIBS L 1400;
 			Stop;
