@@ -147,6 +147,58 @@ class wosEventHandler : EventHandler {
 			////////////////////////////////////////////////////////////////////
         }
     }
+	override void WorldThingDied(WorldEvent e) {
+		let mo = e.Thing;
+		if (mo.Target != null) {
+			let pawn = binderPlayer(mo.Target);
+			//pawn.A_Log("registered");
+			if ( mo is "Acolyte" && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+			if ( mo is "Sentinel" && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+			if ( mo is "Crusader" && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+			if ( mo is "Inquisitor" && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+			if ( mo is "Stalker" && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+			if ( mo is "CeilingTurret" && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+			if ( mo is "Templar" && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+			if ( mo is "Reaver" && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+			if ( mo is "Programmer" && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+			if ( mo is "Peasant19" && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+			if ( mo is "Loremaster" && mo.Target is "binderPlayer" ) {
+				pawn.playerXP+=mo.SpawnHealth();
+				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
+			}
+		}
+
+	}
 	override void PlayerEntered(PlayerEvent e) {
 		let player = PlayerPawn(players[e.PlayerNumber].mo);
 		//BEGIN VSO : Some Wads crash here with VM Abort because player can be NULL
