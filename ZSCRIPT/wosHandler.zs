@@ -147,6 +147,7 @@ class wosEventHandler : EventHandler {
 			////////////////////////////////////////////////////////////////////
         }
     }
+	// rpg system - raise stats without touching the monsters //
 	override void WorldThingDied(WorldEvent e) {
 		let mo = e.Thing;
 		if (mo.Target != null) {
