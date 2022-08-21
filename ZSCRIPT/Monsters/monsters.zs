@@ -1328,7 +1328,7 @@ class LaserBoltTrail : actor {
 // acolytes ///////////////////////////////////////////////////////////////////////////////////////////////////
 // looting code from Lost Frontier, credits to jarewill ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*class wosAcolyte : Acolyte replaces Acolyte {
+class wosAcolyte : Acolyte replaces Acolyte {
 	int gunmag; //
 	int searchtimer; //
 	bool searched; //
@@ -1487,7 +1487,11 @@ class wosAcolyteBlue : wosAcolyte replaces AcolyteBlue {
 		Translation "32:63=0:31", "80:95=64:79", "128:143=144:159", "192:192=1:1", "193:223=1:31", "235:239=224:228";
 	}
 }
-class wosAcolyteShadow : wosAcolyte replaces AcolyteShadow {}*/
+class wosAcolyteShadow : wosAcolyte replaces AcolyteShadow {}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// LOST FRONTIER ACOLYTE //////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Class LFGrenadeBase : Actor
 {
@@ -2157,15 +2161,7 @@ Class LFAcolyteRed : LFAcolyte replaces AcolyteRed
 		Translation 0;
 		LFAcolyte.Shielded 1;
 	}
-	/*Override void PostBeginPlay()
-	{
-		Super.PostBeginPlay();
-		If(level.levelnum==2&&pos==(2048.0,2032.0,-32.0))
-		{
-			Spawn("LFWeaponSmith",pos);
-			Destroy();
-		}
-	}*/
+	
 }
 Class LFAcolyteRust : LFAcolyte replaces AcolyteRust
 {
@@ -2176,15 +2172,7 @@ Class LFAcolyteRust : LFAcolyte replaces AcolyteRust
 		Translation 1;
 		LFAcolyte.Shielded 1;
 	}
-	/*Override void PostBeginPlay()
-	{
-		Super.PostBeginPlay();
-		If(level.levelnum==2&&pos==(2128.0,2032.0,-32.0))
-		{
-			Spawn("LFArmorer",pos);
-			Destroy();
-		}
-	}*/
+	
 }
 Class LFAcolyteGray : LFAcolyte replaces AcolyteGray
 {
@@ -2316,11 +2304,11 @@ Class LFUniqueAcolyte : LFDeadAcolyte
 	Spawn:
 		AGRD N 0 NoDelay A_Die();
 	Death:
-		AGRD N 0 {A_NoBlocking(); /*A_SpawnItemEx("LFRifleParts",Random(-16,16),Random(-16,16));*/}
+		AGRD N 0 {A_NoBlocking();}
 		AGRD N -1;
 		Stop;
 	}
-}
+}*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
