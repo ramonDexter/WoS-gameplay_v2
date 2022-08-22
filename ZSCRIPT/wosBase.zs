@@ -290,6 +290,12 @@ Class wosBlood : Blood replaces Blood {
 }
 ////////////////////////////////////////////////////////////////////////////////
 
+class SimpleSpark : StrifeSpark {
+	Default {
+		+NOEXTREMEDEATH
+	}
+}
+
 
 
 

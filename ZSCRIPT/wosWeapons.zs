@@ -344,7 +344,7 @@ class wosWeapon : StrifeWeapon {
 		}
 		double angle = angle + random2[JabDagger]() * (5.625 / 256);
 		double pitch = AimLineAttack (angle, 80.);
-		LineAttack (angle, 80., pitch, damage, 'Melee', "StrifeSpark", true, t);
+		LineAttack (angle, 80., pitch, damage, 'Melee', "SimpleSpark", true, t);
 		// turn to face target
 		if (t.linetarget) {
 			A_StartSound (t.linetarget.bNoBlood ? sound("misc/metalhit") : sound("misc/meathit"), CHAN_WEAPON);
@@ -375,7 +375,7 @@ class wosWeapon : StrifeWeapon {
 		//////////////////////////////////
 		double angle = angle + random2[JabDagger]() * (5.625 / 256);
 		double pitch = AimLineAttack (angle, 80.);
-		LineAttack (angle, 80., pitch, damage, 'Melee', "StrifeSpark", true, t);
+		LineAttack (angle, 80., pitch, damage, 'Melee', "SimpleSpark", true, t);
 		// turn to face target
 		if (t.linetarget) {
 			A_StartSound (t.linetarget.bNoBlood ? sound("misc/metalhit") : sound("misc/meathit"), CHAN_WEAPON);
