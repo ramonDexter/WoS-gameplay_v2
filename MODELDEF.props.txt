@@ -1716,6 +1716,14 @@ model PillarTechno {
 	offset 0.0 0.0 0.0
 	frameindex MONI A 0 0
 }
+model wosD_technoPillar {
+	path "models/props/PillarTechno/"
+	model 0 "PillarTechno.md3"
+	skin 0 "tx_PillarTechno.png"
+	scale 52.0 52.0 52.0
+	offset 0.0 0.0 0.0
+	frameindex DUMM A 0 0
+}
 ////////////////////////////////////////////////////////////////////////////////
 
 //  PillarHugeTech  ////////////////////////////////////////////////////////////

@@ -160,12 +160,12 @@ class wosEventHandler : EventHandler {
 			if ( ((mo is "AcolyteRed" || mo is "LFAcolyteRed") && level.levelnum==5) && mo.Target is "binderPlayer" ) {
 				pawn.playerXP+=mo.SpawnHealth();
 				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
-				mo.A_SpawnItemEx("IDBadge", 1);
+				//mo.A_SpawnItemEx("IDBadge", 1);
 			}
 			if ( ((mo is "AcolyteDGreen" || mo is "LFAcolyteDGreen") && level.levelnum==2) && mo.Target is "binderPlayer" ) {
 				pawn.playerXP+=mo.SpawnHealth();
 				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
-				mo.A_SpawnItemEx("GuardUniform", 1);
+				//mo.A_SpawnItemEx("GuardUniform", 1);
 			}
 			if ( mo is "Sentinel" && mo.Target is "binderPlayer" ) {
 				pawn.playerXP+=mo.SpawnHealth();

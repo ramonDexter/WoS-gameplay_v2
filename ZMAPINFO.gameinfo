@@ -37,6 +37,59 @@ GameInfo {
 }
 ////////////////////////////////////////////////////////////////////////////////
 
+// default strife convIDs with new actors //////////////////////////////////////
+ConversationIDs {
+	52 = wosReaver
+	53 = LFAcolyteTan
+	54 = LFAcolyteRed
+	55 = LFAcolyteRust
+	56 = LFAcolyteGray
+	57 = LFAcolyteDGreen
+	58 = LFAcolyteGold
+	59 = LFAcolyteLGreen
+	60 = LFAcolyteBlue
+	61 = LFAcolyteShadow
+	62 = wosTemplar
+	63 = wosCrusader
+	91 = wosSentinel
+	92 = wosCeilingTurret
+	93 = wosInquisitor
+	125 = zscMedPatch
+	126 = zscMedicalKit
+	127 = zscSurgeryKit
+	129 = wosMetalArmor
+	130 = wosLeatherArmor
+	160 = wosKineticArmor
+	161 = wosEnvSuit
+	164 = wosPortableMap
+	167 = wosTargeter
+	180 = wosBulletsBox
+	181 = wosBundleMiniMissile
+	183 = wosEnergyPod
+	184 = wosEnergyPack
+	188 = wosAssaultGun
+	189 = wosAssaultGun_standing
+	190 = wosFlamethrower
+	192 = wosMinimissileLauncher
+	193 = wosMauler
+	194 = wosStrifeXbow
+	195 = wosGrenadeLauncher	
+	210 = wosD_technoPillar
+	214 = PillarHugeTechAnimated
+	222 = candle2
+	268 = wosD_pottedTree
+	270 = dest_ShortBush
+	271 = dest_TallBush
+	274 = dest_Pot
+	275 = dest_Pitcher
+	276 = wosD_stool
+	277 = wosD_metalPot
+	278 = wosD_tub
+	279 = wosD_anvil
+	282 = smallerTray
+}
+////////////////////////////////////////////////////////////////////////////////
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
