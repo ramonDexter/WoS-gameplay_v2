@@ -395,6 +395,9 @@ class binderPlayer : StrifePlayer {
 
 	// level handler ///////////////////////////////////////////////////////////
 	void HandlePlayerLevel() {
+
+		
+
 		if ( playerXP>=1000 && playerLevel==1 ) {
 			playerLevel=2;
 			A_GiveInventory("upgradeToken", 1);
@@ -511,14 +514,14 @@ class binderPlayer : StrifePlayer {
 	// ledge climb function ////////////////////////////////////////////////////
 	//  code by Jarewill
 	void LedgeClimb() {
-		If((player.readyweapon is "wosPunchDagger")&&player.cmd.buttons&BT_JUMP) {
+		If( (player.readyweapon is "wosPunchDagger") && player.cmd.buttons&BT_JUMP ) {
 			FLineTraceData h, i, j;
 			LineTrace(angle,24,0,TRF_THRUSPECIES,height+8,data: i);
 			LineTrace(angle,24,0,TRF_THRUSPECIES,height-4,data: j);
-			If(i.HitType==TRACE_HitNone) {
+			If( i.HitType == TRACE_HitNone ) {
 				For(int tall=16; tall<=height; tall+=8) {
 					LineTrace(angle,24,0,TRF_THRUSPECIES,tall,data: h);
-					If(h.HitType==TRACE_HitWall) {
+					If( h.HitType == TRACE_HitWall ) {
 						int zspd = 0;
 						If(j.HitType==TRACE_HitWall||player.cmd.buttons&BT_FORWARD){zspd=2;}
 						Else{ViewBob=0;}
@@ -534,31 +537,32 @@ class binderPlayer : StrifePlayer {
 	// new jump function ///////////////////////////////////////////////////////
 	//  code by Jarewill
 	Override void CheckJump() {
-		If (player.readyweapon is "wosPunchDagger" || player.readyweapon is "wos_sprintWeap") {
+		If ( player.readyweapon is "wosPunchDagger" || player.readyweapon is "wos_sprintWeap" ) {
 			Super.CheckJump();
 		}
-		Else If(player.cmd.buttons & BT_JUMP) {
-			If(player.cmd.buttons & (BT_FORWARD|BT_BACK|BT_MOVELEFT|BT_MOVERIGHT)&&/*!rolldown&&!blocking&&*/player.onground&&stamin>=35) {
-				double rollbase = speedbase*4.0;
-				double rollbonus = 3.0;
-				If(rollbonus<0.5){rollbonus=0.5;}
-				//rolldown=35;
-				reactiontime=18;
-				player.deltaviewheight=-8;
-				stamin-=35;
+		Else If ( player.cmd.buttons & BT_JUMP ) {
+			If ( player.cmd.buttons & (BT_FORWARD|BT_BACK|BT_MOVELEFT|BT_MOVERIGHT) && player.onground && stamin >= 35 ) {
+				double slideBase = speedbase*4.0;
+				double slideBonus = 3.0;
+				If ( slideBonus < 0.5 ) { 
+					slideBonus = 0.5; 
+				}
+				reactiontime = 18;
+				player.deltaviewheight = -8;
+				stamin -= 35;
 				A_StartSound("weapons/swing",CHAN_BODY);
 				bSHOOTABLE=0; bNONSHOOTABLE=1; bDONTTHRUST=1;
-				If (player.cmd.buttons & BT_FORWARD) {
-					Thrust(rollbase*rollbonus,angle);
+				If ( player.cmd.buttons & BT_FORWARD ) {
+					Thrust(slideBase*slideBonus,angle);
 				}
-				Else If (player.cmd.buttons & BT_BACK) {
-					Thrust(rollbase*rollbonus,angle-180);
+				Else If ( player.cmd.buttons & BT_BACK ) {
+					Thrust(slideBase*slideBonus,angle-180);
 				}
-				If (player.cmd.buttons & BT_MOVELEFT) {
-					Thrust(rollbase*rollbonus,angle-270);
+				If ( player.cmd.buttons & BT_MOVELEFT ) {
+					Thrust(slideBase*slideBonus,angle-270);
 				}
-				Else If (player.cmd.buttons & BT_MOVERIGHT) {
-					Thrust(rollbase*rollbonus,angle-90);
+				Else If ( player.cmd.buttons & BT_MOVERIGHT ) {
+					Thrust(slideBase*slideBonus,angle-90);
 				}
 			}
 		}
