@@ -418,7 +418,7 @@ class wosStalker : Stalker replaces Stalker {
 			STLK O 4;
 			STLK P 4 A_Scream;
 			STLK QRST 4;
-			TNT1 A 0 W_rewardXPstalker(80);
+			//TNT1 A 0 W_rewardXPstalker(80);
 			STLK U 4 A_NoBlocking;
 			STLK VW 4;
 			STLK XYZ[ 4 Bright;
@@ -440,7 +440,7 @@ class wosCeilingTurret : CeilingTurret replaces CeilingTurret {
 		Death:
 			BALL A 6 Bright A_Scream;
 			BALL BCDE 6 Bright;
-			TNT1 A 0 W_rewardXPCeilingTurret(125);
+			//TNT1 A 0 W_rewardXPCeilingTurret(125);
 			TURT C -1;
 			Stop;
 	}
@@ -527,7 +527,7 @@ class wosCrusader : Crusader replaces Crusader {
 			TNT1 A 0 A_SpawnItemEx ("CrusHeavyArm", 8.0, 30.0, 40.0, 0.0, 4.0, 2.0, 0.0, SXF_NOCHECKPOSITION | SXF_TRANSFERTRANSLATION, 0);
 			TNT1 A 0 A_SpawnItemEx ("CrusHeavyGun", 8.0, -30.0, 40.0, 0.0, -5.0, 0.0, 0.0, SXF_NOCHECKPOSITION | SXF_TRANSFERTRANSLATION, 0);
 			TNT1 A 0 A_SpawnItemEx ("wosExplosion_medium", 0.0, 0.0, 32.0, 0.0, 0.0, 0.0, 0.0, SXF_NOCHECKPOSITION, 0);
-			TNT1 A 0 W_rewardXPcrusader(SpawnHealth());
+			//TNT1 A 0 W_rewardXPcrusader(SpawnHealth());
 			//TNT1 A 0 A_SpawnItemEx ("ModelSmoke1Medium", 0.0, 0.0, 32.0, 0.0, 0.0, 1.0, 0.0, SXF_NOCHECKPOSITION, 0);
 			TNT1 A 3 A_Quake(9,8,0,192,"NJMT");
 			TNT1 AAAAAA 1 A_TossGib();
@@ -652,7 +652,7 @@ class wosInquisitor : Inquisitor replaces Inquisitor {
 			ROB3 \ 3 A_TossGib;
 			TNT1 A 0 A_SpawnItemEx("wosExplosion_high");
 			ROB3 ] 3 Bright A_Explode(128, 128, alert:true);
-			TNT1 A 0 W_rewardXPInquisitor(1000);
+			//TNT1 A 0 W_rewardXPInquisitor(1000);
 			RBB3 A 3 Bright A_TossArm;
 			RBB3 B 3 Bright A_TossGib;
 			RBB3 CD 3 A_TossGib;
@@ -678,7 +678,7 @@ class wosTemplar : Templar replaces Templar {
 			PGRD L 4 A_NoBlocking;
 			PGRD MN 4;
 			PGRD O 4 A_TossGib;
-			TNT1 A 0 W_rewardXPTemplar(300);
+			//TNT1 A 0 W_rewardXPTemplar(300);
 			PGRD PQRSTUVWXYZ[ 4;
 			PGRD \ -1;
 			Stop;
@@ -703,7 +703,7 @@ class wosReaver : Reaver replaces Reaver {
 			ROB1 NOP 5;
 			TNT1 A 0 A_SpawnItemEx("wosExplosion_high");
 			ROB1 Q 6 A_Explode(32, 32, alert:true);
-			TNT1 A 0 W_rewardXPReaver(150);
+			//TNT1 A 0 W_rewardXPReaver(150);
 			ROB1 R -1;
 			Stop;
 		XDeath:
@@ -786,7 +786,7 @@ class wosSentinel : Sentinel replaces Sentinel {
             DUMA FFFF 1 A_TossGib();
             DUMA G 1 A_Scream();
             DUMA GGG 1 A_TossGib();
-            TNT1 A 0 W_rewardXPsentinel(SpawnHealth());
+            //TNT1 A 0 W_rewardXPsentinel(SpawnHealth());
             DUMA G 1 A_SpawnItemEx ("wosSentinelDeath", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, SXF_NOCHECKPOSITION, 0);
             TNT1 A 1 A_NoBlocking();
             Stop;
