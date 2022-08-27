@@ -40,15 +40,15 @@ GameInfo {
 // default strife convIDs with new actors //////////////////////////////////////
 ConversationIDs {
 	52 = wosReaver
-	53 = LFAcolyteTan
-	54 = LFAcolyteRed
-	55 = LFAcolyteRust
-	56 = LFAcolyteGray
-	57 = LFAcolyteDGreen
-	58 = LFAcolyteGold
-	59 = LFAcolyteLGreen
-	60 = LFAcolyteBlue
-	61 = LFAcolyteShadow
+	53 = wosAcolyteTan
+	54 = wosAcolyteRed
+	55 = wosAcolyteRust
+	56 = wosAcolyteGray
+	57 = wosAcolyteDGreen
+	58 = wosAcolyteGold
+	59 = wosAcolyteLGreen
+	60 = wosAcolyteBlue
+	61 = wosAcolyteShadow
 	62 = wosTemplar
 	63 = wosCrusader
 	91 = wosSentinel
