@@ -1444,8 +1444,8 @@ Class wosBulletDebug : Actor {
 Class wos542 : wosBulletBase {
 	Default {
 		Speed 640;
-		wosBulletBase.Penetration 300;
-		wosBulletBase.BulletDmg 5; //10
+		wosBulletBase.Penetration 150;
+		wosBulletBase.BulletDmg 2; //10
 		Obituary "%o was shot down by %k's assault rifle.";
 	}
 }
