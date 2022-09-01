@@ -134,7 +134,9 @@ class wosGrenadeG : wosPickup {
             DUMM A -1;
             Stop;
         Use:
-            TNT1 A 0 A_ThrowGrenade("wosgrenadeG_Throw", 8, 12, 6);
+            //TNT1 A 0 A_ThrowGrenade("wosgrenadeG_Throw", 8, 12, 6);
+			//wosGasGrenade2
+            TNT1 A 0 A_ThrowGrenade("wosGasGrenade2", 8, 12, 6);
             Stop;
 	}
 }
@@ -245,3 +247,43 @@ class ToxinCloud : actor {
     }
 }
 ////////////////////////////////////////////////////////////////////////////////
+Class wosGasGrenade2 : wosGrenadeBase {
+	Default {
+		wosGrenadeBase.FuseTime 70;
+		Speed 20;
+		Obituary "%o choked on one of %k's gas grenades.";
+		MaxStepHeight 4;
+		BounceType "Doom";
+		BounceFactor 0.5;
+		BounceCount 3;
+		//SeeSound "weapons/hegrenadeshoot";
+		SeeSound "weapons/grenadeThrow";
+		BounceSound "weapons/grenadeBounce";
+		+ROLLSPRITE; 
+		+ROLLCENTER;
+		+FORCEXYBILLBOARD;
+	}
+	States {
+		Spawn:
+			GASG BBBBCCCC 1 {
+				B_NadeCountdown(); 
+				A_SetPitch(pitch-20);
+			}
+			Loop;
+		Death:
+			GASG BBBBCCCC 1 B_NadeCountdown();
+			Loop;
+		Explode:
+			GASG B 1 Bright {
+				For(int i; i<2; i++) {
+					bool spawn1; Actor spawn2;
+					[spawn1, spawn2] = A_SpawnItemEx("wosGasObstacle",Random(-32,32),Random(-32,32));
+					spawn2.Reactiontime=Random(60,100);
+				}
+				A_StartSound("weapons/phgrenadeshoot");
+			}
+			GASG B 175;
+			GASG B 1 A_FadeOut(0.02);
+			Wait;
+	}
+}
