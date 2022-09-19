@@ -39,9 +39,9 @@ class shoulderGun : wosPickup {
 		//A_GunFlash();
 		A_FireProjectile("greenArcLightning", 0.1*random(20,-20), false, -10, 20, 0, 0);
 		A_SpawnItemEx("redFlashShort", 8, 0, 16, 0);
-		/*if (doAlertMonsters) {
+		if (doAlertMonsters) {
 			A_AlertMonsters();
-		}  */      
+		}
 		A_OverlayOffset(6, random(-2,2), random(-2,2), WOF_INTERPOLATE); //vypnout, protoze trese i hlavni zbrani
 		////////////////////////////////////////////////////////////////////////
 	}	
@@ -113,7 +113,28 @@ class shoulderGun : wosPickup {
 			}
 			wait;
 		shootShoulderGun:
-			SHCH JIHGFEDCBA 1;
+			// animation remade with new model //////////////////////////////////////////
+            DUMA ABCDEFGHIJ 1;
+            DUMF AA 1;
+            DUMF A 2;
+            DUMF B 2 Bright W_FireShoulderGun(true, true);
+            DUMF C 2 Bright W_FireShoulderGun(false, false);
+            DUMF B 2 Bright W_FireShoulderGun(false, false);
+            DUMF C 2 Bright W_FireShoulderGun(false, false);
+            DUMF B 2 Bright W_FireShoulderGun(false, false);
+            DUMF C 2 Bright W_FireShoulderGun(false, true);
+            DUMA J 3;
+            DUMA J 4 A_StartSound("weapons/shoulderGun/stop",6); //zrusit zvuk blesku
+            DUMA J 5;
+            DUMA J 3;
+            DUMA J 3;
+            DUMA JIH 4;
+            DUMA GFEDCBA 1;
+			TNT1 A 0 {
+				return resolveState("remove");
+			}
+			/////////////////////////////////////////////////////////////////////////////
+			/*SHCH JIHGFEDCBA 1;
 			SHCH AA 1;
 			//SHCN A 1 A_StartSound("weapons/shoulderGun/fire", CHAN_7, CHANF_DEFAULT, 1.0, false);
 			SHCN A 2;
@@ -134,7 +155,7 @@ class shoulderGun : wosPickup {
 			SHCH ABCDEFGHIJ 1;
 			TNT1 A 0 {
 				return resolveState("remove");
-			}		
+			}*/
 		
 		remove:
 			TNT1 A 0 {
@@ -172,8 +193,8 @@ class greenArcLightning : FastProjectile {
 			TNT1 A 2 A_ChangeVelocity(frandom(-8,8), frandom(-8,8), frandom(-3, 3), 0);
 			TNT1 A 2 A_ChangeVelocity(frandom(-6,6), frandom(-6,6), frandom(-3, 3), 0);
 			Stop;
-		Death:
-			TNT1 A 1 A_AlertMonsters();
+		Ded:
+			TNT1 A 1;
 			stop;
 	}
 }
@@ -230,7 +251,7 @@ class magazine_shoulderGun : CustomInventory {
 		//$Category "Ammunition/WoS"
 		//$Title "Shouldercannon Ammo"
 		
-		-INVENTORY.INVBAR		
+		-INVENTORY.INVBAR	
 		radius 10;
 		height 16;
 		Tag "$TAG_magazine_shoulderGun";
