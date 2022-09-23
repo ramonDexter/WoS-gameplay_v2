@@ -58,7 +58,7 @@ OptionMenu "wosDEBUGmenu" {
 	Command "Binder pack light", "give binderpacklight"
 	Command "Shouldergun", "give shouldergun"
 	Command "Implants", "give implants"
-	Command "Badge", "give badge"
+	//Command "Badge", "give badge"
 	//StaticText ""
 	Command "10% accuracy", "give accuracy 1"
 	Command "10% stamina", "give stamina 1"
