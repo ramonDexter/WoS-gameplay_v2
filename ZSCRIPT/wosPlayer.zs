@@ -45,8 +45,8 @@ class binderPlayer : StrifePlayer {
 	
 	// main player def /////////////////////////////////////////////////////////
 	Default {	
-		+FLOORCLIP
-		
+		+FLOORCLIP	
+		+SHOOTABLE; // musí tu být, aby nepřátelé správně registrovali hráče :)
 		//  various player properties  /////////////////////////////////////////
 		//Player.ForwardMove 0.75, 0.75;
 		Player.ForwardMove 1.0, 1.0;
