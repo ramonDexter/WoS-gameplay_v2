@@ -3,29 +3,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 version "4.6.0"
 
-// statusbar ///////////////////////////////////////////////////////////////////
-#include "zscript/wosSTATUSBAR.zs"
-////////////////////////////////////////////////////////////////////////////////
-
-// game ////////////////////////////////////////////////////////////////////////
-#include "zscript/wosBase.zs"
-#include "zscript/wosWeapons.zs"
-#include "zscript/wosPlayer.zs"
-#include "zscript/wosItems.zs"
-#include "zscript/wosTokens.zs"
-#include "zscript/wosKeys.zs"
-#include "zscript/areaNames.zs"
-#include "zscript/projectile.zs"
-#include "zscript/destructibledeco.zs"
-#include "zscript/mapMarkers.zs"
-#include "zscript/wosHandler.zs"
-#include "zscript/neoworm.zs"
-#include "zscript/wosdebug.zs"
-#include "zscript/zcasing.zs"
-#include "zscript/wosmonsters.zs"
-
-////////////////////////////////////////////////////////////////////////////////
-
 //  mechanics  /////////////////////////////////////////////////////////////////
 #include "zscript/mechanics/tilt_ini.zs"
 #include "zscript/mechanics/ladder.zs"
@@ -59,8 +36,36 @@ version "4.6.0"
 #include "zscript/mechanics/mwr_lookcursor/DefaultDescribers.zs"
 #include "zscript/mechanics/mwr_lookcursor/MWR_Lookcursor.zs"
 
+// wosmenu /////////////////////////////////////////////////////////////////////
+#include "zscript/mechanics/wosmenu/wos_ZForms/include.zsc"
+
 
 ////////////////////////////////////////////////////////////////////////////////
+
+// statusbar ///////////////////////////////////////////////////////////////////
+#include "zscript/wosSTATUSBAR.zs"
+////////////////////////////////////////////////////////////////////////////////
+
+// game ////////////////////////////////////////////////////////////////////////
+#include "zscript/wosBase.zs"
+#include "zscript/wosWeapons.zs"
+#include "zscript/wosPlayer.zs"
+#include "zscript/wosItems.zs"
+#include "zscript/wosTokens.zs"
+#include "zscript/wosKeys.zs"
+#include "zscript/areaNames.zs"
+#include "zscript/projectile.zs"
+#include "zscript/destructibledeco.zs"
+#include "zscript/mapMarkers.zs"
+#include "zscript/wosHandler.zs"
+#include "zscript/neoworm.zs"
+#include "zscript/wosdebug.zs"
+#include "zscript/zcasing.zs"
+#include "zscript/wosmonsters.zs"
+
+////////////////////////////////////////////////////////////////////////////////
+
+
 
 //  monsters  //////////////////////////////////////////////////////////////////
 //temporary remove because of bugs
