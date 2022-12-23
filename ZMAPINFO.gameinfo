@@ -28,7 +28,7 @@ GameInfo {
 	AddEventHandlers = "MWR_DescriberProvider" //Required by LookCursorHandler
 	AddEventHandlers = "MWR_LookCursorHandler" //Required for LookCursor to function 
 	//AddEventHandlers = "m8f_tl_KeyboardHandler"
-	
+	AddEventHnadlers = "wos_menuHandler"	
 	
 	quitsound = "silence" // Sound effects handled by message box code
 	//messageboxclass = "ROTTMessageBox" 

@@ -314,10 +314,16 @@ class wosEventHandler : EventHandler {
 			pawn.A_GiveInventory("shoulderGunCharger", 1);
 		} else if ( e.Name ~== "give_10Accuracy" ) {
 			pawn.A_GiveInventory("upgradeAccuracy", 1);
+			//int newAccuracy = pawn.accuracy + 10;
+			//pawn.A_Log(String.Format("%s %s%i%s", TXT_accuracyRaise_10, TXT_accuracyNew, newAccuracy, TXT_stat_end));
 		} else if ( e.Name ~== "give_10Stamina" ) {
 			pawn.A_GiveInventory("UpgradeStamina", 10);
+			//int newStamina = pawn.stamina + 10;
+			//pawn.A_Log(String.Format("%s %s%i%s", TXT_staminaRaise_10, TXT_staminaNew, newAccuracy, TXT_stat_end));
 		} else if ( e.Name ~== "give_10Mind" ) {
 			pawn.A_GiveInventory("upgradeMind", 1);
+			//int newMind = pawn.mind + 10;
+			//pawn.A_Log(String.Format("%s %s%i%s", TXT_mindRaise_10, TXT_mindNew, newAccuracy, TXT_stat_end));
 		} else if ( e.Name ~== "give_20Accuracy" ) {
 			pawn.A_GiveInventory("upgradeAccuracy", 1);
 			pawn.A_GiveInventory("upgradeAccuracy", 1);
@@ -347,7 +353,25 @@ class wosEventHandler : EventHandler {
 			pawn.A_GiveInventory("implant_health", 1);
 			pawn.A_GiveInventory("implant_stamina", 1);
 		}
-		// ACS script support //
+		else if( e.Name ~== "raise_accuracy" ) {
+			pawn.A_GiveInventory("upgradeAccuracy", 1);
+			//int newAccuracy = pawn.accuracy + 10;
+			pawn.A_Log(String.Format("%s %s%i%s", stringtable.localize("$TXT_accuracyRaise_10"), stringtable.localize("$TXT_accuracyNew"), pawn.accuracy, stringtable.localize("$TXT_stat_end")));
+			pawn.A_TakeInventory("upgradeToken", 1);
+		}
+		else if( e.Name ~== "raise_stamina" ) {
+			pawn.A_GiveInventory("UpgradeStamina", 10);
+			//int newStamina = pawn.stamina + 10;
+			pawn.A_Log(String.Format("%s %s%i%s", stringtable.localize("$TXT_staminaRaise_10"), stringtable.localize("$TXT_staminaNew"), pawn.stamina, stringtable.localize("$TXT_stat_end")));
+			pawn.A_TakeInventory("upgradeToken", 1);
+		}
+		else if( e.Name ~== "raise_mind" ) {
+			pawn.A_GiveInventory("upgradeMind", 1);
+			//int newMind = pawn.mindvalue + 10;
+			pawn.A_Log(String.Format("%s %s%i%s", stringtable.localize("$TXT_mindRaise_10"), stringtable.localize("$TXT_mindNew"), pawn.mindvalue, stringtable.localize("$TXT_stat_end")));
+			pawn.A_TakeInventory("upgradeToken", 1);
+		}
+ 		// ACS script support //
 		else if ( e.Name ~== "selectDagger" ) {
 			pawn.A_SelectWeapon("wosPunchDagger");
 		} 

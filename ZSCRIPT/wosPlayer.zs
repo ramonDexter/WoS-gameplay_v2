@@ -39,6 +39,12 @@ class binderPlayer : StrifePlayer {
 	int playerLevel;
 	property playerLevel : playerLevel;
 
+	/*
+	int mod_accuracy;
+	int mod_stamina;
+	int mod_mind;
+	*/
+
 	// broken lands ledge climbing /////////////////////////////////////////////	
 	double speedbase; property BaseSpeed : speedbase;
 	bool running;
@@ -402,111 +408,133 @@ class binderPlayer : StrifePlayer {
 			playerLevel=2;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=3000 && playerLevel==2 ) {
 			playerLevel=3;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=6000 && playerLevel==3 ) {
 			playerLevel=4;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=10000 && playerLevel==4 ) {
 			playerLevel=5;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=15000 && playerLevel==5 ) {
 			playerLevel=6;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=21000 && playerLevel==6 ) {
 			playerLevel=7;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=28000 && playerLevel==7 ) {
 			playerLevel=8;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=36000 && playerLevel==8 ) {
 			playerLevel=9;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=45000 && playerLevel==9 ) {
 			playerLevel=10;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=55000 && playerLevel==10 ) {
 			playerLevel=11;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=66000 && playerLevel==11 ) {
 			playerLevel=12;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=78000 && playerLevel==12 ) {
 			playerLevel=13;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=91000 && playerLevel==13 ) {
 			playerLevel=14;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=105000 && playerLevel==14 ) {
 			playerLevel=15;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=120000 && playerLevel==15 ) {
 			playerLevel=16;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=136000 && playerLevel==16 ) {
 			playerLevel=17;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=153000 && playerLevel==17 ) {
 			playerLevel=18;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=171000 && playerLevel==18 ) {
 			playerLevel=19;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=190000 && playerLevel==19 ) {
 			playerLevel=20;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=210000 && playerLevel==20 ) {
 			playerLevel=21;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=231000 && playerLevel==21 ) {
 			playerLevel=22;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 		if ( playerXP>=253000 && playerLevel==22 ) {
 			playerLevel=23;
 			A_GiveInventory("upgradeToken", 1);
 			A_Log("\c[yellow][ !!! LEVEL UP !!! ]");
+			A_StartSound("menu/choose");
 		}
 	}
 	////////////////////////////////////////////////////////////////////////////

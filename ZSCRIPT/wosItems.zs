@@ -104,60 +104,60 @@ const wosq_rottenWaterWeight = 5;
 //  main base item class  //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 class wosPickup : CustomInventory {
-    int stack;
-    property Stack : stack;
-    bool onlyone;
-    property Only : onlyone;
+	int stack;
+	property Stack : stack;
+	bool onlyone;
+	property Only : onlyone;
 	int charge;
 	property charge : charge;
 	
 
-    override bool TryPickup (in out Actor toucher) {
-        if (onlyone==1 && toucher.CountInv(self.GetClassName())>0) {
-            return 0;
-        }
-        Else {
-            return super.TryPickup(toucher);
-        }
-    }
-    override void AttachToOwner (Actor other) {
-        super.AttachToOwner(other);
-        let pawn = binderPlayer(owner);
-        pawn.encumbrance+=self.mass;
-    }
-    override void DoEffect() {
-        super.DoEffect();
-        let pawn = binderPlayer(owner);
-        if (onlyone==0) {
-            pawn.encumbrance+=self.mass*self.amount;
-        }
-        else {
-            pawn.encumbrance+=self.mass;
-        }
-    }
-    override void OnDrop (Actor dropper) {
-        if (self.stack>0) {
-            let whatto = self.GetClassName();
-            int todrop = dropper.CountInv(whatto);
-            if (todrop>self.stack-1) {
-                todrop = self.stack - 1;
-            }
-            dropper.takeInventory(self.GetClassName(), todrop);
-            self.amount = todrop + 1;
-            super.OnDrop(dropper);
-        }
-    }
+	override bool TryPickup (in out Actor toucher) {
+		if (onlyone==1 && toucher.CountInv(self.GetClassName())>0) {
+			return 0;
+		}
+		Else {
+			return super.TryPickup(toucher);
+		}
+	}
+	override void AttachToOwner (Actor other) {
+		super.AttachToOwner(other);
+		let pawn = binderPlayer(owner);
+		pawn.encumbrance+=self.mass;
+	}
+	override void DoEffect() {
+		super.DoEffect();
+		let pawn = binderPlayer(owner);
+		if (onlyone==0) {
+			pawn.encumbrance+=self.mass*self.amount;
+		}
+		else {
+			pawn.encumbrance+=self.mass;
+		}
+	}
+	override void OnDrop (Actor dropper) {
+		if (self.stack>0) {
+			let whatto = self.GetClassName();
+			int todrop = dropper.CountInv(whatto);
+			if (todrop>self.stack-1) {
+				todrop = self.stack - 1;
+			}
+			dropper.takeInventory(self.GetClassName(), todrop);
+			self.amount = todrop + 1;
+			super.OnDrop(dropper);
+		}
+	}
 
-    Default {
+	Default {
 		+INVENTORY.INVBAR;
-        Inventory.Amount 1;
+		Inventory.Amount 1;
 		Inventory.MaxAmount 999;
 		Inventory.InterHubAmount 999;
 		Inventory.PickupSound "sounds/itemPickup";
 		Mass 0;
 		radius 12;
 		height 12;
-    }
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -165,6 +165,9 @@ class wosPickup : CustomInventory {
 //  upgrade token  /////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 class upgradeToken : CustomInventory {
+
+	
+
 	Default {
 		//$Category "Quest things/WoS"
 		//$Title "Upgrade Token"
@@ -185,7 +188,9 @@ class upgradeToken : CustomInventory {
 			UPTK A -1;
 			Stop;
 		Use:
-			TNT1 A 0;
+			TNT1 A 0 {
+				Menu.SetMenu("wos_RPG_menu");
+			}
 			Fail;
 	}
 }
@@ -197,9 +202,9 @@ class implant_health : CustomInventory {
 
 	int counter;
 	override void AttachToOwner (Actor other) {
-        super.AttachToOwner(other);
-        counter = 0;
-    }
+		super.AttachToOwner(other);
+		counter = 0;
+	}
 	override void Tick() {
 		if ( counter == 35 ) {
 			let pawn = binderPlayer(owner);
@@ -259,10 +264,10 @@ class implant_stamina : CustomInventory {
 	}
 
 	override void AttachToOwner (Actor other) {
-        super.AttachToOwner(other);
-        let pawn = binderPlayer(owner);
-        pawn.staminaImplant = true;
-    }
+		super.AttachToOwner(other);
+		let pawn = binderPlayer(owner);
+		pawn.staminaImplant = true;
+	}
 
 	States {
 		Spawn:
@@ -326,7 +331,7 @@ class journalitem : CustomInventory {
 	States {
 		Spawn:
 			JRNL A -1;
-            Stop;
+			Stop;
 		Use:
 			TNT1 A 0 {
 				ACS_NamedExecute("journal", 0, 0, 0, 0);
@@ -377,7 +382,7 @@ class binderBadge : CustomInventory {
 ////////////////////////////////////////////////////////////////////////////////
 class goldCoin : Inventory /*replaces coin*/ {
 	Default {
-        //$Category "Quest things/WoS"
+		//$Category "Quest things/WoS"
 		//$Title "gold coin"
 		+DROPPED
 		+NOTDMATCH
@@ -403,7 +408,7 @@ class goldCoin : Inventory /*replaces coin*/ {
 ////////////////////////////////////////////////////////////////////////////////
 class wosGold10 : wosPickup {
 	Default {
-        //$Category "Quest things/WoS"
+		//$Category "Quest things/WoS"
 		//$Title "gold coins (10)"
 		-INVENTORY.INVBAR
 		//Inventory.Amount 10
@@ -424,7 +429,7 @@ class wosGold10 : wosPickup {
 }
 class wosGold25 : wosPickup {
 	Default {
-        //$Category "Quest things/WoS"
+		//$Category "Quest things/WoS"
 		//$Title "gold coins (25)"
 		-INVENTORY.INVBAR
 		Tag "$TAG_25GOLDcoins";
@@ -444,7 +449,7 @@ class wosGold25 : wosPickup {
 }
 class wosGold50 : wosPickup {
 	Default {
-        //$Category "Quest things/WoS"
+		//$Category "Quest things/WoS"
 		//$Title "gold coins (50)"
 		-INVENTORY.INVBAR
 		Tag "$TAG_50GOLDcoins";
@@ -465,8 +470,8 @@ class wosGold50 : wosPickup {
 //  gold chest  ////////////////////////////////////////////////////////////////
 //  50  ////////////////////////////////////////////////////////////////////////
 class goldChest50_item : wosPickup {
-    Default {
-        //$Category "Quest things/WoS"
+	Default {
+		//$Category "Quest things/WoS"
 		//$Title "Chest with coins (50)"
 		
 		+INVENTORY.INVBAR
@@ -477,23 +482,23 @@ class goldChest50_item : wosPickup {
 		Inventory.pickupSound "sounds/coinPickup";
 		Inventory.useSound "sounds/coinPickup";
 		Mass gChest50Weight;
-    }
+	}
 
-    States {
-        Spawn:
-            DUMM A -1;
-            Stop;
-        Use:
-            TNT1 A 0 {
-                A_GiveInventory("goldCoin", 50);
-            }
-            Stop;
-    }
+	States {
+		Spawn:
+			DUMM A -1;
+			Stop;
+		Use:
+			TNT1 A 0 {
+				A_GiveInventory("goldCoin", 50);
+			}
+			Stop;
+	}
 }
 //  100  ///////////////////////////////////////////////////////////////////////
 class goldChest100_item : wosPickup {
-    Default {
-        //$Category "Quest things/WoS"
+	Default {
+		//$Category "Quest things/WoS"
 		//$Title "Chest with coins (100)"
 		
 		+INVENTORY.INVBAR
@@ -504,23 +509,23 @@ class goldChest100_item : wosPickup {
 		Inventory.pickupSound "sounds/coinPickup";
 		Inventory.useSound "sounds/coinPickup";
 		Mass gChest100Weight;
-    }
+	}
 
-    States {
-        Spawn:
-            DUMM A -1;
-            Stop;
-        Use:
-            TNT1 A 0 {
-                A_GiveInventory("goldCoin", 100);
-            }
-            Stop;
-    }
+	States {
+		Spawn:
+			DUMM A -1;
+			Stop;
+		Use:
+			TNT1 A 0 {
+				A_GiveInventory("goldCoin", 100);
+			}
+			Stop;
+	}
 }
 //  250  ///////////////////////////////////////////////////////////////////////
 class goldChest250_item : wosPickup {
-    Default {
-        //$Category "Quest things/WoS"
+	Default {
+		//$Category "Quest things/WoS"
 		//$Title "Chest with coins (250)"
 		
 		+INVENTORY.INVBAR
@@ -531,23 +536,23 @@ class goldChest250_item : wosPickup {
 		Inventory.pickupSound "sounds/coinPickup";
 		Inventory.useSound "sounds/coinPickup";
 		Mass gChest250Weight;
-    }
+	}
 
-    States {
-        Spawn:
-            DUMM A -1;
-            Stop;
-        Use:
-            TNT1 A 0 {
-                A_GiveInventory("goldCoin", 250);
-            }
-            Stop;
-    }
+	States {
+		Spawn:
+			DUMM A -1;
+			Stop;
+		Use:
+			TNT1 A 0 {
+				A_GiveInventory("goldCoin", 250);
+			}
+			Stop;
+	}
 }
 //  500  ///////////////////////////////////////////////////////////////////////
 class goldChest500_item : wosPickup {
-    Default {
-        //$Category "Quest things/WoS"
+	Default {
+		//$Category "Quest things/WoS"
 		//$Title "Chest with coins (500)"
 		
 		+INVENTORY.INVBAR
@@ -558,18 +563,18 @@ class goldChest500_item : wosPickup {
 		Inventory.pickupSound "sounds/coinPickup";
 		Inventory.useSound "sounds/coinPickup";
 		Mass gChest500Weight;
-    }
+	}
 
-    States {
-        Spawn:
-            DUMM A -1;
-            Stop;
-        Use:
-            TNT1 A 0 {
-                A_GiveInventory("goldCoin", 500);
-            }
-            Stop;
-    }
+	States {
+		Spawn:
+			DUMM A -1;
+			Stop;
+		Use:
+			TNT1 A 0 {
+				A_GiveInventory("goldCoin", 500);
+			}
+			Stop;
+	}
 }
 
 class zscScanner : Scanner replaces Scanner {
@@ -901,16 +906,16 @@ class q_bomb_01 : actor {
 			MS01 A 35 A_Log("\c[red][ = 2 = ]");
 			MS01 A 35 A_Log("\c[red][ = 1 = ]");
 		Death:
-            TNT1 AAAAAAA 0 A_SpawnProjectile ("ExplosionFire", 3, 0, random (0, 360), 2, random (0, 360));	
-            TNT1 A 0;
+			TNT1 AAAAAAA 0 A_SpawnProjectile ("ExplosionFire", 3, 0, random (0, 360), 2, random (0, 360));	
+			TNT1 A 0;
 			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-            TNT1 A 0 A_StartSound("sounds/grenadeExplosion", 1);
+			TNT1 A 0 A_StartSound("sounds/grenadeExplosion", 1);
 			TNT1 A 1 Radius_Quake (4, 15, 0, 12, 0);
 			TNT1 A 0 ACS_NamedExecuteAlways("m06_lowerWall", 0);
 			TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 3, 0, random (0, 360), 2, random (0, 360));
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle1", 3, 0, random (0, 360), 2, random (0, 360));	
 			TNT1 AAAAAAAAAAAAAAA 6 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
-            stop;
+			stop;
 			
 	}
 }
@@ -978,16 +983,16 @@ class q_bomb_queen1 : actor {
 			MS01 A 35 A_Log("\c[red][ = 2 = ]");
 			MS01 A 35 A_Log("\c[red][ = 1 = ]");
 		Death:
-            TNT1 AAAAAAA 0 A_SpawnProjectile ("exlosionFireBig", 3, 0, random (0, 360), 2, random (0, 360));	
-            TNT1 A 0;
+			TNT1 AAAAAAA 0 A_SpawnProjectile ("exlosionFireBig", 3, 0, random (0, 360), 2, random (0, 360));	
+			TNT1 A 0;
 			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-            TNT1 A 0 A_StartSound("sounds/grenadeExplosion", 1);
+			TNT1 A 0 A_StartSound("sounds/grenadeExplosion", 1);
 			TNT1 A 1 Radius_Quake (4, 15, 0, 12, 0);
 			TNT1 A 0 ACS_NamedExecute("m14_queen1_blowWall", 0);
 			TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 3, 0, random (0, 360), 2, random (0, 360));
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle1", 3, 0, random (0, 360), 2, random (0, 360));	
 			TNT1 AAAAAAAAAAAAAAA 6 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
-            stop;
+			stop;
 			
 	}
 }
@@ -1054,16 +1059,16 @@ class q_bomb_queen2 : actor {
 			MS01 A 35 A_Log("\c[red][ = 2 = ]");
 			MS01 A 35 A_Log("\c[red][ = 1 = ]");
 		Death:
-            TNT1 AAAAAAA 0 A_SpawnProjectile ("exlosionFireBig", 3, 0, random (0, 360), 2, random (0, 360));	
-            TNT1 A 0;
+			TNT1 AAAAAAA 0 A_SpawnProjectile ("exlosionFireBig", 3, 0, random (0, 360), 2, random (0, 360));	
+			TNT1 A 0;
 			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-            TNT1 A 0 A_StartSound("sounds/grenadeExplosion", 1);
+			TNT1 A 0 A_StartSound("sounds/grenadeExplosion", 1);
 			TNT1 A 1 Radius_Quake (4, 15, 0, 12, 0);
 			TNT1 A 0 ACS_NamedExecute("m14_queen2_blowWall", 0);
 			TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 3, 0, random (0, 360), 2, random (0, 360));
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle1", 3, 0, random (0, 360), 2, random (0, 360));	
 			TNT1 AAAAAAAAAAAAAAA 6 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
-            stop;
+			stop;
 			
 	}
 }
@@ -1129,16 +1134,16 @@ class q_bomb_queen3 : actor {
 			MS01 A 35 A_Log("\c[red][ = 2 = ]");
 			MS01 A 35 A_Log("\c[red][ = 1 = ]");
 		Death:
-            TNT1 AAAAAAA 0 A_SpawnProjectile ("exlosionFireBig", 3, 0, random (0, 360), 2, random (0, 360));	
-            TNT1 A 0;
+			TNT1 AAAAAAA 0 A_SpawnProjectile ("exlosionFireBig", 3, 0, random (0, 360), 2, random (0, 360));	
+			TNT1 A 0;
 			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-            TNT1 A 0 A_StartSound("sounds/grenadeExplosion", 1);
+			TNT1 A 0 A_StartSound("sounds/grenadeExplosion", 1);
 			TNT1 A 1 Radius_Quake (4, 15, 0, 12, 0);
 			TNT1 A 0 ACS_NamedExecute("m14_queen3_blowWall", 0);
 			TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 3, 0, random (0, 360), 2, random (0, 360));
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle1", 3, 0, random (0, 360), 2, random (0, 360));	
 			TNT1 AAAAAAAAAAAAAAA 6 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
-            stop;
+			stop;
 			
 	}
 }
