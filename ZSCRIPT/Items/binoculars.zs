@@ -35,6 +35,7 @@ class wosBinocular : wosPickup {
         //A_SetCrosshair(13);
         invoker.binocUsed = false;
     }
+    
     Default {
 		//$Category "Powerups/WoS"
 		//$Title "Binocular"		
