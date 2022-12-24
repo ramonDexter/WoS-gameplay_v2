@@ -402,6 +402,8 @@ class wosMonsterSpawner_Ophidiant : wosMonsterSpawner {
 ///////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 
+
+
 // stalker XP replacer ////////////////////////////////////////////////////////////////
 class wosStalker : Stalker replaces Stalker {
 	action void W_rewardXPstalker (int rewardXP) {
@@ -761,7 +763,7 @@ class wosSentinel : Sentinel replaces Sentinel {
             goto See;
         Missile2:
             DUMA B 4 A_FaceTarget();
-            DUMA C 8 A_SpawnProjectile("sentinelLaserTracer", 8);//A_SentinelAttack();
+            DUMA C 8 A_SpawnProjectile("sentinelLaserTracer", 8, 0, frandom(-6.0, 6.0), 0, frandom(-6.0, 6.0));//A_SentinelAttack();
             DUMA C 4 A_SentinelRefire();
             Goto Missile+1;
         

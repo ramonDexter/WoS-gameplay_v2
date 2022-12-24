@@ -729,7 +729,7 @@ class RV_SentinelBright : actor {
 			stop;
 	}
 }*/
-class RV_CeilingTurret : CeilingTurret {
+class RV_CeilingTurret : CeilingTurret replaces CeilingTurret {
 	Default {
 		//$Category "Monsters/WoS"
 		//$Title "Ceiling Turret vox"
@@ -746,18 +746,25 @@ class RV_CeilingTurret : CeilingTurret {
 	
 	States {
 		Spawn:
-			TURT Z 1 BRIGHT {
-				A_TurretLook(); 
-				A_SpawnItemEx("RV_TurretBase");
-			}
-			TURT ZZZZ 1 BRIGHT A_SpawnItemEx("RV_TurretBase");
+			TURT A 1 BRIGHT A_TurretLook(); 
+			TURT AAAA 1 BRIGHT;
 			Loop;
 		See:
-			TURT Z 1 BRIGHT {
-				A_Chase(); 
-				A_SpawnItemEx("RV_TurretBase");
+			TURT A 1 BRIGHT A_Chase();
+			TURT A 1 BRIGHT;
+			Loop;
+		Missile:
+		Pain:
+			TURT B 4 Slow {
+				A_SpawnProjectile("wosMonsterTracer_Acolyte", -1.0, 0, frandom(-8.0, 8.0), 0, frandom(-8.0, 8.0));
+				A_StartSound ("monsters/rifle");
 			}
-			TURT Z 1 BRIGHT A_SpawnItemEx("RV_TurretBase");
+			TURT B 4 {
+				A_SpawnProjectile("wosMonsterTracer_Acolyte", -1.0);
+				A_StartSound ("monsters/rifle");
+			}
+			TURT D 3 Slow A_SentinelRefire();
+			TURT A 4 A_SentinelRefire();
 			Loop;
 		Death:
 			BALL A 6 Bright A_Scream();
@@ -1449,6 +1456,147 @@ Class wos542 : wosBulletBase {
 		Obituary "%o was shot down by %k's assault rifle.";
 	}
 }
+
+// base monster fancy projectile ///////////////////////////////////////////////
+/*	
+	TRACER SYSTEM FOR ZSCRIPT 2.4 | APRIL 7TH 2017
+	AUTHOR: (DENIS) BELMONDO
+	
+	USAGE: make a new class, inherit from soa_monsterTracer and change the properties as
+		   you wish.
+	
+	you may use this in your project. just leave this comment at the top of 
+	this script and give credit please! thank you :^)	
+*/
+class wosMonsterTracer : FastProjectile {
+
+	const TRACERDURATION	= 1; // tics
+	const TRACERFANCY		= 0; // fake bool
+	const TRACERLENGTH		= 96.0; // float
+	const TRACERSCALE		= 4.0; // float
+	const TRACERSTEP		= 0.01; // float
+	const TRACERFANCYSTEP	= 0.01; // float
+	const TRACERACTOR		= "wos_monsterTracerTrail"; // actor name
+
+	float x1, y1, z1;
+	float x2, y2, z2;
+	
+	// intentional briticism to avoid conflicts with "color" keyword.
+	static const color colours[] = {
+		"9b 5b 13",
+		"af 7b 1f",
+		"c3 9b 2f",
+		"d7 bb 43",
+		"ff ff 73",
+		"ff ff 73" /* appears twice so a segment of this color is longer
+					than the others. */
+	};
+	
+	// literally just stole this from wikipedia
+	float lerp(float v0, float v1, float t) {
+		return (1 - t) * v0 + t * v1;
+	}
+	
+	override void BeginPlay() {
+		// we don't want to lerp into weird coordinates
+		x1 = pos.x;
+		y1 = pos.y;
+		z1 = pos.z;
+		
+		x2 = pos.x;
+		y2 = pos.y;
+		z2 = pos.z;
+	}
+	
+	override void Tick() {	
+		if (Level.isFrozen()) return;
+		
+		x1 = pos.x;
+		y1 = pos.y;
+		z1 = pos.z;
+		
+		x2 = pos.x + vel.x / GetDefaultSpeed("wosMonsterTracer") * TRACERLENGTH;
+		y2 = pos.y + vel.y / GetDefaultSpeed("wosMonsterTracer") * TRACERLENGTH;
+		z2 = pos.z + vel.z / GetDefaultSpeed("wosMonsterTracer") * TRACERLENGTH;
+		
+		if (TRACERFANCY == 0) {
+			for(float i = 0; i < 1; i += TRACERSTEP) {
+				A_SpawnParticle (
+					colours[clamp(i * colours.Size(), 0, colours.Size() - 1)],
+					SPF_FULLBRIGHT,
+					TRACERDURATION,
+					TRACERSCALE * i,
+					0,
+					(-pos.x) + lerp(x1, x2, i),
+					(-pos.y) + lerp(y1, y2, i),
+					(-pos.z) + lerp(z1, z2, i),
+					0, 0, 0,
+					0, 0, 0,
+					1.0
+				);
+			} 
+		}
+		else {
+			for(float i = 0; i < 1; i += TRACERFANCYSTEP) {
+				A_SpawnItemEx (
+					TRACERACTOR,
+					(-pos.x) + lerp(x1, x2, i),
+					(-pos.y) + lerp(y1, y2, i),
+					(-pos.z) + lerp(z1, z2, i),
+					0, 0, 0, 0,
+					SXF_ABSOLUTEPOSITION
+				);
+			}
+		}
+		Super.Tick();
+	}
+	Default {
+		//Damage (random(5,9));
+		DamageType "Bullet";
+		Height 1;
+		Radius 1;
+		Speed 125;
+		fastspeed 160;
+		+BLOODSPLATTER;
+	}
+	States {
+		Spawn:
+			TNT1 A 1;
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItemEx("BulletPuff");
+		XDeath:
+			TNT1 A -1 A_Jump(256, "Null");
+			Stop;
+	}	
+}
+class wos_monsterTracerTrail : Actor {
+	Default {
+		Alpha 0.5;
+		RenderStyle "Add";
+		Scale 0.25;
+		+NOINTERACTION;
+	}
+	States {
+		Spawn:
+			PUFF A 2 Bright;
+			TNT1 A -1 A_Jump(256, "Null");
+			Stop;
+	}
+}
+// damage type for different types of enemies //
+class wosMonsterTracer_Acolyte : wosMonsterTracer {
+	Default {
+		DamageFunction (3*random(1,5));
+	}
+}
+class wosMonsterTracer_Rebel : wosMonsterTracer {
+	Default {
+		DamageFunction (3*random(5,10));
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+
 Class wosAcolyte : Acolyte replaces Acolyte {
 	int gunmag;
 	int sighttimer;
@@ -1739,11 +1887,11 @@ Class wosAcolyte : Acolyte replaces Acolyte {
 		If(!(Invoker.target is "wosAcolyte")) {
 			If(Invoker.gunmag<1){SetStateLabel("Dry");}
 			Else {
-				double acc = 5.6;
+				double acc = 8.4;
 				If(sniper==1){acc=1.4;}
 				If(Invoker.looteqip=="TARG"){acc*=0.5;}
 				A_FaceTarget();
-				A_SpawnProjectile("wos542a",32,0,frandom(-acc,acc),0,frandom(-acc,acc));
+				A_SpawnProjectile("wosMonsterTracer_Acolyte",32,0,frandom(-acc,acc),0,frandom(-acc,acc));
 				A_StartSound("weapons/assaultgun",CHAN_WEAPON);
 				A_AlertMonsters(1024);
 				Invoker.reactiontime=8;
