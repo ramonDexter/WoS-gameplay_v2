@@ -1558,6 +1558,7 @@ class wosMonsterTracer : FastProjectile {
 		Speed 125;
 		fastspeed 160;
 		+BLOODSPLATTER;
+		+THRUGHOST;
 	}
 	States {
 		Spawn:
@@ -1979,6 +1980,7 @@ Class wosAcolyteShield : Actor {
 		+NOBLOOD;
 		+DONTTHRUST; 
 		+NODAMAGE;
+		+GHOST;
 		Radius 22;
 		Height 20;
 		Mass 200;
