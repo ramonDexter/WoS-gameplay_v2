@@ -21,7 +21,7 @@ model wosCeilingTurret {
 	frameindex TURT B 0 2
 	frameindex TURT D 0 4
 }
-model RV_CeilingTurret {
+/*model RV_CeilingTurret {
 	path "models/npc/turret/"
 	model 0 "turret.md3"
 	skin 0 "tx_turret.png"
@@ -30,7 +30,7 @@ model RV_CeilingTurret {
 	frameindex TURT A 0 0
 	frameindex TURT B 0 2
 	frameindex TURT D 0 4
-}
+}*/
 ////////////////////////////////////////////////////////////////////////////////
 
 

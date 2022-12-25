@@ -154,6 +154,22 @@ model BlasterTracer {
 	frameindex DUMM H 0 7
 	frameindex DUMM I 0 8
 }
+model wosMonsterMaulerTracer {
+	PITCHFROMMOMENTUM
+	path "models/weapons/staff/"
+	model 0 "BlasterTracer02.md3"
+	scale 2.25 2.25 2.25
+	offset 0.0 0.0 0.0
+	frameindex DUMM A 0 0
+	frameindex DUMM B 0 1
+	frameindex DUMM C 0 2
+	frameindex DUMM D 0 3
+	frameindex DUMM E 0 4
+	frameindex DUMM F 0 5
+	frameindex DUMM G 0 6
+	frameindex DUMM H 0 7
+	frameindex DUMM I 0 8
+}
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -465,6 +481,15 @@ model wosD_wosMinimissileLauncher {
 	scale 3.5 3.5 3.5
 	offset 0.0 0.0 1.0	
 	frameindex DUMM A 0 1
+}
+class CrusaderMissile {
+	PITCHFROMMOMENTUM
+	path "models/weapons/missileLauncher/"
+	model 0 "miniMissile.md3"
+	skin 0 "tx_missileLauncher2.png"
+	scale 13.0 13.0 13.0
+	offset 0.0 0.0 0.0
+	frameindex MICR A 0 0
 }
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

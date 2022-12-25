@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // bleeding code by jarewill
 // armor hit display code by heydoomer
-//
+// xp handler by Player701
 //
 //
 ////////////////////////////////////////////////////////////////////////////////
@@ -169,7 +169,7 @@ class wosEventHandler : EventHandler {
 				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
 				//mo.A_SpawnItemEx("GuardUniform", 1);
 			}
-			if ( mo is "wosSentinel" && mo.Target is "binderPlayer" ) {
+			if ( ( mo is "Sentinel" || mo is "wosSentinel" ) && mo.Target is "binderPlayer" ) {
 				pawn.playerXP+=mo.SpawnHealth();
 				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
 			}
@@ -189,11 +189,11 @@ class wosEventHandler : EventHandler {
 				pawn.playerXP+=mo.SpawnHealth();
 				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
 			}
-			if ( mo is "Templar" && mo.Target is "binderPlayer" ) {
+			if ( ( mo is "Templar" || mo is "wosTemplar" ) && mo.Target is "binderPlayer" ) {
 				pawn.playerXP+=mo.SpawnHealth();
 				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
 			}
-			if ( mo is "Reaver" && mo.Target is "binderPlayer" ) {
+			if ( ( mo is "Reaver" || mo is "wosReaver" ) && mo.Target is "binderPlayer" ) {
 				pawn.playerXP+=mo.SpawnHealth();
 				pawn.A_Log(string.format("\c[yellow][ %s%i%s ]", "Received ", mo.SpawnHealth()," XP!"));
 			}
