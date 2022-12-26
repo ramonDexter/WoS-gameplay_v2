@@ -12,7 +12,7 @@ class wosLandMine : wosPickup {
 		inventory.PickupMessage "$F_LandMine";
 		Inventory.Icon "I_LMIN";
 		Mass landMineWeight;
-		Scale 0.75;
+		//Scale 0.75;
 	}
 	States {
 		Spawn:
@@ -39,7 +39,7 @@ class landMinePlaced : SwitchableDecoration {
 		ExplosionDamage 192;
 		ExplosionRadius 128;
 		Speed 0;
-		Scale 0.5;
+		//Scale 0.5;
 		-SOLID
 		+USESPECIAL
 		+NOBLOOD
@@ -91,7 +91,7 @@ class landMineTrap : SwitchableDecoration {
 		ExplosionDamage 192;
 		ExplosionRadius 128;
 		Speed 0;
-		Scale 0.5;
+		//Scale 0.5;
 		+USESPECIAL
 		+NOBLOOD
 		+SHOOTABLE
