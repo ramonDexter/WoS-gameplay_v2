@@ -742,7 +742,7 @@ Class wosUniqueAcolyte : wosDeadAcolyte {
 ////////////////////////////////////////////////////////////////////////////////
 // stalker XP replacer /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-/*class wosStalker : Stalker replaces Stalker {
+class wosStalker : Stalker replaces Stalker {
 	action void W_rewardXPstalker (int rewardXP) {
 		let pawn = binderPlayer(target);
 		if ( pawn && pawn.player ) {
@@ -763,7 +763,7 @@ Class wosUniqueAcolyte : wosDeadAcolyte {
 			STLK XYZ[ 4 Bright;
 			Stop;
 	}
-}*/
+}
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1001,7 +1001,7 @@ class CrusHeavyArm : actor {
 ////////////////////////////////////////////////////////////////////////////////
 // Inquisitor XP replacer //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-/*class wosInquisitor : Inquisitor replaces Inquisitor {
+class wosInquisitor : Inquisitor replaces Inquisitor {
 	action void W_rewardXPInquisitor (int rewardXP) {
 		let pawn = binderPlayer(target);
 		if ( pawn && pawn.player ) {
@@ -1036,7 +1036,7 @@ class CrusHeavyArm : actor {
 			RBB3 E -1;
 			Stop;
 	}
-}*/
+}
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1079,7 +1079,7 @@ class wosTemplar : Templar replaces Templar {
 				A_SpawnProjectile("wosMonsterMaulerTracer", 32, 0, frandom(-11.25, 11.25), 0, frandom(-7.0, 7.0));
 				A_SpawnProjectile("wosMonsterMaulerTracer", 32, 0, frandom(-11.25, 11.25), 0, frandom(-7.0, 7.0));
 			}//A_TemplarAttack
-			Goto See
+			Goto See;
 		Pain:
 			PGRD A 2;
 			PGRD A 2 A_Pain();
@@ -1144,7 +1144,7 @@ class wosReaver : Reaver replaces Reaver {
 			ROB1 M 5 A_NoBlocking;
 			ROB1 NOP 5;
 			TNT1 A 0 A_SpawnItemEx("wosExplosion_high");
-			ROB1 Q 6 A_Explode(32, 32, alert:true);
+			ROB1 Q 6; //A_Explode(32, 32, alert:true);
 			//TNT1 A 0 W_rewardXPReaver(150);
 			ROB1 R -1;
 			Stop;

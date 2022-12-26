@@ -1,31 +1,31 @@
 //const envSuitWeight = 120;
 ////////////////////////////////////////////////////////////////////////////////
 class wosEnvSuit : wosPickup replaces EnvironmentalSuit {
-    int depleteTimer;
-    bool inUse;
+	int depleteTimer;
+	bool inUse;
 
-    override void Tick() {
-        Super.Tick();
-        if ( owner != null && owner.player && owner.player.health < 1 ) { inUse = 0; }
-        if ( inUse == 1 ) {
-            if( self.charge == 0 ) { 
-                useInventory(self); 
-            } else if ( depletetimer >= 175 ) { //every 5 seconds >> 5*35
-                self.charge--;
-                depletetimer = 0;
-            } else {
-                depleteTimer++;
-            }
-            owner.GiveInventory("wosPowerMask", 1); //power item give
-        } else {
-            if ( owner != null ) {
-                owner.TakeInventory("wosPowerMask", 1); //power item take
-            }
-        }
-    }
+	override void Tick() {
+		Super.Tick();
+		if ( owner != null && owner.player && owner.player.health < 1 ) { inUse = 0; }
+		if ( inUse == 1 ) {
+			if( self.charge == 0 ) { 
+				useInventory(self); 
+			} else if ( depletetimer >= 175 ) { //every 5 seconds >> 5*35
+				self.charge--;
+				depletetimer = 0;
+			} else {
+				depleteTimer++;
+			}
+			owner.GiveInventory("wosPowerMask", 1); //power item give
+		} else {
+			if ( owner != null ) {
+				owner.TakeInventory("wosPowerMask", 1); //power item take
+			}
+		}
+	}
 
-    Default {
-        //$Category "Powerups/WoS"
+	Default {
+		//$Category "Powerups/WoS"
 		//$Title "wos Environmental Suit"
 		
 		-SOLID
@@ -38,12 +38,12 @@ class wosEnvSuit : wosPickup replaces EnvironmentalSuit {
 		inventory.PickupMessage "$F_ENVSUIT";
 		wosPickup.charge 100;
 		Mass envSuitWeight;
-    }
-    States {
-        Spawn:
-            MASK A -1;
-            Stop;
-        Use:
+	}
+	States {
+		Spawn:
+			MASK A -1;
+			Stop;
+		Use:
 			TNT1 A 0 {
 				if ( GetPlayerInput(MODINPUT_BUTTONS)&BT_USE ) { return resolveState("Usecheck"); }
 				else if ( invoker.inUse == 1 ) { return resolveState("UseEnd"); }
@@ -53,37 +53,37 @@ class wosEnvSuit : wosPickup replaces EnvironmentalSuit {
 			}
 			Fail;
 		UseStart:
-            TNT1 A 0 {
-                invoker.inUse = 1;
-                invoker.bUNDROPPABLE = 1;
+			TNT1 A 0 {
+				invoker.inUse = 1;
+				invoker.bUNDROPPABLE = 1;
 				A_StartSound("sounds/armorLight", CHAN_BODY, 0);
 				textureID txID_I_MSK2 = TexMan.CheckForTexture("I_MSK2", 0, 0);
 				invoker.icon = txID_I_MSK2;
-            }
-            Fail;
-        UseEnd:
-            TNT1 A 0 {
-                invoker.inUse = 0;
-                invoker.bUNDROPPABLE = 0;
+			}
+			Fail;
+		UseEnd:
+			TNT1 A 0 {
+				invoker.inUse = 0;
+				invoker.bUNDROPPABLE = 0;
 				A_StopSound(CHAN_5);
 				textureID txID_I_MASK = TexMan.CheckForTexture("I_MASK", 0, 0);
 				invoker.icon = txID_I_MASK;
-            }
-            Fail;
-        UseNot:
-            TNT1 A 0 A_log("$M_ENVSUIT_filtersUsedUp");
-            TNT1 A 0 {
-                invoker.inUse = 0;
-                invoker.bUNDROPPABLE = 0;
+			}
+			Fail;
+		UseNot:
+			TNT1 A 0 A_log("$M_ENVSUIT_filtersUsedUp");
+			TNT1 A 0 {
+				invoker.inUse = 0;
+				invoker.bUNDROPPABLE = 0;
 				A_StopSound(CHAN_5);
 				textureID txID_I_MASK = TexMan.CheckForTexture("I_MASK", 0, 0);
 				invoker.icon = txID_I_MASK;
-            }
-            Fail;
-        Usecheck:
-            TNT1 A 0 A_log(String.Format("%s%i%s", stringtable.localize("$M_ENVSUIT_filtersLeft1"), invoker.charge, stringtable.localize("$M_ENVSUIT_filtersLeft2")));
-            Fail;
-    }
+			}
+			Fail;
+		Usecheck:
+			TNT1 A 0 A_log(String.Format("%s%i%s", stringtable.localize("$M_ENVSUIT_filtersLeft1"), invoker.charge, stringtable.localize("$M_ENVSUIT_filtersLeft2")));
+			Fail;
+	}
 }
 
 class wosPowerMask : PowerIronFeet {
@@ -188,32 +188,32 @@ class EnvSuitActive : PowerupGiver {
 //class PowerEnvSuit : PowerIronFeet {
 	/*int envSuitCount; 
 
-    override void attachtoowner(actor user) {
-        envSuitCount = 0;
-        super.attachtoowner(user);
-    }
+	override void attachtoowner(actor user) {
+		envSuitCount = 0;
+		super.attachtoowner(user);
+	}
 
-    override void doeffect() {
+	override void doeffect() {
 		Super.doEffect();
-        if(owner.countinv("zscEnvironmentalSuit") == 0) {
-            owner.takeinventory("EnvSuitActive", 1);
-            owner.takeinventory("PowerEnvSuit", 1);
-            envSuitCount = 0;
+		if(owner.countinv("zscEnvironmentalSuit") == 0) {
+			owner.takeinventory("EnvSuitActive", 1);
+			owner.takeinventory("PowerEnvSuit", 1);
+			envSuitCount = 0;
 			return;
 		}
 
-        envSuitCount++;
+		envSuitCount++;
 
-        if(envSuitCount == 70) {
-            owner.takeinventory("zscEnvironmentalSuit", 1);
-            envSuitCount = 0;
+		if(envSuitCount == 70) {
+			owner.takeinventory("zscEnvironmentalSuit", 1);
+			envSuitCount = 0;
 		
-        }
+		}
 		if (!(level.time & 0x3f)) {
 			Owner.A_StartSound ("misc/mask", CHAN_AUTO);
 		}
 
-    }*//*
+	}*//*
 	Override void AbsorbDamage(int damage, Name damageType, out int newdamage, Actor inflictor, Actor source, int flags)
 	{
 		If(damageType=="Fire"||damageType=="Drowning"||damageType=="Gas")

@@ -482,7 +482,7 @@ model wosD_wosMinimissileLauncher {
 	offset 0.0 0.0 1.0	
 	frameindex DUMM A 0 1
 }
-class CrusaderMissile {
+model CrusaderMissile {
 	PITCHFROMMOMENTUM
 	path "models/weapons/missileLauncher/"
 	model 0 "miniMissile.md3"
