@@ -903,6 +903,7 @@ class binderPlayer : StrifePlayer {
 			A_GiveInventory("wosGrenadeF", 15);
 			A_GiveInventory("wosGrenadeG", 15);
 			A_GiveInventory("wosArmorShard", 10);
+			A_GiveInventory("woslandmine", 5);
 			//medical
 			A_GiveInventory("wosHyposprej", 30);
 			A_GiveInventory("wosKombopack", 10);
