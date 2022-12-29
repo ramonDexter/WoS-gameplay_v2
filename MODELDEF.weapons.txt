@@ -835,7 +835,65 @@ model CasingStaff {
 ////////////////////////////////////////////////////////////////////////////////
 //  executor rifle  ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-model executorRifle {
+model wosPhaestonRifle {
+	USEACTORPITCH
+	USEACTORROLL
+	//NOINTERPOLATION
+	path "models/weapons/phaeston/"
+	model 0 "AR_phaeston.md3"
+	scale -0.5 0.5 0.5
+	offset 8.0 -20.0 -8.0
+
+	frameindex DUMM A 0 0
+	frameindex DUMM B 0 1
+	frameindex DUMM C 0 2
+	frameindex DUMM D 0 3
+	frameindex DUMM E 0 4
+	frameindex DUMM F 0 5
+	frameindex DUMM G 0 6
+	frameindex DUMM H 0 7
+	frameindex DUMM I 0 8
+	frameindex DUMM J 0 9
+}
+model wosPhaestonRifle {
+	USEACTORPITCH
+	USEACTORROLL
+	path "models/weapons/phaeston/"
+	model 0 "phaeston_pickup.md3"
+	scale 0.35 0.35 0.35
+	offset 0.0 0.0 0.0
+	frameindex DUMM Z 0 1
+}
+////////////////////////////////////////////////////////////////////////////////
+model wosPhaestonRifle_dummy1 {
+	USEACTORPITCH
+	USEACTORROLL
+	path "models/weapons/phaeston/"
+	model 0 "phaeston_pickup.md3"
+	scale 0.35 0.35 0.35
+	offset 0.0 0.0 0.0
+	frameindex DUMM A 0 1
+}
+model wosPhaestonRifle_dummy2 {
+	USEACTORPITCH
+	USEACTORROLL
+	path "models/weapons/phaeston/"
+	model 0 "phaeston_pickup.md3"
+	scale 0.35 0.35 0.35
+	offset 0.0 0.0 0.0
+	frameindex DUMM A 0 2
+}
+model wosPhaestonRifle_dummy3 {
+	USEACTORPITCH
+	USEACTORROLL
+	path "models/weapons/phaeston/"
+	model 0 "phaeston_pickup.md3"
+	scale 0.35 0.35 0.35
+	offset 0.0 0.0 0.0
+	frameindex DUMM A 0 4
+}
+////////////////////////////////////////////////////////////////////////////////
+/*model executorRifle {
 	//pickup model
 	path "models/weapons/executorRifle/"
 	model 0 "p_executorRifle.md3"
@@ -855,15 +913,7 @@ model executorRifle {
 	surfaceskin 0 4 "tx_handgrenade.png"
 	surfaceskin 0 5 "tx_handgrenade.png"
 	surfaceskin 0 6 "tx_pxStaffBlaster.png"
-	/*surfaceskin 0 0 "tx_executorRifle.png"
-	surfaceskin 0 1 "tx_executorRifle.png"
-	surfaceskin 0 2 "tx_executorRifle.png"
-	surfaceskin 0 3 "tx_executorRifle.png"
-	surfaceskin 0 4 "tx_executorRifle.png"
-	surfaceskin 0 5 "tx_handgrenade.png"
-	surfaceskin 0 6 "tx_handgrenade.png"
-	surfaceskin 0 7 "tx_handgrenade.png"
-	surfaceskin 0 8 "tx_pxStaffBlaster.png"*/
+	
 	scale -1.5 1.5 1.5
 	offset 10.0 -25.0 -10.0	
 	//idle
@@ -908,7 +958,7 @@ model dummy_executorRifle03 {
 	scale 0.75 0.75 0.75
 	offset 0.0 0.0 0.0
 	frameindex DUMM A 0 3
-}
+}*/
 
 /*
 model executorRifle_ground01 {

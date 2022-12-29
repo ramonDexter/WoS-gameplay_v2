@@ -73,8 +73,8 @@ class binderPlayer : StrifePlayer {
 		Player.MaxHealth 100;
 		//  weaponslots  ///////////////////////////////////////////////////////
 		Player.WeaponSlot 1, "wosPunchDagger";
-		Player.WeaponSlot 2, "wosStrifeXbow", "StormPistol", "laserPistol";
-		Player.WeaponSlot 3, "wosAssaultGun", "staffBlaster", "executorRifle";
+		Player.WeaponSlot 2, "wosStrifeXbow", "wosPhaestonRifle"; //, "StormPistol", "laserPistol"
+		Player.WeaponSlot 3, "wosAssaultGun", "staffBlaster";
 		Player.WeaponSlot 4, "wosMinimissileLauncher";
 		Player.WeaponSlot 5, "wosGrenadeLauncher";
 		Player.WeaponSlot 6, "wosFlamethrower";
@@ -788,11 +788,11 @@ class binderPlayer : StrifePlayer {
 		} 
 		else if ( name ~== "weapons" ) {
 			//A_GiveInventory("", 1);
-			A_GiveInventory("StormPistol", 1);
-			A_GiveInventory("laserPistol", 1);
+			//A_GiveInventory("StormPistol", 1);
+			//A_GiveInventory("laserPistol", 1);
 			A_GiveInventory("wosStrifeXbow", 1);
 			A_GiveInventory("wosAssaultGun", 1);
-			A_GiveInventory("executorRifle", 1);
+			A_GiveInventory("wosPhaestonRifle", 1);
 			A_GiveInventory("staffBlaster", 1);
 			A_GiveInventory("wosMinimissileLauncher", 1);
 			A_GiveInventory("wosGrenadeLauncher", 1);
@@ -891,11 +891,12 @@ class binderPlayer : StrifePlayer {
 			A_GiveInventory("shoulderGun", 1);
 			A_GiveInventory("magazine_shoulderGun", 32);
 			A_GiveInventory("StaffBlaster", 1);
-			A_GiveInventory("laserpistol", 1);
+			A_GiveInventory("wosPhaestonRifle", 1);
+			A_GiveInventory("ClipOfBullets", 240);
 			//armor
 			A_GiveInventory("wosKineticArmor", 1);
 			//ammo
-			A_GiveInventory("EnergyPod", 400);
+			A_GiveInventory("EnergyPod", 360);
 			A_GiveInventory("wosenergykit", 10);
 			A_GiveInventory("shoulderGunCharger", 1);
 			//grenades

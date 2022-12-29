@@ -809,6 +809,11 @@ Sprite "H_MAUL", 48, 16
 	Patch "MAULH", 0, 0
 }
 
+Sprite "H_PHST", 55, 17
+{
+	Patch "PHSTNRFL", -1, 0
+}
+
 Graphic "I_GUNT", 36, 30
 {
 	Patch "SXGUNT", 11, 7

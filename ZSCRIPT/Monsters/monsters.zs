@@ -228,6 +228,7 @@ Class wosAcolyte : Acolyte replaces Acolyte {
 					}
 				}
 				If( lootgun == 1 ){ Actor gun = A_DropItem("wosAssaultGun"); }
+				Else If( lootgun2 == 1 ) { Actor gun = A_DropItem("wosPhaestonRifle"); }
 				Else If( gunmag > 1 ){ Actor mag = A_DropItem("ClipOfBullets",gunmag/2); }
 				If( lootrep == 1 ){ Actor rep = A_DropItem("wosArmorShard"); }
 				searched = 1;

@@ -15,7 +15,7 @@ class wosStrifeXbow : wosWeapon replaces StrifeCrossbow
 		height 16;		
         Tag "$T_CROSSBOW"; // "Crossbow"
 		Weapon.Slotnumber 2;
-		Weapon.SlotPriority 0.2;
+		Weapon.SlotPriority 0.1;
         //Weapon.SelectionOrder 1200;        
         Weapon.AmmoUse1 0;
         Weapon.AmmoGive1 12;

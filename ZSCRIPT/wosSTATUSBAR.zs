@@ -713,21 +713,21 @@ class wosStatusBar : BaseStatusBar {
 
 				//  What weapons does the player have?  ////////////////////////
 				static const class<Weapon> WeaponList[] = {
-					"StormPistol",
-					"laserPistol",
-					"wosStrifeXbow",
-					"wosAssaultGun",
-					"executorRifle",
-					"staffBlaster",
-					"wosMinimissileLauncher",
-					"wosFlamethrower",
-					"wosGrenadeLauncher",
-					"wosMauler"
+					//"StormPistol",
+					//"laserPistol",
+					"wosStrifeXbow", //x29 y-11
+					"wosAssaultGun", //x63 y43
+					"wosPhaestonRifle", //x41 y22
+					"staffBlaster", //x19 y8
+					"wosMinimissileLauncher", //x19 y44
+					"wosFlamethrower", //x55 y56
+					"wosGrenadeLauncher", //x19 y66
+					"wosMauler" //x48 y83
 				};
-				static const int WeaponX[] = {46, 19, 67, 63, 41, 19, 19, 55, 19, 48};
-				static const int WeaponY[] = {0, -11, 13, 43, 26, 13, 44, 56, 66, 83};
+				static const int WeaponX[] = {/*46, 19,*/ 28, 63, 41, 19, 19, 55, 19, 48};
+				static const int WeaponY[] = {/*0, -11,*/ -7, 43, 22, 8, 44, 56, 66, 83};
 
-				for (i = 0; i < 10; ++i) {
+				for (i = 0; i < 8; ++i) {
 					item = CPlayer.mo.FindInventory (WeaponList[i]);
 					if (item != NULL) {						
 						screen.DrawTexture (item.Icon, true,
