@@ -56,12 +56,15 @@ class wosPhaestonRifle : wosWeapon {
 			//DUMM A 2;
 			DUMM D 2;
 			DUMM EF 2;
-			DUMM G 2 A_StartSound("weapons/executorRifle/ReloadPush", 1);
-			DUMM HIJ 3;
-			DUMM J 10 W_reload2();
-			DUMM JIH 3;
-			DUMM G 2 A_StartSound("weapons/executorRifle/ReloadRotate", 1);
-			DUMM FE 2;
+			DUMM G 4 A_StartSound("weapons/executorRifle/ReloadPush", 1);
+			DUMM HIJ 4;
+			DUMM J 35 {
+				W_reload2();
+				A_StartSound("weapons/executorRifle/Reload", 1);
+			}
+			DUMM JIH 4;
+			DUMM G 4 A_StartSound("weapons/executorRifle/ReloadRotate", 1);
+			DUMM FE 3;
 			DUMM A 1;
 			goto Ready;
 
