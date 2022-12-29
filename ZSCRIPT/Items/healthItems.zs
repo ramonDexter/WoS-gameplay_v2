@@ -57,6 +57,7 @@ class medicalApply : weapon {
 		let pawn = binderPlayer(self);
 		pawn.bleedlevel = 0;
 		pawn.GiveBody(toHeal, 0);
+		
 	}
 	action void W_applyMedMax() {
 		if (player == null) {
@@ -77,7 +78,7 @@ class medicalApply : weapon {
 class surgUnitHealing : CustomInventory {
 	Default {
 		-INVENTORY.INVBAR;
-		Inventory.PickupSound "sounds/med";
+		Inventory.PickupSound "sounds/medicaluse";
 		inventory.amount 1;
 		Mass 0;
 	}
@@ -155,7 +156,7 @@ class Hyposprej_apply : medicalApply {
 			AMHS F 4;
 			AMHS G 3;
 			AMHS H 2;
-			AMHS I 2 A_startSound("sounds/med");
+			AMHS I 2 A_startSound("sounds/medicaluse");
             AMHS J 1 W_applyMed2(25);
 		Deselect:
 			AMHS K 2 A_Lower(9);
@@ -223,7 +224,7 @@ class Kombopack_apply : medicalApply {
 			AMHS F 4;
 			AMHS G 3;
 			AMHS H 2;
-			AMHS I 2 A_StartSound("sounds/med");
+			AMHS I 2 A_StartSound("sounds/medicaluse");
             AMHS J 1 W_applyMed2(50);
 		Deselect:
 			AMHS K 2 A_Lower(9);
@@ -292,7 +293,7 @@ class InstaLek_apply : medicalApply {
 			AMHS F 4;
 			AMHS G 3;
 			AMHS H 2;
-			AMHS I 2 A_StartSound("sounds/med");
+			AMHS I 2 A_StartSound("sounds/medicaluse");
             AMHS J 1 W_applyMedMax();
 		Deselect:
 			AMHS K 2 A_Lower(9);
@@ -364,7 +365,7 @@ class zscMedicalKit : wosPickup replaces MedicalKit {
 			TNT1 A 0 {
 				let pawn = binderPlayer(self);
 				pawn.bleedlevel=0;
-				pawn.A_StartSound("sounds/med",CHAN_ITEM);
+				pawn.A_StartSound("sounds/medicaluse",CHAN_ITEM);
 				pawn.GiveBody(25, 0);
 			}
 			Stop;
@@ -406,7 +407,7 @@ class zscSurgeryKit : wosPickup replaces SurgeryKit {
 			TNT1 A 0 {
 				let pawn = binderPlayer(self);
 				pawn.bleedlevel=0;
-				pawn.A_StartSound("sounds/med",CHAN_ITEM);
+				pawn.A_StartSound("sounds/medicaluse",CHAN_ITEM);
 				int toHeal = pawn.GetMaxHealth(true) - pawn.Health;
 				pawn.GiveBody(toHeal, 0);
 			}
@@ -461,7 +462,7 @@ class wosi_StimDevice : wosPickup {
 			TNT1 A 0 {
 				let pawn = binderPlayer(self);
 				pawn.stamin = pawn.maxstamin;
-				pawn.A_StartSound("sounds/med",CHAN_ITEM);
+				pawn.A_StartSound("sounds/medicaluse",CHAN_ITEM);
 			}
 			Stop;
 		UseNot:
@@ -483,7 +484,7 @@ class wosi_StimDevice : wosPickup {
 /*class surgUnitHealing : CustomInventory {
 	Default {
 		-INVENTORY.INVBAR;
-		Inventory.PickupSound "sounds/med";
+		Inventory.PickupSound "sounds/medicaluse";
 		inventory.amount 1;
 		Mass 0;
 	}
@@ -529,7 +530,7 @@ class wosi_StimDevice : wosPickup {
 		Inventory.InterHubAmount 20;
 		Inventory.PickupMessage "$F_HYPOSPREJ";
 		Inventory.Icon "I_MED1";
-		Inventory.useSound "sounds/med";
+		Inventory.useSound "sounds/medicaluse";
 	}
 	
 	States
@@ -564,7 +565,7 @@ class wosi_StimDevice : wosPickup {
 		Inventory.InterHubAmount 15;
 		Inventory.PickupMessage "$F_KOMBOPACK";
 		Inventory.Icon "I_MED2";
-		Inventory.useSound "sounds/med";
+		Inventory.useSound "sounds/medicaluse";
 	}
 	
 	States
@@ -598,7 +599,7 @@ class wosi_StimDevice : wosPickup {
 		Inventory.InterHubAmount 10;
 		Inventory.PickupMessage "$F_INSTALEK";
 		Inventory.Icon "I_MED3";
-		Inventory.useSound "sounds/med";
+		Inventory.useSound "sounds/medicaluse";
 	}
 	
 	States

@@ -45,7 +45,7 @@ class wosPhaestonRifle : wosWeapon {
 			Loop;
 		Fire:
 			DUMM A 1 W_CheckAmmo();
-			DUMM B 2 Bright W_ShootFirearm3(8, "weapons/executorRifle/Fire", "wosSparkPuff");
+			DUMM B 2 Bright W_ShootFirearm3(8, "weapons/executorRifle/Fire", "wosPhaestonPuff");
 			DUMM C 1 Bright;
 			DUMM D 1 A_Refire();
             goto Ready;
@@ -122,6 +122,7 @@ class wosPhaestonRifle_dummy3 : actor {
 			Stop;
 	}
 }
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

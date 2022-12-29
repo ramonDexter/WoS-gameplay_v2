@@ -1,7 +1,7 @@
 //  BASE SNDINFO  //////////////////////////////////////////////////////////////
 
 // menu sounds /////////////////////////////////////////////////////////////////
-menu/choose "sounds/menutick/dsradio.wav"
+menu/choose "sounds/menu/buttonclickrelease.wav"
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Items  /////////////////////////////////////////////////////////////////////
@@ -32,32 +32,34 @@ sounds/armorhit "sounds/armor/armorhit.ogg"
 ////////////////////////////////////////////////////////////////////////////////
 
 //  Item use sounds  ///////////////////////////////////////////////////////////
-
-//item pickup
+// item pickup //
 sounds/itemPickup "sounds/mwsound/item.wav"
 misc/i_pkup "sounds/mwsound/item.wav"
 
 //money pickup
 sounds/coinPickup "sounds/mwsound/money.wav"
 
-//food - eat
+// food - eat //
 //sounds/eat  "sounds/food/CHEWSND.wav"
 sounds/eat  "sounds/mwsound/swallow.wav"
 sounds/drink  "sounds/mwsound/drink.wav"
 
-//medicals use
+// medicals use //
 sounds/med  "sounds/various/DSMEDPAK.ogg"
+sounds/medicaluse "sounds/various/smallmedkit1.wav"
 
-//batteries use
-sounds/battery  "sounds/various/BATTRECH.wav"
+// batteries use //
+sounds/battery  "sounds/various/suitchargeok1.wav"
+sounds/batteryuse "sounds/various/battery_pickup.wav"
 
-//ammo use
-sounds/ammouse  "sounds/various/DSAMPKUP.wav"
 
-//lantern oil use
+// ammo use //
+sounds/ammouse  "sounds/various/ammo_pickup.wav"
+
+// lantern oil use //
 sounds/lanternOilUse  "sounds/various/OILPICK1.ogg"
 
-//flashlight
+// flashlight //
 flashlight/click  "sounds/various/click.wav"
 
 //clothes&armor wear sounds

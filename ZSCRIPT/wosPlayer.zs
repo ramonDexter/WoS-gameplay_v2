@@ -890,9 +890,9 @@ class binderPlayer : StrifePlayer {
 			// weapons
 			A_GiveInventory("shoulderGun", 1);
 			A_GiveInventory("magazine_shoulderGun", 32);
-			A_GiveInventory("StaffBlaster", 1);
 			A_GiveInventory("wosPhaestonRifle", 1);
 			A_GiveInventory("ClipOfBullets", 240);
+			A_GiveInventory("StaffBlaster", 1);
 			//armor
 			A_GiveInventory("wosKineticArmor", 1);
 			//ammo

@@ -148,6 +148,8 @@ class wosPickup : CustomInventory {
 		}
 	}
 
+	
+
 	Default {
 		+INVENTORY.INVBAR;
 		Inventory.Amount 1;
