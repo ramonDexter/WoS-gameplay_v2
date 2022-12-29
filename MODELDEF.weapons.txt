@@ -845,8 +845,10 @@ model wosPhaestonRifle {
 	offset 8.0 -20.0 -8.0
 
 	frameindex DUMM A 0 0
+	surfaceskin 0 0 "tx_phaestonRifle2.png"
 	frameindex DUMM B 0 1
 	frameindex DUMM C 0 2
+	surfaceskin 0 0 "tx_phaestonRifle.png"
 	frameindex DUMM D 0 3
 	frameindex DUMM E 0 4
 	frameindex DUMM F 0 5
