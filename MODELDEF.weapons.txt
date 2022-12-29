@@ -844,6 +844,7 @@ model wosPhaestonRifle {
 	scale -0.5 0.5 0.5
 	offset 8.0 -20.0 -8.0
 
+	surfaceskin 0 0 "tx_phaestonRifle.png"
 	frameindex DUMM A 0 0
 	surfaceskin 0 0 "tx_phaestonRifle2.png"
 	frameindex DUMM B 0 1
