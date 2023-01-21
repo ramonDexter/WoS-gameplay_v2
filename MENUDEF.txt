@@ -53,6 +53,8 @@ OptionMenu "wosDEBUGmenu" {
 	StaticText ":: WoS STUFF ::"
 	Option "lowDetail shader", "gl_lowdetail", "YesNo"
 	//StaticText ""
+	Command ">> ENGLISH <<", "language enu"
+	Command ">> ČEŠTINA <<", "language csy"
 	Command "Binder pack", "give binderpack"
 	Command "Binder pack light", "give binderpacklight"
 	Command "Shouldergun", "give shouldergun"
