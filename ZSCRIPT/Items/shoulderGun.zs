@@ -2,7 +2,7 @@
 //  shoulderGun weapon/item  ///////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 /*
-credits: 
+// CREDITS: ////////////////////////////////////////////////////////////////////
 sprites: banjo software, ramon.dexter
 model: ramon.dexter
 sounds: banjo software
@@ -103,9 +103,8 @@ class shoulderGun : wosPickup {
 				}
 				return resolvestate(nextstate);
 			}
-			Fail;
-	  
-	  
+			Fail;	  
+	  	// overlayed shouldergun display ///////////////////////////////////////
 		startoverlay:
 			TNT1 A 0 {
 				int layer = 6;
@@ -113,7 +112,7 @@ class shoulderGun : wosPickup {
 			}
 			wait;
 		shootShoulderGun:
-			// animation remade with new model //////////////////////////////////////////
+			// animation remade with new model /////////////////////////////////
             DUMA ABCDEFGHIJ 1;
             DUMF AA 1;
             DUMF A 2;
@@ -132,36 +131,11 @@ class shoulderGun : wosPickup {
             DUMA GFEDCBA 1;
 			TNT1 A 0 {
 				return resolveState("remove");
-			}
-			/////////////////////////////////////////////////////////////////////////////
-			/*SHCH JIHGFEDCBA 1;
-			SHCH AA 1;
-			//SHCN A 1 A_StartSound("weapons/shoulderGun/fire", CHAN_7, CHANF_DEFAULT, 1.0, false);
-			SHCN A 2;
-			SHCN I 2 Bright W_FireShoulderGun(true, true);
-			SHCN J 2 Bright W_FireShoulderGun(false, false);
-			SHCN I 2 Bright W_FireShoulderGun(false, false);
-			SHCN J 2 Bright W_FireShoulderGun(false, false);
-			SHCN I 2 Bright W_FireShoulderGun(false, false);
-			SHCN J 2 Bright W_FireShoulderGun(false, true);
-			SHCN B 3;
-			SHCN C 3;
-			SHCN D 4 A_StartSound("weapons/shoulderGun/stop",6); //zrusit zvuk blesku
-			SHCN E 5;
-			SHCN F 4;
-			SHCN G 4;
-			SHCN H 3;
-			SHCN A 3;
-			SHCH ABCDEFGHIJ 1;
-			TNT1 A 0 {
-				return resolveState("remove");
-			}*/
-		
+			}	
 		remove:
-			TNT1 A 0 {
-				A_ClearOverlays(6, 6);
-			}
+			TNT1 A 0 A_ClearOverlays(6, 6);
 			Fail;
+		////////////////////////////////////////////////////////////////////////
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////
