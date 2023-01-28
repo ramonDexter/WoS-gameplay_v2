@@ -38,7 +38,7 @@ class shoulderGun : wosPickup {
 		A_StartSound("weapons/shoulderGun/loop", CHAN_6, CHANF_DEFAULT, 1.0, false);                               
 		//A_GunFlash();
 		A_FireProjectile("greenArcLightning", 0.1*random(20,-20), false, -10, 20, 0, 0);
-		A_SpawnItemEx("redFlashShort", 8, 0, 16, 0);
+		A_SpawnItemEx("SHGflashShort", 8, 0, 16, 0);
 		if (doAlertMonsters) {
 			A_AlertMonsters();
 		}
@@ -226,20 +226,20 @@ class arcLightningTrail : actor {
 	States {
 		Spawn:
 			TNT1 A 0;
-			PLSG BBCCDD 1 bright A_FadeOut(0.1);
+			PLSG BBCCDD 1 bright light("gl_shouldergun_lightningFlash") A_FadeOut(0.1);
 		Trolololo:
 			TNT1 A 0 A_SetScale(Scale.X -0.01, Scale.Y -0.01);
-			PLSG D 1 bright A_FadeOut(0.08);
+			PLSG D 1 bright light("gl_shouldergun_lightningFlash") A_FadeOut(0.08);
 			Loop;
 	}
 }
-class redFlashShort : flashBase { //used for light to spawn
+class SHGflashShort : flashBase { //used for light to spawn
 	Default {
 		+NOINTERACTION;
 	}
 	States {
 		Spawn:
-			TNT1 A 3;
+			TNT1 A 3 light("gl_shouldergun_greenflash");
 			Stop;
 	}
 }
