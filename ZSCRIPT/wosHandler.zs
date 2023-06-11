@@ -138,7 +138,7 @@ class wosEventHandler : EventHandler {
             }
 			// armor screen hit display by heydoomer ///////////////////////////
 			armor = pawn.armoramount;
-			if ( armor > 0 && pawn.currentarmor == 5 && e.DamageType == "Bleeding" ) {
+			if ( armor > 0 && pawn.currentarmor == 5 && (e.DamageType == "Bleeding" || e.DamageType == "Slime" || e.DamageType == "Drowning" || e.DamageType == "Falling" || e.DamageType == "Poison" || e.DamageType == "PoisonCloud" ) ) {
 				
 			} else {
 				//pawn.A_print("!!!HIT!!!");
