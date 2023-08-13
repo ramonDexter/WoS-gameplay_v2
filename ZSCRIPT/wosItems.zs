@@ -167,9 +167,6 @@ class wosPickup : CustomInventory {
 //  upgrade token  /////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 class upgradeToken : CustomInventory {
-
-	
-
 	Default {
 		//$Category "Quest things/WoS"
 		//$Title "Upgrade Token"
@@ -183,8 +180,7 @@ class upgradeToken : CustomInventory {
 		Inventory.PickupMessage "Upgrade Token Acquired!";
 		Inventory.PickupSound "misc/p_pkup";
 		Mass 0;
-	}
-	
+	}	
 	States {
 		Spawn:
 			UPTK A -1;
